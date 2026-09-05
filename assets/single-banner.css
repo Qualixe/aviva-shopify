@@ -1,0 +1,14 @@
+/* single-banner css start */
+.single-banner-section {
+    padding: 20px 0;
+    background: var(--white);
+}
+
+.single-banner-wrap{
+    display: block;
+}
+
+.single-banner-wrap .content{
+    display: none;
+}
+/* single-banner css end */

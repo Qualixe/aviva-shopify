@@ -1,0 +1,110 @@
+/* gift-by-budget-section css start */
+.gift-by-budget-section {
+    padding: 24px 0;
+    text-align: center;
+}
+
+.gift-by-budget-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brand-color);
+    margin: 0 0 40px 0;
+}
+
+.gift-by-budget-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.gift-by-budget-item {
+    display: block;
+    background: var(--gold-color);
+    border-radius: 4px;
+}
+
+.gift-by-budget-item-inner {
+    height: 100%;
+    background: var(--brand-color);
+    clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px), calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all ease .3s;
+}
+
+.gift-by-budget-item:hover .gift-by-budget-item-inner {
+    background: var(--brand-color-dark);
+}
+
+.gift-by-budget-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--golden-bg);
+}
+
+.gift-by-budget-amount {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--golden-bg);
+}
+
+.gift-by-budget-explore {
+    font-size: 18px;
+}
+
+/* gift-by-budget-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* gift-by-budget-section css start */
+    .gift-by-budget-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    /* gift-by-budget-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* gift-by-budget-section css start */
+    .gift-by-budget-section {
+        padding: 24px 0;
+    }
+
+    .gift-by-budget-title {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        margin-bottom: 26px;
+    }
+
+    .gift-by-budget-items {
+        gap: 10px;
+    }
+
+    .gift-by-budget-item-inner {
+        padding: 22px 14px;
+    }
+
+    .gift-by-budget-label {
+        font-size: 12px;
+    }
+
+    .gift-by-budget-amount {
+        font-size: 20px;
+    }
+
+    .gift-by-budget-explore {
+        font-size: 15px;
+    }
+
+    /* gift-by-budget-section css end */
+}

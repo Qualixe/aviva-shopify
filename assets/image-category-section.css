@@ -1,0 +1,101 @@
+/* image-category-section css start */
+.image-category-section {
+    padding: 24px 0;
+}
+
+.image-category-slider-item {
+    display: block;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-category-slider-item .img img {
+    aspect-ratio: 302 / 406;
+    transition: all ease .3s;
+}
+
+.image-category-slider-item:hover .img img {
+    transform: scale(1.1);
+}
+
+.image-category-slider-item .content {
+    background: linear-gradient(180deg, rgba(0, 25, 21, 0) 50%, rgba(0, 25, 21, .9));
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.image-category-slider-item .content .subtitle {
+    padding: 8px 20px;
+    background: var(--brand-color);
+    color: var(--white);
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+    border: 2px solid var(--white);
+    transition: all ease .3s;
+}
+
+.image-category-slider-item:hover .content .subtitle{
+    letter-spacing: 1px;
+    transform: translateY(-5px);
+}
+
+.image-category-slider-item .content .title {
+    color: var(--white);
+    text-transform: capitalize;
+    transition: all ease .3s;
+}
+
+.image-category-slider-item:hover .content .title {
+    /* color: var(--brand-color); */
+    letter-spacing: 1px;
+}
+
+/* image-category-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* image-category-section css start */
+    .image-category-section .container {
+        padding: 0;
+    }
+
+    .swiper.image-category-slider {
+        padding: 0 20px;
+    }
+
+    /* image-category-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* image-category-section css start */
+    .swiper.image-category-slider {
+        padding: 0 16px;
+    }
+
+    .image-category-slider-item .content .subtitle {
+        padding: 5px 12px;
+        letter-spacing: 0.3px;
+        font-size: 12px;
+    }
+
+    .image-category-slider-item .content .title {
+        font-size: 16px;
+    }
+
+    /* image-category-section css end */
+}

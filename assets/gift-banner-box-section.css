@@ -1,0 +1,220 @@
+/* gift-banner-box-section css start */
+.gift-banner-box-section {
+    padding: 20px 0 60px;
+}
+
+.gift-banner-box-heading {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--brand-color);
+    margin: 0 0 50px 0;
+    text-align: center;
+}
+
+.gift-banner-box {
+    border: 3px solid var(--gold-color);
+    border-radius: 16px;
+    padding: 24px;
+    align-items: center;
+    gap: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gift-banner-box-img {
+    position: relative;
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    grid-column: span 2;
+}
+
+.gift-banner-box-section.reverse .gift-banner-box-img {
+    order: 2;
+}
+
+.gift-banner-box-img img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gift-banner-box-badge {
+    position: absolute;
+    left: 0;
+    bottom: 60px;
+    background: var(--golden-bg);
+    color: var(--brand-color);
+    font-size: 36px;
+    font-weight: 600;
+    padding: 14px 44px;
+}
+
+.gift-banner-box-content {
+    flex: 1;
+    max-width: 400px;
+}
+
+.gift-banner-box-section.reverse .gift-banner-box-content {
+    order: 1;
+    margin-left: 36px;
+}
+
+.gift-banner-box-title {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brand-color);
+    margin: 0 0 16px 0;
+}
+
+.gift-banner-box-text {
+    font-size: 26px;
+    color: var(--brand-color);
+    line-height: 1.4;
+    margin: 0 0 28px 0;
+}
+
+.gift-banner-box-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    border-radius: 30px;
+    background: var(--gold-color);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all ease .3s;
+}
+
+.gift-banner-box-btn:hover {
+    background: var(--brand-color);
+}
+
+.gift-banner-box-flourish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px 0 0 0;
+}
+
+.gift-banner-box-flourish svg {
+    width: 150px;
+    height: 150px;
+}
+
+/* gift-banner-box-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* gift-banner-box-section css start */
+    .gift-banner-box-heading {
+        font-size: 32px;
+        margin: 0 0 32px 0;
+    }
+
+    .gift-banner-box {
+        gap: 30px;
+    }
+
+    .gift-banner-box-title {
+        font-size: 26px;
+    }
+
+    .gift-banner-box-text {
+        font-size: 17px;
+    }
+
+    .gift-banner-box-btn {
+        padding: 16px 24px;
+    }
+
+    .gift-banner-box-badge {
+        bottom: 30px;
+        font-size: 20px;
+        padding: 8px 24px;
+    }
+
+    /* gift-banner-box-section css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* gift-banner-box-section css start */
+    .gift-banner-box {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 20px;
+    }
+
+    .gift-banner-box-section.reverse .gift-banner-box {
+        flex-direction: column-reverse;
+    }
+
+    .gift-banner-box-section.reverse .gift-banner-box-content {
+        margin-left: 0;
+    }
+
+    .gift-banner-box-img {
+        max-width: 100%;
+    }
+
+    .gift-banner-box-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .gift-banner-box-flourish {
+        margin-top: 32px;
+    }
+
+    .gift-banner-box-flourish svg {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* gift-banner-box-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* gift-banner-box-section css start */
+    .gift-banner-box-section {
+        padding: 24px 0;
+    }
+
+    .gift-banner-box-heading {
+        font-size: 20px;
+        margin: 0 0 24px 0;
+    }
+
+    .gift-banner-box-title {
+        font-size: 22px;
+    }
+
+    .gift-banner-box-text {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .gift-banner-box-badge {
+        bottom: 16px;
+        font-size: 15px;
+        padding: 8px 18px;
+    }
+
+    .gift-banner-box-btn {
+        width: 100%;
+        padding: 14px 24px;
+    }
+
+    /* gift-banner-box-section css end */
+}

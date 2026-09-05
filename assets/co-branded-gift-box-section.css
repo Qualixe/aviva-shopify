@@ -1,0 +1,129 @@
+/* co-branded-gift-box-section css start */
+.co-branded-gift-box-section {
+    padding: 24px 0;
+    text-align: center;
+}
+
+.co-branded-gift-box-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brand-color);
+    margin: 0 0 40px 0;
+}
+
+.swiper.co-branded-gift-box-slider {
+    width: 100%;
+}
+
+.swiper.co-branded-gift-box-slider .swiper-slide {
+    height: auto;
+}
+
+.co-branded-gift-box-item {
+    display: block;
+    border: 1.5px solid var(--gold-color);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    background: var(--golden-bg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.co-branded-gift-box-img {
+    aspect-ratio: 4 / 3.4;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+.co-branded-gift-box-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.co-branded-gift-box-brand {
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.co-branded-gift-box-brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-color);
+    text-transform: lowercase;
+}
+
+.co-branded-gift-box-brand .x {
+    font-size: 16px;
+    color: var(--muted);
+}
+
+.co-branded-gift-box-partner {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+}
+
+/* co-branded-gift-box-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* co-branded-gift-box-section css start */
+    .co-branded-gift-box-section .container {
+        padding: 0;
+    }
+
+    .co-branded-gift-box-title {
+        padding: 0 20px;
+    }
+
+    .swiper.co-branded-gift-box-slider {
+        padding: 0 20px;
+    }
+
+    /* co-branded-gift-box-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* co-branded-gift-box-section css start */
+    .co-branded-gift-box-section {
+        padding: 24px 0;
+    }
+
+    .co-branded-gift-box-title {
+        padding: 0 16px;
+    }
+
+    .swiper.co-branded-gift-box-slider {
+        padding: 0 16px;
+    }
+
+    .co-branded-gift-box-title {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        margin-bottom: 26px;
+    }
+
+    .co-branded-gift-box-brand {
+        padding: 12px 8px;
+    }
+
+    .co-branded-gift-box-brand-name,
+    .co-branded-gift-box-partner {
+        font-size: 14px;
+    }
+
+    /* co-branded-gift-box-section css end */
+}

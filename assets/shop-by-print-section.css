@@ -1,0 +1,136 @@
+/* shop-by-print-section css start */
+.shop-by-print-section {
+    padding: 24px 0;
+}
+
+.shop-by-print-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+    color: var(--brand-color);
+}
+
+.shop-by-print-eyebrow::before,
+.shop-by-print-eyebrow::after {
+    content: "•";
+    color: var(--gold-color);
+    font-size: 20px;
+    line-height: 1;
+}
+
+.shop-by-print-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* border-radius: clamp(20px, calc(20px + (100vw - 375px) * 0.10246), 120px) 0 clamp(20px, calc(20px + (100vw - 375px) * 0.10246), 120px) 0; */
+    border-radius: 10px 0 10px 0;
+    overflow: hidden;
+}
+
+.shop-by-print-block {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 3fr);
+    grid-template-areas: "big small1""big small2";
+    gap: 10px;
+}
+
+.shop-by-print-block.reverse {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+    grid-template-areas: "small1 big""small2 big";
+}
+
+.shop-by-print-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.shop-by-print-item-big {
+    grid-area: big;
+    aspect-ratio: 202/157;
+}
+
+.shop-by-print-item-a {
+    grid-area: small1;
+}
+
+.shop-by-print-item-b {
+    grid-area: small2;
+}
+
+.shop-by-print-item-img {
+    display: block;
+    height: 100%;
+}
+
+.shop-by-print-item-a .shop-by-print-item-img,
+.shop-by-print-item-b .shop-by-print-item-img {
+    aspect-ratio: 249/75;
+}
+
+.shop-by-print-item-img img {
+    transition: transform ease .5s;
+}
+
+.shop-by-print-item:hover .shop-by-print-item-img img {
+    transform: scale(1.06);
+}
+
+.shop-by-print-item-content {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    /* background: rgba(0, 0, 0, .12); */
+}
+
+.shop-by-print-item-content .title {
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .7), 0 1px 12px rgba(0, 0, 0, .4);
+}
+
+/* shop-by-print-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* shop-by-print-section css start */
+    .shop-by-print-item-content {
+        padding: 10px;
+    }
+
+    .shop-by-print-item-content .title {
+        font-size: 16px;
+    }
+
+    /* shop-by-print-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* shop-by-print-section css start */
+    .shop-by-print-eyebrow {
+        font-size: 20px;
+    }
+
+    .shop-by-print-item-content .title {
+        font-size: 15px;
+    }
+
+    /* shop-by-print-section css end */
+}

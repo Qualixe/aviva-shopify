@@ -1,0 +1,139 @@
+/* see-what-fits-section css start */
+.see-what-fits-section {
+    padding: 32px 0;
+    background: var(--white);
+}
+
+.see-what-fits-section .container {
+    max-width: 1320px;
+    padding: 0 20px;
+}
+
+.see-what-fits-inner {
+    background: var(--section-bg);
+    border-radius: 10px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.see-what-fits-left {
+    flex: 1;
+    min-width: 260px;
+}
+
+.see-what-fits-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+}
+
+.see-what-fits-items {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.see-what-fits-item {
+    text-align: center;
+}
+
+.see-what-fits-item .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 10px 0;
+}
+
+.see-what-fits-item .icon svg {
+    width: 34px;
+    height: 34px;
+    color: var(--muted);
+}
+
+.see-what-fits-item p {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.see-what-fits-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 24px 28px;
+    max-width: 420px;
+    width: 100%;
+}
+
+.see-what-fits-card h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: var(--muted);
+}
+
+.see-what-fits-card p {
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--muted);
+}
+
+/* see-what-fits-section css end */
+
+@media only screen and (max-width: 767px) {
+
+    /* see-what-fits-section css start */
+    .see-what-fits-inner {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .see-what-fits-items {
+        gap: 20px 28px;
+    }
+
+    /* see-what-fits-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* see-what-fits-section css start */
+    .see-what-fits-section {
+        padding: 24px 0;
+    }
+
+    .see-what-fits-inner {
+        padding: 16px;
+    }
+
+    .see-what-fits-items {
+        gap: 16px 20px;
+    }
+
+    .see-what-fits-item .icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .see-what-fits-item p {
+        font-size: 12px;
+    }
+
+    .see-what-fits-card {
+        padding: 16px;
+    }
+
+    .see-what-fits-card p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    /* see-what-fits-section css end */
+}

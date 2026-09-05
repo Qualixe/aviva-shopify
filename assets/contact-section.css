@@ -1,0 +1,132 @@
+    /* contact section css start */
+    .contact-section {
+        background: var(--item-bg3);
+        padding: 42px 0;
+    }
+
+    .contact-section .section-heading-wrapper {
+        text-transform: capitalize;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .contact-section .section-heading-wrapper .section-heading {
+        color: var(--brand-color);
+    }
+
+    .contact-form {
+        max-width: 800px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 0 20px 0px rgb(0 0 0 / 10%);
+    }
+
+    .contact-field-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+    }
+
+    .contact-field-col {
+        width: 100%;
+        margin: 0 0 20px 0;
+        position: relative;
+    }
+
+    .contact-field-col .icon {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        z-index: -1;
+    }
+
+    .contact-field-col textarea {
+        height: 100%;
+        resize: none;
+    }
+
+    .contact-field-col input:focus,
+    .contact-field-col textarea:focus {
+        border-color: var(--brand-color);
+    }
+
+    .contact-field-col:hover input,
+    .contact-field-col:hover textarea {
+        border-color: var(--brand-color);
+    }
+
+    .contact-btn {
+        display: flex;
+    }
+
+    .contact-btn .btn {
+        width: 100%;
+        background: var(--brand-color);
+        border-color: var(--brand-color);
+        color: var(--white);
+    }
+
+    .contact-btn .btn:hover {
+        background: var(--white);
+        border-color: var(--brand-color);
+        color: var(--brand-color);
+    }
+
+    .contact-icon-item-section .icon-item .icon img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* contact section css end */
+
+    @media only screen and (max-width: 767px) {
+
+        /* contact section css start */
+        .contact-field-row {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        /* contact section css end */
+    }
+
+    @media only screen and (max-width: 575px) {
+
+        /* contact section css start */
+        .contact-section {
+            padding: 24px 0;
+        }
+
+        .contact-section .section-heading-wrapper .section-heading {
+            font-size: 24px;
+        }
+
+        .contact-form {
+            padding: 16px;
+        }
+
+        .contact-icon-item-section .icon-items {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .contact-field-row {
+            column-gap: 10px;
+        }
+
+        .contact-field-col {
+            margin: 0 0 10px 0;
+        }
+
+        .contact-icon-item-section .icon-items {
+            row-gap: 16px;
+        }
+
+        .contact-icon-item-section .icon-item .icon-item-text {
+            max-width: 282px;
+            margin: 5px auto 0;
+        }
+
+        /* contact section css end */
+    }

@@ -1,0 +1,72 @@
+/* card-slider-section css start */
+.card-slider-section .section-heading-wrapper {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-slider-section-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brand-color);
+    text-wrap-mode: nowrap;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.swiper.card-slider .swiper-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* card-slider-section css end */
+
+@media only screen and (max-width:992px) {
+
+    /* card-slider section css start */
+    .card-slider-section .container {
+        padding: 0;
+    }
+
+    .card-slider-section .section-heading-wrapper {
+        padding: 0 20px;
+    }
+
+    .swiper.card-slider {
+        padding: 0 20px;
+    }
+
+    .swiper.explore-slider .swiper-button-prev {
+        left: 20px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .swiper.explore-slider .swiper-button-next {
+        right: 20px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* card-slider section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* card-slider section css start */
+    .card-slider-section .section-heading-wrapper {
+        padding: 0 16px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .swiper.card-slider {
+        padding: 0 16px;
+    }
+
+    /* card-slider section css end */
+}

@@ -1,0 +1,78 @@
+/* collection-banner css start */
+.collection-banner-wrap {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.collection-banner-wrap .img .collection-banner-mobile {
+    display: none;
+}
+
+.collection-banner-wrap .content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.collection-banner-wrap .content .title {
+    color: var(--white);
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.collection-banner-wrap .content .title .highlight {
+    color: var(--gold-color);
+}
+
+/* collection-banner css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* collection-banner css start */
+    .collection-banner-wrap .content .title {
+        font-size: 26px;
+    }
+
+    /* collection-banner css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* collection-banner css start */
+    .collection-banner-wrap .img .collection-banner-desktop {
+        display: none;
+    }
+
+    .collection-banner-wrap .img .collection-banner-mobile {
+        display: block;
+    }
+
+    .collection-banner-wrap .content .title {
+        font-size: 22px;
+    }
+
+    /* collection-banner css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* collection-banner css start */
+    .collection-banner-wrap .content {
+        padding: 16px;
+    }
+
+    .collection-banner-wrap .content .title {
+        font-size: 18px;
+    }
+
+    /* collection-banner css end */
+}

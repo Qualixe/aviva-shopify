@@ -1,0 +1,105 @@
+/* gift-by-inside-section css start */
+.gift-by-inside-section {
+    padding: 24px 0;
+    text-align: center;
+}
+
+.gift-by-inside-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brand-color);
+    margin: 0 0 40px 0;
+}
+
+.gift-by-inside-items {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.gift-by-inside-img {
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--color-orange), var(--color-orange-dark));
+}
+
+.gift-by-inside-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gift-by-inside-name {
+    margin: 14px 0 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--brand-color);
+}
+
+.gift-by-inside-flourish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 60px 0 0 0;
+}
+
+.gift-by-inside-flourish svg {
+    width: 150px;
+    height: 150px;
+}
+
+/* gift-by-inside-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* gift-by-inside-section css start */
+    .gift-by-inside-items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 16px;
+    }
+
+    /* gift-by-inside-section css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* gift-by-inside-section css start */
+    .gift-by-inside-flourish {
+        margin-top: 32px;
+    }
+
+    .gift-by-inside-flourish svg {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* gift-by-inside-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* gift-by-inside-section css start */
+    .gift-by-inside-section {
+        padding: 24px 0;
+    }
+
+    .gift-by-inside-title {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        margin-bottom: 26px;
+    }
+
+    .gift-by-inside-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 12px;
+    }
+
+    .gift-by-inside-name {
+        font-size: 13px;
+    }
+
+    /* gift-by-inside-section css end */
+}

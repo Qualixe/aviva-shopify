@@ -1,0 +1,150 @@
+/* policy-section css start */
+.policy-section {
+    padding: 42px 0;
+}
+
+.policy-section .section-heading-wrapper {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.policy-section .section-heading-wrapper .section-heading {
+    font-size: 38px;
+    color: var(--brand-color);
+}
+
+.policy-content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.policy-content-items {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.policy-content-inner-item,
+.policy-content-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: justify;
+}
+
+.policy-content-inner-item {
+    margin: 10px 0 0 0;
+}
+
+.policy-content-item-title {
+    text-transform: capitalize;
+    margin: 0 0 10px 0;
+    color: var(--brand-color);
+    font-size: 26px;
+    font-weight: 600;
+}
+
+h3.policy-content-item-title {
+    font-size: 22px;
+}
+
+.policy-content-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.policy-content-list {
+    padding: 0 0 0 18px;
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.policy-content-inner-item .policy-content-list {
+    margin: 0 0 0 20px;
+}
+
+.policy-content-list li::marker {
+    font-size: 14px;
+    color: var(--black);
+}
+
+.policy-content-list li a {
+    color: var(--paragraph-text-color);
+    font-weight: 600;
+}
+
+.policy-content-list li a:hover {
+    text-decoration: underline;
+}
+
+.policy-content-note {
+    margin: 50px 0 0 0;
+    padding: 24px 0 0 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.policy-content-note p {
+    line-height: 26px;
+    font-style: italic;
+}
+
+/* policy-section css end */
+
+@media only screen and (max-width: 767px) {
+
+    /* policy-section css start */
+    .policy-content-item-title {
+        font-size: 22px;
+    }
+
+    h3.policy-content-item-title {
+        font-size: 18px;
+    }
+
+    /* policy-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* policy-section css start */
+    .policy-section {
+        padding: 24px 0;
+    }
+
+    .policy-section .section-heading-wrapper .section-heading {
+        font-size: 24px;
+    }
+
+    .policy-content-items {
+        gap: 30px;
+    }
+
+    .policy-content-item-title {
+        margin: 0 0 0px 0;
+        font-size: 20px;
+    }
+
+    h3.policy-content-item-title {
+        text-transform: capitalize;
+        margin: 0;
+        font-size: 17px;
+    }
+
+    .policy-content-note {
+        margin: 30px 0 0 0;
+        padding: 10px 0 0 0;
+    }
+
+    .policy-content-note p,
+    .policy-content-list li p,
+    .policy-content-text p {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 20px;
+    }
+
+    /* policy-section css end */
+}

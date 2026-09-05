@@ -1,0 +1,130 @@
+/* category-grid-section css start */
+.category-grid-section {
+    padding: 24px 0;
+    background: var(--white);
+}
+
+.swiper.category-grid-slider {
+    padding: 4px;
+
+}
+
+.swiper.category-grid-slider .swiper-slide {
+    height: auto;
+}
+
+.category-grid-item {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    height: 100%;
+    box-shadow: 0 2px 4px rgb(34 34 34 / 10%);
+}
+
+.category-grid-item .img {
+    overflow: hidden;
+}
+
+.category-grid-item .img img {
+    aspect-ratio: 1 / 1;
+    transition: all ease .5s;
+}
+
+.category-grid-item:hover .img img {
+    transform: scale(1.1);
+}
+
+.category-grid-item .content {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.category-grid-item .content .title {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all ease .3s;
+}
+
+.category-grid-item:hover .content .title {
+    color: var(--brand-color);
+}
+
+.category-grid-item .content .icon {
+    display: flex;
+    color: var(--black);
+    transition: all ease .3s;
+}
+
+.category-grid-item:hover .content .icon {
+    color: var(--brand-color);
+}
+
+.category-grid-item .content .icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transform: rotate(180deg);
+}
+
+/* category-grid-section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* category-grid-section css start */
+    .category-grid-section .container {
+        padding: 0;
+    }
+
+    .category-grid-heading {
+        padding: 0 20px;
+    }
+
+    .swiper.category-grid-slider {
+        padding: 4px 20px 4px;
+    }
+
+    /* category-grid-section css end */
+}
+
+
+@media only screen and (max-width: 767px) {
+
+    /* category-grid-section css start */
+    .category-grid-item .content .icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* category-grid-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* category-grid-section css start */
+    .category-grid-item {
+        border-radius: 5px;
+    }
+
+    .category-grid-item .content {
+        padding: 10px 8px;
+    }
+
+    .category-grid-item .content .title {
+        font-size: 12px;
+    }
+
+    .category-grid-heading {
+        padding: 0 16px;
+    }
+
+    .swiper.category-grid-slider {
+        padding: 4px 16px 4px;
+    }
+
+    /* category-grid-section css end */
+}

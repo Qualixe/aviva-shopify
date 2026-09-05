@@ -1,0 +1,225 @@
+/* product-card css start */
+.product-card {
+    height: 100%;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.product-card .card-image-wrap {
+    margin: 0;
+    min-width: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    display: flex;
+    height: auto;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    background-color: var(--border-color2);
+}
+
+.card-badge {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+    color: var(--white);
+    font-family: var(--paragraph-font);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 6px 8px 5px;
+    background-color: var(--card-badge-bg);
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+.product-card .card-image-wrap:before {
+    padding-bottom: 100%;
+    content: "";
+    width: 0;
+    height: 0;
+}
+
+.product-card .card-image-wrap .card-img {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.product-card .card-img .main-img {
+    transition: ease .5s;
+}
+
+.product-card .card-img .main-img img {
+    object-fit: cover;
+}
+
+.card_hover:hover .card-img .main-img {
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.product-card .card-img .hover-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: ease .5s;
+}
+
+.card_hover:hover .card-img .hover-img {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.product-card .card_hover_img {
+    object-fit: cover;
+}
+
+.product-card .card-content {
+    padding: 14px 8px;
+}
+
+.card-title-wrap {
+    height: 34px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.product-card .card-content .card-title {
+    color: var(--brand-color);
+    font-family: var(--heading-font);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 17px;
+    text-transform: capitalize;
+    transition: ease .2s;
+    display: block;
+}
+
+.product-card .card-content .card-title:hover {
+    text-decoration: underline;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 10px;
+}
+
+.product-card .card-content .card-price-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    margin: 10px 0 0 0;
+}
+
+.product-card .card-content .card-price-wrap .latest-price {
+    font-family: var(--paragraph-font);
+    color: var(--brand-color);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+    display: flex;
+    align-items: flex-start;
+}
+
+.product-card .card-content .card-price-wrap .previous-price {
+    text-transform: uppercase;
+    font-family: var(--paragraph-font);
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: line-through;
+    line-height: 1;
+    display: flex;
+    align-items: flex-start;
+    color: var(--brand-color);
+}
+
+.card-btn {
+    display: flex;
+}
+
+.card-btn .btn {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+    color: var(--white);
+    text-wrap-mode: nowrap;
+    text-transform: capitalize;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 3px;
+}
+
+.card-btn .btn:hover {
+    border-color: var(--black);
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* product-card css end */
+
+@media only screen and (max-width: 575px) {
+
+    /* product-card css start */
+    .product-card .card-content .card-title {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .card-footer {
+        gap: 12px;
+    }
+
+    .product-card .card-content .card-price-wrap {
+        margin: 5px 0 0 0;
+    }
+
+    .product-card .card-content .card-price-wrap .latest-price {
+        font-size: 12px;
+    }
+
+    .product-card .card-content .card-price-wrap .previous-price {
+        font-size: 12px;
+    }
+
+    .product-card .card-content {
+        padding: 10px 8px;
+    }
+
+    .card-btn .btn {
+        width: 100%;
+        padding: 6px 15px;
+        font-size: 12px;
+    }
+
+    .card-badge {
+        font-size: 10px;
+        padding: 5px 5px 4px;
+    }
+
+    /* product-card css end */
+}

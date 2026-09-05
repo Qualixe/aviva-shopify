@@ -1,0 +1,78 @@
+/* gift-banner css start */
+.gift-banner-wrap {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.gift-banner-wrap .img .gift-banner-mobile {
+    display: none;
+}
+
+.gift-banner-wrap .content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.gift-banner-wrap .content .title {
+    color: var(--white);
+    font-size: 48px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.gift-banner-wrap .content .title .highlight {
+    color: var(--gold-color);
+}
+
+/* gift-banner css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* gift-banner css start */
+    .gift-banner-wrap .content .title {
+        font-size: 26px;
+    }
+
+    /* gift-banner css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* gift-banner css start */
+    .gift-banner-wrap .img .gift-banner-desktop {
+        display: none;
+    }
+
+    .gift-banner-wrap .img .gift-banner-mobile {
+        display: block;
+    }
+
+    .gift-banner-wrap .content .title {
+        font-size: 22px;
+    }
+
+    /* gift-banner css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* gift-banner css start */
+    .gift-banner-wrap .content {
+        padding: 16px;
+    }
+
+    .gift-banner-wrap .content .title {
+        font-size: 18px;
+    }
+
+    /* gift-banner css end */
+}

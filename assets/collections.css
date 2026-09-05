@@ -1,0 +1,526 @@
+/* collection section css start */
+.collection-section {
+    padding: 0 0 32px;
+}
+
+.collection-filter {
+    position: fixed;
+    z-index: 99999;
+    height: 100vh;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    transition: all ease .3s;
+}
+
+.collection-filter.active {
+    right: 0;
+}
+
+.collection-content {
+    width: 100%;
+}
+
+.collection-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px 0;
+    position: sticky;
+    top: 140px;
+    z-index: 6;
+    background: var(--section-bg);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.collection-top .collection-heading {
+    font-size: 24px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--brand-color);
+}
+
+.collection-filter-short,
+.collection-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.filter-open-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--paragraph-font);
+    background-color: var(--brand-color);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.filter-open-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.filter-open-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.collection-product-count {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* collection filter css start */
+.filter-select-field {
+    position: relative;
+    border: 1px solid var(--border-color2);
+    display: inline-block;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.filter-select-field select {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--paragraph-font);
+    padding: 0 60px 0 10px;
+    line-height: 21px;
+    border: none;
+    height: 36px;
+}
+
+.filter-select-field-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: -1;
+    display: flex;
+}
+
+.filter-select-field-icon svg {
+    width: 12px;
+    height: 12px;
+}
+
+.filter-select-field-icon svg path {
+    fill: var(--black);
+}
+
+.filter-box {
+    position: relative;
+    background-color: var(--white);
+    box-shadow: 0 0 20px 0px rgb(0 0 0 / 10%);
+    width: 340px;
+    z-index: 2;
+    height: 100dvh;
+    border-radius: 0;
+    padding: 20px;
+    float: right;
+    transition: all ease .3s;
+}
+
+.filter-sidebar-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 16px 10px;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--paragraph-font);
+    font-weight: 600 !important;
+}
+
+.filter-close-btn {
+    cursor: pointer;
+    display: flex;
+}
+
+.filter-window-close-btn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    transition: all ease .3s;
+    user-select: none;
+}
+
+.collection-filter.active .filter-window-close-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.filter-accordion {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin: 16px 0 0 0;
+}
+
+.filter-accordion-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-accordion-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-accordion-item .item-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px 10px;
+}
+
+.filter-accordion-item .item-title-wrapper .item-title {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 400;
+    user-select: none;
+    font-family: var(--paragraph-font);
+}
+
+.filter-accordion-item .item-title-wrapper .icon {
+    display: flex;
+}
+
+.filter-accordion-item .item-title-wrapper .icon svg {
+    width: 10px;
+    height: 10px;
+    transition: all ease .3s;
+}
+
+.filter-accordion-item .item-title-wrapper .icon svg path {
+    fill: var(--muted);
+}
+
+.filter-accordion-item.active .item-title-wrapper .icon svg {
+    transform: rotate(180deg);
+}
+
+.filter-accordion-item-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.filter-options-wrapper {
+    padding: 0 10px 20px 10px;
+}
+
+/* .filter-options-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10px 0;
+} */
+
+/* .selection-number,
+.reset-btn, */
+.filter-item-number {
+    color: var(--paragraph-text-color);
+    font-size: 14px;
+    font-family: var(--paragraph-font);
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.filter-options {
+    margin: 0 0 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-options:last-child {
+    margin: 0;
+}
+
+.filter-option {
+    display: block;
+}
+
+.filter-option input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+}
+
+.filter-option label {
+    position: relative;
+    cursor: pointer;
+    color: var(--black);
+    font-size: 14px;
+    font-family: var(--paragraph-font);
+    font-weight: 300;
+    text-transform: capitalize;
+    user-select: none;
+}
+
+.filter-option label:before {
+    content: '';
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 1px solid var(--border-color2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 4px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.filter-option input:checked+label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: 3px;
+    height: 9px;
+    border: solid var(--brand-color);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) translateY(-83%);
+}
+
+.filter-option.color-yellow label:before {
+    background-color: var(--color-yellow);
+}
+
+.filter-option.color-white label:before {
+    background-color: var(--white);
+}
+
+.filter-option.color-red label:before {
+    background-color: var(--color-red);
+}
+
+.filter-option.color-blue label:before {
+    background-color: var(--color-blue);
+}
+
+.filter-option.color-green label:before {
+    background-color: var(--color-green);
+}
+
+.price-range-wrap {
+    padding: 4px 6px 20px;
+}
+
+.price-range-slider {
+    position: relative;
+    height: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.price-range-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--border-color);
+}
+
+.price-range-track-fill {
+    position: absolute;
+    height: 3px;
+    background: var(--brand-color);
+}
+
+.price-range-input {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    pointer-events: none;
+}
+
+.price-range-input::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 3px;
+    background: transparent;
+}
+
+.price-range-input::-moz-range-track {
+    height: 3px;
+    background: transparent;
+    border: none;
+}
+
+.price-range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: auto;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--black);
+    cursor: pointer;
+    margin-top: -6px;
+}
+
+.price-range-input::-moz-range-thumb {
+    pointer-events: auto;
+    width: 14px;
+    height: 14px;
+    border: none;
+    border-radius: 50%;
+    background: var(--black);
+    cursor: pointer;
+}
+
+.price-range-values {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.price-range-field {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    border: 1px solid var(--border-color2);
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.price-range-value {
+    font-weight: 500;
+    color: var(--black);
+}
+
+.price-range-sep {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* collection filter css end */
+
+.product-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+/* collection section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* colection section css start */
+    .collection-top {
+        top: 72px;
+    }
+
+    .product-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* colection section css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* colection section css start */
+    .collection-top {
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0 0 0;
+        top: 24px;
+    }
+
+    .collection-filter-btn {
+        width: 100%;
+        justify-content: space-between;
+        padding: 16px 0;
+    }
+
+    .collection-product-count {
+        order: 2;
+    }
+
+    .filter-select-field {
+        order: 1;
+    }
+
+    .product-items {
+        column-gap: 16px;
+        row-gap: 24px;
+    }
+
+    /* colection section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* colection section css start */
+    .collection-top {
+        margin: 0 0 12px 0;
+        top: 18px;
+    }
+
+    .collection-filter-btn {
+        padding: 12px 0;
+    }
+
+    .collection-top .collection-heading {
+        font-size: 18px;
+    }
+
+    .product-items {
+        column-gap: 5px;
+        row-gap: 16px;
+    }
+
+    .collection-filter-short,
+    .collection-filter-btn {
+        gap: 10px;
+    }
+
+    .filter-open-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-select-field select {
+        padding: 0 30px 0 10px;
+    }
+
+    .filter-select-field-icon {
+        right: 10px;
+    }
+
+    /* colection section css end */
+}

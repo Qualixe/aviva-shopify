@@ -1,0 +1,394 @@
+/* community-review-section css start */
+.community-review-section {
+    padding: 24px 0;
+}
+
+.community-review-title {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.swiper.community-review-slider {
+    padding-bottom: 4px;
+}
+
+.swiper.community-review-slider .swiper-wrapper {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.community-review-item {
+    position: relative;
+    display: block;
+    aspect-ratio: 279 / 456;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--black);
+    border: none;
+    padding: 0;
+}
+
+.community-review-item-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.community-review-item-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 16px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .85) 100%);
+}
+
+.community-review-item-text {
+    color: var(--white);
+    font-family: var(--heading-font);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.community-review-item-text .highlight {
+    display: inline-block;
+    background-color: var(--brand-color);
+    color: var(--white);
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+
+/* community-review-section css end */
+
+/* community-review-popup css start */
+.community-review-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background: rgba(0, 0, 0, .85);
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.community-review-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.community-review-popup.active~.app-menu-section {
+    display: none;
+}
+
+.community-review-popup-close-window-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.community-review-popup-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 340px;
+    max-height: 90dvh;
+    transform: scale(.94);
+    opacity: 0;
+    transition: transform .35s ease, opacity .35s ease;
+}
+
+.community-review-popup.active .community-review-popup-inner {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.community-review-popup-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+    max-height: 90dvh;
+}
+
+.community-review-popup-video-wrap {
+    position: relative;
+    aspect-ratio: 279 / 356;
+    background-color: var(--black);
+}
+
+.community-review-popup-progress {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 3;
+    display: flex;
+    gap: 4px;
+}
+
+.community-review-popup-progress-bar {
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .35);
+    overflow: hidden;
+}
+
+.community-review-popup-progress-bar i {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background-color: var(--white);
+}
+
+.community-review-popup-progress-bar.completed i {
+    width: 100%;
+}
+
+.community-review-popup-top-btns {
+    position: absolute;
+    top: 24px;
+    right: 12px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.community-review-popup-close-btn,
+.community-review-popup-mute-btn,
+.community-review-popup-share-btn,
+.community-review-popup-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .4);
+    color: var(--white);
+    border: none;
+    flex-shrink: 0;
+}
+
+.community-review-popup-mute-btn .waves {
+    opacity: .35;
+}
+
+.community-review-popup-mute-btn.unmuted .waves {
+    opacity: 1;
+}
+
+.community-review-popup-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.community-review-popup-slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+}
+
+.community-review-popup-slide.active {
+    display: block;
+}
+
+.community-review-popup-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.community-review-popup-caption {
+    position: absolute;
+    left: 16px;
+    right: 60px;
+    bottom: 16px;
+    z-index: 2;
+}
+
+.community-review-popup-caption p {
+    color: var(--white);
+    font-family: var(--heading-font);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.community-review-popup-caption p .highlight {
+    display: inline-block;
+    background-color: var(--brand-color);
+    color: var(--white);
+    padding: 1px 8px;
+    border-radius: 3px;
+}
+
+.community-review-popup-share-btn {
+    position: absolute;
+    right: 12px;
+    bottom: 16px;
+    z-index: 2;
+}
+
+.community-review-popup-nav-btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 36px;
+    height: 36px;
+}
+
+.community-review-popup-nav-btn.prev {
+    left: 10px;
+}
+
+.community-review-popup-nav-btn.next {
+    right: 10px;
+}
+
+.community-review-popup-nav-btn:disabled {
+    opacity: .3;
+    pointer-events: none;
+}
+
+.community-review-popup-product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background-color: var(--white);
+}
+
+.community-review-popup-product-img {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color2);
+}
+
+.community-review-popup-product-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.community-review-popup-product-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.3;
+}
+
+.community-review-popup-product-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-wrap-mode: nowrap;
+}
+
+.community-review-popup-product-price .prev {
+    font-size: 12px;
+    text-decoration: line-through;
+    opacity: .6;
+}
+
+.community-review-popup-product-price .curr {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.community-review-popup-btn-wrap {
+    padding: 0 14px 14px;
+    background-color: var(--white);
+}
+
+.community-review-popup-btn-wrap .btn {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+    color: var(--white);
+}
+
+.community-review-popup-btn-wrap .btn:hover {
+    background-color: var(--black);
+    border-color: var(--black);
+}
+
+/* community-review-popup css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* community-review-section css start */
+    .community-review-section .container {
+        padding: 0;
+    }
+
+    .community-review-title {
+        padding: 0 20px;
+    }
+
+    .swiper.community-review-slider {
+        padding: 0 20px 4px;
+    }
+
+    /* community-review-section css end */
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* community-review-section css start */
+    .community-review-item-text {
+        font-size: 13px;
+    }
+
+    /* community-review-section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* community-review-section css start */
+    .community-review-title {
+        padding: 0 16px;
+         font-size: 18px;
+    }
+
+    .swiper.community-review-slider {
+        padding: 0 16px 4px;
+    }
+
+    /* community-review-section css end */
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    /* community-review-popup css start */
+    .community-review-popup-inner {
+        max-width: calc(100% - 20px);
+    }
+
+    /* community-review-popup css end */
+}

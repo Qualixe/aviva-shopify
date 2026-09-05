@@ -1,0 +1,29 @@
+/* single-video-section css start */
+.single-video-section {
+    padding: 24px 0;
+}
+
+.single-video-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.single-video-wrap .single-video {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+/* single-video-section css end */
+
+@media only screen and (max-width: 767px) {
+
+    /* single-video-section css start */
+    .single-video-wrap .single-video {
+        aspect-ratio: 4 / 5;
+    }
+
+    /* single-video-section css end */
+}

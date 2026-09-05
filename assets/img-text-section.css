@@ -1,0 +1,121 @@
+/* img-text section css start */
+.img-text-section-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    align-items: center;
+}
+
+.img-text-section-img {
+    width: 50%;
+    border-radius: 0 50px 0 50px;
+    overflow: hidden;
+}
+
+.img-text-section-content {
+    width: 50%;
+}
+
+.img-text-section.img-text-section-reverse .img-text-section-wrapper {
+    flex-direction: row-reverse;
+}
+
+.img-text-section.img-text-section-reverse .img-text-section-wrapper .img-text-section-content {
+    text-align: right;
+}
+
+.img-text-section-content-title {
+    text-transform: capitalize;
+    color: var(--brand-color);
+}
+
+.img-text-section-content-text {
+    margin: 16px 0 0 0;
+    max-width: 550px;
+    text-align: justify;
+}
+
+.img-text-section.img-text-section-reverse .img-text-section-wrapper .img-text-section-content .img-text-section-content-text {
+    margin: 16px 0 0 auto;
+}
+
+.img-text-section-content-list {
+    margin: 16px 0 0 0;
+}
+
+.img-text-section-content-list li {
+    padding: 0 0 10px 20px;
+    position: relative;
+}
+
+.img-text-section-content-list li::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 5px;
+    height: 12px;
+    border: solid var(--brand-color);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.img-text-section.img-text-section-reverse .img-text-section-wrapper .img-text-section-content .img-text-section-content-list {
+    margin: 16px 0 0 auto;
+    text-align: right;
+    width: fit-content;
+}
+
+.img-text-section-content-list li:last-child {
+    margin: 0;
+}
+
+/* img-text section css end */
+
+@media only screen and (max-width: 992px) {
+
+    /* img-text section css start */
+    .img-text-section-wrapper {
+        flex-wrap: wrap;
+    }
+
+    .img-text-section-img {
+        width: 100%;
+    }
+
+    .img-text-section-content {
+        width: 100%;
+    }
+
+    /* img-text section css end */
+
+}
+
+@media only screen and (max-width: 767px) {
+
+    /* img-text section css start */
+    .img-text-section-wrapper {
+        gap: 20px;
+    }
+
+    /* img-text section css end */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* img-text section css start */
+
+    .img-text-section-img {
+        border-radius: 0 30px 0 30px;
+    }
+
+    .img-text-section-content-text{
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 20px;
+    }
+
+    /* img-text section css end */
+
+}

@@ -1,0 +1,84 @@
+/* accordion css start */
+.accordion-items {
+    display: flex;
+    flex-direction: column;
+    ;
+    gap: 14px;
+}
+
+.accordion-item {
+    overflow: hidden;
+    transition: all ease .3s;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.accordion-item-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-bottom: 10.5px;
+    gap: 20px;
+    transition: all ease .3s;
+}
+
+.accordion-item-title {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    user-select: none;
+}
+
+.accordion-item-icon {
+    display: flex;
+    transition: ease .3s;
+}
+
+.accordion-item-icon svg {
+    transition: all ease .3s;
+    transform: rotate(180deg);
+}
+
+.accordion-item.active .accordion-item-title-wrap .accordion-item-icon svg {
+    transform: rotate(0deg);
+}
+
+.accordion-item-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    box-sizing: border-box;
+}
+
+.accordion-item-content-inner {
+    padding-bottom: 8px;
+}
+
+.accordion-content-items,
+.accordion-content-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.accordion-content-item-text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16.8px;
+}
+
+.accordion-content-item-list {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.accordion-content-item-list-item {
+    list-style-type: disc;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16.8px;
+}
+/* accordion css end */
