@@ -11,14 +11,73 @@
   "type": "header",
   "name": "t:names.header",
   "sections": {
-   
     "header_section": {
       "type": "header",
       "blocks": {
-       
+        "header-logo": {
+          "type": "header-logo",
+          "static": true,
+          "settings": {
+            "logo": "shopify://shop_images/store-logo.png"
+          },
+          "blocks": {}
+        },
+        "header-search": {
+          "type": "header-search",
+          "static": true,
+          "settings": {
+            "text": "smart phone --home decoration -- gadgets"
+          },
+          "blocks": {}
+        },
+        "header-logo_2": {
+          "type": "header-logo",
+          "static": true,
+          "settings": {
+            "logo": "shopify://shop_images/store-logo.png"
+          },
+          "blocks": {}
+        },
+        "header-search-result": {
+          "type": "header-search-result",
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        },
+        "header-icons": {
+          "type": "header-icons",
+          "static": true,
+          "settings": {
+            "user": true,
+            "cart": true
+          },
+          "blocks": {}
+        },
+        "header-nav": {
+          "type": "header-nav",
+          "static": true,
+          "settings": {
+            "menu": "main-menu"
+          },
+          "blocks": {
+            "mega_menu_wQAXcp": {
+              "type": "mega-menu",
+              "name": "Mega Menu",
+              "settings": {
+                "link": "Bages",
+                "menu": "mega-menu"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "mega_menu_wQAXcp"
+          ]
+        }
       },
       "settings": {
-       
+        "background": "{{ settings.color_palette.background }}",
+        "text": "{{ settings.color_palette.nav }}"
       }
     }
   },
