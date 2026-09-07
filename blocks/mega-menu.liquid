@@ -1,0 +1,40 @@
+<div class="megamenu" data-mega-menu="{{ block.settings.link | handleize }}" {{ block.shopify_attributes }}>
+    <div class="megamenu-items">
+        {% for item in block.settings.menu.links %}
+        <div class="megamenu-item">
+            <h6 class="megamenu-item-title">{{ item.title }}</h6>
+            {% if item.links.size > 0 %}
+            <ul>
+                {% for subitem in item.links %}
+                <li>
+                    <a href="{{ subitem.url }}">{{ subitem.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Mega Menu",
+        "settings": [
+            {
+                "type": "text",
+                "id": "link",
+                "label": "Link",
+                "info": "write link name, which you want to linked megamenu"
+            },
+            {
+                "type": "link_list",
+                "id": "menu",
+                "label": "Menu"
+            }
+        ],
+        "presets": [
+            {"name": "Mega Menu"}
+        ]
+    }
+{% endschema %}

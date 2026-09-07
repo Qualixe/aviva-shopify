@@ -1,0 +1,28 @@
+{% assign b = block.settings %}
+<a href="{{ shop.url }}" class="header-logo__link" aria-label="{{ 'general.accessibility.logo_link' | t }}">
+   {% if b.logo !=blank %}
+    {{ b.logo |  image_url: width: 1000 |  image_tag: class: 'header_logo', alt: b.logo_alt_text }}
+    {% else %}
+     {{"image" |  placeholder_svg_tag: 'svg_icon logo_svg'}}
+    {% endif %}
+</a>
+
+{% schema %}
+    {
+        "name": "Header Logo",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Header Logo",
+                "category": "Header"
+                
+            }
+        ]
+    }
+{% endschema %}

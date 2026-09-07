@@ -1437,3 +1437,29 @@ document.addEventListener("DOMContentLoaded", () => {
   breakpoint.addEventListener("change", setupAccordion);
 });
 // Footer dropdown responsive accordion js end --
+
+// Header mega-menu placement js start --
+document.addEventListener("DOMContentLoaded", () => {
+  const source = document.querySelector(".megamenu-source");
+  if (!source) return;
+
+  source.querySelectorAll("[data-mega-menu]").forEach((panel) => {
+    const handle = panel.dataset.megaMenu;
+    if (!handle) return;
+
+    const navItem = document.querySelector(
+      `.navbar-link[data-nav-link="${handle}"]`
+    );
+    if (!navItem) return;
+
+    const defaultDropdown = navItem.querySelector(".drpodown-nav1");
+    if (defaultDropdown) defaultDropdown.remove();
+
+    navItem.classList.remove("dropdown");
+    navItem.classList.add("has-mega_menu");
+    navItem.appendChild(panel);
+  });
+
+  source.remove();
+});
+// Header mega-menu placement js end --

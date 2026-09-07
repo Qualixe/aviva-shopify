@@ -1,0 +1,20 @@
+{% liquid
+  assign palette_lightest = '#ffffff'
+  assign palette_lightest_brightness = -1
+  assign palette_darkest = '#000000'
+  assign palette_darkest_brightness = 256
+
+  for palette_color in settings.color_palette
+    if palette_color != blank and palette_color.alpha == 1
+      assign b = palette_color | color_brightness
+      if b > palette_lightest_brightness
+        assign palette_lightest = palette_color
+        assign palette_lightest_brightness = b
+      endif
+      if b < palette_darkest_brightness
+        assign palette_darkest = palette_color
+        assign palette_darkest_brightness = b
+      endif
+    endif
+  endfor
+%}

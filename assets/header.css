@@ -523,6 +523,7 @@
     transition: all ease .3s;
     cursor: pointer;
     position: relative;
+    display: block;
 }
 
 .navbar-link-btn:after {
@@ -537,7 +538,8 @@
     right: 0;
 }
 
-.navbar-link.dropdown {
+.navbar-link.dropdown,
+.navbar-link.has-megamenu {
     position: relative;
 }
 

@@ -1,0 +1,55 @@
+{% liquid 
+    assign b = block.settings
+%}
+
+    {% if b.user %}
+    <a href="{{ routes.account_url }}" class="navbar-icon">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 10.1A2.85 2.85 0 1 0 10 4.4a2.85 2.85 0 0 0 0 5.7Z" stroke="currentColor" stroke-width="1.4">
+            </path>
+            <path d="M4.6 16c.45-2.25 2.48-3.7 5.4-3.7 2.92 0 4.95 1.45 5.4 3.7" stroke="currentColor"
+                stroke-width="1.4" stroke-linecap="round"></path>
+        </svg>
+    </a>
+    {% endif %}
+
+    {% if b.cart %}
+    <button class="navbar-icon cart-drawer-open">
+        <span class="cart-count">{{ cart.item_count }}</span>
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M2.5 3.5H4.6l1.6 7.7c.17.82.89 1.4 1.73 1.4h6.17c.82 0 1.53-.55 1.73-1.34l1.3-5.16H5.3"
+                stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="8.2" cy="15.6" r="1.1" fill="currentColor"></circle>
+            <circle cx="14.1" cy="15.6" r="1.1" fill="currentColor"></circle>
+        </svg>
+    </button>
+    {% endif %}
+
+
+{% schema %}
+    {
+        "name": "Header Icons",
+        "class": "navbar-icons",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "user",
+                "label": "User",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "cart",
+                "label": "Card",
+                "default": true
+            }
+        ],
+        "presets": [
+            {
+                "name": "Header Search",
+                "category": "Header"
+                
+            }
+        ]
+    }
+{% endschema %}

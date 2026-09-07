@@ -1,0 +1,27 @@
+<style>
+    #section_{{ section.id }} {
+        background-color: {{ section.settings.background }};
+    }
+
+    #section_{{ section.id }} h1,
+    #section_{{ section.id }} h2,
+    #section_{{ section.id }} h3,
+    #section_{{ section.id }} h4,
+    #section_{{ section.id }} h5,
+    #section_{{ section.id }} h6 {
+        color: {{ section.settings.heading }};
+    }
+
+    #section_{{ section.id }} p,
+    #section_{{ section.id }} span,
+    #section_{{ section.id }} a,
+    #section_{{ section.id }} li {
+        color: {{ section.settings.text }};
+    }
+    #header_{{ section.id }} .navbar-link-btn {
+        color: {{ section.settings.text }}; 
+    }
+    #header_{{ section.id }} {
+        background-color: {{ section.settings.background }};
+    }
+</style>

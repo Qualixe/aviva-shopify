@@ -1,0 +1,67 @@
+
+    {% assign menu = block.settings.menu %}
+    <ul class="navbar-links">
+        {% for link in menu.links %}
+        <li class="navbar-link{% if link.links.size > 0 %} dropdown{% endif %}" data-nav-link="{{ link.title | handleize }}">
+            {% if link.links.size > 0 %}
+                <p class="navbar-link-btn">{{ link.title }}</p>
+                <ul class="drpodown-nav drpodown-nav1">
+                    {% for sublink in link.links %}
+                        {% if sublink.links.size > 0 %}
+                            <li>
+                                <button>
+                                    {{ sublink.title }}
+                                    <span class="icon">
+                                        <svg aria-hidden="true" focusable="false" fill="none" width="8"
+                                            class="icon icon-arrow-right  icon--direction-aware" viewBox="0 0 16 18">
+                                            <path d="m5 17 8-8-8-8" stroke="currentColor" stroke-linecap="square"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                                <ul class="drpodown-nav drpodown-nav2">
+                                    {% for childlink in sublink.links %}
+                                        <li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <a href="{{ link.url }}" class="navbar-link-btn">{{ link.title }}</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="megamenu-source" hidden>
+        {% content_for "blocks" %}
+    </div> 
+
+{% schema %}
+    {
+        "name": "Header Menu",
+        "class": "navbar-link-area",
+        "settings": [
+            {
+                "type": "link_list",
+                "id": "menu",
+                "label": "Menu",
+                "default": "main-menu"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "mega-menu" 
+            }
+        ],
+        "presets": [
+            {
+                "name": "Header Menu",
+                "category": "Header"
+
+            }
+        ]
+    }
+{% endschema %}

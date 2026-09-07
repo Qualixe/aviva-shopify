@@ -66,6 +66,40 @@
           "background": "#ffffff",
           "foreground": "#000000"
         }
+      },
+      {
+        "type": "header",
+        "content": "Global Colors"
+      },
+      {
+        "type": "color",
+        "id": "brand",
+        "label": "Brand",
+        "default" : "#114f57"
+      },
+      {
+        "type": "color",
+        "id": "black",
+        "label": "Black",
+        "default" : "#211913"
+      },
+      {
+        "type": "color",
+        "id": "white",
+        "label": "White",
+        "default" : "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "body",
+        "label": "Body",
+        "default" : "#fcf7f3"
+      },
+      {
+        "type": "color",
+        "id": "badge_bg",
+        "label": "Badge Background",
+        "default" : "#008000"
       }
     ]
   },

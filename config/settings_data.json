@@ -106,7 +106,20 @@
       "background": "#ffffff",
       "foreground": "#000000",
       "color1": "#333333",
-      "color2": "#DFDFDF"
+      "heading": "#211913",
+      "text": "#211913",
+      "nav": "#211913",
+      "muted": "#6c6c6c",
+      "green": "#008000",
+      "yellow": "#ffd700",
+      "red": "#ff0000",
+      "orange": "#0000ff",
+      "orange_lite": "#ff8023",
+      "orange_dark": "#de431d",
+      "blue": "#0000ff",
+      "gold": "#c9a15a",
+      "button": "#211913",
+      "border": "#e4e6e7",
     }
   },
   "presets": {

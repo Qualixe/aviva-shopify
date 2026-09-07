@@ -1,0 +1,85 @@
+
+
+<section class="hero-section" id="section_{{ section.id }}">
+    <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+            {% assign b = block.settings %}
+            <div class="swiper-slide">
+                <a href="{{ b.link }}" class="slider-hero-item">
+                    {% if b.image !=blank %}
+                        {{ b.image | image_url: width: 3000 | image_tag: class:'desktop-img' }}
+                    {% endif %}
+
+                    {% if b.image_mob !=blank %}
+                        {{ b.image_mob | image_url: width: 1000 | image_tag: class:'mobile-img' }}
+                    {% endif %}
+                    <div class="slider-hero-overlay">
+                        <div class="container">
+                            <div class="hero-content-inner">
+                                <div class="hero-content">
+                                    <h1 class="hero-content-heading">{{ b.title }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination hero-pagination"></div>
+        <div class="swiper-button-prev hero-button-prev"></div>
+        <div class="swiper-button-next hero-button-next"></div>
+    </div>
+</section>
+
+{% render 'colors-section', section: section %}
+
+
+{% schema %}
+{
+    "name": "Hero",
+    "settings": [
+        {
+            "type": "color",
+            "id": "background",
+            "label": "Background Color",
+            "default": "{{ settings.color_palette.background }}" 
+        }
+    ],
+    "blocks": [
+        {
+            "type": "slide",
+            "name": "Slide",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_mob",
+                    "label": "Image(Mobile)"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Premium Product"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero"
+        }
+    ]
+}
+{% endschema %}

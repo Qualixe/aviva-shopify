@@ -1,0 +1,45 @@
+{% assign b = block.settings %}
+{% assign texts = b.text | split: "--" %}
+
+<div class="navbar-search">
+    <button class="search-open navbar-search-open-btn">
+        <span class="icon">
+            <svg viewBox="0 0 20 20" fill="none">
+                <circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.6"></circle>
+                <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+            </svg>
+        </span>
+        <span class="text p">
+            search for
+            <span class="search-roller">
+                <span class="search-roller-track">
+                    {% for text in texts %}
+                        <span>{{ text }}</span>
+                    {% endfor %}
+                </span>
+            </span>
+        </span>
+    </button>
+</div>
+
+
+{% schema %}
+    {
+        "name": "Header Search",
+        "settings": [
+            {
+                "type": "textarea",
+                "id": "text",
+                "label": "Text",
+                "default": "smart phone --home decoration -- gadgets"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Header Search",
+                "category": "Header"
+                
+            }
+        ]
+    }
+{% endschema %}
