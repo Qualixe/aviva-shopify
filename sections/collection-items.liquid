@@ -1,0 +1,35 @@
+<section class="category-grid-section">
+    <div class="container">
+        {% content_for 'block', type:'section-heading', id:'section-heading' %}
+        <div class="swiper category-grid-slider">
+            <div class="swiper-wrapper">
+                {% content_for 'blocks' %}
+            </div>
+            <div class="swiper-button-prev category-grid-slider-btn-prev"></div>
+            <div class="swiper-button-next category-grid-slider-btn-next"></div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Collection Items",
+    "settings": [
+        
+    ],
+    "blocks": [
+        {
+            "type": "collection"
+        },
+        {
+            "type": "section-heading"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Collection Items"
+        }
+    ]
+}
+{% endschema %}
+

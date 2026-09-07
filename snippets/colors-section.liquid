@@ -18,10 +18,16 @@
     #section_{{ section.id }} li {
         color: {{ section.settings.text }};
     }
+
     #header_{{ section.id }} .navbar-link-btn {
         color: {{ section.settings.text }}; 
     }
+
     #header_{{ section.id }} {
         background-color: {{ section.settings.background }};
+    }
+
+    #block_{{ block.id }} .section-heading {
+        color: {{ block.settings.heading_color }};
     }
 </style>

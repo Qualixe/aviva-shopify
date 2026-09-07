@@ -1,0 +1,33 @@
+
+<div class="section-info" id="block_{{ block.id }}">
+    <h2 class="section-heading">{{ block.settings.heading }}</h2>
+</div>
+
+{% render 'colors-section', block: block %}
+
+
+{% schema %}
+{
+    "name": "Section Heading",
+    "class": "section-heading-wrapper",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "The Travel Edit"    
+        }, 
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "{{ settings.color_palette.brand_color }}"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Section Heading"
+        }
+    ]
+}
+{% endschema %}
