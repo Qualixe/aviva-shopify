@@ -49,9 +49,64 @@
       "settings": {
         "background": "{{ settings.color_palette.background }}"
       }
+    },
+    "category_mobile_dXg9eD": {
+      "type": "category-mobile",
+      "blocks": {
+        "category_Lhn9Lg": {
+          "type": "Category",
+          "settings": {
+            "image": "shopify://shop_images/category-img4.avif",
+            "title": "Sling Bogo",
+            "link": "shopify://collections/all"
+          }
+        },
+        "category_Ym4bPf": {
+          "type": "Category",
+          "settings": {
+            "image": "shopify://shop_images/category-img2.avif",
+            "title": "Backpack",
+            "link": "shopify://collections/all"
+          }
+        },
+        "category_NB74rh": {
+          "type": "Category",
+          "settings": {
+            "image": "shopify://shop_images/category-img3.avif",
+            "title": "Office Bag",
+            "link": "shopify://collections/all"
+          }
+        },
+        "category_8g7tEa": {
+          "type": "Category",
+          "settings": {
+            "image": "shopify://shop_images/category-img4.avif",
+            "title": "Duffle",
+            "link": "shopify://collections/all"
+          }
+        },
+        "category_fcL4XW": {
+          "type": "Category",
+          "settings": {
+            "image": "shopify://shop_images/category-img1.avif",
+            "title": "Sling Bogo",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "category_Lhn9Lg",
+        "category_Ym4bPf",
+        "category_NB74rh",
+        "category_8g7tEa",
+        "category_fcL4XW"
+      ],
+      "name": "Category(Mobile)",
+      "settings": {}
     }
   },
   "order": [
-    "hero_section_Jij8bH"
+    "hero_section_Jij8bH",
+    "category_mobile_dXg9eD"
   ]
 }
