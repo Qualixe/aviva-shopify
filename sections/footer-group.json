@@ -13,11 +13,10 @@
   "sections": {
     "main": {
       "type": "footer",
-     
-    },
-    
+      "settings": {}
+    }
   },
   "order": [
-    "main",
+    "main"
   ]
 }

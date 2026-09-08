@@ -484,6 +484,96 @@
       "settings": {
         "title": "Community Reviews"
       }
+    },
+    "customer_reviews_hfbLCg": {
+      "type": "customer-reviews",
+      "blocks": {
+        "customer_review_item_LrfaiT": {
+          "type": "customer-review-item",
+          "settings": {
+            "text": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice. Crafted very perfectly for everyday needs.",
+            "author": "Riya Sharma",
+            "text_color": "",
+            "author_color": ""
+          },
+          "blocks": {}
+        },
+        "customer_review_item_a8L8mc": {
+          "type": "customer-review-item",
+          "settings": {
+            "text": "Amazing quality and design. Every piece feels premium and the customer service was excellent throughout my order.",
+            "author": "Ananya Verma",
+            "text_color": "",
+            "author_color": ""
+          },
+          "blocks": {}
+        },
+        "customer_review_item_hAx8Dm": {
+          "type": "customer-review-item",
+          "settings": {
+            "text": "I have gifted Aviva bags to my whole family. Everyone loves the craftsmanship and the unique prints.",
+            "author": "Meera Kapoor",
+            "text_color": "",
+            "author_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "customer_review_item_LrfaiT",
+        "customer_review_item_a8L8mc",
+        "customer_review_item_hAx8Dm"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "title": "Customer Reviews",
+        "subtitle": "Hear from Our Happy Customers"
+      }
+    },
+    "trust_highlights_CAAEXQ": {
+      "type": "trust-highlights",
+      "blocks": {
+        "trust_highlight_item_pATeTA": {
+          "type": "trust-highlight-item",
+          "settings": {
+            "icon": "shopify://shop_images/trust-highlight-icon1.png",
+            "title": "Cruelty Free",
+            "text": "We are 100% PeTA approved Vegan brand",
+            "heading_color": "",
+            "text_color": ""
+          },
+          "blocks": {}
+        },
+        "trust_highlight_item_97xw6p": {
+          "type": "trust-highlight-item",
+          "settings": {
+            "icon": "shopify://shop_images/trust-highlight-icon2.png",
+            "title": "Proudly Indian",
+            "text": "All our products are Made in India",
+            "heading_color": "",
+            "text_color": ""
+          },
+          "blocks": {}
+        },
+        "trust_highlight_item_pwWNBB": {
+          "type": "trust-highlight-item",
+          "settings": {
+            "icon": "shopify://shop_images/trust-highlight-icon3.png",
+            "title": "Handcrafted",
+            "text": "All products are designed & manufactured by our artisans",
+            "heading_color": "",
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "trust_highlight_item_pATeTA",
+        "trust_highlight_item_97xw6p",
+        "trust_highlight_item_pwWNBB"
+      ],
+      "name": "Trust Highlights",
+      "settings": {}
     }
   },
   "order": [
@@ -496,6 +586,8 @@
     "featured_collection_nyLtnF",
     "print_section_aiezbf",
     "image_text_8gTzyD",
-    "community_review_tdJxiz"
+    "community_review_tdJxiz",
+    "trust_highlights_CAAEXQ",
+    "customer_reviews_hfbLCg"
   ]
 }
