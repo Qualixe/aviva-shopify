@@ -1,0 +1,92 @@
+{% liquid
+    assign s = block.settings
+    assign product = s.product
+
+    assign caption = s.text
+    if s.highlight != blank and caption contains s.highlight
+        assign wrapped_highlight = '<span class="highlight">' | append: s.highlight | append: '</span>'
+        assign caption = caption | replace: s.highlight, wrapped_highlight
+    endif
+    assign caption_attr = caption | replace: '"', '&quot;'
+
+    assign video_url = blank
+    if s.video != blank
+        assign mp4_source = s.video.sources | where: 'format', 'mp4' | sort: 'width' | last
+        assign video_url = mp4_source.url
+    endif
+
+    assign poster_url = blank
+    if s.image != blank
+        assign poster_url = s.image | image_url: width: 800
+    endif
+%}
+<div class="slide-content" {{ block.shopify_attributes }}>
+    <button
+        class="community-review-item"
+        type="button"
+        {% if video_url != blank %}data-video-src="{{ video_url }}"{% endif %}
+        {% if poster_url != blank %}data-poster="{{ poster_url }}"{% endif %}
+        data-caption="{{ caption_attr }}"
+        {% if product != blank %}
+            data-product-title="{{ product.title | escape }}"
+            {% if product.featured_image != blank %}data-product-image="{{ product.featured_image | image_url: width: 400 }}"{% endif %}
+            data-product-price="{{ product.price | money }}"
+            {% if product.compare_at_price > product.price %}data-product-compare-price="{{ product.compare_at_price | money }}"{% endif %}
+            data-product-url="{{ product.url }}"
+        {% endif %}
+    >
+        {% if video_url != blank %}
+            <video class="community-review-item-video" src="{{ video_url }}" {% if poster_url != blank %}poster="{{ poster_url }}"{% endif %} muted loop playsinline autoplay></video>
+        {% elsif poster_url != blank %}
+            {{ s.image | image_url: width: 800 | image_tag: class: 'community-review-item-video', loading: 'lazy' }}
+        {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: class: 'community-review-item-video' }}
+        {% endif %}
+        <div class="community-review-item-content">
+            <p class="community-review-item-text">{{ caption }}</p>
+        </div>
+    </button>
+</div>
+
+{% schema %}
+{
+    "name": "Community Review",
+    "class": "swiper-slide",
+    "settings": [
+        {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Poster Image",
+            "info": "Shown while the video loads, and used as a fallback if no video is set"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Caption",
+            "default": "Packed & ready for every journey"
+        },
+        {
+            "type": "text",
+            "id": "highlight",
+            "label": "Highlighted Word",
+            "info": "Must match a word or phrase within the caption exactly"
+        },
+        {
+            "type": "product",
+            "id": "product",
+            "label": "Product",
+            "info": "Shown in the video modal when this review is opened"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Community Review"
+        }
+    ]
+}
+{% endschema %}

@@ -28,9 +28,36 @@
     }
 
     #block_{{ block.id }} .section-heading {
+        color: {{ block.settings.heading_color }}; 
+    }
+    #block_{{ block.id }} .card-slider-section-btn {
+        color: {{ block.settings.btn_color }};
+    }
+
+    #block_{{ block.id }} .featured-collection-item-content .title,
+    #block_{{ block.id }} .featured-collection-item-content .explore-link
+    {
+        color: {{ block.settings.text_color }};
+    }
+    
+    #block_{{ block.id }} .shop-by-print-item-content .title
+    {
         color: {{ block.settings.heading_color }};
     }
-    #block_{{ block.id }} .section-heading {
-        color: {{ block.settings.btn_color }};
+
+    #block_{{ block.id }} .image-category-slider-item .content .title
+    {
+        color: {{ block.settings.heading_color }}; 
+    }
+
+    #block_{{ block.id }} .image-category-slider-item .content .subtitle
+    {
+        background: {{ block.settings.subtitle_bg }}; 
+        color: {{ block.settings.subtitle_color }}; 
+        border-color: {{ block.settings.subtitle_border }}
+    }
+
+    #block_{{ block.id }} .featured-collection-item {
+        border-color: {{ block.settings.border }}; 
     }
 </style>

@@ -1,0 +1,9 @@
+
+.shopify-block.swiper-slide {
+    height: auto;
+}
+
+.slide-content,
+.image-category-slider-item {
+    height: 100%;
+}

@@ -1,4 +1,4 @@
-<div class="swiper-slide" {{ block.shopify_attributes }}>
+<div class="featured-collection-wrap" {{ block.shopify_attributes }} id="block_{{ block.id }}">
     <a href="{{ block.settings.collection.url | default: '#!' }}" class="featured-collection-item">
         <div class="featured-collection-item-img">
             {% if block.settings.image != blank %}
@@ -16,15 +16,13 @@
     </a>
 </div>
 
+{% render 'colors-section', block: block %}
+
 {% schema %}
 {
     "name": "Featured Collection Item",
+    "class": "swiper-slide",
     "settings": [
-        {
-            "type": "collection",
-            "id": "collection",
-            "label": "Collection"
-        },
         {
             "type": "image_picker",
             "id": "image",
@@ -38,10 +36,27 @@
             "info": "Overrides the collection title"
         },
         {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        },
+        {
             "type": "text",
             "id": "button_label",
             "label": "Button Label",
             "default": "Explore Now"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "{{ settings.color_palette.white_text }}"
+        },
+        {
+            "type": "color",
+            "id": "border",
+            "label": "Border",
+            "default": "{{ settings.color_palette.gold }}"
         }
     ],
     "presets": [

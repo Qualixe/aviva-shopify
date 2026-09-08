@@ -1,0 +1,118 @@
+<section class="community-review-section section-bg">
+    <div class="container">
+        {% if section.settings.title != blank %}
+            <h2 class="community-review-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        <div class="swiper community-review-slider">
+            <div class="swiper-wrapper">
+                {% content_for 'blocks' %}
+            </div>
+            <div class="swiper-button-prev community-review-slider-btn-prev"></div>
+            <div class="swiper-button-next community-review-slider-btn-next"></div>
+        </div>
+    </div>
+</section>
+
+<div class="community-review-popup">
+    <span class="community-review-popup-close-window-btn"></span>
+    <div class="community-review-popup-inner">
+        <div class="community-review-popup-card">
+            <div class="community-review-popup-video-wrap">
+                <div class="community-review-popup-progress"></div>
+                <div class="community-review-popup-top-btns">
+                    <button class="community-review-popup-mute-btn" type="button" aria-label="mute video">
+                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M3 8v4h3.5L11 16V4L6.5 8H3Z" fill="currentColor"></path>
+                            <g class="waves">
+                                <path d="M14 7c1 .8 1 5.2 0 6M16.3 5c2 2 2 8 0 10" stroke="currentColor" stroke-width="1.4"
+                                    stroke-linecap="round"></path>
+                            </g>
+                        </svg>
+                    </button>
+                    <button class="community-review-popup-close-btn" type="button" aria-label="close popup">
+                        <svg width="12" height="12" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="community-review-popup-slides">
+                    <div class="community-review-popup-slide active">
+                        <video class="community-review-popup-video" playsinline muted></video>
+                        <div class="community-review-popup-caption">
+                            <p></p>
+                        </div>
+                        <button class="community-review-popup-share-btn" type="button" aria-label="share">
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                                <circle cx="15" cy="5" r="2.2" stroke="currentColor" stroke-width="1.4"></circle>
+                                <circle cx="15" cy="15" r="2.2" stroke="currentColor" stroke-width="1.4"></circle>
+                                <circle cx="5" cy="10" r="2.2" stroke="currentColor" stroke-width="1.4"></circle>
+                                <path d="M7 8.8 13 5.8M7 11.2l6 3" stroke="currentColor" stroke-width="1.4"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="community-review-popup-product" hidden>
+                <div class="community-review-popup-product-img">
+                    <img src="" alt="">
+                </div>
+                <div class="community-review-popup-product-info">
+                    <p class="community-review-popup-product-title"></p>
+                    <p class="community-review-popup-product-price">
+                        <span class="prev" hidden></span>
+                        <span class="curr"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="community-review-popup-btn-wrap" hidden>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        <button class="community-review-popup-nav-btn prev" type="button" aria-label="previous review">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M12.5 15.5 7 10l5.5-5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <button class="community-review-popup-nav-btn next" type="button" aria-label="next review">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </button>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Community Review",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Community Reviews"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "community-review-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Community Review",
+            "blocks": [
+                { "type": "community-review-item", "settings": { "text": "Packed & ready for every journey", "highlight": "journey" } },
+                { "type": "community-review-item", "settings": { "text": "Real people. Real reviews", "highlight": "reviews" } },
+                { "type": "community-review-item", "settings": { "text": "Handbags our customers love", "highlight": "customers" } },
+                { "type": "community-review-item", "settings": { "text": "Crafted leather, built to last", "highlight": "last" } },
+                { "type": "community-review-item", "settings": { "text": "why 1000+ customers trust us", "highlight": "1000+" } },
+                { "type": "community-review-item", "settings": { "text": "Premium bag reviews", "highlight": "bag" } }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -121,6 +121,7 @@
       "gold": "#c9a15a",
       "button": "#211913",
       "border": "#e4e6e7",
+      "white_text": "#fff",
     }
   },
   "presets": {

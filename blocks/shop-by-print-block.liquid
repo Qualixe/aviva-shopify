@@ -1,7 +1,7 @@
 {% liquid
     assign s = block.settings
 %}
-<div class="shop-by-print-block{% if s.reverse %} reverse{% endif %}" {{ block.shopify_attributes }}>
+<div class="shop-by-print-block{% if s.reverse %} reverse{% endif %}" {{ block.shopify_attributes }} id="block_{{ block.id }}">
     <a href="{{ s.big_link }}" class="shop-by-print-item shop-by-print-item-big">
         <div class="shop-by-print-item-img">
             {% if s.big_image != blank %}
@@ -39,6 +39,8 @@
         </div>
     </a>
 </div>
+
+{% render 'colors-section', block: block %}
 
 {% schema %}
 {
@@ -109,6 +111,16 @@
             "type": "url",
             "id": "b_link",
             "label": "Link"
+        },
+        {
+            "type": "header",
+            "content": "Color"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading Color",
+            "default": "{{ settings.color_palette.white_text }}"
         }
     ],
     "presets": [

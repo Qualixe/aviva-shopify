@@ -713,9 +713,9 @@ h5,
 .text-block.h5 :is(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-h5--family);
   font-style: var(--font-h5--style);
-  font-weight: var(--font-h5--weight);
-  font-size: var(--font-h5--size);
-  line-height: var(--font-h5--line-height);
+  /* font-weight: var(--font-h5--weight); */
+  /* font-size: var(--font-h5--size); */
+  /* line-height: var(--font-h5--line-height); */
   letter-spacing: var(--font-h5--letter-spacing);
   text-transform: var(--font-h5--case);
   color: var(--color);

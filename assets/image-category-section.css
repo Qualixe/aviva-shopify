@@ -37,14 +37,14 @@
 
 .image-category-slider-item .content .subtitle {
     padding: 8px 20px;
-    background: var(--brand-color);
-    color: var(--white);
+    /* background: var(--brand-color); */
+    /* color: var(--white); */
     border-radius: 5px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     margin-bottom: 12px;
-    border: 2px solid var(--white);
+    border: 2px solid;
     transition: all ease .3s;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .image-category-slider-item .content .title {
-    color: var(--white);
+    /* color: var(--white); */
     text-transform: capitalize;
     transition: all ease .3s;
 }

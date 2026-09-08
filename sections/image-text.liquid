@@ -1,50 +1,54 @@
 <section class="image-category-section section-bg">
-			<div class="container">
-				<div class="swiper image-category-slider">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="#" class="image-category-slider-item">
-								<div class="img">
-									<img src="./assets/images/product-img3.webp" alt="product-img3.webp">
-								</div>
-								<div class="content">
-									<h2 class="title h5">official collections</h2>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="image-category-slider-item">
-								<div class="img">
-									<img src="./assets/images/product-img5.webp" alt="product-img5.webp">
-								</div>
-								<div class="content">
-									<p class="subtitle">flat 20% off</p>
-									<h2 class="title h5">kashmir collections</h2>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="image-category-slider-item">
-								<div class="img">
-									<img src="./assets/images/product-img6.webp" alt="product-img6.webp">
-								</div>
-								<div class="content">
-									<h2 class="title h5">travel collections</h2>
-								</div>
-							</a>
-						</div>
-						<div class="swiper-slide">
-							<a href="#" class="image-category-slider-item">
-								<div class="img">
-									<img src="./assets/images/product-img2.webp" alt="product-img2.webp">
-								</div>
-								<div class="content">
-									<p class="subtitle">up to 40% off</p>
-									<h2 class="title h5">handbag collections</h2>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <div class="container">
+        <div class="swiper image-category-slider">
+            <div class="swiper-wrapper">
+                {% content_for 'blocks' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Image Category", 
+    "settings": [],
+    "blocks": [
+        {
+            "type": "image-category-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Image Category",
+            "blocks": [
+                {
+                    "type": "image-category-item",
+                    "settings": {
+                        "title": "official collections"
+                    }
+                },
+                {
+                    "type": "image-category-item",
+                    "settings": {
+                        "subtitle": "flat 20% off",
+                        "title": "kashmir collections"
+                    }
+                },
+                {
+                    "type": "image-category-item",
+                    "settings": {
+                        "title": "travel collections"
+                    }
+                },
+                {
+                    "type": "image-category-item",
+                    "settings": {
+                        "subtitle": "up to 40% off",
+                        "title": "handbag collections"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -235,51 +235,214 @@ document.addEventListener("keydown", (e) => {
 });
 // navbar search open js end ---
 
-// search-recommended-slider js start--
-var swiper = new Swiper(".search-recommended-slider", {
-  slidesPerView: 2.3,
-  spaceBetween: 12,
-  grabCursor: true,
-  loop: false,
-  navigation: {
-    nextEl: ".search-recommended-slider-btn-next",
-    prevEl: ".search-recommended-slider-btn-prev",
-  },
-  breakpoints: {
-    576: {
-      slidesPerView: 3.3,
-      spaceBetween: 14,
+// slider js start (theme-editor safe init) --
+(function () {
+  const swiperConfigs = [
+    {
+      selector: ".search-recommended-slider",
+      options: {
+        slidesPerView: 2.3,
+        spaceBetween: 12,
+        grabCursor: true,
+        loop: false,
+        navigation: {
+          nextEl: ".search-recommended-slider-btn-next",
+          prevEl: ".search-recommended-slider-btn-prev",
+        },
+        breakpoints: {
+          576: { slidesPerView: 3.3, spaceBetween: 14 },
+          768: { slidesPerView: 4.2, spaceBetween: 16 },
+        },
+      },
     },
-    768: {
-      slidesPerView: 4.2,
-      spaceBetween: 16,
+    {
+      selector: ".co-branded-gift-box-slider",
+      options: {
+        slidesPerView: 2.1,
+        spaceBetween: 10,
+        grabCursor: true,
+        loop: false,
+        breakpoints: {
+          576: { slidesPerView: 2.1, spaceBetween: 20 },
+          768: { slidesPerView: 2.3, spaceBetween: 20 },
+          992: { slidesPerView: 4, spaceBetween: 24 },
+        },
+      },
     },
-  },
-});
-// search-recommended-slider js end--
+    {
+      selector: ".cart-drawer-slider",
+      options: {
+        slidesPerView: 2.1,
+        spaceBetween: 5,
+        grabCursor: true,
+        loop: true,
+        speed: 500,
+        navigation: {
+          nextEl: ".cart-drawer-slider-btn-next",
+          prevEl: ".cart-drawer-slider-btn-prev",
+        },
+      },
+    },
+    {
+      selector: ".hero-slider",
+      options: {
+        slidesPerView: 1,
+        grabCursor: true,
+        spaceBetween: 0,
+        loop: true,
+        speed: 1000,
+        autoplay: { delay: 3500, disableOnInteraction: false },
+        pagination: { el: ".hero-pagination", clickable: true },
+        navigation: {
+          nextEl: ".hero-button-next",
+          prevEl: ".hero-button-prev",
+        },
+        breakpoints: {
+          1: { spaceBetween: 0 },
+          993: { spaceBetween: 0 },
+        },
+      },
+    },
+    {
+      selector: ".category-slider",
+      options: {
+        slidesPerView: "auto",
+        spaceBetween: 10,
+        grabCursor: true,
+        loop: true,
+        navigation: {
+          nextEl: ".category-button-next",
+          prevEl: ".category-button-prev",
+        },
+      },
+    },
+    {
+      selector: ".category-grid-slider",
+      options: {
+        slidesPerView: 1.8,
+        spaceBetween: 12,
+        grabCursor: true,
+        loop: false,
+        navigation: {
+          nextEl: ".category-grid-slider-btn-next",
+          prevEl: ".category-grid-slider-btn-prev",
+        },
+        breakpoints: {
+          576: { slidesPerView: 2.3, spaceBetween: 14 },
+          768: { slidesPerView: 3.3, spaceBetween: 16 },
+          993: { slidesPerView: 4.3, spaceBetween: 18 },
+          1200: { slidesPerView: 6, spaceBetween: 20 },
+        },
+      },
+    },
+    {
+      selector: ".card-slider",
+      options: {
+        slidesPerView: 6,
+        grabCursor: true,
+        spaceBetween: 16,
+        loop: true,
+        speed: 500,
+        breakpoints: {
+          1: { slidesPerView: 2.1, spaceBetween: 10 },
+          576: { slidesPerView: 3.2, spaceBetween: 10 },
+          768: { slidesPerView: 4.2, spaceBetween: 16 },
+          993: { slidesPerView: 5, spaceBetween: 16 },
+          1200: { slidesPerView: 6, spaceBetween: 16 },
+        },
+      },
+    },
+    {
+      selector: ".image-category-slider",
+      options: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        grabCursor: true,
+        loop: false,
+        breakpoints: {
+          1: { spaceBetween: 10, slidesPerView: 1.7 },
+          576: { spaceBetween: 10, slidesPerView: 2.2 },
+          768: { spaceBetween: 16, slidesPerView: 3.3 },
+          993: { spaceBetween: 20, slidesPerView: 4 },
+        },
+      },
+    },
+    {
+      selector: ".featured-collection-slider",
+      options: {
+        slidesPerView: 1.15,
+        spaceBetween: 16,
+        grabCursor: true,
+        loop: false,
+        navigation: {
+          nextEl: ".featured-collection-slider-btn-next",
+          prevEl: ".featured-collection-slider-btn-prev",
+        },
+        breakpoints: {
+          576: { slidesPerView: 1.6, spaceBetween: 16 },
+          768: { slidesPerView: 2.2, spaceBetween: 20 },
+          993: { slidesPerView: 3, spaceBetween: 24 },
+        },
+      },
+    },
+    {
+      selector: ".community-review-slider",
+      options: {
+        slidesPerView: 5.2,
+        spaceBetween: 20,
+        grabCursor: true,
+        loop: false,
+        navigation: {
+          nextEl: ".community-review-slider-btn-next",
+          prevEl: ".community-review-slider-btn-prev",
+        },
+        breakpoints: {
+          1: { slidesPerView: 1.7, spaceBetween: 10 },
+          576: { slidesPerView: 2.3, spaceBetween: 12 },
+          768: { slidesPerView: 3.3, spaceBetween: 16 },
+          993: { slidesPerView: 4.3, spaceBetween: 20 },
+          1200: { slidesPerView: 5.2, spaceBetween: 20 },
+        },
+      },
+    },
+    {
+      selector: ".customer-review-slider",
+      options: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        rewind: true,
+        speed: 700,
+        direction: "vertical",
+        grabCursor: true,
+        autoplay: { delay: 4000, disableOnInteraction: false },
+        pagination: { el: ".customer-review-pagination", clickable: true },
+      },
+    },
+  ];
 
-// co-branded-gift-box-slider js start--
-var swiper = new Swiper(".co-branded-gift-box-slider", {
-  slidesPerView: 2.1,
-  spaceBetween: 10,
-  grabCursor: true,
-  loop: false,
-  breakpoints: {
-    576: {
-      slidesPerView: 2.1,
-      spaceBetween: 20,
-    },
-    768: {
-      slidesPerView: 2.3,
-      spaceBetween: 20,
-    },
-    992: {
-      slidesPerView: 4,
-      spaceBetween: 24,
-    },
-  },
-});
-// co-branded-gift-box-slider js end--
+  const initSwipers = (root) => {
+    swiperConfigs.forEach(({ selector, options }) => {
+      root.querySelectorAll(selector).forEach((el) => {
+        // Re-creating an already-initialized slider (e.g. after the theme
+        // editor re-renders its section) would otherwise stack duplicate
+        // Swiper instances on the same element.
+        if (el.swiper) el.swiper.destroy(true, true);
+        new Swiper(el, options);
+      });
+    });
+  };
+
+  initSwipers(document);
+
+  // The theme editor swaps a section's markup back in via AJAX on every
+  // settings/content change instead of a full page reload, so sliders in
+  // that markup never get a Swiper instance unless we re-init here.
+  document.addEventListener("shopify:section:load", (event) => {
+    initSwipers(event.target);
+  });
+})();
+// slider js end (theme-editor safe init) --
 
 // mobile-menu sidebar js start---
 const mobileMenu = document.querySelector(".mobile-menu-wrap");
@@ -450,24 +613,6 @@ document
 
 // cart-drawer js end---
 
-// cart-drawer slider js start--
-var swiper = new Swiper(".cart-drawer-slider", {
-  slidesPerView: 2.1,
-  spaceBetween: 5,
-  grabCursor: true,
-  loop: true,
-  speed: 500,
-  // autoplay: {
-  //   delay: 2500,
-  //   disableOnInteraction: false,
-  // },
-  navigation: {
-    nextEl: ".cart-drawer-slider-btn-next",
-    prevEl: ".cart-drawer-slider-btn-prev",
-  },
-});
-// cart-drawer slider js end--
-
 // cart-drawer progress countdown js start--
 document.querySelectorAll(".cart-drawer-progress-countdown").forEach((el) => {
   const hrsEl = el.querySelector(".hrs");
@@ -503,245 +648,26 @@ document.querySelectorAll(".cart-drawer-progress-countdown").forEach((el) => {
 });
 // cart-drawer progress countdown js end--
 
-// hero slider js start--
-var swiper = new Swiper(".hero-slider", {
-  slidesPerView: 1,
-  grabCursor: true,
-  spaceBetween: 0,
-  loop: true,
-  speed: 1000,
-  autoplay: {
-    delay: 3500,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".hero-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".hero-button-next",
-    prevEl: ".hero-button-prev",
-  },
-  breakpoints: {
-    1: {
-      spaceBetween: 0,
-    },
-    993: {
-      spaceBetween: 0,
-    },
-  },
-});
-// hero slider js end--
-
-// category js start--
-var swiper = new Swiper(".category-slider", {
-  slidesPerView: "auto",
-  spaceBetween: 10,
-  grabCursor: true,
-  loop: true,
-  navigation: {
-    nextEl: ".category-button-next",
-    prevEl: ".category-button-prev",
-  },
-});
-// category js end--
-
-// category-grid-slider js start--
-var swiper = new Swiper(".category-grid-slider", {
-  slidesPerView: 1.8,
-  spaceBetween: 12,
-  grabCursor: true,
-  loop: false,
-  navigation: {
-    nextEl: ".category-grid-slider-btn-next",
-    prevEl: ".category-grid-slider-btn-prev",
-  },
-  breakpoints: {
-    576: {
-      slidesPerView: 2.3,
-      spaceBetween: 14,
-    },
-    768: {
-      slidesPerView: 3.3,
-      spaceBetween: 16,
-    },
-    993: {
-      slidesPerView: 4.3,
-      spaceBetween: 18,
-    },
-    1200: {
-      slidesPerView: 6,
-      spaceBetween: 20,
-    },
-  },
-});
-// category-grid-slider js end--
-
-// card slider js start--
-var swiper = new Swiper(".card-slider", {
-  slidesPerView: 6,
-  grabCursor: true,
-  spaceBetween: 16,
-  loop: true,
-  speed: 500,
-  // autoplay: {
-  //   delay: 3500,
-  //   disableOnInteraction: false,
-  // },
-  breakpoints: {
-    1: {
-      slidesPerView: 2.1,
-      spaceBetween: 10,
-    },
-    576: {
-      slidesPerView: 3.2,
-      spaceBetween: 10,
-    },
-    768: {
-      slidesPerView: 4.2,
-      spaceBetween: 16,
-    },
-    993: {
-      slidesPerView: 5,
-      spaceBetween: 16,
-    },
-    1200: {
-      slidesPerView: 6,
-      spaceBetween: 16,
-    },
-  },
-});
-// card slider js end--
-
-// image-category-slider js start--
-var swiper = new Swiper(".image-category-slider", {
-  slidesPerView: 4,
-  spaceBetween: 20,
-  grabCursor: true,
-  loop: false,
-  breakpoints: {
-    // when window width is >= 320px
-    1: {
-      spaceBetween: 10,
-      slidesPerView: 1.7,
-    },
-    // when window width is >= 576px
-    576: {
-      spaceBetween: 10,
-      slidesPerView: 2.2,
-    },
-    // when window width is >= 767px
-    768: {
-      spaceBetween: 16,
-      slidesPerView: 3.3,
-    },
-    // when window width is >= 993px
-    993: {
-      spaceBetween: 20,
-      slidesPerView: 4,
-    },
-  },
-});
-// image-category-slider js end--
-
-// featured-collection-slider js start--
-var swiper = new Swiper(".featured-collection-slider", {
-  slidesPerView: 1.15,
-  spaceBetween: 16,
-  grabCursor: true,
-  loop: false,
-  navigation: {
-    nextEl: ".featured-collection-slider-btn-next",
-    prevEl: ".featured-collection-slider-btn-prev",
-  },
-  breakpoints: {
-    576: {
-      slidesPerView: 1.6,
-      spaceBetween: 16,
-    },
-    768: {
-      slidesPerView: 2.2,
-      spaceBetween: 20,
-    },
-    993: {
-      slidesPerView: 3,
-      spaceBetween: 24,
-    },
-  },
-});
-// featured-collection-slider js end--
-
-// community-review-slider js start--
-var swiper = new Swiper(".community-review-slider", {
-  slidesPerView: 5.2,
-  spaceBetween: 20,
-  grabCursor: true,
-  loop: false,
-  navigation: {
-    nextEl: ".community-review-slider-btn-next",
-    prevEl: ".community-review-slider-btn-prev",
-  },
-  breakpoints: {
-    1: {
-      slidesPerView: 1.7,
-      spaceBetween: 10,
-    },
-    576: {
-      slidesPerView: 2.3,
-      spaceBetween: 12,
-    },
-    768: {
-      slidesPerView: 3.3,
-      spaceBetween: 16,
-    },
-    993: {
-      slidesPerView: 4.3,
-      spaceBetween: 20,
-    },
-    1200: {
-      slidesPerView: 5.2,
-      spaceBetween: 20,
-    },
-  },
-});
-// community-review-slider js end--
-
-// customer-review-slider js start--
-var swiper = new Swiper(".customer-review-slider", {
-  slidesPerView: 1,
-  spaceBetween: 0,
-  loop: true,
-  rewind: true,
-  speed: 700,
-  direction: "vertical",
-  grabCursor: true,
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".customer-review-pagination",
-    clickable: true,
-  },
-});
-
 // customer-review-slider also change on horizontal mouse/touch swipe
 (function () {
-  const el = document.querySelector(".customer-review-slider");
-  if (!el) return;
-
+  // Delegated (rather than bound to a single captured element) so this
+  // keeps working after the theme editor replaces the slider's markup.
   let startX = 0;
   let startY = 0;
   let dragging = false;
+  let activeEl = null;
 
-  el.addEventListener("pointerdown", (e) => {
+  document.addEventListener("pointerdown", (e) => {
+    const el = e.target.closest(".customer-review-slider");
+    if (!el) return;
+    activeEl = el;
     startX = e.clientX;
     startY = e.clientY;
     dragging = true;
   });
 
-  el.addEventListener("pointerup", (e) => {
-    if (!dragging) return;
+  document.addEventListener("pointerup", (e) => {
+    if (!dragging || !activeEl) return;
     dragging = false;
 
     const dx = e.clientX - startX;
@@ -749,88 +675,106 @@ var swiper = new Swiper(".customer-review-slider", {
 
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
       if (dx < 0) {
-        el.swiper.slideNext();
+        activeEl.swiper?.slideNext();
       } else {
-        el.swiper.slidePrev();
+        activeEl.swiper?.slidePrev();
       }
     }
+
+    activeEl = null;
   });
 
-  el.addEventListener("pointercancel", () => {
+  document.addEventListener("pointercancel", () => {
     dragging = false;
+    activeEl = null;
   });
 })();
 // customer-review-slider js end--
 
 // community-review popup js start--
 (function () {
-  const items = document.querySelectorAll(".community-review-item");
   const popup = document.querySelector(".community-review-popup");
+  if (!popup) return;
 
-  if (!popup || !items.length) return;
-
-  const slides = [...popup.querySelectorAll(".community-review-popup-slide")];
-  const videos = slides.map((slide) =>
-    slide.querySelector(".community-review-popup-video"),
-  );
-  const progressBars = [
-    ...popup.querySelectorAll(".community-review-popup-progress-bar"),
-  ];
+  const progressWrap = popup.querySelector(".community-review-popup-progress");
+  const video = popup.querySelector(".community-review-popup-video");
+  const captionEl = popup.querySelector(".community-review-popup-caption p");
   const prevBtn = popup.querySelector(".community-review-popup-nav-btn.prev");
   const nextBtn = popup.querySelector(".community-review-popup-nav-btn.next");
   const muteBtn = popup.querySelector(".community-review-popup-mute-btn");
-  const productImg = popup.querySelector(
-    ".community-review-popup-product-img img",
-  );
-  const productTitle = popup.querySelector(
-    ".community-review-popup-product-title",
-  );
-  const productPrice = popup.querySelector(
-    ".community-review-popup-product-price .curr",
-  );
-  const productPrevPrice = popup.querySelector(
-    ".community-review-popup-product-price .prev",
-  );
+  const productWrap = popup.querySelector(".community-review-popup-product");
+  const productImg = popup.querySelector(".community-review-popup-product-img img");
+  const productTitle = popup.querySelector(".community-review-popup-product-title");
+  const productPrice = popup.querySelector(".community-review-popup-product-price .curr");
+  const productPrevPrice = popup.querySelector(".community-review-popup-product-price .prev");
+  const btnWrap = popup.querySelector(".community-review-popup-btn-wrap");
+  const addToCartBtn = btnWrap?.querySelector("a");
 
+  // Items and progress bars aren't captured once at load: the theme editor
+  // can re-render the review grid (add/remove/reorder blocks), so both are
+  // looked up fresh every time the popup opens.
+  let items = [];
+  let progressBars = [];
   let current = 0;
   let muted = true;
 
-  function pauseAll() {
-    videos.forEach((video) => {
-      video.pause();
-      video.currentTime = 0;
-    });
+  function buildProgressBars() {
+    progressWrap.innerHTML = items
+      .map(() => '<span class="community-review-popup-progress-bar"><i></i></span>')
+      .join("");
+    progressBars = [
+      ...progressWrap.querySelectorAll(".community-review-popup-progress-bar"),
+    ];
   }
 
   function goTo(index) {
-    if (index < 0 || index >= slides.length) return;
+    if (!items.length || index < 0 || index >= items.length) return;
 
-    pauseAll();
+    video.pause();
     current = index;
 
-    slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+    const item = items[index];
 
     progressBars.forEach((bar, i) => {
       bar.classList.toggle("completed", i < index);
       bar.querySelector("i").style.width = i < index ? "100%" : "0%";
     });
 
-    const slide = slides[index];
-    productImg.src = slide.dataset.productImg;
-    productTitle.textContent = slide.dataset.productTitle;
-    productPrice.textContent = slide.dataset.productPrice;
-    productPrevPrice.textContent = slide.dataset.productPreviousPrice;
+    if (item.dataset.videoSrc) {
+      video.src = item.dataset.videoSrc;
+    } else {
+      video.removeAttribute("src");
+    }
+    video.poster = item.dataset.poster || "";
+    captionEl.innerHTML = item.dataset.caption || "";
+
+    const hasProduct = !!item.dataset.productUrl;
+    productWrap.hidden = !hasProduct;
+    if (btnWrap) btnWrap.hidden = !hasProduct;
+    if (hasProduct) {
+      productImg.src = item.dataset.productImage || "";
+      productTitle.textContent = item.dataset.productTitle || "";
+      productPrice.textContent = item.dataset.productPrice || "";
+      productPrevPrice.hidden = !item.dataset.productComparePrice;
+      productPrevPrice.textContent = item.dataset.productComparePrice || "";
+      if (addToCartBtn) addToCartBtn.href = item.dataset.productUrl;
+    }
 
     prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === slides.length - 1;
+    nextBtn.disabled = index === items.length - 1;
 
-    const video = videos[index];
-    video.muted = muted;
-    video.currentTime = 0;
-    video.play().catch(() => {});
+    if (item.dataset.videoSrc) {
+      video.muted = muted;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
   }
 
   function openPopup(index) {
+    items = [...document.querySelectorAll(".community-review-item")];
+    if (!items.length) return;
+
+    buildProgressBars();
     document.body.classList.add("active");
     popup.classList.add("active");
     goTo(index);
@@ -839,13 +783,17 @@ var swiper = new Swiper(".customer-review-slider", {
   function closePopup() {
     popup.classList.remove("active");
     document.body.classList.remove("active");
-    pauseAll();
+    video.pause();
   }
 
-  items.forEach((item) => {
-    item.addEventListener("click", () => {
-      openPopup(Number(item.dataset.reviewIndex) || 0);
-    });
+  // Delegated so newly added/reordered review items (via the theme editor,
+  // or any future dynamic re-render) open the popup without re-binding.
+  document.addEventListener("click", (e) => {
+    const item = e.target.closest(".community-review-item");
+    if (!item) return;
+
+    const allItems = [...document.querySelectorAll(".community-review-item")];
+    openPopup(allItems.indexOf(item));
   });
 
   popup
@@ -860,7 +808,7 @@ var swiper = new Swiper(".customer-review-slider", {
 
   muteBtn.addEventListener("click", () => {
     muted = !muted;
-    videos[current].muted = muted;
+    video.muted = muted;
     muteBtn.classList.toggle("unmuted", !muted);
   });
 
@@ -872,18 +820,14 @@ var swiper = new Swiper(".customer-review-slider", {
     });
   });
 
-  videos.forEach((video, i) => {
-    video.addEventListener("timeupdate", () => {
-      if (i !== current || !video.duration) return;
-      progressBars[i].querySelector("i").style.width =
-        (video.currentTime / video.duration) * 100 + "%";
-    });
+  video.addEventListener("timeupdate", () => {
+    if (!video.duration || !progressBars[current]) return;
+    progressBars[current].querySelector("i").style.width =
+      (video.currentTime / video.duration) * 100 + "%";
+  });
 
-    video.addEventListener("ended", () => {
-      if (i === current && current < slides.length - 1) {
-        goTo(current + 1);
-      }
-    });
+  video.addEventListener("ended", () => {
+    if (current < items.length - 1) goTo(current + 1);
   });
 
   document.addEventListener("keydown", (e) => {

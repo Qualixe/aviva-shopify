@@ -5,7 +5,6 @@
         {% content_for 'block', type:'section-heading', id:'section-heading' %}
         <div class="swiper card-slider">
             <div class="swiper-wrapper">
-
                 {% for product in section.settings.collection.products limit: s.limit %}
                 <div class="swiper-slide">
                     <div class="card-slider-item">

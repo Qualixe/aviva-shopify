@@ -279,6 +279,10 @@
     background-color: var(--white);
 }
 
+.community-review-popup-product[hidden] {
+    display: none;
+}
+
 .community-review-popup-product-img {
     width: 52px;
     height: 52px;
