@@ -1,7 +1,7 @@
 {% liquid
     assign s = block.settings
 %}
-<div class="swiper-slide" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+<div class="slide-content" {{ block.shopify_attributes }} id="block_{{ block.id }}">
     <div class="customer-review-slide-content">
         <span class="customer-review-quote">&rdquo;</span>
         <p class="customer-review-text">{{ s.text }}</p>
@@ -14,6 +14,7 @@
 {% schema %}
 {
     "name": "Customer Review",
+    "class": "swiper-slide",
     "settings": [
         {
             "type": "textarea",
