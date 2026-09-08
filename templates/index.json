@@ -185,81 +185,26 @@
       "name": "Collection Items",
       "settings": {}
     },
-    "community_review_tdJxiz": {
-      "type": "community-review",
+    "products_4jCafg": {
+      "type": "products",
       "blocks": {
-        "community_review_item_WjNpgE": {
-          "type": "community-review-item",
+        "section-heading": {
+          "type": "section-heading",
+          "static": true,
           "settings": {
-            "video": "shopify://files/videos/6649980-uhd_4096_2160_25fps.mp4",
-            "text": "Packed & ready for every journey",
-            "highlight": "journey",
-            "product": "bidri-kaiser-statement-office-bag"
-          },
-          "blocks": {}
-        },
-        "community_review_item_b6zrAa": {
-          "type": "community-review-item",
-          "settings": {
-            "video": "shopify://files/videos/7668411-uhd_2160_4096_25fps.mp4",
-            "text": "Real people. Real reviews",
-            "highlight": "reviews",
-            "product": "flomotif-womens-office-bag"
-          },
-          "blocks": {}
-        },
-        "community_review_item_HTFYrE": {
-          "type": "community-review-item",
-          "settings": {
-            "video": "shopify://files/videos/7815110-uhd_2160_3840_30fps.mp4",
-            "text": "Handbags our customers love",
-            "highlight": "customers",
-            "product": "ira-handbag-lattice-lace"
-          },
-          "blocks": {}
-        },
-        "community_review_item_3kPG6J": {
-          "type": "community-review-item",
-          "settings": {
-            "video": "shopify://files/videos/8798159-uhd_4096_2160_25fps.mp4",
-            "text": "Crafted leather, built to last",
-            "highlight": "last",
-            "product": "product"
-          },
-          "blocks": {}
-        },
-        "community_review_item_LWi3JB": {
-          "type": "community-review-item",
-          "settings": {
-            "video": "shopify://files/videos/7815110-uhd_2160_3840_30fps.mp4",
-            "text": "why 1000+ customers trust us",
-            "highlight": "1000+",
-            "product": "ira-handbag-lattice-lace"
-          },
-          "blocks": {}
-        },
-        "community_review_item_Vkmaiw": {
-          "type": "community-review-item",
-          "settings": {
-            "video": "shopify://files/videos/7668411-uhd_2160_4096_25fps.mp4",
-            "text": "Premium bag reviews",
-            "highlight": "bag",
-            "product": "flomotif-womens-office-bag"
+            "heading": "Explore Bestsellers",
+            "button": "Shop All Brand",
+            "link": "",
+            "heading_color": "{{ settings.color_palette.brand_color }}",
+            "btn_color": "{{ settings.color_palette.brand_color }}"
           },
           "blocks": {}
         }
       },
-      "block_order": [
-        "community_review_item_WjNpgE",
-        "community_review_item_b6zrAa",
-        "community_review_item_HTFYrE",
-        "community_review_item_3kPG6J",
-        "community_review_item_LWi3JB",
-        "community_review_item_Vkmaiw"
-      ],
-      "name": "Community Review",
+      "name": "Products",
       "settings": {
-        "title": "Community Reviews"
+        "collection": "bages",
+        "limit": 12
       }
     },
     "image_text_8gTzyD": {
@@ -440,7 +385,7 @@
         "link": "shopify://collections/all"
       }
     },
-    "products_4jCafg": {
+    "products_Fyn8TR": {
       "type": "products",
       "blocks": {
         "section-heading": {
@@ -461,17 +406,95 @@
         "collection": "bages",
         "limit": 12
       }
+    },
+    "community_review_tdJxiz": {
+      "type": "community-review",
+      "blocks": {
+        "community_review_item_WjNpgE": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/6649980-uhd_4096_2160_25fps.mp4",
+            "text": "Packed & ready for every journey",
+            "highlight": "journey",
+            "product": "bidri-kaiser-statement-office-bag"
+          },
+          "blocks": {}
+        },
+        "community_review_item_b6zrAa": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7668411-uhd_2160_4096_25fps.mp4",
+            "text": "Real people. Real reviews",
+            "highlight": "reviews",
+            "product": "flomotif-womens-office-bag"
+          },
+          "blocks": {}
+        },
+        "community_review_item_HTFYrE": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7815110-uhd_2160_3840_30fps.mp4",
+            "text": "Handbags our customers love",
+            "highlight": "customers",
+            "product": "ira-handbag-lattice-lace"
+          },
+          "blocks": {}
+        },
+        "community_review_item_3kPG6J": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/8798159-uhd_4096_2160_25fps.mp4",
+            "text": "Crafted leather, built to last",
+            "highlight": "last",
+            "product": "product"
+          },
+          "blocks": {}
+        },
+        "community_review_item_LWi3JB": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7815110-uhd_2160_3840_30fps.mp4",
+            "text": "why 1000+ customers trust us",
+            "highlight": "1000+",
+            "product": "ira-handbag-lattice-lace"
+          },
+          "blocks": {}
+        },
+        "community_review_item_Vkmaiw": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7668411-uhd_2160_4096_25fps.mp4",
+            "text": "Premium bag reviews",
+            "highlight": "bag",
+            "product": "flomotif-womens-office-bag"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "community_review_item_WjNpgE",
+        "community_review_item_b6zrAa",
+        "community_review_item_HTFYrE",
+        "community_review_item_3kPG6J",
+        "community_review_item_LWi3JB",
+        "community_review_item_Vkmaiw"
+      ],
+      "name": "Community Review",
+      "settings": {
+        "title": "Community Reviews"
+      }
     }
   },
   "order": [
     "hero_section_Jij8bH",
     "category_mobile_dXg9eD",
     "collection_items_kfkV98",
-    "community_review_tdJxiz",
+    "products_4jCafg",
     "image_text_8gTzyD",
     "print_section_aiezbf",
     "featured_collection_nyLtnF",
     "banner_kNbMnp",
-    "products_4jCafg"
+    "products_Fyn8TR",
+    "community_review_tdJxiz"
   ]
 }
