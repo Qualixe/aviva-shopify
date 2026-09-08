@@ -104,6 +104,342 @@
       "name": "Category(Mobile)",
       "settings": {}
     },
+    "collection_items_kfkV98": {
+      "type": "collection-items",
+      "blocks": {
+        "collection_pUjVRi": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/product-img1.webp",
+            "heading": "Amaila daypack",
+            "collection": "bages"
+          },
+          "blocks": {}
+        },
+        "collection_kBACHQ": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/product-img2.webp",
+            "heading": "weekender duffle",
+            "collection": "bages"
+          },
+          "blocks": {}
+        },
+        "collection_FX7xTh": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/product-img5.webp",
+            "heading": "Aarohi rucksack",
+            "collection": "bages"
+          },
+          "blocks": {}
+        },
+        "collection_HykxfV": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/product-img3.webp",
+            "heading": "daily tour",
+            "collection": "bages"
+          },
+          "blocks": {}
+        },
+        "collection_R7TVtm": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/product-img6.webp",
+            "heading": "long lenth",
+            "collection": "bages"
+          },
+          "blocks": {}
+        },
+        "collection_FGmHFE": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/product-img4.webp",
+            "heading": "Amaila daypack",
+            "collection": "bages"
+          },
+          "blocks": {}
+        },
+        "section-heading": {
+          "type": "section-heading",
+          "static": true,
+          "settings": {
+            "heading": "The Travel Edit",
+            "button": "",
+            "link": "",
+            "heading_color": "{{ settings.color_palette.brand_color }}",
+            "btn_color": "{{ settings.color_palette.brand_color }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "collection_pUjVRi",
+        "collection_kBACHQ",
+        "collection_FX7xTh",
+        "collection_HykxfV",
+        "collection_R7TVtm",
+        "collection_FGmHFE"
+      ],
+      "name": "Collection Items",
+      "settings": {}
+    },
+    "community_review_tdJxiz": {
+      "type": "community-review",
+      "blocks": {
+        "community_review_item_WjNpgE": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/6649980-uhd_4096_2160_25fps.mp4",
+            "text": "Packed & ready for every journey",
+            "highlight": "journey",
+            "product": "bidri-kaiser-statement-office-bag"
+          },
+          "blocks": {}
+        },
+        "community_review_item_b6zrAa": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7668411-uhd_2160_4096_25fps.mp4",
+            "text": "Real people. Real reviews",
+            "highlight": "reviews",
+            "product": "flomotif-womens-office-bag"
+          },
+          "blocks": {}
+        },
+        "community_review_item_HTFYrE": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7815110-uhd_2160_3840_30fps.mp4",
+            "text": "Handbags our customers love",
+            "highlight": "customers",
+            "product": "ira-handbag-lattice-lace"
+          },
+          "blocks": {}
+        },
+        "community_review_item_3kPG6J": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/8798159-uhd_4096_2160_25fps.mp4",
+            "text": "Crafted leather, built to last",
+            "highlight": "last",
+            "product": "product"
+          },
+          "blocks": {}
+        },
+        "community_review_item_LWi3JB": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7815110-uhd_2160_3840_30fps.mp4",
+            "text": "why 1000+ customers trust us",
+            "highlight": "1000+",
+            "product": "ira-handbag-lattice-lace"
+          },
+          "blocks": {}
+        },
+        "community_review_item_Vkmaiw": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7668411-uhd_2160_4096_25fps.mp4",
+            "text": "Premium bag reviews",
+            "highlight": "bag",
+            "product": "flomotif-womens-office-bag"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "community_review_item_WjNpgE",
+        "community_review_item_b6zrAa",
+        "community_review_item_HTFYrE",
+        "community_review_item_3kPG6J",
+        "community_review_item_LWi3JB",
+        "community_review_item_Vkmaiw"
+      ],
+      "name": "Community Review",
+      "settings": {
+        "title": "Community Reviews"
+      }
+    },
+    "image_text_8gTzyD": {
+      "type": "image-text",
+      "blocks": {
+        "image_category_item_qQYRi6": {
+          "type": "image-category-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img3.webp",
+            "subtitle": "",
+            "title": "official collections",
+            "link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "image_category_item_RBAtmy": {
+          "type": "image-category-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img5.webp",
+            "subtitle": "flat 20% off",
+            "title": "kashmir collections",
+            "link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "image_category_item_DNXNmg": {
+          "type": "image-category-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img6.webp",
+            "subtitle": "",
+            "title": "travel collections",
+            "link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "image_category_item_Xt9kYP": {
+          "type": "image-category-item",
+          "settings": {
+            "subtitle": "up to 40% off",
+            "title": "handbag collections",
+            "link": "",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_category_item_qQYRi6",
+        "image_category_item_RBAtmy",
+        "image_category_item_DNXNmg",
+        "image_category_item_Xt9kYP"
+      ],
+      "name": "Image Category",
+      "settings": {}
+    },
+    "print_section_aiezbf": {
+      "type": "print-section",
+      "blocks": {
+        "shop_by_print_block_npR7eq": {
+          "type": "shop-by-print-block",
+          "settings": {
+            "reverse": false,
+            "big_image": "shopify://shop_images/shop-by-print-img1.jpg",
+            "big_title": "Floral",
+            "big_link": "shopify://collections/bages",
+            "a_image": "shopify://shop_images/shop-by-print-img2.webp",
+            "a_title": "Geometric",
+            "a_link": "shopify://collections/bages",
+            "b_image": "shopify://shop_images/shop-by-print-img3.webp",
+            "b_title": "Motifs",
+            "b_link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "shop_by_print_block_a7DFWg": {
+          "type": "shop-by-print-block",
+          "settings": {
+            "reverse": true,
+            "big_image": "shopify://shop_images/shop-by-print-img6.jpg",
+            "big_title": "Waves",
+            "big_link": "shopify://collections/bages",
+            "a_image": "shopify://shop_images/shop-by-print-img4.webp",
+            "a_title": "Texture",
+            "a_link": "shopify://collections/bages",
+            "b_image": "shopify://shop_images/shop-by-print-img5.webp",
+            "b_title": "Solid",
+            "b_link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "shop_by_print_block_npR7eq",
+        "shop_by_print_block_a7DFWg"
+      ],
+      "name": "Shop By Print",
+      "settings": {
+        "eyebrow": "Shop by Print"
+      }
+    },
+    "featured_collection_nyLtnF": {
+      "type": "featured-collection",
+      "blocks": {
+        "featured_collection_item_YyT3A3": {
+          "type": "featured-collection-item",
+          "name": "Featured Collection Item",
+          "settings": {
+            "image": "shopify://shop_images/product-img1.webp",
+            "heading": "Gift Shop By Zouk",
+            "collection": "bages",
+            "button_label": "Explore Now",
+            "text_color": "{{ settings.color_palette.white_text }}",
+            "border": "{{ settings.color_palette.gold }}"
+          },
+          "blocks": {}
+        },
+        "featured_collection_item_EbHcVL": {
+          "type": "featured-collection-item",
+          "name": "Featured Collection Item",
+          "settings": {
+            "image": "shopify://shop_images/product-img3.webp",
+            "heading": "Rhea Kapoor X Zouk",
+            "collection": "bages",
+            "button_label": "Explore Now",
+            "text_color": "{{ settings.color_palette.white_text }}",
+            "border": "{{ settings.color_palette.gold }}"
+          },
+          "blocks": {}
+        },
+        "featured_collection_item_wxKAyM": {
+          "type": "featured-collection-item",
+          "name": "Featured Collection Item",
+          "settings": {
+            "image": "shopify://shop_images/product-img5.webp",
+            "heading": "Alt Collection",
+            "collection": "bages",
+            "button_label": "Explore Now",
+            "text_color": "{{ settings.color_palette.white_text }}",
+            "border": "{{ settings.color_palette.gold }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "featured_collection_item_YyT3A3",
+        "featured_collection_item_EbHcVL",
+        "featured_collection_item_wxKAyM"
+      ],
+      "name": "Featured Collection",
+      "settings": {
+        "eyebrow": "Featured Collection"
+      }
+    },
+    "banner_kNbMnp": {
+      "type": "banner",
+      "name": "Single Banner",
+      "settings": {
+        "image": "shopify://shop_images/single-banner1.webp",
+        "image_mob": "shopify://shop_images/single-banner1.webp",
+        "title": "premium bags",
+        "link": "shopify://collections/all"
+      }
+    },
     "products_4jCafg": {
       "type": "products",
       "blocks": {
@@ -130,6 +466,12 @@
   "order": [
     "hero_section_Jij8bH",
     "category_mobile_dXg9eD",
+    "collection_items_kfkV98",
+    "community_review_tdJxiz",
+    "image_text_8gTzyD",
+    "print_section_aiezbf",
+    "featured_collection_nyLtnF",
+    "banner_kNbMnp",
     "products_4jCafg"
   ]
 }
