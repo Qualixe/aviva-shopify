@@ -207,73 +207,15 @@
         "limit": 12
       }
     },
-    "image_text_8gTzyD": {
-      "type": "image-text",
-      "blocks": {
-        "image_category_item_qQYRi6": {
-          "type": "image-category-item",
-          "settings": {
-            "image": "shopify://shop_images/product-img3.webp",
-            "subtitle": "",
-            "title": "official collections",
-            "link": "shopify://collections/bages",
-            "heading_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
-            "subtitle_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_border": "{{ settings.color_palette.white_text }}"
-          },
-          "blocks": {}
-        },
-        "image_category_item_RBAtmy": {
-          "type": "image-category-item",
-          "settings": {
-            "image": "shopify://shop_images/product-img5.webp",
-            "subtitle": "flat 20% off",
-            "title": "kashmir collections",
-            "link": "shopify://collections/bages",
-            "heading_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
-            "subtitle_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_border": "{{ settings.color_palette.white_text }}"
-          },
-          "blocks": {}
-        },
-        "image_category_item_DNXNmg": {
-          "type": "image-category-item",
-          "settings": {
-            "image": "shopify://shop_images/product-img6.webp",
-            "subtitle": "",
-            "title": "travel collections",
-            "link": "shopify://collections/bages",
-            "heading_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
-            "subtitle_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_border": "{{ settings.color_palette.white_text }}"
-          },
-          "blocks": {}
-        },
-        "image_category_item_Xt9kYP": {
-          "type": "image-category-item",
-          "settings": {
-            "subtitle": "up to 40% off",
-            "title": "handbag collections",
-            "link": "",
-            "heading_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
-            "subtitle_color": "{{ settings.color_palette.white_text }}",
-            "subtitle_border": "{{ settings.color_palette.white_text }}"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "image_category_item_qQYRi6",
-        "image_category_item_RBAtmy",
-        "image_category_item_DNXNmg",
-        "image_category_item_Xt9kYP"
-      ],
-      "name": "Image Category",
-      "settings": {}
+    "banner_kNbMnp": {
+      "type": "banner",
+      "name": "Single Banner",
+      "settings": {
+        "image": "shopify://shop_images/single-banner1.webp",
+        "image_mob": "shopify://shop_images/single-banner1.webp",
+        "title": "premium bags",
+        "link": "shopify://collections/all"
+      }
     },
     "products_Fyn8TR": {
       "type": "products",
@@ -295,53 +237,6 @@
       "settings": {
         "collection": "bages",
         "limit": 12
-      }
-    },
-    "print_section_aiezbf": {
-      "type": "print-section",
-      "blocks": {
-        "shop_by_print_block_npR7eq": {
-          "type": "shop-by-print-block",
-          "settings": {
-            "reverse": false,
-            "big_image": "shopify://shop_images/shop-by-print-img1.jpg",
-            "big_title": "Floral",
-            "big_link": "shopify://collections/bages",
-            "a_image": "shopify://shop_images/shop-by-print-img2.webp",
-            "a_title": "Geometric",
-            "a_link": "shopify://collections/bages",
-            "b_image": "shopify://shop_images/shop-by-print-img3.webp",
-            "b_title": "Motifs",
-            "b_link": "shopify://collections/bages",
-            "heading_color": "{{ settings.color_palette.white_text }}"
-          },
-          "blocks": {}
-        },
-        "shop_by_print_block_a7DFWg": {
-          "type": "shop-by-print-block",
-          "settings": {
-            "reverse": true,
-            "big_image": "shopify://shop_images/shop-by-print-img6.jpg",
-            "big_title": "Waves",
-            "big_link": "shopify://collections/bages",
-            "a_image": "shopify://shop_images/shop-by-print-img4.webp",
-            "a_title": "Texture",
-            "a_link": "shopify://collections/bages",
-            "b_image": "shopify://shop_images/shop-by-print-img5.webp",
-            "b_title": "Solid",
-            "b_link": "shopify://collections/bages",
-            "heading_color": "{{ settings.color_palette.white_text }}"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "shop_by_print_block_npR7eq",
-        "shop_by_print_block_a7DFWg"
-      ],
-      "name": "Shop By Print",
-      "settings": {
-        "eyebrow": "Shop by Print"
       }
     },
     "featured_collection_nyLtnF": {
@@ -397,15 +292,121 @@
         "eyebrow": "Featured Collection"
       }
     },
-    "banner_kNbMnp": {
-      "type": "banner",
-      "name": "Single Banner",
+    "print_section_aiezbf": {
+      "type": "print-section",
+      "blocks": {
+        "shop_by_print_block_npR7eq": {
+          "type": "shop-by-print-block",
+          "settings": {
+            "reverse": false,
+            "big_image": "shopify://shop_images/shop-by-print-img1.jpg",
+            "big_title": "Floral",
+            "big_link": "shopify://collections/bages",
+            "a_image": "shopify://shop_images/shop-by-print-img2.webp",
+            "a_title": "Geometric",
+            "a_link": "shopify://collections/bages",
+            "b_image": "shopify://shop_images/shop-by-print-img3.webp",
+            "b_title": "Motifs",
+            "b_link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "shop_by_print_block_a7DFWg": {
+          "type": "shop-by-print-block",
+          "settings": {
+            "reverse": true,
+            "big_image": "shopify://shop_images/shop-by-print-img6.jpg",
+            "big_title": "Waves",
+            "big_link": "shopify://collections/bages",
+            "a_image": "shopify://shop_images/shop-by-print-img4.webp",
+            "a_title": "Texture",
+            "a_link": "shopify://collections/bages",
+            "b_image": "shopify://shop_images/shop-by-print-img5.webp",
+            "b_title": "Solid",
+            "b_link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "shop_by_print_block_npR7eq",
+        "shop_by_print_block_a7DFWg"
+      ],
+      "name": "Shop By Print",
       "settings": {
-        "image": "shopify://shop_images/single-banner1.webp",
-        "image_mob": "shopify://shop_images/single-banner1.webp",
-        "title": "premium bags",
-        "link": "shopify://collections/all"
+        "eyebrow": "Shop by Print"
       }
+    },
+    "image_text_8gTzyD": {
+      "type": "image-text",
+      "blocks": {
+        "image_category_item_qQYRi6": {
+          "type": "image-category-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img3.webp",
+            "subtitle": "",
+            "title": "official collections",
+            "link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "image_category_item_RBAtmy": {
+          "type": "image-category-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img5.webp",
+            "subtitle": "flat 20% off",
+            "title": "kashmir collections",
+            "link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "image_category_item_DNXNmg": {
+          "type": "image-category-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img6.webp",
+            "subtitle": "",
+            "title": "travel collections",
+            "link": "shopify://collections/bages",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        },
+        "image_category_item_Xt9kYP": {
+          "type": "image-category-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img2.webp",
+            "subtitle": "up to 40% off",
+            "title": "handbag collections",
+            "link": "shopify://products/rhea-kapoor-office-bag-kashmir-blooms",
+            "heading_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_bg": "{{ settings.color_palette.brand_color }}",
+            "subtitle_color": "{{ settings.color_palette.white_text }}",
+            "subtitle_border": "{{ settings.color_palette.white_text }}"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_category_item_qQYRi6",
+        "image_category_item_RBAtmy",
+        "image_category_item_DNXNmg",
+        "image_category_item_Xt9kYP"
+      ],
+      "name": "Image Category",
+      "settings": {}
     },
     "community_review_tdJxiz": {
       "type": "community-review",
@@ -490,11 +491,11 @@
     "category_mobile_dXg9eD",
     "collection_items_kfkV98",
     "products_4jCafg",
-    "image_text_8gTzyD",
-    "products_Fyn8TR",
-    "print_section_aiezbf",
-    "featured_collection_nyLtnF",
     "banner_kNbMnp",
+    "products_Fyn8TR",
+    "featured_collection_nyLtnF",
+    "print_section_aiezbf",
+    "image_text_8gTzyD",
     "community_review_tdJxiz"
   ]
 }
