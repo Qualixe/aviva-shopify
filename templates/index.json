@@ -194,7 +194,7 @@
           "settings": {
             "heading": "Explore Bestsellers",
             "button": "Shop All Brand",
-            "link": "",
+            "link": "shopify://collections/all",
             "heading_color": "{{ settings.color_palette.brand_color }}",
             "btn_color": "{{ settings.color_palette.brand_color }}"
           },
@@ -274,6 +274,28 @@
       ],
       "name": "Image Category",
       "settings": {}
+    },
+    "products_Fyn8TR": {
+      "type": "products",
+      "blocks": {
+        "section-heading": {
+          "type": "section-heading",
+          "static": true,
+          "settings": {
+            "heading": "Hot New Arrivals",
+            "button": "Shop All Brands",
+            "link": "shopify://collections/all",
+            "heading_color": "{{ settings.color_palette.brand_color }}",
+            "btn_color": "{{ settings.color_palette.brand_color }}"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Products",
+      "settings": {
+        "collection": "bages",
+        "limit": 12
+      }
     },
     "print_section_aiezbf": {
       "type": "print-section",
@@ -385,28 +407,6 @@
         "link": "shopify://collections/all"
       }
     },
-    "products_Fyn8TR": {
-      "type": "products",
-      "blocks": {
-        "section-heading": {
-          "type": "section-heading",
-          "static": true,
-          "settings": {
-            "heading": "The Travel Edit",
-            "button": "",
-            "link": "",
-            "heading_color": "{{ settings.color_palette.brand_color }}",
-            "btn_color": "{{ settings.color_palette.brand_color }}"
-          },
-          "blocks": {}
-        }
-      },
-      "name": "Products",
-      "settings": {
-        "collection": "bages",
-        "limit": 12
-      }
-    },
     "community_review_tdJxiz": {
       "type": "community-review",
       "blocks": {
@@ -491,10 +491,10 @@
     "collection_items_kfkV98",
     "products_4jCafg",
     "image_text_8gTzyD",
+    "products_Fyn8TR",
     "print_section_aiezbf",
     "featured_collection_nyLtnF",
     "banner_kNbMnp",
-    "products_Fyn8TR",
     "community_review_tdJxiz"
   ]
 }
