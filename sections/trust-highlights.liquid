@@ -1,0 +1,47 @@
+<section class="trust-highlights-section section-bg">
+    <div class="container">
+        <div class="trust-highlights-wrap">
+            {% content_for 'blocks' %}
+        </div>
+    </div>
+</section> 
+
+{% schema %}
+{
+    "name": "Trust Highlights",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "trust-highlight-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Trust Highlights",
+            "blocks": [
+                {
+                    "type": "trust-highlight-item",
+                    "settings": {
+                        "title": "Cruelty Free",
+                        "text": "We are 100% PeTA approved Vegan brand"
+                    }
+                },
+                {
+                    "type": "trust-highlight-item",
+                    "settings": {
+                        "title": "Proudly Indian",
+                        "text": "All our products are Made in India"
+                    }
+                },
+                {
+                    "type": "trust-highlight-item",
+                    "settings": {
+                        "title": "Handcrafted",
+                        "text": "All products are designed & manufactured by our artisans"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

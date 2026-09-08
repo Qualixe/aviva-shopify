@@ -1,0 +1,54 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="footer-item footer-link-column footer-link-column--{{ s.column_width }}" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+    <h2 class="footer-item-title">
+        <span>{{ s.title }}</span>
+        <span class="icon">
+            <span class="plus">+</span>
+            <span class="minus">-</span>
+        </span>
+    </h2>
+    <div class="footer-content">
+        <ul class="footer-list">
+            {% for link in s.menu.links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Footer Link Column",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Links"
+        },
+        {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu"
+        },
+        {
+            "type": "select",
+            "id": "column_width",
+            "label": "Column Width",
+            "options": [
+                { "value": "sm", "label": "Small" },
+                { "value": "md", "label": "Medium" },
+                { "value": "lg", "label": "Large" }
+            ],
+            "default": "md"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Footer Link Column"
+        }
+    ]
+}
+{% endschema %}

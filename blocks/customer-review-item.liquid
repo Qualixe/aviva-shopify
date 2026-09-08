@@ -1,0 +1,51 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="swiper-slide" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+    <div class="customer-review-slide-content">
+        <span class="customer-review-quote">&rdquo;</span>
+        <p class="customer-review-text">{{ s.text }}</p>
+        <p class="customer-review-author">{{ s.author }}</p>
+    </div>
+</div>
+
+{% render 'colors-section', block: block %}
+
+{% schema %}
+{
+    "name": "Customer Review",
+    "settings": [
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Review Text",
+            "default": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice."
+        },
+        {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+            "default": "Riya Sharma"
+        },
+        {
+            "type": "header",
+            "content": "Color"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color"
+        },
+        {
+            "type": "color",
+            "id": "author_color",
+            "label": "Author Color"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Customer Review"
+        }
+    ]
+}
+{% endschema %}

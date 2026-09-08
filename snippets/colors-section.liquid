@@ -58,6 +58,22 @@
     }
 
     #block_{{ block.id }} .featured-collection-item {
-        border-color: {{ block.settings.border }}; 
+        border-color: {{ block.settings.border }};
+    }
+
+    #block_{{ block.id }} .trust-highlights-item .title {
+        color: {{ block.settings.heading_color }};
+    }
+
+    #block_{{ block.id }} .trust-highlights-item .text {
+        color: {{ block.settings.text_color }};
+    }
+
+    #block_{{ block.id }} .customer-review-text {
+        color: {{ block.settings.text_color }};
+    }
+
+    #block_{{ block.id }} .customer-review-author {
+        color: {{ block.settings.author_color }};
     }
 </style>

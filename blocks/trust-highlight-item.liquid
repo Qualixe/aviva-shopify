@@ -1,0 +1,60 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="trust-highlights-item" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+    <div class="icon">
+        {% if s.icon != blank %}
+            {{ s.icon | image_url: width: 1000 | image_tag: loading: 'lazy', alt: s.title }}
+        {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+        {% endif %}
+    </div>
+    <h3 class="title">{{ s.title }}</h3>
+    <p class="text">{{ s.text }}</p>
+</div>
+
+{% render 'colors-section', block: block %}
+
+{% schema %}
+{
+    "name": "Trust Highlight",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Cruelty Free"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "We are 100% PeTA approved Vegan brand"
+        },
+        {
+            "type": "header",
+            "content": "Color"
+        },
+        {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Title Color"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Trust Highlight"
+        }
+    ]
+}
+{% endschema %}

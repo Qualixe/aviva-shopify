@@ -1,0 +1,82 @@
+<section class="customer-review-section section-bg">
+    <div class="container">
+        <div class="customer-review-header">
+            <h2 class="customer-review-title">
+                <span class="dot"></span>
+                {{ section.settings.title }}
+                <span class="dot"></span>
+            </h2>
+            {% if section.settings.subtitle != blank %}
+                <p class="customer-review-subtitle">{{ section.settings.subtitle }}</p>
+            {% endif %}
+        </div>
+        <div class="customer-review-card">
+            <div class="customer-review-avatar">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"></circle>
+                    <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"></path>
+                </svg>
+            </div>
+            <div class="swiper customer-review-slider">
+                <div class="swiper-wrapper">
+                    {% content_for 'blocks' %}
+                </div>
+            </div>
+            <div class="swiper-pagination customer-review-pagination"></div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Customer Reviews",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Customer Reviews"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Hear from Our Happy Customers"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "customer-review-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Customer Reviews",
+            "blocks": [
+                {
+                    "type": "customer-review-item",
+                    "settings": {
+                        "text": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice. Crafted very perfectly for everyday needs.",
+                        "author": "Riya Sharma"
+                    }
+                },
+                {
+                    "type": "customer-review-item",
+                    "settings": {
+                        "text": "Amazing quality and design. Every piece feels premium and the customer service was excellent throughout my order.",
+                        "author": "Ananya Verma"
+                    }
+                },
+                {
+                    "type": "customer-review-item",
+                    "settings": {
+                        "text": "I have gifted Aviva bags to my whole family. Everyone loves the craftsmanship and the unique prints.",
+                        "author": "Meera Kapoor"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

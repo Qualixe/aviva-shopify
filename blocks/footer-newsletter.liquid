@@ -1,0 +1,55 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="footer-item footer-newsletter-col" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+    <h2 class="footer-item-title">
+        <span>{{ s.title }}</span>
+        <span class="icon">
+            <span class="plus">+</span>
+            <span class="minus">-</span>
+        </span>
+    </h2>
+    <div class="footer-content">
+        <div class="footer-newsletter">
+            {% if s.text != blank %}
+                <p>{{ s.text }}</p>
+            {% endif %}
+            {% form 'customer', id: 'FooterNewsletterForm', class: 'footer-newsletter-form' %}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <input type="hidden" name="contact[accepts_marketing]" value="true">
+                <input type="email" name="contact[email]" class="footer-newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+                {% if form.posted_successfully? %}
+                    <p class="footer-newsletter-message">Thanks for subscribing!</p>
+                {% elsif form.errors %}
+                    <p class="footer-newsletter-message footer-newsletter-message--error">{{ form.errors.messages.first }}</p>
+                {% endif %}
+            {% endform %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Footer Newsletter",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Newsletter"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "Subscribe to receive updates, access to exclusive deals, and more."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Footer Newsletter"
+        }
+    ]
+}
+{% endschema %}
