@@ -11,4 +11,20 @@
 .single-banner-wrap .content{
     display: none;
 }
+
+.single-banner-wrap .mobile-img {
+    display: none;
+}
 /* single-banner css end */
+
+@media only screen and (max-width: 992px) {
+    /* single-banner css start */
+    .single-banner-wrap .desktop-img {
+        display: none;
+    }
+
+    .single-banner-wrap .mobile-img {
+        display: block;
+    }
+    /* single-banner css end */
+}

@@ -100,6 +100,12 @@
         "id": "badge_bg",
         "label": "Badge Background",
         "default" : "#008000"
+      },
+      {
+        "type": "color",
+        "id": "border",
+        "label": "Border",
+        "default" : "#e4e6e7"
       }
     ]
   },

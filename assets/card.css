@@ -33,7 +33,7 @@
     font-weight: 500;
     line-height: 1;
     padding: 6px 8px 5px;
-    background-color: var(--card-badge-bg);
+    background-color: var(--badge-bg); 
     text-transform: uppercase;
     border-radius: 4px;
 }

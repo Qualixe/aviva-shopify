@@ -1,0 +1,52 @@
+{% liquid
+    assign featured_image = product.featured_image
+    assign second_image = product.images[1]
+    assign price = product.price
+    assign compare_at_price = product.compare_at_price
+    assign on_sale = false
+    if compare_at_price > price
+        assign on_sale = true
+        assign discount_percent = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price | round
+    endif
+%}
+<div class="product-card card_hover">
+    <div class="card-image-wrap">
+        {% if on_sale %}
+            <span class="card-badge">{{ discount_percent }}% off</span>
+        {% endif %}
+        <div class="card-img">
+            <a class="main-img" href="{{ product.url }}">
+                {% if featured_image %}
+                    {{ featured_image | image_url: width: 600 | image_tag: class: 'card_img', loading: 'lazy', alt: featured_image.alt | default: product.title }}
+                {% else %}
+                    {{ 'product-1' | placeholder_svg_tag: class: 'card_img' }}
+                {% endif %}
+            </a>
+            {% if second_image %}
+                <a class="hover-img" href="{{ product.url }}">
+                    {{ second_image | image_url: width: 600 | image_tag: class: 'card_hover_img', loading: 'lazy', alt: second_image.alt | default: product.title }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-content">
+        <div class="card-title-wrap">
+            <a href="{{ product.url }}" class="card-title">{{ product.title }}</a>
+        </div>
+        <div class="card-footer">
+            <div class="card-price-wrap">
+                <p class="latest-price">{{ price | money_without_trailing_zeros }}</p>
+                {% if on_sale %}
+                    <p class="previous-price">{{ compare_at_price | money_without_trailing_zeros }}</p>
+                {% endif %}
+            </div>
+            <div class="card-btn">
+                {% if product.available %}
+                    <a href="{{ product.url }}" class="btn">add</a>
+                {% else %}
+                    <span class="btn btn-disabled">sold out</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

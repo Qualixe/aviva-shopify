@@ -1,0 +1,38 @@
+<section class="featured-collection-section">
+    <div class="container">
+        {% if section.settings.eyebrow != blank %}
+            <p class="featured-collection-eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <div class="swiper featured-collection-slider">
+            <div class="swiper-wrapper">
+                {% content_for 'blocks' %}
+            </div>
+            <div class="swiper-button-prev featured-collection-slider-btn-prev"></div>
+            <div class="swiper-button-next featured-collection-slider-btn-next"></div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Featured Collection",
+    "settings": [
+        {
+            "type": "text",
+            "id": "eyebrow",
+            "label": "Eyebrow",
+            "default": "Featured Collection"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "featured-collection-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured Collection"
+        }
+    ]
+}
+{% endschema %}
