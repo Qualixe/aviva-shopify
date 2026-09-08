@@ -1,0 +1,120 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="shop-by-print-block{% if s.reverse %} reverse{% endif %}" {{ block.shopify_attributes }}>
+    <a href="{{ s.big_link }}" class="shop-by-print-item shop-by-print-item-big">
+        <div class="shop-by-print-item-img">
+            {% if s.big_image != blank %}
+                {{ s.big_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: s.big_title }}
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag }}
+            {% endif %}
+        </div>
+        <div class="shop-by-print-item-content">
+            <h3 class="title">{{ s.big_title }}</h3>
+        </div>
+    </a>
+    <a href="{{ s.a_link }}" class="shop-by-print-item shop-by-print-item-a">
+        <div class="shop-by-print-item-img">
+            {% if s.a_image != blank %}
+                {{ s.a_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: s.a_title }}
+            {% else %}
+                {{ 'lifestyle-2' | placeholder_svg_tag }}
+            {% endif %}
+        </div>
+        <div class="shop-by-print-item-content">
+            <h3 class="title">{{ s.a_title }}</h3>
+        </div>
+    </a>
+    <a href="{{ s.b_link }}" class="shop-by-print-item shop-by-print-item-b">
+        <div class="shop-by-print-item-img">
+            {% if s.b_image != blank %}
+                {{ s.b_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: s.b_title }}
+            {% else %}
+                {{ 'lifestyle-3' | placeholder_svg_tag }}
+            {% endif %}
+        </div>
+        <div class="shop-by-print-item-content">
+            <h3 class="title">{{ s.b_title }}</h3>
+        </div>
+    </a>
+</div>
+
+{% schema %}
+{
+    "name": "Print Row",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "reverse",
+            "label": "Reverse layout",
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": "Big item"
+        },
+        {
+            "type": "image_picker",
+            "id": "big_image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "big_title",
+            "label": "Title",
+            "default": "Floral"
+        },
+        {
+            "type": "url",
+            "id": "big_link",
+            "label": "Link"
+        },
+        {
+            "type": "header",
+            "content": "First item"
+        },
+        {
+            "type": "image_picker",
+            "id": "a_image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "a_title",
+            "label": "Title",
+            "default": "Geometric"
+        },
+        {
+            "type": "url",
+            "id": "a_link",
+            "label": "Link"
+        },
+        {
+            "type": "header",
+            "content": "Second item"
+        },
+        {
+            "type": "image_picker",
+            "id": "b_image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "b_title",
+            "label": "Title",
+            "default": "Motifs"
+        },
+        {
+            "type": "url",
+            "id": "b_link",
+            "label": "Link"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Print Row"
+        }
+    ]
+}
+{% endschema %}
