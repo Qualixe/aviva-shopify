@@ -103,10 +103,33 @@
       ],
       "name": "Category(Mobile)",
       "settings": {}
+    },
+    "products_4jCafg": {
+      "type": "products",
+      "blocks": {
+        "section-heading": {
+          "type": "section-heading",
+          "static": true,
+          "settings": {
+            "heading": "The Travel Edit",
+            "button": "",
+            "link": "",
+            "heading_color": "{{ settings.color_palette.brand_color }}",
+            "btn_color": "{{ settings.color_palette.brand_color }}"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Products",
+      "settings": {
+        "collection": "bages",
+        "limit": 12
+      }
     }
   },
   "order": [
     "hero_section_Jij8bH",
-    "category_mobile_dXg9eD"
+    "category_mobile_dXg9eD",
+    "products_4jCafg"
   ]
 }
