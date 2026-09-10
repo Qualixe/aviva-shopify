@@ -17,7 +17,7 @@
     width: 100%;
     max-width: 420px;
     position: sticky;
-    top: 160px;
+    top: 20px;
     height: fit-content;
 }
 
@@ -353,6 +353,9 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--black);
+    width: 100%;
+    max-width: 270px;
+    line-height: 1.2;
 }
 
 /* product-buy-with css end */
@@ -373,17 +376,9 @@
     gap: 5px;
     color: var(--white);
     font-weight: 600;
+    border: 1px solid; 
 }
 
-.product-btn-wrap .btn:first-child {
-    background: var(--brand-color);
-    border-color: var(--brand-color);
-}
-
-.product-btn-wrap .btn:nth-child(2) {
-    background: var(--color-orange-lite);
-    border-color: var(--color-orange-lite);
-}
 
 
 .product-btn-wrap .btn:hover {
@@ -413,23 +408,12 @@
     gap: 5px;
     color: var(--white);
     text-wrap-mode: nowrap;
+    border: 1px solid;
 }
 
-.product-btn-box .btn:first-child {
-    background: var(--color-green);
-    border-color: var(--color-green);
-}
 
-.product-btn-box .btn:last-child {
-    background: var(--color-orange);
-    border-color: var(--color-orange);
-}
 
-.product-btn-box .btn:hover {
-    background: transparent;
-    color: var(--brand-color);
-    border-color: var(--brand-color);
-}
+
 
 /* product-trust-badges css start */
 .product-trust-badges {
@@ -450,6 +434,7 @@
     color: var(--brand-color);
     font-size: 13px;
     font-weight: 600;
+    line-height: 1;
 }
 
 .product-trust-badge svg {

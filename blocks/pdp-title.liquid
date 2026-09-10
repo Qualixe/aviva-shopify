@@ -1,0 +1,19 @@
+{% liquid
+    assign product = closest.product
+    if request.visual_preview_mode and product == blank
+        assign product = collections.all.products.first
+    endif
+%}
+<h1 class="product-title" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+
+{% schema %}
+{
+    "name": "Product Title",
+    "settings": [],
+    "presets": [
+        {
+            "name": "Product Title"
+        }
+    ]
+}
+{% endschema %}

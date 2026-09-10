@@ -1,0 +1,45 @@
+{%- doc -%}
+  Renders the size chart drawer, triggered by any ".size-sidebar-btn" on the page
+  (see "Size Chart Sidebar" js in assets/script.js).
+
+  @param {string} [title] - Drawer heading.
+  @param {string} [women_table] - Raw HTML for the women's size table.
+  @param {string} [men_table] - Raw HTML for the men's size table.
+
+  @example
+  {% render 'size-chart-sidebar', title: s.size_chart_title, women_table: s.size_chart_women, men_table: s.size_chart_men %}
+{%- enddoc -%}
+
+<div class="size-chart-sidebar">
+    <span class="size-chart-sidebar-close-window-btn"></span>
+    <div class="size-chart-sidebar-inner">
+        <div class="size-chart-sidebar-top">
+            <p class="size-chart-title">{{ title | default: 'size chart:' }}</p>
+            <button class="size-chart-close-btn" type="button" aria-label="size chart drawer close"
+                title="size chart drawer close">
+                <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 15L15 3" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    </path>
+                    <path d="M15 15L3 3" stroke="#232323" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div class="size-chart-sidebar-content">
+            <div class="size-chart-items">
+                {% if women_table != blank %}
+                    <div class="size-chart-item">
+                        <p class="size-chart-item-title">women's size:</p>
+                        {{ women_table }}
+                    </div>
+                {% endif %}
+                {% if men_table != blank %}
+                    <div class="size-chart-item">
+                        <p class="size-chart-item-title">men's size:</p>
+                        {{ men_table }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

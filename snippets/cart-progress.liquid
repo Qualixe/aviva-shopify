@@ -1,0 +1,72 @@
+{%- doc -%}
+  Renders the cart drawer's free-gift progress bar: offer label + countdown,
+  "X away from FREE Y" message, progress track, and milestone row.
+
+  @param {array} milestones - "milestone" native block objects (section.blocks filtered by type).
+  @param {string} [offer_label] - Label shown above the countdown, e.g. "Limited Time Offer".
+  @param {number} [countdown_hours] - Countdown starting hours.
+  @param {number} [countdown_minutes] - Countdown starting minutes.
+
+  @example
+  {% render 'cart-progress', milestones: milestones, offer_label: s.offer_label, countdown_hours: s.countdown_hours, countdown_minutes: s.countdown_minutes %}
+{%- enddoc -%}
+{% if milestones != blank %}
+    {% liquid
+        assign next_milestone = blank
+        for milestone in milestones
+            assign threshold_cents = milestone.settings.amount | times: 100
+            if cart.total_price < threshold_cents
+                if next_milestone == blank or threshold_cents < next_milestone.settings.amount
+                    assign next_milestone = milestone
+                endif
+            endif
+        endfor
+    %}
+    <div class="cart-drawer-progress">
+        {% if offer_label != blank %}
+            <div class="cart-drawer-progress-top">
+                <p class="cart-drawer-progress-offer-label">{{ offer_label }}</p>
+                {% if countdown_hours > 0 or countdown_minutes > 0 %}
+                    <div class="cart-drawer-progress-countdown" data-countdown-hours="{{ countdown_hours }}" data-countdown-minutes="{{ countdown_minutes }}">
+                        <span class="cart-drawer-progress-countdown-box"><span class="hrs">{{ countdown_hours }}</span>h</span>
+                        <span class="sep">:</span>
+                        <span class="cart-drawer-progress-countdown-box"><span class="mins">{{ countdown_minutes }}</span>m</span>
+                        <span class="sep">:</span>
+                        <span class="cart-drawer-progress-countdown-box"><span class="secs">00</span>s</span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if next_milestone != blank %}
+            {% liquid
+                assign remaining_cents = next_milestone.settings.amount | times: 100 | minus: cart.total_price
+                assign progress_percent = cart.total_price | times: 100.0 | divided_by: next_milestone.settings.amount | times: 100 | at_most: 100
+            %}
+            <p class="cart-drawer-progress-message">
+                <span class="icon">{{ next_milestone.settings.icon | default: '🎁' }}</span>
+                <span><strong>{{ remaining_cents | money }}</strong> away from FREE <strong>{{ next_milestone.settings.gift_name }}</strong></span>
+            </p>
+            <div class="cart-drawer-progress-track-wrap">
+                <div class="cart-drawer-progress-track">
+                    <div class="cart-drawer-progress-track-fill" style="width: {{ progress_percent }}%;"></div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="cart-drawer-progress-milestones">
+            {% for milestone in milestones %}
+                {% liquid
+                    assign milestone_threshold_cents = milestone.settings.amount | times: 100
+                    assign milestone_reached = false
+                    if cart.total_price >= milestone_threshold_cents
+                        assign milestone_reached = true
+                    endif
+                %}
+                <div class="cart-drawer-progress-milestone{% if milestone_reached %} reached{% endif %}" {{ milestone.shopify_attributes }}>
+                    <span class="icon">{{ milestone.settings.icon | default: '🎁' }}</span>
+                    <p class="amount">{{ milestone.settings.amount | times: 100 | money }}</p>
+                    <p class="name">{{ milestone.settings.gift_name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

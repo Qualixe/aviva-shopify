@@ -7,3 +7,18 @@
 .image-category-slider-item {
     height: 100%;
 }
+
+.collection-banner-wrap img,
+.collection-banner-wrap svg
+ {
+    max-height: 340px;
+    width: 100%;
+}
+
+@media (max-width:500px) {
+    .collection-banner-wrap img,
+    .collection-banner-wrap svg
+     {
+        max-height: 150px;
+    }
+}

@@ -1,0 +1,95 @@
+{% liquid
+    assign product = closest.product
+    if request.visual_preview_mode and product == blank
+        assign product = collections.all.products.first
+    endif
+    assign variant = product.selected_or_first_available_variant
+    assign form_id = 'AddToCartForm-' | append: section.id
+%}
+{% form 'product', product, id: form_id, class: 'product-add-to-cart-form' %}
+    <input type="hidden" name="id" value="{{ variant.id }}" class="product-form-variant-id">
+    <div class="product-btn-wrap" {{ block.shopify_attributes }}>
+        <button type="submit" class="btn atc-btn" {% unless variant.available %}disabled{% endunless %}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9" cy="20" r="1" />
+                <circle cx="18" cy="20" r="1" />
+                <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6" />
+            </svg>
+            <span class="atc-btn-text">{% if variant.available %}Add to Cart{% else %}Sold Out{% endif %}</span>
+        </button>
+        <button type="submit" class="btn buy-now-btn" data-buy-now {% unless variant.available %}disabled{% endunless %}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 8h12l1 12H5L6 8Z" />
+                <path d="M9 8a3 3 0 0 1 6 0" />
+            </svg>
+            Buy Now
+        </button>
+    </div>
+    <p class="atc-error" hidden></p>
+{% endform %}
+
+{% style %} 
+    .product-btn-wrap .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    .atc-error {
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--error-color, #d33);
+    }
+
+    
+
+    .product-btn-wrap .btn:first-child {
+        background: {{ block.settings.color_atc }};
+        border-color: {{ block.settings.color_atc }};
+    }
+
+
+    .product-btn-wrap .btn:nth-child(2) {
+        background: {{ block.settings.color_buy_now }};
+        border-color: {{ block.settings.color_buy_now }};
+    }
+    .product-btn-wrap .btn:nth-child(2):hover {
+        background: transparent;
+        color: var(--brand-color);
+        border-color: var(--brand-color);
+    }
+
+    .product-btn-wrap .btn:hover {
+        background: transparent;
+        color: var(--brand-color);
+        border-color: var(--brand-color);
+    }
+{% endstyle %}
+
+{% schema %}
+{
+    "name": "Add to Cart",
+    "settings": [
+        {
+            "type": "color",
+            "id": "color_atc",
+            "label": "Button Color",
+            "default" : "{{ settings.color_palette.brand_color }}"
+        },
+        {
+            "type": "color",
+            "id": "color_buy_now",
+            "label": "Buy Now Color",
+            "default" : "{{ settings.color_palette.orange_lite }}"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Add to Cart",
+            "category": "t:categories.product" 
+        }
+    ]
+}
+{% endschema %}

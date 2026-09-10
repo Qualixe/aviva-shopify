@@ -1,0 +1,105 @@
+<section class="collection-section section-bg" data-section-id="{{ section.id }}">
+    <div class="container">
+        <div class="collection-wrapper">
+            <form method="get" action="{{ collection.url }}" id="CollectionFiltersForm">
+                {% render 'collection-filters', collection: collection %}
+                <div class="collection-content">
+                    {% paginate collection.products by section.settings.products_per_page %}
+                        <div class="collection-top">
+                            <h2 class="collection-heading">{{ collection.title }}</h2>
+                            <div class="collection-filter-btn">
+                                <div class="collection-filter-short">
+                                    <p class="collection-product-count">{{ paginate.items }} products</p>
+                                    <div class="filter-select-field">
+                                        <select name="sort_by" id="sort_by">
+                                            {% for option in collection.sort_options %}
+                                                <option value="{{ option.value }}" {% if option.value == collection.sort_by %}selected{% endif %}>{{ option.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="filter-select-field-icon">
+                                            <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                                                    fill="currentColor">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <span class="filter-open-btn">
+                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0.375 1.35419C0.375 1.35419 2.33337 0.375 7.22931 0.375C12.1252 0.375 14.0836 1.35419 14.0836 1.35419L8.69809 7.7189V12.1252L5.76053 13.594V7.7189L0.375 1.35419Z"
+                                            stroke="#fff" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                    Filter
+                                </span>
+                            </div>
+                        </div>
+                        <div class="product-items">
+                            {% if collection.products.size == 0 %}
+                                <p class="collection-empty-state">No products found. Try removing some filters.</p>
+                            {% endif %}
+                            {% for product in collection.products %}
+                                <div class="product-item">
+                                    {% render 'product', product: product %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% render 'pagination-controls', paginate: paginate %}
+                    {% endpaginate %}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    .collection-empty-state {
+        grid-column: 1 / -1;
+        width: 100%;
+        text-align: center;
+        padding: 60px 0;
+        color: var(--paragraph-text-color);
+    }
+    .collection-top {
+        background: {{ section.settings.top_bg }};
+        border-color: {{ section.settings.border }};
+    }
+    .collection-content.loading {
+        opacity: 0.5;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+    }
+</style>
+    
+
+
+{% schema %}
+{
+    "name": "Collection Products",
+    "settings": [
+        {
+            "type": "range",
+            "id": "products_per_page",
+            "label": "Products Per Page",
+            "min": 8,
+            "max": 48,
+            "step": 4,
+            "default": 24
+        },
+        {
+            "type": "color",
+            "id": "top_bg",
+            "label": "Top Background",
+            "default" : "{{ settings.color_palette.section_bg }}"
+        },
+        {
+            "type": "color",
+            "id": "border",
+            "label": "Border",
+            "default" : "{{ settings.color_palette.border }}"
+        }
+    ]
+}
+{% endschema %}

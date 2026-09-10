@@ -1,0 +1,50 @@
+{% assign s = section.settings %}
+{% assign mobile_img = collection.metafields.custom.mobile_image %}
+
+<section class="collection-banner-section">
+    <div class="collection-banner-wrap">
+        <div class="img">
+            {% if collection.handle contains 'all' %}
+                {{ s.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
+                {{ s.image_mob |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
+            {% else %}
+                {% if collection.image !=blank %}
+                    {{ collection.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
+                {% elsif collection.featured_image !=blank %}
+                    {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
+                {% else %}
+                    {{ s.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
+                {% endif %}
+                
+                {% if mobile_img !=blank %}
+                    {{ mobile_img |  image_url: width: 1000 |  image_tag: class: 'collection-banner-mobile'  }}
+                {% elsif collection.featured_image !=blank %}
+                    {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
+                {% else %}
+                    {{ s.image_mob |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="content">
+            <h1 class="title">{{ collection.title }}</h1>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Collection Banner",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_mob",
+                "label": "Image(Mobile)"
+            }
+        ]
+    }
+{% endschema %}

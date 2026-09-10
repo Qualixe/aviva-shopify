@@ -1,0 +1,83 @@
+{% liquid
+    assign s = section.settings
+%}
+<section class="product-section section-bg">
+    <div class="container">
+        <div class="product-page-content-wrap">
+            <div class="product-slider-area">
+                {% content_for 'block', type: 'product-media-gallery', id: 'product-media-gallery' %}
+            </div>
+            <div class="product-content-area">
+                <div class="product-content-inner">
+                    {% content_for 'blocks' %}
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>
+
+{% render 'size-chart-sidebar', title: s.size_chart_title, women_table: s.size_chart_women, men_table: s.size_chart_men %}
+
+{% schema %}
+{
+    "name": "Product Details",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Size Chart"
+        },
+        {
+            "type": "text",
+            "id": "size_chart_title",
+            "label": "Drawer Title",
+            "default": "size chart:"
+        },
+        {
+            "type": "liquid",
+            "id": "size_chart_women",
+            "label": "Women's Size Table",
+            "default": "<table class=\"size-chart-item-content\"><thead><tr><th>au</th><th>bd</th></tr></thead><tbody><tr><td>27</td><td>38</td></tr><tr><td>28</td><td>40</td></tr><tr><td>29</td><td>42</td></tr><tr><td>30</td><td>45</td></tr></tbody></table>"
+        },
+        {
+            "type": "liquid",
+            "id": "size_chart_men",
+            "label": "Men's Size Table",
+            "default": "<table class=\"size-chart-item-content\"><thead><tr><th>au</th><th>bd</th></tr></thead><tbody><tr><td>27</td><td>38</td></tr><tr><td>28</td><td>40</td></tr><tr><td>29</td><td>42</td></tr><tr><td>30</td><td>45</td></tr></tbody></table>"
+        }
+    ],
+    "blocks": [
+        { "type": "product-media-gallery" },
+        { "type": "pdp-title" },
+        { "type": "product-rating" },
+        { "type": "product-price" },
+        { "type": "product-variant-options" },
+        { "type": "product-size-guide-button" },
+        { "type": "product-qty" },
+        { "type": "atc" },
+        { "type": "buy-with" },
+        { "type": "product-contact-buttons" },
+        { "type": "product-trust-badges" },
+        { "type": "product-icon-items" },
+        { "type": "product-description-accordion" }
+    ],
+    "presets": [
+        {
+            "name": "Product Details",
+            "blocks": [
+                { "type": "pdp-title" },
+                { "type": "product-rating" },
+                { "type": "product-price" },
+                { "type": "product-variant-options" },
+                { "type": "product-size-guide-button" },
+                { "type": "product-qty" },
+                { "type": "atc" }, 
+                { "type": "buy-with" },
+                { "type": "product-contact-buttons" },
+                { "type": "product-trust-badges" },
+                { "type": "product-icon-items" },
+                { "type": "product-description-accordion" } 
+            ]
+        }
+    ]
+}
+{% endschema %}

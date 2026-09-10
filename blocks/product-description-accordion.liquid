@@ -1,0 +1,98 @@
+{% liquid
+    assign product = closest.product
+    if request.visual_preview_mode and product == blank
+        assign product = collections.all.products.first
+    endif
+    assign s = block.settings
+%}
+<div class="product-description-accordion" {{ block.shopify_attributes }}>
+    <div class="product-accordion-items">
+        {% if product.description != blank %}
+            <div class="product-accordion-item">
+                <div class="item-title-wrapper product-accordion-toggle-btn">
+                    <h6 class="item-title">Description</h6>
+                    <span class="icon">
+                        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                                fill="currentColor">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="product-accordion-item-content">
+                    <div class="product-accordion-item-content-inner">
+                        {{ product.description }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if s.specification != blank %}
+            <div class="product-accordion-item">
+                <div class="item-title-wrapper product-accordion-toggle-btn">
+                    <h6 class="item-title">Specification</h6>
+                    <span class="icon">
+                        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                                fill="currentColor">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="product-accordion-item-content">
+                    <div class="product-accordion-item-content-inner">
+                        {{ s.specification }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if s.return_and_refund != blank %}
+            <div class="product-accordion-item">
+                <div class="item-title-wrapper product-accordion-toggle-btn">
+                    <h6 class="item-title">Return and Refund</h6>
+                    <span class="icon">
+                        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                                fill="currentColor">
+                            </path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="product-accordion-item-content">
+                    <div class="product-accordion-item-content-inner">
+                        {{ s.return_and_refund }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Description Accordion",
+    "settings": [
+        {
+            "type": "paragraph",
+            "content": "The first item always shows the product's own description."
+        },
+        {
+            "type": "richtext",
+            "id": "specification",
+            "label": "Specification"
+        },
+        {
+            "type": "richtext",
+            "id": "return_and_refund",
+            "label": "Return and Refund"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Description Accordion"
+        }
+    ]
+}
+{% endschema %}

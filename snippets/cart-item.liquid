@@ -1,0 +1,44 @@
+{%- doc -%}
+  Renders one cart drawer line item, with working quantity +/- and remove
+  buttons (wired up by "cart-drawer js" in assets/script.js via
+  [data-line-key] + [data-action]).
+
+  @param {object} item - A cart line item (from cart.items).
+
+  @example
+  {% render 'cart-item', item: item %}
+{%- enddoc -%}
+
+<div class="cart-drawer-item" data-line-key="{{ item.key }}">
+    <div class="cart-drawer-item-img">
+        {% if item.image %}
+            {{ item.image | image_url: width: 200 | image_tag: loading: 'lazy', alt: item.product.title }}
+        {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag }}
+        {% endif %}
+    </div>
+    <div class="cart-drawer-item-content-wrap">
+        <div class="cart-drawer-item-content-inner">
+            <div class="cart-drawer-item-content">
+                <a href="{{ item.url }}" class="cart-drawer-item-title">{{ item.product.title }}</a>
+                <div class="content-btm">
+                    <div class="cart-drawer-item-qty-btn-wrap">
+                        <button class="cart-drawer-item-qty-btn" data-action="decrease" aria-label="decrease quantity">-</button>
+                        <input type="text" class="cart-drawer-item-qty-input" value="{{ item.quantity }}" readonly>
+                        <button class="cart-drawer-item-qty-btn" data-action="increase" aria-label="increase quantity">+</button>
+                    </div>
+                    <p class="cart-drawer-item-price">{{ item.final_line_price | money }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="cart-drawer-item-remove-btn-wrap">
+            <button class="cart-drawer-item-remove-btn" aria-label="remove item">
+                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.375 2H0.375C0.275544 2 0.180161 2.03951 0.109835 2.10983C0.0395088 2.18016 0 2.27554 0 2.375C0 2.47446 0.0395088 2.56984 0.109835 2.64017C0.180161 2.71049 0.275544 2.75 0.375 2.75H1V11.875C1 12.1071 1.09219 12.3296 1.25628 12.4937C1.42038 12.6578 1.64294 12.75 1.875 12.75H9.875C10.1071 12.75 10.3296 12.6578 10.4937 12.4937C10.6578 12.3296 10.75 12.1071 10.75 11.875V2.75H11.375C11.4745 2.75 11.5698 2.71049 11.6402 2.64017C11.7105 2.56984 11.75 2.47446 11.75 2.375C11.75 2.27554 11.7105 2.18016 11.6402 2.10983C11.5698 2.03951 11.4745 2 11.375 2ZM10 11.875C10 11.9082 9.98683 11.9399 9.96339 11.9634C9.93995 11.9868 9.90815 12 9.875 12H1.875C1.84185 12 1.81005 11.9868 1.78661 11.9634C1.76317 11.9399 1.75 11.9082 1.75 11.875V2.75H10V11.875ZM3 0.375C3 0.275544 3.03951 0.180161 3.10984 0.109835C3.18016 0.0395088 3.27554 0 3.375 0H8.375C8.47446 0 8.56984 0.0395088 8.64017 0.109835C8.71049 0.180161 8.75 0.275544 8.75 0.375C8.75 0.474456 8.71049 0.569839 8.64017 0.640165C8.56984 0.710491 8.47446 0.75 8.375 0.75H3.375C3.27554 0.75 3.18016 0.710491 3.10984 0.640165C3.03951 0.569839 3 0.474456 3 0.375Z"
+                        fill="black" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

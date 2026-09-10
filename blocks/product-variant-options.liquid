@@ -1,0 +1,21 @@
+{% liquid
+    assign product = closest.product
+    if request.visual_preview_mode and product == blank
+        assign product = collections.all.products.first
+    endif
+%}
+<div {{ block.shopify_attributes }}>
+    {% render 'variants', product: product %}
+</div>
+
+{% schema %}
+{
+    "name": "Product Variant Options",
+    "settings": [],
+    "presets": [
+        {
+            "name": "Product Variant Options"
+        }
+    ]
+}
+{% endschema %}

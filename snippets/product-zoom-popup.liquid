@@ -1,0 +1,55 @@
+{%- doc -%}
+  Renders the fullscreen zoom popup for a product's media gallery.
+  Relies on the existing "product-zoom-popup js" behavior in assets/script.js,
+  which is class-based and works with any number of slides.
+
+  @param {product} product - The product whose media should be shown.
+
+  @example
+  {% render 'product-zoom-popup', product: product %}
+{%- enddoc -%}
+
+<div class="product-zoom-popup">
+    <div class="swiper product-zoom-popup-slider">
+        <div class="swiper-wrapper">
+            {% for media in product.media %}
+                <div class="swiper-slide">
+                    <div class="product-zoom-popup-image">
+                        {{ media.preview_image | image_url: width: 2000 | image_tag: loading: 'lazy', alt: media.alt | default: product.title }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="swiper-slide">
+                    <div class="product-zoom-popup-image">
+                        {{ 'lifestyle-1' | placeholder_svg_tag }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="product-zoom-popup-fullview">
+        <img src="" alt="product zoom full view">
+    </div>
+    <div class="product-zoom-popup-controls">
+        <button class="product-zoom-popup-prev" type="button" aria-label="previous image">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <button class="product-zoom-popup-close" type="button" aria-label="close zoom">
+            <svg viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M3 15L15 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                <path d="M15 15L3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <button class="product-zoom-popup-next" type="button" aria-label="next image">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </button>
+    </div>
+</div>

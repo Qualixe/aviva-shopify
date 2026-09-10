@@ -1,0 +1,83 @@
+{%- doc -%}
+  Renders real variant option pickers (color swatches + plain buttons) for a product.
+  Wired up by "product variant options js" in assets/script.js, which resolves the
+  matching variant on change and updates price, the add-to-cart button's hidden
+  variant id input, and its disabled state.
+
+  @param {product} product - The product to render options for.
+
+  @example
+  {% render 'variants', product: product %}
+{%- enddoc -%}
+
+{% unless product.has_only_default_variant %}
+    <div class="product-variant-options">
+        {% for option in product.options_with_values %}
+            {% liquid
+                assign option_name_downcase = option.name | downcase
+                assign is_color_option = false
+                if option_name_downcase contains 'colo'
+                    assign is_color_option = true
+                endif
+            %}
+            <div class="product-varient">
+                <div class="product-varient-title-wrap">
+                    <h2 class="product-varient-title">
+                        <span>
+                            <span class="title-count">{{ forloop.index }}.</span>
+                            {{ option.name }}:
+                            <span class="varient-count">{{ option.selected_value }}</span>
+                        </span>
+                    </h2>
+                </div>
+                <div class="product-varient-field-wrap{% if is_color_option %} product-color-wrap{% endif %}" data-option-index="{{ forloop.index0 }}">
+                    {% for value in option.values %}
+                        <div class="product-varient-input-field{% if is_color_option %} product-color{% endif %}{% if value.available == false %} disabled{% endif %}">
+                            <input
+                                class="product-varient-input"
+                                type="radio"
+                                id="Option-{{ option.position }}-{{ forloop.index }}"
+                                name="option-{{ option.position }}"
+                                value="{{ value | escape }}"
+                                {% if value.selected %}checked{% endif %}
+                                {% if value.available == false %}disabled{% endif %}
+                            >
+                            <label class="product-varient-label" for="Option-{{ option.position }}-{{ forloop.index }}">
+                                {% if is_color_option %}
+                                    <span class="varient-value">
+                                        {% if value.variant.featured_image %}
+                                            {{ value.variant.featured_image | image_url: width: 100 | image_tag: loading: 'lazy', alt: value }}
+                                        {% else %}
+                                            {{ 'lifestyle-1' | placeholder_svg_tag }}
+                                        {% endif %}
+                                    </span>
+                                {% else %}
+                                    <span class="varient-value">{{ value }}</span>
+                                {% endif %}
+                            </label>
+                            {% if is_color_option %}
+                                <p>{{ value }}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script type="application/json" data-product-variants>
+        [
+            {% for variant in product.variants %}
+                {
+                    "id": {{ variant.id | json }},
+                    "title": {{ variant.title | json }},
+                    "available": {{ variant.available | json }},
+                    "options": {{ variant.options | json }},
+                    "price": {{ variant.price | money | json }},
+                    "compareAtPrice": {% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | json }}{% else %}null{% endif %},
+                    "discountPercent": {% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round | json }}{% else %}null{% endif %}
+                }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+        ]
+    </script>
+{% endunless %}

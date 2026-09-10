@@ -1,0 +1,51 @@
+{% liquid
+    assign s = block.settings
+    assign full_stars = s.rating | at_most: 5 | at_least: 0 | round
+%}
+{% if s.review_count > 0 %}
+    <a href="{{ s.link | default: '#!' }}" class="product-rattings" {{ block.shopify_attributes }}>
+        <span class="icon">
+            {% for i in (1..5) %}
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="pdp-star-icon{% if i <= full_stars %} is-filled{% endif %}">
+                    <path
+                        d="M8 1.333l2.06 4.174 4.607.67-3.333 3.249.786 4.587L8 11.846l-4.12 2.167.787-4.587L1.333 6.177l4.607-.67L8 1.333Z"
+                        fill="currentColor"></path>
+                </svg>
+            {% endfor %}
+        </span>
+        <span class="rattings-number">{{ s.review_count }} Reviews</span>
+    </a>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Product Rating",
+    "settings": [
+        {
+            "type": "range",
+            "id": "rating",
+            "label": "Rating",
+            "min": 0,
+            "max": 5,
+            "step": 0.5,
+            "default": 5
+        },
+        {
+            "type": "number",
+            "id": "review_count",
+            "label": "Review Count",
+            "default": 495
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Rating"
+        }
+    ]
+}
+{% endschema %}

@@ -603,6 +603,7 @@ button {
     width: 20px;
     height: 100%;
     text-align: center;
+    font-size: 12px;
 }
 
 .cart-drawer-item-qty-btn {
@@ -656,6 +657,9 @@ button {
     flex-direction: column;
     gap: 16px;
     padding: 20px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .cart-drawer-slider-area {

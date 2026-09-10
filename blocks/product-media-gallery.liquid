@@ -1,0 +1,59 @@
+{% liquid
+    assign product = closest.product
+    if request.visual_preview_mode and product == blank
+        assign product = collections.all.products.first
+    endif
+    assign media_list = product.media
+%}
+<div class="product-slider-inner" {{ block.shopify_attributes }}>
+    {% if media_list.size > 1 %}
+        <div class="product-slider-thumb">
+            {% for media in media_list %}
+                <a href="#product-image-{{ forloop.index }}" class="product-slider-thumb-item{% if forloop.first %} active{% endif %}">
+                    <div class="product-slider-img">
+                        {{ media.preview_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: media.alt | default: product.title }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="product-slider-images">
+        <div class="product-slider-zoom-btn-wrap">
+            <button class="product-slider-zoom-btn" type="button" aria-label="zoom image">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+            </button>
+        </div>
+        {% for media in media_list %}
+            <div class="product-slider-image-item{% if forloop.first %} active{% endif %}" id="product-image-{{ forloop.index }}">
+                <div class="product-slider-img">
+                    {% if media.preview_image != blank %}
+                        {% if forloop.first %}
+                            {{ media.preview_image | image_url: width: 1200 | image_tag: loading: 'eager', alt: media.alt | default: product.title }}
+                        {% else %}
+                            {{ media.preview_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: media.alt | default: product.title }}
+                        {% endif %}
+                    {% else %}
+                        {{ 'lifestyle-1' | placeholder_svg_tag }}
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="product-slider-image-item active" id="product-image-1">
+                <div class="product-slider-img">
+                    {{ 'lifestyle-1' | placeholder_svg_tag }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% render 'product-zoom-popup', product: product %}
+
+{% schema %}
+{
+    "name": "Product Media Gallery",
+    "settings": []
+}
+{% endschema %}

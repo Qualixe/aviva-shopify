@@ -27,11 +27,11 @@
     align-items: center;
     margin: 0 0 20px 0;
     position: sticky;
-    top: 140px;
+    top: 0;
     z-index: 6;
-    background: var(--section-bg);
+    /* background: var(--section-bg); */
     padding: 20px 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid;
 }
 
 .collection-top .collection-heading {
@@ -309,7 +309,7 @@
 }
 
 .filter-option.color-yellow label:before {
-    background-color: var(--color-yellow);
+    background-color: {{ settings.color_palette.yellow }};
 }
 
 .filter-option.color-white label:before {
@@ -317,15 +317,15 @@
 }
 
 .filter-option.color-red label:before {
-    background-color: var(--color-red);
+    background-color: {{ settings.color_palette.red }};
 }
 
 .filter-option.color-blue label:before {
-    background-color: var(--color-blue);
+    background-color: {{ settings.color_palette.blue }};
 }
 
 .filter-option.color-green label:before {
-    background-color: var(--color-green);
+    background-color: {{ settings.color_palette.green }};
 }
 
 .price-range-wrap {
@@ -345,12 +345,14 @@
     right: 0;
     height: 3px;
     background: var(--border-color);
+    z-index: 2;
 }
 
 .price-range-track-fill {
     position: absolute;
     height: 3px;
     background: var(--brand-color);
+    z-index: 5;
 }
 
 .price-range-input {
@@ -363,6 +365,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     pointer-events: none;
+    z-index: 1;
 }
 
 .price-range-input::-webkit-slider-runnable-track {
@@ -383,7 +386,7 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: var(--black);
+    background: var(--brand-color);
     cursor: pointer;
     margin-top: -6px;
 }
@@ -394,7 +397,7 @@
     height: 14px;
     border: none;
     border-radius: 50%;
-    background: var(--black);
+    background: var(--brand-color);
     cursor: pointer;
 }
 

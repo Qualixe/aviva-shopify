@@ -1,0 +1,67 @@
+{% liquid
+    assign product = closest.product
+    if request.visual_preview_mode and product == blank
+        assign product = collections.all.products.first
+    endif
+    assign s = block.settings
+    assign buy_with_products = product.metafields.custom.buy_with.value
+%}
+{% if buy_with_products.size > 0 %}
+    <div class="product-buy-with" {{ block.shopify_attributes }}>
+        {% if s.title != blank %}
+            <h4 class="product-buy-with-title">{{ s.title }}</h4>
+        {% endif %}
+        {% for buy_with_product in buy_with_products %}
+            {% liquid
+                assign bw_variant = buy_with_product.selected_or_first_available_variant
+            %}
+            {% if bw_variant != blank %}
+                <label class="product-buy-with-item">
+                    <input
+                        type="checkbox"
+                        class="product-buy-with-checkbox"
+                        value="{{ bw_variant.id }}"
+                        {% if bw_variant.available == false %}disabled{% endif %}
+                    >
+                    <div class="product-buy-with-img">
+                        {% if buy_with_product.featured_image != blank %}
+                            {{ buy_with_product.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: buy_with_product.title }}
+                        {% else %}
+                            {{ 'lifestyle-1' | placeholder_svg_tag }}
+                        {% endif %}
+                    </div>
+                    <span class="product-buy-with-name">{{ buy_with_product.title }}</span>
+                    <span class="product-buy-with-price">{{ bw_variant.price | money_without_trailing_zeros }}</span>
+                </label>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% stylesheet %}
+    .product-buy-with-price {
+        margin-left: auto;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--paragraph-text-color);
+    }
+{% endstylesheet %}
+
+{% schema %}
+{
+    "name": "Product Buy With",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Buy it with"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Buy With"
+        }
+    ]
+}
+{% endschema %}

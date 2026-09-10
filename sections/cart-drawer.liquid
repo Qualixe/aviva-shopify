@@ -1,0 +1,163 @@
+{% liquid
+    assign s = section.settings
+    assign is_blank = false
+    if cart.item_count == 0
+        assign is_blank = true
+    endif
+
+    assign milestones = section.blocks | where: 'type', 'milestone'
+%}
+<div class="cart-drawer{% if is_blank %} blank{% endif %}" data-section-id="{{ section.id }}">
+    <span class="cart-drawer-close-window-btn"></span>
+    <div class="cart-drawer-inner">
+        <div class="cart-drawer-top">
+            <p class="cart-drawer-title">cart <span>({{ cart.item_count }} items)</span></p>
+            <button class="cart-drawer-close-btn" type="button" aria-label="close cart" title="close cart">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.85403 9.14653C9.90048 9.19298 9.93733 9.24813 9.96247 9.30883C9.98762 9.36953 10.0006 9.43458 10.0006 9.50028C10.0006 9.56598 9.98762 9.63103 9.96247 9.69173C9.93733 9.75242 9.90048 9.80757 9.85403 9.85403C9.80757 9.90048 9.75242 9.93733 9.69173 9.96247C9.63103 9.98762 9.56598 10.0006 9.50028 10.0006C9.43458 10.0006 9.36953 9.98762 9.30883 9.96247C9.24813 9.93733 9.19298 9.90048 9.14653 9.85403L5.00028 5.70715L0.854028 9.85403C0.760208 9.94785 0.63296 10.0006 0.500278 10.0006C0.367596 10.0006 0.240348 9.94785 0.146528 9.85403C0.0527077 9.76021 2.61548e-09 9.63296 0 9.50028C-2.61548e-09 9.3676 0.0527077 9.24035 0.146528 9.14653L4.2934 5.00028L0.146528 0.854028C0.0527077 0.760208 0 0.63296 0 0.500278C0 0.367596 0.0527077 0.240348 0.146528 0.146528C0.240348 0.0527077 0.367596 0 0.500278 0C0.63296 0 0.760208 0.0527077 0.854028 0.146528L5.00028 4.2934L9.14653 0.146528C9.24035 0.0527077 9.3676 -2.61548e-09 9.50028 0C9.63296 2.61548e-09 9.76021 0.0527077 9.85403 0.146528C9.94785 0.240348 10.0006 0.367596 10.0006 0.500278C10.0006 0.63296 9.94785 0.760208 9.85403 0.854028L5.70715 5.00028L9.85403 9.14653Z"
+                        fill="#0B0802" />
+                </svg>
+            </button>
+        </div>
+        {% render 'cart-progress', 
+        milestones: milestones, 
+        offer_label: s.offer_label, 
+        countdown_hours: s.countdown_hours, 
+        countdown_minutes: s.countdown_minutes 
+        %}
+        <div class="cart-drawer-content">
+            <div class="cart-drawer-items">
+                {% for item in cart.items %}
+                    {% render 'cart-item', item: item %}
+                {% endfor %}
+            </div>
+            {% if s.upsell_collection != blank %}
+                {% liquid
+                    assign upsell_products = s.upsell_collection.products | where: 'available' | limit: 8
+                %}
+                {% if upsell_products.size > 0 %}
+                    <div class="cart-drawer-slider-area">
+                        <div class="cart-drawer-slider-header">
+                            <p class="cart-drawer-slider-title">{{ s.upsell_title }}</p>
+                            <div class="cart-drawer-slider-btn-wrap">
+                                <div class="swiper-button-prev cart-drawer-slider-btn-prev"></div>
+                                <div class="swiper-button-next cart-drawer-slider-btn-next"></div>
+                            </div>
+                        </div>
+                        <div class="swiper cart-drawer-slider">
+                            <div class="swiper-wrapper">
+                                {% for upsell_product in upsell_products %}
+                                    <div class="swiper-slide">
+                                        {% render 'upsell-product-card', product: upsell_product %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="cart-drawer-empty">
+            <div class="cart-drawer-empty-text">
+                <p>Your Cart Is Empty</p>
+                <a href="{{ s.empty_cart_link | default: routes.all_products_collection_url }}" class="btn">shop now</a>
+            </div>
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-drawer-total-wrap">
+                <p class="cart-drawer-total-title">total</p>
+                <p class="cart-drawer-total-price">{{ cart.total_price | money }}</p>
+            </div>
+            <div class="cart-drawer-checkout-btn-wrap">
+                <a href="/checkout" class="btn">secure checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Cart Drawer",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Free Gift Progress"
+        },
+        {
+            "type": "text",
+            "id": "offer_label",
+            "label": "Offer Label",
+            "default": "Limited Time Offer"
+        },
+        {
+            "type": "range",
+            "id": "countdown_hours",
+            "label": "Countdown Hours",
+            "min": 0,
+            "max": 23,
+            "step": 1,
+            "default": 1
+        },
+        {
+            "type": "range",
+            "id": "countdown_minutes",
+            "label": "Countdown Minutes",
+            "min": 0,
+            "max": 59,
+            "step": 1,
+            "default": 30
+        },
+        {
+            "type": "header",
+            "content": "Upsell"
+        },
+        {
+            "type": "collection",
+            "id": "upsell_collection",
+            "label": "Recommended Products Collection"
+        },
+        {
+            "type": "text",
+            "id": "upsell_title",
+            "label": "Upsell Title",
+            "default": "66% of shoppers added these too..."
+        },
+        {
+            "type": "header",
+            "content": "Empty Cart"
+        },
+        {
+            "type": "url",
+            "id": "empty_cart_link",
+            "label": "Shop Now Link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "milestone",
+            "name": "Cart Milestone",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "amount",
+                    "label": "Spend Amount",
+                    "default": 2499
+                },
+                {
+                    "type": "text",
+                    "id": "gift_name",
+                    "label": "Free Gift Name",
+                    "default": "Vanity Pouch"
+                },
+                {
+                    "type": "text",
+                    "id": "icon",
+                    "label": "Icon (emoji)",
+                    "default": "🎁"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

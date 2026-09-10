@@ -1,0 +1,63 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="product-trust-badges" {{ block.shopify_attributes }}>
+    {% if s.badge_1 != blank %}
+        <span class="product-trust-badge">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            {{ s.badge_1 }}
+        </span>
+    {% endif %}
+    {% if s.badge_2 != blank %}
+        <span class="product-trust-badge">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            {{ s.badge_2 }}
+        </span>
+    {% endif %}
+    {% if s.badge_3 != blank %}
+        <span class="product-trust-badge">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            {{ s.badge_3 }}
+        </span>
+    {% endif %}
+</div>
+
+{% schema %}
+{
+    "name": "Product Trust Badges",
+    "settings": [
+        {
+            "type": "text",
+            "id": "badge_1",
+            "label": "Badge 1",
+            "default": "Proudly Indian"
+        },
+        {
+            "type": "text",
+            "id": "badge_2",
+            "label": "Badge 2",
+            "default": "Handcrafted"
+        },
+        {
+            "type": "text",
+            "id": "badge_3",
+            "label": "Badge 3",
+            "default": "100% Vegan"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Trust Badges"
+        }
+    ]
+}
+{% endschema %}

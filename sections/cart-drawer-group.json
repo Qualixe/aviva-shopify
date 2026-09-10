@@ -1,0 +1,49 @@
+{
+  "type": "custom.cart_drawer",
+  "name": "Cart Drawer",
+  "sections": {
+    "cart_drawer": {
+      "type": "cart-drawer",
+      "blocks": {
+        "cart_milestone_1": {
+          "type": "milestone",
+          "settings": {
+            "amount": 2499,
+            "gift_name": "Vanity Pouch",
+            "icon": "🎁"
+          }
+        },
+        "cart_milestone_2": {
+          "type": "milestone",
+          "settings": {
+            "amount": 3499,
+            "gift_name": "Handmade Coaster",
+            "icon": "🎁"
+          }
+        },
+        "cart_milestone_3": {
+          "type": "milestone",
+          "settings": {
+            "amount": 4999,
+            "gift_name": "Tote Bag",
+            "icon": "🎁"
+          }
+        }
+      },
+      "block_order": [
+        "cart_milestone_1",
+        "cart_milestone_2",
+        "cart_milestone_3"
+      ],
+      "settings": {
+        "offer_label": "Limited Time Offer",
+        "countdown_hours": 1,
+        "countdown_minutes": 30,
+        "upsell_title": "66% of shoppers added these too..."
+      }
+    }
+  },
+  "order": [
+    "cart_drawer"
+  ]
+}

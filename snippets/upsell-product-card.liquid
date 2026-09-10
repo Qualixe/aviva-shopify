@@ -1,0 +1,47 @@
+{%- doc -%}
+  Renders one product card in the cart drawer's upsell slider, with a
+  working "add" button (wired up by "cart-drawer js" in assets/script.js
+  via [data-variant-id]).
+
+  @param {product} product - The product to render.
+
+  @example
+  {% render 'upsell-product-card', product: product %}
+{%- enddoc -%}
+
+{% liquid
+    assign variant = product.selected_or_first_available_variant
+    assign on_sale = false
+    if variant.compare_at_price > variant.price
+        assign on_sale = true
+    endif
+%}
+<div class="cart-drawer-slider-item">
+    <div class="product-card card_hover">
+        <div class="card-image-wrap">
+            <div class="card-img">
+                <a class="main-img" href="{{ product.url }}">
+                    {% if product.featured_image != blank %}
+                        {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: product.title }}
+                    {% else %}
+                        {{ 'lifestyle-1' | placeholder_svg_tag }}
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="card-title-wrap">
+                <a href="{{ product.url }}" class="card-title">{{ product.title }}</a>
+            </div>
+            <div class="card-price-wrap">
+                <p class="latest-price">{{ variant.price | money }}</p>
+                {% if on_sale %}
+                    <p class="previous-price">{{ variant.compare_at_price | money }}</p>
+                {% endif %}
+            </div>
+            <div class="card-btn">
+                <button type="button" class="btn cart-drawer-upsell-add" data-variant-id="{{ variant.id }}">add</button>
+            </div>
+        </div>
+    </div>
+</div>
