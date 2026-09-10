@@ -6,58 +6,97 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "single-product",
       "blocks": {
         "product_title": {
           "type": "pdp-title",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "product_rating_1": {
           "type": "product-rating",
-          "settings": {}
+          "settings": {
+            "rating": 5,
+            "review_count": 495,
+            "link": ""
+          },
+          "blocks": {}
         },
         "product_price_1": {
           "type": "product-price",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "variant_picker_1": {
           "type": "product-variant-options",
-          "settings": {}
-        },
-        "size_guide_btn_1": {
-          "type": "product-size-guide-button",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "product_qty_1": {
           "type": "product-qty",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "buy_buttons_1": {
           "type": "atc",
-          "settings": {}
+          "settings": {
+            "color_atc": "{{ settings.color_palette.brand_color }}",
+            "color_buy_now": "{{ settings.color_palette.orange_lite }}"
+          },
+          "blocks": {}
         },
         "buy_with_1": {
           "type": "buy-with",
-          "settings": {}
+          "settings": {
+            "title": "Buy it with"
+          },
+          "blocks": {}
         },
         "contact_buttons_1": {
           "type": "product-contact-buttons",
-          "settings": {}
+          "settings": {
+            "whatsapp_number": 8801318552266,
+            "phone_number": "8801318552266",
+            "whatsapp": "{{ settings.color_palette.green }}",
+            "call_now": "{{ settings.color_palette.orange }}"
+          },
+          "blocks": {}
         },
         "trust_badges_1": {
           "type": "product-trust-badges",
-          "settings": {}
+          "settings": {
+            "badge_1": "Proudly Indian",
+            "badge_2": "Handcrafted",
+            "badge_3": "100% Vegan"
+          },
+          "blocks": {}
         },
         "icon_items_1": {
           "type": "product-icon-items",
-          "settings": {}
+          "settings": {
+            "item_1": "free expedited shipping",
+            "item_2": "Easy Returns Within 30 Days",
+            "item_3": "Safe & Secure Payments"
+          },
+          "blocks": {}
         },
         "description_accordion_1": {
           "type": "product-description-accordion",
-          "settings": {}
+          "settings": {
+            "specification": "",
+            "return_and_refund": ""
+          },
+          "blocks": {}
+        },
+        "product-media-gallery": {
+          "type": "product-media-gallery",
+          "static": true,
+          "settings": {},
+          "blocks": {}
         }
       },
       "block_order": [
@@ -65,7 +104,6 @@
         "product_rating_1",
         "product_price_1",
         "variant_picker_1",
-        "size_guide_btn_1",
         "product_qty_1",
         "buy_buttons_1",
         "buy_with_1",
@@ -74,153 +112,109 @@
         "icon_items_1",
         "description_accordion_1"
       ],
-      "settings": {}
+      "settings": {
+        "size_chart_title": "size chart:",
+        "size_chart_women": "<table class=\"size-chart-item-content\"><thead><tr><th>au</th><th>bd</th></tr></thead><tbody><tr><td>27</td><td>38</td></tr><tr><td>28</td><td>40</td></tr><tr><td>29</td><td>42</td></tr><tr><td>30</td><td>45</td></tr></tbody></table>",
+        "size_chart_men": "<table class=\"size-chart-item-content\"><thead><tr><th>au</th><th>bd</th></tr></thead><tbody><tr><td>27</td><td>38</td></tr><tr><td>28</td><td>40</td></tr><tr><td>29</td><td>42</td></tr><tr><td>30</td><td>45</td></tr></tbody></table>"
+      }
     },
-    "product_recommendations_qggXJq": {
-      "type": "product-recommendations",
+    "see_what_mEfAiF": {
+      "type": "see-what",
       "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
+        "see_what_fits_item_D6YnEL": {
+          "type": "see-what-fits-item",
           "settings": {
-            "text": "<h3>You may also like </h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "icon": "wallet",
+            "label": "Wallet"
           },
           "blocks": {}
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "see_what_fits_item_aYgGfq": {
+          "type": "see-what-fits-item",
           "settings": {
-            "product_card_gap": 8,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "icon": "cosmetics",
+            "label": "Cosmetics"
           },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
+          "blocks": {}
+        },
+        "see_what_fits_item_TgyJLV": {
+          "type": "see-what-fits-item",
+          "settings": {
+            "icon": "keys",
+            "label": "Keys"
           },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
+          "blocks": {}
+        },
+        "see_what_fits_item_iRFLRC": {
+          "type": "see-what-fits-item",
+          "settings": {
+            "icon": "earbuds",
+            "label": "Earbuds & more"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "text_cbcgyb"
+        "see_what_fits_item_D6YnEL",
+        "see_what_fits_item_aYgGfq",
+        "see_what_fits_item_TgyJLV",
+        "see_what_fits_item_iRFLRC"
       ],
-      "name": "t:names.product_recommendations",
+      "name": "See What Fits",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "label": "See What Fits",
+        "features_title": "Key Features",
+        "features_text": "Adjustable Crossbody Strap + Quick-access Back Zipper + Water-resistant Lining"
+      }
+    },
+    "related_product_BYJfpY": {
+      "type": "related-product",
+      "blocks": {
+        "section-heading": {
+          "type": "section-heading",
+          "static": true,
+          "settings": {
+            "heading": "Explore more",
+            "button": "Shop All Brands",
+            "link": "",
+            "heading_color": "{{ settings.color_palette.brand_color }}",
+            "btn_color": "{{ settings.color_palette.brand_color }}"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Related Products",
+      "settings": {
+        "limit": 8,
+        "intent": "related"
+      }
+    },
+    "recent_view_khKyG7": {
+      "type": "recent-view",
+      "blocks": {
+        "section-heading": {
+          "type": "section-heading",
+          "static": true,
+          "settings": {
+            "heading": "Recently Viewed Products",
+            "button": "Shop All Brands",
+            "link": "",
+            "heading_color": "{{ settings.color_palette.brand_color }}",
+            "btn_color": "{{ settings.color_palette.brand_color }}"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Recently Viewed",
+      "settings": {
+        "limit": 8
       }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "see_what_mEfAiF",
+    "related_product_BYJfpY",
+    "recent_view_khKyG7"
   ]
 }
