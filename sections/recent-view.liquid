@@ -1,0 +1,55 @@
+{% liquid
+    assign s = section.settings
+%}
+<section
+    class="section card-slider-section"
+    id="section_{{ section.id }}"
+    data-recent-view-section
+    data-limit="{{ s.limit }}"
+    hidden
+>
+    <div class="container">
+        {% content_for 'block', type: 'section-heading', id: 'section-heading' %}
+        <div class="swiper card-slider">
+            <div class="swiper-wrapper"></div>
+        </div>
+    </div>
+</section>
+
+{% render 'colors-section', section: section %}
+
+{% schema %}
+{
+    "name": "Recently Viewed",
+    "settings": [
+        {
+            "type": "range",
+            "id": "limit",
+            "label": "Limit",
+            "min": 2,
+            "max": 20,
+            "step": 1,
+            "default": 8 
+        } 
+    ],
+    "blocks": [
+        {
+            "type": "section-heading"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Recently Viewed",
+            "blocks": [
+                {
+                    "type": "section-heading",
+                    "settings": {
+                        "heading": "Recently Viewed Products",
+                        "button": "Shop All Brands"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

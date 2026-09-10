@@ -1,0 +1,41 @@
+{% liquid
+    assign s = block.settings
+    assign tag_url = s.link
+    if tag_url == blank
+        assign tag_url = routes.all_products_collection_url | append: '/' | append: s.label | handleize
+    endif
+%}
+<a href="{{ tag_url }}" {{ block.shopify_attributes }}>
+    {{ s.label }}
+    <span class="icon">
+        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M3.5 8.5L8.5 3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4.00006 3.49997H8.50006V7.99997" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+    </span>
+</a>
+
+{% schema %}
+{
+    "name": "Search Tag",
+    "settings": [
+        {
+            "type": "text",
+            "id": "label",
+            "label": "Tag Label",
+            "default": "Bags"
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Leave blank to auto-link to /collections/all/<tag-handle>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Search Tag"
+        }
+    ]
+}
+{% endschema %}

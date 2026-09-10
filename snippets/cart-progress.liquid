@@ -51,6 +51,16 @@
                     <div class="cart-drawer-progress-track-fill" style="width: {{ progress_percent }}%;"></div>
                 </div>
             </div>
+        {% else %}
+            <p class="cart-drawer-progress-message">
+                <span class="icon">🎉</span>
+                <span><strong>Congratulations! You've unlocked all free gifts!</strong></span>
+            </p>
+            <div class="cart-drawer-progress-track-wrap">
+                <div class="cart-drawer-progress-track">
+                    <div class="cart-drawer-progress-track-fill" style="width: 100%;"></div>
+                </div>
+            </div>
         {% endif %}
         <div class="cart-drawer-progress-milestones">
             {% for milestone in milestones %}

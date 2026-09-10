@@ -1,0 +1,16 @@
+{% comment %}
+  Utility section fetched via the Section Rendering API
+  (/products/{handle}?section_id=recent-view-card) to render a single
+  product card in the context of an arbitrary product handle for the
+  "Recently Viewed" slider. Not meant to be added through the theme editor.
+{% endcomment %}
+<div class="card-slider-item">
+    {% render 'product', product: product %}
+</div>
+
+{% schema %}
+{
+    "name": "Recent View Card",
+    "settings": []
+}
+{% endschema %}

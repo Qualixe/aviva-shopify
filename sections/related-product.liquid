@@ -1,0 +1,77 @@
+{% liquid
+    assign s = section.settings
+%}
+<section
+    class="section card-slider-section section-bg related_product"
+    id="section_{{ section.id }}"
+    data-product-recommendations
+    data-section-id="{{ section.id }}"
+    data-product-id="{{ product.id }}"
+    data-limit="{{ s.limit }}"
+    data-intent="{{ s.intent }}"
+>
+    <div class="container">
+        {% content_for 'block', type: 'section-heading', id: 'section-heading' %}
+        <div class="swiper card-slider">
+            <div class="swiper-wrapper">
+                {% if recommendations.performed %}
+                    {% for recommended_product in recommendations.products %}
+                        <div class="swiper-slide">
+                            <div class="card-slider-item">
+                                {% render 'product', product: recommended_product %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% render 'colors-section', section: section %}
+
+{% schema %}
+{
+    "name": "Related Products",
+    "settings": [
+        {
+            "type": "range",
+            "id": "limit",
+            "label": "Limit",
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "default": 8
+        },
+        {
+            "type": "select",
+            "id": "intent",
+            "label": "Recommendation Type",
+            "options": [
+                { "value": "related", "label": "Related" },
+                { "value": "complementary", "label": "Complementary (frequently bought together)" }
+            ],
+            "default": "related"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "section-heading"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Related Products",
+            "blocks": [
+                {
+                    "type": "section-heading",
+                    "settings": {
+                        "heading": "Explore more",
+                        "button": "Shop All Brands"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

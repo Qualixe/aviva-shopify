@@ -235,6 +235,249 @@ document.addEventListener("keydown", (e) => {
 });
 // navbar search open js end ---
 
+// navbar ajax search js start ---
+(function () {
+  const searchBar = document.querySelector(".search-bar");
+  const searchInput = document.querySelector(".search-form input[name='q']");
+  const searchBarBtm = document.querySelector(".search-bar-btm");
+  const resultItemsWrap = document.querySelector(".search-result-items");
+  const resultTitle = document.querySelector(".search-result-title");
+  const viewAllBtn = document.querySelector(".search-result-btn .btn");
+  if (!searchInput || !searchBarBtm || !resultItemsWrap) return;
+
+  const moneyFormat = searchBar?.dataset.moneyFormat || "${{amount}}";
+  let debounceTimer;
+  let currentRequest = 0;
+
+  // Port of Shopify's standard Currency.formatMoney helper, since
+  // /search/suggest.json returns raw decimal price strings (e.g. "1670.00"),
+  // not values pre-formatted for the shop's currency.
+  function formatMoney(price, format) {
+    const cents = Math.round(parseFloat(price) * 100);
+    if (isNaN(cents)) return "";
+
+    function withDelimiters(number, precision, thousands, decimal) {
+      const fixed = (number / 100).toFixed(precision);
+      const parts = fixed.split(".");
+      const dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, `$1${thousands}`);
+      const centsPart = parts[1] ? decimal + parts[1] : "";
+      return dollars + centsPart;
+    }
+
+    const match = format.match(/\{\{\s*(\w+)\s*\}\}/);
+    const kind = match ? match[1] : "amount";
+    let value;
+    switch (kind) {
+      case "amount_no_decimals":
+        value = withDelimiters(cents, 0, ",", ".");
+        break;
+      case "amount_with_comma_separator":
+        value = withDelimiters(cents, 2, ".", ",");
+        break;
+      case "amount_no_decimals_with_comma_separator":
+        value = withDelimiters(cents, 0, ".", ",");
+        break;
+      default:
+        value = withDelimiters(cents, 2, ",", ".");
+    }
+
+    return format.replace(/\{\{\s*\w+\s*\}\}/, value);
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text || "";
+    return div.innerHTML;
+  }
+
+  function renderResults(products, query) {
+    if (resultTitle) {
+      resultTitle.textContent = `Search Results for "${query}":`;
+    }
+
+    if (!products.length) {
+      resultItemsWrap.innerHTML = `<p class="search-no-results">No results found for "${escapeHtml(query)}"</p>`;
+      return;
+    }
+
+    resultItemsWrap.innerHTML = products
+      .map((product) => {
+        const hasCompareAt =
+          product.compare_at_price_max &&
+          parseFloat(product.compare_at_price_max) > parseFloat(product.price_max);
+        const compareAt = hasCompareAt
+          ? `<span class="pp">${formatMoney(product.compare_at_price_max, moneyFormat)}</span>`
+          : "";
+        const imageUrl = product.featured_image?.url || product.image || "";
+
+        return `
+          <a href="${product.url}" class="search-result-item">
+            <div class="search-result-img">
+              <img src="${imageUrl}" alt="${escapeHtml(product.title)}" width="64" height="64">
+            </div>
+            <div class="search-result-content">
+              <p class="title">${escapeHtml(product.title)}</p>
+              <p class="price"><span class="lp">${formatMoney(product.price, moneyFormat)}</span>${compareAt}</p>
+            </div>
+          </a>
+        `;
+      })
+      .join("");
+  }
+
+  function runSearch(query) {
+    const requestId = ++currentRequest;
+
+    fetch(
+      `/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product&resources[limit]=8&resources[options][unavailable_products]=last`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (requestId !== currentRequest) return; // a newer search superseded this one
+        const products = data?.resources?.results?.products || [];
+        renderResults(products, query);
+      })
+      .catch(() => {});
+  }
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.trim();
+    clearTimeout(debounceTimer);
+
+    if (viewAllBtn) viewAllBtn.href = `/search?q=${encodeURIComponent(query)}`;
+
+    if (!query) {
+      searchBarBtm.classList.remove("active");
+      return;
+    }
+
+    searchBarBtm.classList.add("active");
+    debounceTimer = setTimeout(() => runSearch(query), 300);
+  });
+})();
+// navbar ajax search js end ---
+
+// product recommendations js start--
+(function () {
+  document.querySelectorAll("[data-product-recommendations]").forEach((section) => {
+    const productId = section.dataset.productId;
+    const sectionId = section.dataset.sectionId;
+    if (!productId || !sectionId) return;
+
+    const limit = section.dataset.limit || 8;
+    const intent = section.dataset.intent || "related";
+    const url = `/recommendations/products?section_id=${encodeURIComponent(sectionId)}&product_id=${encodeURIComponent(productId)}&limit=${encodeURIComponent(limit)}&intent=${encodeURIComponent(intent)}`;
+
+    fetch(url)
+      .then((res) => res.text())
+      .then((html) => {
+        const newSection = new DOMParser()
+          .parseFromString(html, "text/html")
+          .querySelector("[data-product-recommendations]");
+
+        if (!newSection || !newSection.querySelector(".swiper-slide")) {
+          // No recommendations available for this product — remove the
+          // empty section instead of leaving a blank heading/slider.
+          section.remove();
+          return;
+        }
+
+        section.innerHTML = newSection.innerHTML;
+        window.initThemeSwipers?.(section);
+      })
+      .catch(() => {});
+  });
+})();
+// product recommendations js end--
+
+// recently viewed products js start--
+(function () {
+  var STORAGE_KEY = "aviva:recently_viewed";
+  var MAX_STORED = 12;
+
+  function getStoredHandles() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      var list = raw ? JSON.parse(raw) : [];
+      return Array.isArray(list) ? list : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function trackCurrentProduct() {
+    var match = window.location.pathname.match(/\/products\/([a-zA-Z0-9\-_%]+)/);
+    if (!match) return;
+    var handle = match[1];
+
+    var list = getStoredHandles().filter(function (h) {
+      return h !== handle;
+    });
+    list.unshift(handle);
+    list = list.slice(0, MAX_STORED);
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  function renderRecentlyViewed() {
+    var section = document.querySelector("[data-recent-view-section]");
+    if (!section) return;
+
+    var currentMatch = window.location.pathname.match(/\/products\/([a-zA-Z0-9\-_%]+)/);
+    var currentHandle = currentMatch ? currentMatch[1] : null;
+
+    var limit = parseInt(section.dataset.limit, 10) || 8;
+    var handles = getStoredHandles()
+      .filter(function (h) {
+        return h !== currentHandle;
+      })
+      .slice(0, limit);
+
+    if (!handles.length) return;
+
+    var wrapper = section.querySelector(".swiper-wrapper");
+    if (!wrapper) return;
+
+    Promise.all(
+      handles.map(function (handle) {
+        return fetch("/products/" + handle + "?section_id=recent-view-card")
+          .then(function (res) {
+            return res.ok ? res.text() : "";
+          })
+          .then(function (html) {
+            if (!html) return null;
+            return new DOMParser().parseFromString(html, "text/html").querySelector(".card-slider-item");
+          })
+          .catch(function () {
+            return null;
+          });
+      })
+    ).then(function (cards) {
+      cards.forEach(function (card) {
+        if (!card) return;
+        var slide = document.createElement("div");
+        slide.className = "swiper-slide";
+        slide.appendChild(card);
+        wrapper.appendChild(slide);
+      });
+
+      if (!wrapper.querySelector(".swiper-slide")) {
+        section.remove();
+        return;
+      }
+
+      section.hidden = false;
+      window.initThemeSwipers?.(section);
+    });
+  }
+
+  trackCurrentProduct();
+  renderRecentlyViewed();
+})();
+// recently viewed products js end--
+
 // slider js start (theme-editor safe init) --
 (function () {
   const swiperConfigs = [

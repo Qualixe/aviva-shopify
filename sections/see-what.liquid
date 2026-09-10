@@ -1,0 +1,73 @@
+{% liquid
+    assign s = section.settings
+%}
+<section class="see-what-fits-section">
+    <div class="container">
+        <div class="see-what-fits-inner">
+            <div class="see-what-fits-left">
+                {% if s.label != blank %}
+                    <span class="see-what-fits-label">{{ s.label }}</span>
+                {% endif %}
+                <div class="see-what-fits-items">
+                    {% content_for 'blocks' %}
+                </div>
+            </div>
+            {% if s.features_title != blank or s.features_text != blank %}
+                <div class="see-what-fits-card">
+                    {% if s.features_title != blank %}
+                        <h4>{{ s.features_title }}</h4>
+                    {% endif %}
+                    {% if s.features_text != blank %}
+                        <p>{{ s.features_text }}</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "See What Fits",
+    "settings": [
+        {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "See What Fits"
+        },
+        {
+            "type": "header",
+            "content": "Key Features Card"
+        },
+        {
+            "type": "text",
+            "id": "features_title",
+            "label": "Title",
+            "default": "Key Features"
+        },
+        {
+            "type": "textarea",
+            "id": "features_text",
+            "label": "Text",
+            "default": "Adjustable Crossbody Strap + Quick-access Back Zipper + Water-resistant Lining"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "see-what-fits-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "See What Fits",
+            "blocks": [
+                { "type": "see-what-fits-item", "settings": { "icon": "wallet", "label": "Wallet" } },
+                { "type": "see-what-fits-item", "settings": { "icon": "cosmetics", "label": "Cosmetics" } },
+                { "type": "see-what-fits-item", "settings": { "icon": "keys", "label": "Keys" } },
+                { "type": "see-what-fits-item", "settings": { "icon": "earbuds", "label": "Earbuds & more" } }
+            ]
+        }
+    ]
+}
+{% endschema %}

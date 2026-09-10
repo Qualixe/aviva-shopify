@@ -15,6 +15,10 @@
     width: 100%;
 }
 
+.related_product .swiper.card-slider .swiper-wrapper {
+    margin: initial;
+}
+
 @media (max-width:500px) {
     .collection-banner-wrap img,
     .collection-banner-wrap svg

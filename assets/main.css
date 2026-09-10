@@ -239,7 +239,7 @@ button {
 
 .btn {
     padding: 10px 30px;
-    color: var(--btn-color);
+    color: var(--brand-color);
     background: var(--btn-bg);
     font-size: 14px;
     font-weight: 500;
@@ -249,14 +249,14 @@ button {
     text-align: center;
     width: 100%;
     transition: all ease .3s;
-    border: 1px solid var(--btn-color);
+    border: 1px solid var(--brand-color);
     border-radius: 5px;
     overflow: hidden;
 }
 
 .btn:hover {
     color: var(--white);
-    background: var(--btn-color);
+    background: var(--brand-color);
 }
 
 /* input css end */
