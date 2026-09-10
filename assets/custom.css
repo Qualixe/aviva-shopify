@@ -1,4 +1,8 @@
 
+.recent_products[hidden] {
+    display: none !important;
+}
+
 .shopify-block.swiper-slide {
     height: auto;
 }
