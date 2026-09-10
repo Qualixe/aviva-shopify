@@ -36,13 +36,6 @@
           "settings": {},
           "blocks": {}
         },
-        "size_guide_btn_1": {
-          "type": "product-size-guide-button",
-          "settings": {
-            "label": "Size guide"
-          },
-          "blocks": {}
-        },
         "product_qty_1": {
           "type": "product-qty",
           "settings": {},
@@ -67,7 +60,7 @@
           "type": "product-contact-buttons",
           "settings": {
             "whatsapp_number": 8801318552266,
-            "phone_number": "",
+            "phone_number": "8801318552266",
             "whatsapp": "{{ settings.color_palette.green }}",
             "call_now": "{{ settings.color_palette.orange }}"
           },
@@ -111,7 +104,6 @@
         "product_rating_1",
         "product_price_1",
         "variant_picker_1",
-        "size_guide_btn_1",
         "product_qty_1",
         "buy_buttons_1",
         "buy_with_1",
