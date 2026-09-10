@@ -1,0 +1,85 @@
+{{ 'review-tab-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign product = closest.product
+  assign product_rating = product.metafields.reviews.rating.value | default: 0 | times: 1.0 | round: 1
+  assign product_rating_count = product.metafields.reviews.rating_count.value | default: 0
+
+  assign category_collection = section.settings.category_collection
+  assign category_rating = category_collection.metafields.reviews.rating.value | default: 0 | times: 1.0 | round: 1
+  assign category_rating_count = category_collection.metafields.reviews.rating_count.value | default: 0
+
+  assign write_review_url = section.settings.write_review_url | default: '#!'
+  assign all_product_reviews_url = section.settings.all_product_reviews_url | default: '#!'
+  assign all_category_reviews_url = section.settings.all_category_reviews_url | default: '#!'
+%}
+ 
+<section class="review-tab-section">
+  <div class="container">
+    <h2 class="review-tab-section-title">{{ section.settings.heading }}</h2>
+    <div class="review-tab-nav">
+      {% for block in section.blocks %}
+        {% assign b = block.settings %}
+          <button class="review-tab-nav-item {% if forloop.first %} active{% endif %}" type="button" data-review-tab="{{ b.heading  |  handleize}}">
+         {{ b.heading }}
+        </button>
+      {% endfor %}
+    </div>
+    <div class="review-tab-panels">
+      {% for block in section.blocks %}
+        {% assign b = block.settings %}
+        <div class="review-tab-panel {% if forloop.first %} active{% endif %}" id="{{ b.heading  |  handleize}}">
+          <div class="review-summary-card">
+            {{ b.review_code }}
+          </div>
+          {% comment %} <div class="review-summary-divider"></div> {% endcomment %}
+          {% comment %} <div class="review-all-link-wrap">
+            <a href="{{ all_product_reviews_url }}" class="review-all-link">Read All Product Reviews <span>›</span></a>
+          </div> {% endcomment %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Review tabs",
+  "settings": [
+    
+    {
+      "type": "url",
+      "id": "all_category_reviews_url",
+      "label": "\"Read all category reviews\" link"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "blocks": [
+    {
+      "type": "product_review",
+      "name" : "Product Reveiw",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default" : "Product Review"
+        },
+        {
+          "type": "liquid",
+          "id": "review_code",
+          "label": "Review Code"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review tabs"
+    }
+  ]
+}
+{% endschema %}

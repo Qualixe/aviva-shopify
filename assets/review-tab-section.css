@@ -51,7 +51,7 @@
 }
 
 .review-summary-card {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -59,6 +59,10 @@
     padding: 24px;
     border: 1px solid var(--border-color2);
     border-radius: 16px;
+}
+
+.jm-review-widget {
+    padding: 0;
 }
 
 .review-summary-left {

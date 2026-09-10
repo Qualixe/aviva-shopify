@@ -15,7 +15,9 @@
     width: 100%;
 }
 
-.related_product .swiper.card-slider .swiper-wrapper {
+.related_product .swiper.card-slider .swiper-wrapper,
+.recent_products .swiper.card-slider .swiper-wrapper
+ {
     margin: initial;
 }
 
