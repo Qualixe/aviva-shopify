@@ -1,0 +1,50 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="img-text-grid-item{% if s.reverse %} reverse-item{% endif %}" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+    <div class="img-text-grid-content">
+        {% content_for 'blocks' %}
+    </div>
+    <div class="img-text-grid-img">
+        {% if s.image != blank %}
+            {{ s.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: s.alt }}
+        {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag }}
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Grid Item",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "alt",
+            "label": "Image alt text"
+        },
+        {
+            "type": "checkbox",
+            "id": "reverse",
+            "label": "Reverse (image on top)",
+            "default": false
+        }
+    ],
+    "blocks": [
+        { "type": "text" },
+        { "type": "button" },
+        { "type": "@theme" },
+        { "type": "@app" }
+    ],
+    "presets": [
+        {
+            "name": "Grid Item"
+        }
+    ]
+}
+{% endschema %}

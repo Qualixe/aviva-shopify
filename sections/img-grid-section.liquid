@@ -1,0 +1,103 @@
+<section class="section img-text-grid-section">
+    <div class="container">
+        <div class="section-heading-wrapper">
+            {% content_for 'block', type: 'text', id: 'heading' %}
+        </div>
+        <div class="img-text-grid-wrap">
+            {% content_for 'blocks' %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Image Text Grid Section",
+    "settings": [],
+    "blocks": [
+        { "type": "img-grid-item" },
+        { "type": "@app" }
+    ],
+    "presets": [
+        {
+            "name": "Image Text Grid Section",
+            "blocks": {
+                "heading": {
+                    "type": "text",
+                    "static": true,
+                    "name": "t:names.heading",
+                    "settings": {
+                        "text": "<p>What sets us apart</p>",
+                        "type_preset": "h2",
+                        "width": "100%",
+                        "alignment": "center"
+                    }
+                },
+                "item-1": {
+                    "type": "img-grid-item",
+                    "settings": {
+                        "alt": "assembling a leather wallet"
+                    },
+                    "blocks": {
+                        "heading-1": {
+                            "type": "text",
+                            "name": "t:names.heading",
+                            "settings": {
+                                "text": "<p>Handcrafted with Care</p>",
+                                "type_preset": "h6"
+                            }
+                        },
+                        "text-1": {
+                            "type": "text",
+                            "settings": {
+                                "text": "<p>Each bag is thoughtfully constructed by skilled hands, blending traditional Indian textile patterns with modern silhouettes. We work closely with our artisan partners to make sure every stitch meets our quality standard, so what you carry feels as good as it looks.</p>",
+                                "type_preset": "paragraph"
+                            }
+                        },
+                        "text-2": {
+                            "type": "text",
+                            "settings": {
+                                "text": "<p>From the first sketch to the final quality check, every aviva piece is made to be lived in — not just looked at.</p>",
+                                "type_preset": "paragraph"
+                            }
+                        }
+                    },
+                    "block_order": ["heading-1", "text-1", "text-2"]
+                },
+                "item-2": {
+                    "type": "img-grid-item",
+                    "settings": {
+                        "reverse": true,
+                        "alt": "artisan working with leather"
+                    },
+                    "blocks": {
+                        "heading-1": {
+                            "type": "text",
+                            "name": "t:names.heading",
+                            "settings": {
+                                "text": "<p>Built for Every Journey</p>",
+                                "type_preset": "h6"
+                            }
+                        },
+                        "text-1": {
+                            "type": "text",
+                            "settings": {
+                                "text": "<p>Whether it's a daily commute, a weekend getaway, or a long-haul flight, our bags are engineered with the right compartments, durable hardware, and comfortable straps to move with you, wherever you're headed.</p>",
+                                "type_preset": "paragraph"
+                            }
+                        },
+                        "text-2": {
+                            "type": "text",
+                            "settings": {
+                                "text": "<p>We test every design for real-world durability before it ever reaches our shelves.</p>",
+                                "type_preset": "paragraph"
+                            }
+                        }
+                    },
+                    "block_order": ["heading-1", "text-1", "text-2"]
+                }
+            },
+            "block_order": ["item-1", "item-2"]
+        }
+    ]
+}
+{% endschema %}
