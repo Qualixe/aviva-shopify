@@ -1,0 +1,47 @@
+<section class="section image-gallary-section">
+    <div class="image-gallary-items">
+        {% content_for 'blocks' %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Image Gallery Section",
+    "settings": [],
+    "blocks": [
+        { "type": "image-gallery-item" },
+        { "type": "@app" }
+    ],
+    "presets": [
+        {
+            "name": "Image Gallery Section",
+            "blocks": [
+                {
+                    "type": "image-gallery-item",
+                    "settings": {
+                        "alt": "finishing a leather wallet"
+                    }
+                },
+                {
+                    "type": "image-gallery-item",
+                    "settings": {
+                        "alt": "leather workshop desk"
+                    }
+                },
+                {
+                    "type": "image-gallery-item",
+                    "settings": {
+                        "alt": "hand-cutting leather"
+                    }
+                },
+                {
+                    "type": "image-gallery-item",
+                    "settings": {
+                        "alt": "cutting leather pieces"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

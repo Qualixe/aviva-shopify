@@ -1,0 +1,49 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="image-gallary-item" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+    <div class="image-gallary-item-inner">
+        <div class="image-gallary-item-img">
+            {% if s.image != blank %}
+                {{ s.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: s.alt }}
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag }}
+            {% endif %}
+        </div>
+        <div class="image-gallary-item-content">
+            <div class="image-gallary-item-content-inner">
+                {% content_for 'blocks' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Gallery Item",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "alt",
+            "label": "Alt text"
+        }
+    ],
+    "blocks": [
+        { "type": "text" },
+        { "type": "button" },
+        { "type": "group" },
+        { "type": "@theme" },
+        { "type": "@app" }
+    ],
+    "presets": [
+        {
+            "name": "Gallery Item"
+        }
+    ]
+}
+{% endschema %}
