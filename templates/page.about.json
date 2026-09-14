@@ -174,10 +174,56 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "image_gallery_section_WVRGHL": {
+      "type": "image-gallery-section",
+      "blocks": {
+        "image_gallery_item_DqkP3m": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/about-craft-2.jpg",
+            "alt": "finishing a leather wallet"
+          },
+          "blocks": {}
+        },
+        "image_gallery_item_xEJcFt": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/about-craft-4.jpg",
+            "alt": "leather workshop desk"
+          },
+          "blocks": {}
+        },
+        "image_gallery_item_tGiaEc": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/about-craft-5.jpg",
+            "alt": "hand-cutting leather"
+          },
+          "blocks": {}
+        },
+        "image_gallery_item_93nRBp": {
+          "type": "image-gallery-item",
+          "settings": {
+            "image": "shopify://shop_images/about-craft-8.jpg",
+            "alt": "cutting leather pieces"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_gallery_item_DqkP3m",
+        "image_gallery_item_xEJcFt",
+        "image_gallery_item_tGiaEc",
+        "image_gallery_item_93nRBp"
+      ],
+      "name": "Image Gallery Section",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "image_text_section_9yQhAi"
+    "image_text_section_9yQhAi",
+    "image_gallery_section_WVRGHL"
   ]
 }
