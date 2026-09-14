@@ -1,0 +1,103 @@
+{{ 'img-text-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+    assign s = section.settings
+%}
+<section
+    class="section img-text-section spacing-style{% if s.reverse %} img-text-section-reverse{% endif %}"
+    style="{% render 'spacing-style', settings: s %}"
+>
+    <div class="container">
+        <div class="img-text-section-wrapper">
+            <div class="img-text-section-img">
+                {% content_for 'block', type: 'image', id: 'image' %}
+            </div>
+            <div class="img-text-section-content">
+                {% content_for 'blocks' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Image Text Section",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "reverse",
+            "label": "Reverse layout (image on right)",
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": "t:content.padding"
+        },
+        {
+            "type": "range",
+            "id": "padding-block-start",
+            "label": "t:settings.top",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding-block-end",
+            "label": "t:settings.bottom",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+        }
+    ],
+    "blocks": [
+        { "type": "image" },
+        { "type": "text" },
+        { "type": "button" },
+        { "type": "group" },
+        { "type": "@theme" },
+        { "type": "@app" }
+    ],
+    "presets": [
+        {
+            "name": "Image Text Section",
+            "blocks": {
+                "image": {
+                    "type": "image",
+                    "static": true,
+                    "settings": {
+                        "image_ratio": "square"
+                    }
+                },
+                "heading": {
+                    "type": "text",
+                    "name": "t:names.heading",
+                    "settings": {
+                        "text": "<p>Who we are?</p>",
+                        "type_preset": "h2"
+                    }
+                },
+                "paragraph-1": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>aviva is a homegrown bag and accessories brand built for people who move — through offices, airports, and everything in between. Every piece we make blends everyday function with a design language rooted in Indian craft traditions.</p>",
+                        "type_preset": "paragraph"
+                    }
+                },
+                "paragraph-2": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>Since our founding, we've partnered with skilled artisans and modern manufacturers to bring you bags that are as durable as they are beautiful. From laptop-ready backpacks to statement totes, our collections are designed to keep up with real life, at prices that feel fair.</p>",
+                        "type_preset": "paragraph"
+                    }
+                }
+            },
+            "block_order": ["heading", "paragraph-1", "paragraph-2"]
+        }
+    ]
+}
+{% endschema %}
