@@ -178,6 +178,7 @@ span {
 
 .section {
     padding: 42px 0;
+    display:block;
 }
 
 .section-bg{
