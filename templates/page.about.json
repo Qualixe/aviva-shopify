@@ -335,12 +335,233 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "img_grid_section_eix6p9": {
+      "type": "img-grid-section",
+      "blocks": {
+        "img_grid_item_DNFNHL": {
+          "type": "img-grid-item",
+          "settings": {
+            "image": "shopify://shop_images/about-craft-3.jpg",
+            "alt": "assembling a leather wallet",
+            "reverse": false
+          },
+          "blocks": {
+            "text_h34VU4": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Handcrafted with Care</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_gWf4Ch": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Each bag is thoughtfully constructed by skilled hands, blending traditional Indian textile patterns with modern silhouettes. We work closely with our artisan partners to make sure every stitch meets our quality standard, so what you carry feels as good as it looks.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_LpWpYY": {
+              "type": "text",
+              "settings": {
+                "text": "<p>From the first sketch to the final quality check, every aviva piece is made to be lived in — not just looked at.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_h34VU4",
+            "text_gWf4Ch",
+            "text_LpWpYY"
+          ]
+        },
+        "img_grid_item_bBD6Tw": {
+          "type": "img-grid-item",
+          "settings": {
+            "image": "shopify://shop_images/about-craft-7.jpg",
+            "alt": "artisan working with leather",
+            "reverse": true
+          },
+          "blocks": {
+            "text_qjxFyc": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Built for Every Journey</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_iFHUY7": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Whether it's a daily commute, a weekend getaway, or a long-haul flight, our bags are engineered with the right compartments, durable hardware, and comfortable straps to move with you, wherever you're headed.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_j3xrhN": {
+              "type": "text",
+              "settings": {
+                "text": "<p>We test every design for real-world durability before it ever reaches our shelves.</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_qjxFyc",
+            "text_iFHUY7",
+            "text_j3xrhN"
+          ]
+        },
+        "heading": {
+          "type": "text",
+          "name": "t:names.heading",
+          "static": true,
+          "settings": {
+            "text": "<h3>What sets us apart</h3>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.brand_color }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "img_grid_item_DNFNHL",
+        "img_grid_item_bBD6Tw"
+      ],
+      "name": "Image Text Grid Section",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "image_text_section_9yQhAi",
     "image_gallery_section_WVRGHL",
-    "image_text_section_a6VEhr"
+    "image_text_section_a6VEhr",
+    "img_grid_section_eix6p9"
   ]
 }
