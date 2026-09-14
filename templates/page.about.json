@@ -219,11 +219,127 @@
       ],
       "name": "Image Gallery Section",
       "settings": {}
+    },
+    "image_text_section_a6VEhr": {
+      "type": "image-text-section",
+      "blocks": {
+        "text_WUV6Lc": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>why choose us?</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "right",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.brand_color }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_nyXNpW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our product line includes backpacks, totes, sling bags, wallets, travel duffels, and passport covers — each crafted using premium vegan leather, water-resistant fabrics, and reinforced stitching built to last through daily use and long journeys alike.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "right",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 20,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_jHrjtY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every aviva bag goes through multiple quality checks before it reaches you, and we back every purchase with a 30-day easy return policy and dedicated after-sales support, so you can shop with complete confidence.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "right",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 20,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image": {
+          "type": "image",
+          "static": true,
+          "settings": {
+            "link": "",
+            "image_ratio": "square",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_WUV6Lc",
+        "text_nyXNpW",
+        "text_jHrjtY"
+      ],
+      "name": "Image Text Section",
+      "settings": {
+        "reverse": true,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "image_text_section_9yQhAi",
-    "image_gallery_section_WVRGHL"
+    "image_gallery_section_WVRGHL",
+    "image_text_section_a6VEhr"
   ]
 }
