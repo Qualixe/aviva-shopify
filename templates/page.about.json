@@ -303,6 +303,7 @@
           "type": "image",
           "static": true,
           "settings": {
+            "image": "shopify://shop_images/about-craft-6.jpg",
             "link": "",
             "image_ratio": "square",
             "width": "fill",
