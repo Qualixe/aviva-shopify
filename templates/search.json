@@ -171,10 +171,32 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "search_page_36cjix": {
+      "type": "search-page",
+      "blocks": {
+        "search-bar": {
+          "type": "search-bar",
+          "static": true,
+          "settings": {
+            "placeholder": "Search products"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Search Page",
+      "settings": {
+        "products_per_page": 24
+      }
     }
   },
   "order": [
+<<<<<<< HEAD
     "search",
     "main"
+=======
+    "main",
+    "search_page_36cjix"
+>>>>>>> 5695a6b0ecbdb99e0f5ed758671ac2aaada14ac9
   ]
 }
