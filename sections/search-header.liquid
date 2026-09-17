@@ -1,4 +1,4 @@
-{{ 'search-bar.css' | asset_url | stylesheet_tag }}
+
 
 {% liquid
   if section.settings.background_color != blank
@@ -28,7 +28,7 @@
     {% endcapture %}
 
     {% content_for 'block', id: 'heading', type: '_heading', text: heading_text %}
-    {% content_for 'block', id: 'search', type: 'search-bar' %}
+    {% content_for 'block', id: 'search', type: '_search-input' %}
   </div>
 </div>
 
