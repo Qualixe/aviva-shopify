@@ -76,12 +76,15 @@
     width: 100%;
     color: var(--color-input-text);
     background-color: var(--color-input-background);
-    padding-block: var(--padding-lg);
+    padding-block: calc(var(--padding-lg) * 1.35);
     padding-inline: calc(var(--icon-size-lg) + var(--margin-xl) * 1.5);
     text-overflow: ellipsis;
     overflow: hidden;
-    border-radius: var(--style-border-radius-inputs);
+    font-size: 1.05em;
+    letter-spacing: 0.01em;
+    border-radius: 999px;
     border: var(--style-border-width-inputs) solid var(--color-input-border);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 
     @media screen and (max-width: 749px) {
       padding-inline: calc(var(--margin-xs) + var(--icon-size-lg) + var(--padding-md));
@@ -90,6 +93,17 @@
 
   .search-page-input::placeholder {
     color: rgb(var(--color-input-text-rgb) / var(--opacity-subdued-text));
+  }
+
+  .search-page-input:hover {
+    border-color: var(--gold-color, var(--color-input-border));
+  }
+
+  .search-page-input:focus,
+  .search-page-input:focus-visible {
+    outline: none;
+    border-color: var(--gold-color, var(--color-input-border));
+    box-shadow: 0 0 0 4px rgb(var(--gold-color-rgb, 201 161 90) / 0.18), 0 8px 24px rgb(0 0 0 / 0.06);
   }
 
   .search-page-input__parent {
@@ -111,10 +125,15 @@
     align-items: center;
     background-color: var(--color-background);
     margin: var(--margin-2xl) 0 var(--margin-md);
+    transition: transform 0.25s ease;
 
     @media screen and (max-width: 749px) {
       max-width: 100%;
     }
+  }
+
+  search-page-input-component:has(.search-page-input:focus) {
+    transform: translateY(-1px);
   }
 
   search-page-input-component .search__icon,
@@ -126,6 +145,8 @@
     top: auto;
     width: var(--icon-size-lg);
     height: var(--icon-size-lg);
+    border-radius: 100%;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   search-page-input-component .search__icon svg,
@@ -135,7 +156,7 @@
   }
 
   search-page-input-component .search__icon svg {
-    color: var(--color-input-text);
+    color: var(--gold-color, var(--color-input-text));
   }
 
   search-page-input-component .search__icon {
@@ -155,11 +176,17 @@
     visibility: hidden;
     pointer-events: none;
     transition: opacity var(--animation-speed) var(--animation-easing),
-      visibility var(--animation-speed) var(--animation-easing);
+      visibility var(--animation-speed) var(--animation-easing),
+      background-color 0.2s ease, color 0.2s ease;
 
     @media screen and (max-width: 749px) {
       right: var(--margin-md);
     }
+  }
+
+  search-page-input-component .search__reset-button:hover {
+    background-color: rgb(var(--gold-color-rgb, 201 161 90) / 0.12);
+    color: var(--gold-color, var(--color-input-text));
   }
 
   search-page-input-component:has(.search-page-input:not(:placeholder-shown)) .search__reset-button {
