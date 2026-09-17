@@ -1,0 +1,57 @@
+{{ 'search-bar.css' | asset_url | stylesheet_tag }}
+{{ 'search-page-section.css' | asset_url | stylesheet_tag }}
+{{ 'collections.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+	assign heading = 'content.search' | t
+	if search.performed
+		assign heading = 'content.search_results' | t
+	endif
+%}
+<section class="search-page-section">
+	<div class="container">
+		<h1 class="search-page-title">{{ heading }}</h1>
+
+		{% content_for 'block', type: 'search-bar', id: 'search-bar' %}
+
+		{% if search.performed %}
+			{% paginate search.results by s.products_per_page %}
+				{% assign products = search.results | where: 'object_type', 'product' %}
+
+				{% if products.size > 0 %}
+					<p class="search-page-count">{{ 'content.search_results_resource_products' | t }} ({{ search.results_count }})</p>
+					<div class="product-items">
+						{% for product in products %}
+							<div class="product-item">
+								{% render 'product', product: product %}
+							</div>
+						{% endfor %}
+					</div>
+					{% render 'pagination-controls', paginate: paginate %}
+				{% else %}
+					<p class="search-page-empty">
+						{{ 'content.search_results_no_results_check_spelling' | t: terms: search.terms }}
+					</p>
+				{% endif %}
+			{% endpaginate %}
+		{% endif %}
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Search Page",
+	"settings": [
+		{
+			"type": "range",
+			"id": "products_per_page",
+			"label": "Products per page",
+			"min": 8,
+			"max": 36,
+			"step": 4,
+			"default": 24
+		}
+	]
+}
+{% endschema %}
