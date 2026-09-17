@@ -63,8 +63,8 @@
       "type": "gift-banner-section",
       "name": "Gift Banner",
       "settings": {
-        "image": "shopify://shop_images/gift-banner-box-img-1.png",
-        "image_mob": "shopify://shop_images/gift-banner-box-img-1.png",
+        "image": "shopify://shop_images/single-banner2.webp",
+        "image_mob": "shopify://shop_images/single-banner2-mobile.webp",
         "title": "Bags made for\nlife on the move",
         "highlight": "life on the move",
         "link": ""
