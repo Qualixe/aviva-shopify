@@ -1,0 +1,73 @@
+{{ 'gift-banner.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+
+	assign title = s.title | newline_to_br
+	if s.highlight != blank and title contains s.highlight
+		assign wrapped_highlight = '<span class="highlight">' | append: s.highlight | append: '</span>'
+		assign title = title | replace: s.highlight, wrapped_highlight
+	endif
+%}
+<section class="gift-banner-section">
+	<a href="{{ s.link }}" class="gift-banner-wrap">
+		<div class="img">
+			{% if s.image != blank %}
+				{{ s.image | image_url: width: 2000 | image_tag: class: 'gift-banner-desktop', loading: 'lazy' }}
+			{% else %}
+				{{ 'lifestyle-1' | placeholder_svg_tag: class: 'gift-banner-desktop' }}
+			{% endif %}
+
+			{% if s.image_mob != blank %}
+				{{ s.image_mob | image_url: width: 1000 | image_tag: class: 'gift-banner-mobile', loading: 'lazy' }}
+			{% endif %}
+		</div>
+		{% if title != blank %}
+			<div class="content">
+				<h1 class="title">{{ title }}</h1>
+			</div>
+		{% endif %}
+	</a>
+</section>
+
+{% schema %}
+{
+	"name": "Gift Banner",
+	"settings": [
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "Image"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_mob",
+			"label": "Image (Mobile)"
+		},
+		{
+			"type": "textarea",
+			"id": "title",
+			"label": "Title",
+			"info": "Use a new line to break the title where you want it to wrap",
+			"default": "Bags made for\nlife on the move"
+		},
+		{
+			"type": "text",
+			"id": "highlight",
+			"label": "Highlighted word(s)",
+			"info": "Must match part of the title exactly",
+			"default": "life on the move"
+		},
+		{
+			"type": "url",
+			"id": "link",
+			"label": "Link"
+		}
+	],
+	"presets": [
+		{
+			"name": "Gift Banner"
+		}
+	]
+}
+{% endschema %}
