@@ -69,10 +69,50 @@
         "highlight": "life on the move",
         "link": ""
       }
+    },
+    "gift_icon_items_TyLfTm": {
+      "type": "gift-icon-items",
+      "blocks": {
+        "gift_icon_item_CwFbUF": {
+          "type": "gift-icon-item",
+          "settings": {
+            "icon": "handcrafted",
+            "title": "Thoughtful & handcrafted"
+          },
+          "blocks": {}
+        },
+        "gift_icon_item_hQfrPE": {
+          "type": "gift-icon-item",
+          "settings": {
+            "icon": "gift-box",
+            "title": "Gift-worthy boxes"
+          },
+          "blocks": {}
+        },
+        "gift_icon_item_GUBaNg": {
+          "type": "gift-icon-item",
+          "settings": {
+            "icon": "india-design",
+            "title": "India-inspired designs"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "gift_icon_item_CwFbUF",
+        "gift_icon_item_hQfrPE",
+        "gift_icon_item_GUBaNg"
+      ],
+      "name": "Gift Icon Items",
+      "settings": {
+        "title": "Our Kind of Gifting",
+        "show_flourish": true
+      }
     }
   },
   "order": [
     "main",
-    "gift_banner_section_zVYWPW"
+    "gift_banner_section_zVYWPW",
+    "gift_icon_items_TyLfTm"
   ]
 }
