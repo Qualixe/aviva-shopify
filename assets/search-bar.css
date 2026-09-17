@@ -1,0 +1,104 @@
+/* search-bar css start */
+.search-bar {
+    width: 100%;
+    max-width: 480px;
+    margin: 24px 0;
+}
+
+.search-bar-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--brand-color);
+    border-radius: 999px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.search-bar-field:focus-within {
+    border-color: var(--gold-color);
+    box-shadow: 0 0 0 4px rgba(201, 161, 90, 0.18);
+}
+
+.search-bar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-inline-start: 20px;
+    color: var(--brand-color);
+    flex-shrink: 0;
+}
+
+.search-bar-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--brand-color);
+    font-size: 16px;
+    padding: 14px 44px 14px 12px;
+}
+
+.search-bar-input::placeholder {
+    color: #8a9a9c;
+}
+
+.search-bar-clear {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: var(--brand-color);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.search-bar-clear svg {
+    width: 12px;
+    height: 12px;
+}
+
+.search-bar-clear:hover {
+    background: rgba(201, 161, 90, 0.15);
+    color: var(--gold-color);
+}
+
+.search-bar-field:has(.search-bar-input:not(:placeholder-shown)) .search-bar-clear {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.search-bar-no-results {
+    margin: 12px 0 0 0;
+    color: var(--brand-color);
+    opacity: 0.7;
+}
+
+/* search-bar css end */
+
+@media only screen and (max-width: 575px) {
+
+    /* search-bar css start */
+    .search-bar-icon {
+        margin-inline-start: 16px;
+    }
+
+    .search-bar-input {
+        font-size: 14px;
+        padding: 12px 40px 12px 10px;
+    }
+
+    /* search-bar css end */
+}

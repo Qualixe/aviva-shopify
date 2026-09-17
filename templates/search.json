@@ -32,11 +32,10 @@
           "blocks": {}
         },
         "search": {
-          "type": "_search-input",
+          "type": "search-bar",
           "static": true,
           "settings": {
-            "width": "custom",
-            "custom_width": 50
+            "placeholder": "Search products"
           },
           "blocks": {}
         }

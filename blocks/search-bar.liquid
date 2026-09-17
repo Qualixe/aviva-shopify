@@ -1,0 +1,65 @@
+{% liquid
+	assign s = block.settings
+%}
+<form
+	action="{{ routes.search_url }}"
+	method="get"
+	role="search"
+	class="search-bar"
+	{{ block.shopify_attributes }}
+>
+	<input type="hidden" name="type" value="product">
+	<div class="search-bar-field">
+		<span class="search-bar-icon" aria-hidden="true">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+				<circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"></circle>
+				<path d="M18 18l-4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+			</svg>
+		</span>
+		<label for="SearchBarInput-{{ block.id }}" class="visually-hidden">{{ 'content.search_input_label' | t }}</label>
+		<input
+			type="search"
+			name="q"
+			id="SearchBarInput-{{ block.id }}"
+			class="search-bar-input"
+			value="{{ search.terms | escape }}"
+			placeholder="{{ s.placeholder | default: 'Search products' }}"
+			autocomplete="off"
+		>
+		<a
+			href="{{ routes.search_url }}?type=product&q="
+			class="search-bar-clear"
+			aria-label="{{ 'accessibility.reset_search' | t }}"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="none">
+				<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+			</svg>
+		</a>
+	</div>
+
+	{% if search.results.size == 0 and search.terms != blank %}
+		<p class="search-bar-no-results">
+			{{ 'content.search_results_no_results_check_spelling' | t: terms: search.terms }}
+		</p>
+	{% endif %}
+</form>
+
+{% schema %}
+{
+	"name": "Search Bar",
+	"tag": null,
+	"settings": [
+		{
+			"type": "text",
+			"id": "placeholder",
+			"label": "Placeholder text",
+			"default": "Search products"
+		}
+	],
+	"presets": [
+		{
+			"name": "Search Bar"
+		}
+	]
+}
+{% endschema %}
