@@ -11,6 +11,17 @@
   "sections": {
     "main": {
       "type": "search-page",
+      "blocks": {
+        "search-bar": {
+          "type": "search-bar",
+          "static": true,
+          "settings": {
+            "placeholder": "Search products"
+          },
+          "blocks": {}
+        }
+      },
+      "disabled": true,
       "settings": {
         "products_per_page": 24
       }
