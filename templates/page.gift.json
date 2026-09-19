@@ -284,6 +284,240 @@
         "title": "Gift by What's Inside",
         "show_flourish": true
       }
+    },
+    "community_review_pHppfX": {
+      "type": "community-review",
+      "blocks": {
+        "community_review_item_fViYMY": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7668411-uhd_2160_4096_25fps.mp4",
+            "text": "Crafted leather, built to last",
+            "highlight": "last",
+            "product": ""
+          },
+          "blocks": {}
+        },
+        "community_review_item_m6bVKm": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/8798159-uhd_4096_2160_25fps.mp4",
+            "text": "why 1000+ customers trust us",
+            "highlight": "1000+",
+            "product": ""
+          },
+          "blocks": {}
+        },
+        "community_review_item_UWmWhC": {
+          "type": "community-review-item",
+          "settings": {
+            "video": "shopify://files/videos/7815110-uhd_2160_3840_30fps.mp4",
+            "text": "Premium bag reviews",
+            "highlight": "bag",
+            "product": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "community_review_item_fViYMY",
+        "community_review_item_m6bVKm",
+        "community_review_item_UWmWhC"
+      ],
+      "name": "Community Review",
+      "settings": {
+        "title": ""
+      }
+    },
+    "gift_budget_Wkqc6q": {
+      "type": "gift-budget",
+      "blocks": {
+        "gift_budget_item_GNjHEm": {
+          "type": "gift-budget-item",
+          "settings": {
+            "label": "Gifts Under",
+            "amount": "1500",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_budget_item_7at9Pa": {
+          "type": "gift-budget-item",
+          "settings": {
+            "label": "Gifts Under",
+            "amount": "2500",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_budget_item_r7Qyak": {
+          "type": "gift-budget-item",
+          "settings": {
+            "label": "Gifts Under",
+            "amount": "4000",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_budget_item_VgFHMU": {
+          "type": "gift-budget-item",
+          "settings": {
+            "label": "Explore All",
+            "amount": "",
+            "link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "gift_budget_item_GNjHEm",
+        "gift_budget_item_7at9Pa",
+        "gift_budget_item_r7Qyak",
+        "gift_budget_item_VgFHMU"
+      ],
+      "name": "Gift Budget",
+      "settings": {
+        "title": "Gift by Budget"
+      }
+    },
+    "single_video_7tWfgc": {
+      "type": "single-video",
+      "name": "Single Video",
+      "settings": {
+        "video": "shopify://files/videos/6649980-uhd_4096_2160_25fps.mp4",
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "controls": false
+      }
+    },
+    "products_zQVaTw": {
+      "type": "products",
+      "blocks": {
+        "section-heading": {
+          "type": "section-heading",
+          "static": true,
+          "settings": {
+            "heading": "The Travel Edit",
+            "button": "Shop All",
+            "link": "",
+            "heading_color": "{{ settings.color_palette.brand_color }}",
+            "btn_color": "{{ settings.color_palette.brand_color }}"
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Products",
+      "settings": {
+        "collection": "bages",
+        "limit": 12
+      }
+    },
+    "slide_text_qrURpb": {
+      "type": "slide-text",
+      "blocks": {
+        "marquee_text_item_ptewWE": {
+          "type": "marquee-text-item",
+          "settings": {
+            "text": "Carry the Story of India"
+          },
+          "blocks": {}
+        },
+        "marquee_text_item_wqEXzn": {
+          "type": "marquee-text-item",
+          "settings": {
+            "text": "Curated with Love"
+          },
+          "blocks": {}
+        },
+        "marquee_text_item_6jWYDP": {
+          "type": "marquee-text-item",
+          "settings": {
+            "text": "Carry the Story of India"
+          },
+          "blocks": {}
+        },
+        "marquee_text_item_EDGTh9": {
+          "type": "marquee-text-item",
+          "settings": {
+            "text": "Curated with Love"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "marquee_text_item_ptewWE",
+        "marquee_text_item_wqEXzn",
+        "marquee_text_item_6jWYDP",
+        "marquee_text_item_EDGTh9"
+      ],
+      "name": "Text Marquee",
+      "settings": {}
+    },
+    "faq_HwtqLa": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_g8DxWd": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Most orders are dispatched within 1-2 business days and delivered within 3-5 business days, depending on your location. You'll receive a tracking link as soon as your gift ships.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_CxM9Ck": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Can I customize my gift box?",
+            "answer": "<p>Yes! You can mix and match items within a gift box, and add a personalized note at checkout. Select \"Buy It With\" add-ons on the product page to build a bundle that suits the occasion.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_w6DUnV": {
+          "type": "faq-item",
+          "settings": {
+            "question": "What is your return &amp; exchange policy?",
+            "answer": "<p>Unused items in their original packaging can be returned or exchanged within 30 days of delivery. Personalized or engraved gifts are final sale unless damaged in transit.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_KheWB8": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Do you offer international shipping?",
+            "answer": "<p>We currently ship across the country with select international destinations available at checkout. Shipping fees and delivery times are calculated based on your address.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_V9in6T": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>Once your order ships, you'll receive an email and SMS with a tracking link. You can also check your order status anytime from your account dashboard.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_f9EwLq": {
+          "type": "faq-item",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept all major credit and debit cards, mobile wallets, and cash on delivery in select areas. All online payments are processed securely at checkout.</p>"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "faq_item_g8DxWd",
+        "faq_item_CxM9Ck",
+        "faq_item_w6DUnV",
+        "faq_item_KheWB8",
+        "faq_item_V9in6T",
+        "faq_item_f9EwLq"
+      ],
+      "name": "FAQs",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
     }
   },
   "order": [
@@ -294,6 +528,12 @@
     "gift_box_8C9FGm",
     "gift_box_N4hyjz",
     "co_branded_jQcyie",
-    "gift_inside_mXMrL6"
+    "gift_inside_mXMrL6",
+    "community_review_pHppfX",
+    "gift_budget_Wkqc6q",
+    "single_video_7tWfgc",
+    "products_zQVaTw",
+    "slide_text_qrURpb",
+    "faq_HwtqLa"
   ]
 }
