@@ -1,0 +1,49 @@
+{{ 'text-marquee-section.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  The CSS animation shifts the track by exactly -16.6667% (1/6) to loop
+  seamlessly, so the group of text blocks must be repeated exactly 6 times.
+  Capture it once and print it 6 times rather than re-rendering the blocks
+  (which would create 6 sets of duplicate ids in the theme editor).
+{%- endcomment -%}
+{% capture item_group %}{% content_for 'blocks' %}{% endcapture %}
+<section class="text-marquee-section">
+    <div class="text-marquee-track">
+        {% for i in (1..6) %}
+            <div class="text-marquee-item"{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+                {{ item_group }}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Text Marquee",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "marquee-text-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Text Marquee",
+            "blocks": [
+                {
+                    "type": "marquee-text-item",
+                    "settings": {
+                        "text": "Carry the Story of India"
+                    }
+                },
+                {
+                    "type": "marquee-text-item",
+                    "settings": {
+                        "text": "Curated with Love"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

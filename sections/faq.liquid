@@ -1,0 +1,83 @@
+{% liquid
+	assign s = section.settings
+%}
+<section class="faq-section">
+    <div class="container">
+        {% if s.title != blank %}
+            <div class="section-heading-wrapper">
+                <h1 class="section-heading">{{ s.title }}</h1>
+            </div>
+        {% endif %}
+        <div class="product-accordion-items">
+            {% content_for 'blocks' %}
+        </div>
+    </div>
+</section> 
+
+{% schema %}
+{
+    "name": "FAQs",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Frequently Asked Questions"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "faq-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQs",
+            "blocks": [
+                {
+                    "type": "faq-item",
+                    "settings": {
+                        "question": "How long does shipping take?",
+                        "answer": "<p>Most orders are dispatched within 1-2 business days and delivered within 3-5 business days, depending on your location. You'll receive a tracking link as soon as your gift ships.</p>"
+                    }
+                },
+                {
+                    "type": "faq-item",
+                    "settings": {
+                        "question": "Can I customize my gift box?",
+                        "answer": "<p>Yes! You can mix and match items within a gift box, and add a personalized note at checkout. Select \"Buy It With\" add-ons on the product page to build a bundle that suits the occasion.</p>"
+                    }
+                },
+                {
+                    "type": "faq-item",
+                    "settings": {
+                        "question": "What is your return &amp; exchange policy?",
+                        "answer": "<p>Unused items in their original packaging can be returned or exchanged within 30 days of delivery. Personalized or engraved gifts are final sale unless damaged in transit.</p>"
+                    }
+                },
+                {
+                    "type": "faq-item",
+                    "settings": {
+                        "question": "Do you offer international shipping?",
+                        "answer": "<p>We currently ship across the country with select international destinations available at checkout. Shipping fees and delivery times are calculated based on your address.</p>"
+                    }
+                },
+                {
+                    "type": "faq-item",
+                    "settings": {
+                        "question": "How do I track my order?",
+                        "answer": "<p>Once your order ships, you'll receive an email and SMS with a tracking link. You can also check your order status anytime from your account dashboard.</p>"
+                    }
+                },
+                {
+                    "type": "faq-item",
+                    "settings": {
+                        "question": "What payment methods do you accept?",
+                        "answer": "<p>We accept all major credit and debit cards, mobile wallets, and cash on delivery in select areas. All online payments are processed securely at checkout.</p>"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

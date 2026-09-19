@@ -1,0 +1,75 @@
+{{ 'gift-by-budget-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+%}
+<section class="gift-by-budget-section">
+    <div class="container">
+        {% if s.title != blank %}
+            <h2 class="gift-by-budget-title">{{ s.title }}</h2>
+        {% endif %}
+        <div class="gift-by-budget-items">
+            {% content_for 'blocks' %}
+        </div>
+    </div>
+</section>
+
+<style>
+    .gift-by-budget-item {
+        background: {{ settings.color_palette.gold }};
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Gift Budget",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Gift by Budget"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "gift-budget-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gift Budget",
+            "blocks": [
+                {
+                    "type": "gift-budget-item",
+                    "settings": {
+                        "label": "Gifts Under",
+                        "amount": "1500"
+                    }
+                },
+                {
+                    "type": "gift-budget-item",
+                    "settings": {
+                        "label": "Gifts Under",
+                        "amount": "2500"
+                    }
+                },
+                {
+                    "type": "gift-budget-item",
+                    "settings": {
+                        "label": "Gifts Under",
+                        "amount": "4000"
+                    }
+                },
+                {
+                    "type": "gift-budget-item",
+                    "settings": {
+                        "label": "Explore All",
+                        "amount": ""
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

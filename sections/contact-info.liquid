@@ -1,0 +1,64 @@
+{{ 'contact-icon-item-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+%}
+<section class="contact-icon-item-section">
+    <div class="container">
+        {% if s.title != blank %}
+            <div class="section-heading-wrapper">
+                <h1 class="section-heading h2">{{ s.title }}</h1>
+            </div>
+        {% endif %}
+        <div class="contact-icon-items">
+            {% content_for 'blocks' %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Contact Info",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Contact Us"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "contact-icon-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Contact Info",
+            "blocks": [
+                {
+                    "type": "contact-icon-item",
+                    "settings": {
+                        "title": "Visit store",
+                        "text": "<p><strong>Physical address:</strong> House-06, Block-A, Road-3, Mirpur-11, Dhaka-1216, Mirpur, Bangladesh</p>"
+                    }
+                },
+                {
+                    "type": "contact-icon-item",
+                    "settings": {
+                        "title": "Email us",
+                        "text": "<p>Have a quick question? Send us a message on E-Mail: <strong>aviva@gmail.com</strong></p>"
+                    }
+                },
+                {
+                    "type": "contact-icon-item",
+                    "settings": {
+                        "title": "Call Us",
+                        "text": "<p>Directly for immediate assistance: <strong>24 hours open.</strong> <strong>call (01521-481618)</strong></p>"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
