@@ -109,6 +109,12 @@
         "id": "border",
         "label": "Border",
         "default" : "#e4e6e7"
+      },
+      {
+        "type": "color",
+        "id": "muted",
+        "label": "Muted",
+        "default" : "#6c6c6c"
       }
     ]
   },

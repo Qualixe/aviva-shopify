@@ -1,0 +1,116 @@
+{{ 'gift-banner-box-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+%}
+<section class="gift-banner-box-section{% if s.reverse %} reverse{% endif %}">
+    <div class="container">
+        {% if s.heading != blank %}
+            <h2 class="gift-banner-box-heading">{{ s.heading }}</h2>
+        {% endif %}
+        <div class="gift-banner-box" style="border-color: {{ s.border_color }}">
+            <div class="gift-banner-box-img">
+                {% if s.image != blank %}
+                    {{ s.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: s.title }}
+                {% else %}
+                    {{ 'lifestyle-1' | placeholder_svg_tag }}
+                {% endif %}
+                {% if s.badge != blank %}
+                    <span class="gift-banner-box-badge">{{ s.badge }}</span>
+                {% endif %}
+            </div>
+            <div class="gift-banner-box-content">
+                {% if s.title != blank %}
+                    <h2 class="gift-banner-box-title">{{ s.title }}</h2>
+                {% endif %}
+                {% if s.text != blank %}
+                    <p class="gift-banner-box-text">{{ s.text }}</p>
+                {% endif %}
+                {% if s.button_label != blank %}
+                    <a href="{{ s.button_link | default: '#' }}" class="gift-banner-box-btn">{{ s.button_label }}</a>
+                {% endif %}
+            </div>
+        </div>
+        {% if s.show_flourish %}
+            <div class="gift-banner-box-flourish">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 2c0 4-1 6-5 7 4 1 5 3 5 7 0-4 1-6 5-7-4-1-5-3-5-7z" fill="{{ settings.color_palette.gold }}"></path>
+                    <path d="M4 15c0 1.5-.5 2.2-2 2.5 1.5.3 2 1 2 2.5 0-1.5.5-2.2 2-2.5-1.5-.3-2-1-2-2.5z"
+                        fill="{{ settings.color_palette.gold }}"></path>
+                </svg>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Gift Box",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Gift The Box"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "badge",
+            "label": "Badge",
+            "default": "Small"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Box title",
+            "default": "The Nawabi Box"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "For when little things say the most."
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label",
+            "default": "Gift Nawabi Box"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+        },
+        {
+            "type": "checkbox",
+            "id": "reverse",
+            "label": "Reverse layout",
+            "info": "Show the image on the right instead of the left",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_flourish",
+            "label": "Show flourish icon",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border Color",
+            "default": "{{ settings.color_palette.gold }}" 
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gift Box"
+        }
+    ]
+}
+{% endschema %}

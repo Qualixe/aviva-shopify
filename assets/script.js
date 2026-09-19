@@ -1836,6 +1836,39 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Header mega-menu placement js end --
 
+// Mobile mega-menu placement js start --
+// Same idea as the header version above: a "Mega Menu" block whose `link`
+// setting matches a top-level mobile nav item's handle replaces that item's
+// default native sublist. Items without a matching block keep showing their
+// default native menu.
+document.addEventListener("DOMContentLoaded", () => {
+  const source = document.querySelector(".mobile-items-source");
+  if (!source) return;
+
+  /** @type {NodeListOf<HTMLElement>} */
+  (source.querySelectorAll("[data-mega-menu]")).forEach((panel) => {
+    const handle = panel.dataset.megaMenu;
+    if (!handle) return;
+
+    const navItem = document.querySelector(
+      `.mobile-nav-item[data-nav-link="${handle}"]`
+    );
+    if (!navItem) return;
+
+    const content = navItem.querySelector(".mobile-nav-item-content");
+    if (!content) return;
+
+    const defaultSublist = content.querySelector(".mobile-nav-sublist");
+    if (defaultSublist) defaultSublist.remove();
+
+    navItem.classList.add("has-mega_menu");
+    content.appendChild(panel);
+  });
+
+  source.remove();
+});
+// Mobile mega-menu placement js end --
+
 // product variant options js start--
 (function () {
   const wrap = document.querySelector(".product-variant-options");

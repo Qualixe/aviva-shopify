@@ -1,0 +1,67 @@
+{{ 'co-branded-gift-box-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+%}
+<section class="co-branded-gift-box-section">
+    <div class="container">
+        {% if s.title != blank %}
+            <h2 class="co-branded-gift-box-title">{{ s.title }}</h2>
+        {% endif %}
+        <div class="swiper co-branded-gift-box-slider">
+            <div class="swiper-wrapper">
+                {% content_for 'blocks' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Co-Branded Gift Box",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Co-Branded Gift Box"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "co-branded-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Co-Branded Gift Box",
+            "blocks": [
+                {
+                    "type": "co-branded-item",
+                    "settings": {
+                        "partner": "Bloom & Co."
+                    }
+                },
+                {
+                    "type": "co-branded-item",
+                    "settings": {
+                        "partner": "Terra Skin"
+                    }
+                },
+                {
+                    "type": "co-branded-item",
+                    "settings": {
+                        "partner": "Wildflower"
+                    }
+                },
+                {
+                    "type": "co-branded-item",
+                    "settings": {
+                        "partner": "Luna Home"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
