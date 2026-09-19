@@ -65,8 +65,8 @@
       "settings": {
         "image": "shopify://shop_images/single-banner2.webp",
         "image_mob": "shopify://shop_images/single-banner2-mobile.webp",
-        "title": "Bags made for\nlife on the move",
-        "highlight": "life on the move",
+        "title": "",
+        "highlight": "",
         "link": ""
       }
     },
@@ -106,6 +106,182 @@
       "name": "Gift Icon Items",
       "settings": {
         "title": "Our Kind of Gifting",
+        "show_flourish": true,
+        "background_color": "#ffffff"
+      }
+    },
+    "gift_box_exkwY3": {
+      "type": "gift-box",
+      "name": "Gift Box",
+      "settings": {
+        "heading": "Gift The Box",
+        "image": "shopify://shop_images/gift-banner-box-img-1.png",
+        "badge": "Small",
+        "title": "The Nawabi Box",
+        "text": "For when little things say the most.",
+        "button_label": "Gift Nawabi Box",
+        "button_link": "",
+        "reverse": false,
+        "show_flourish": false,
+        "border_color": "{{ settings.color_palette.gold }}"
+      }
+    },
+    "gift_box_8C9FGm": {
+      "type": "gift-box",
+      "name": "Gift Box",
+      "settings": {
+        "heading": "",
+        "image": "shopify://shop_images/gift-banner-box-img-1.png",
+        "badge": "Small",
+        "title": "The Nawabi Box",
+        "text": "For when little things say the most.",
+        "button_label": "Gift Nawabi Box",
+        "button_link": "",
+        "reverse": true,
+        "show_flourish": false,
+        "border_color": "{{ settings.color_palette.gold }}"
+      }
+    },
+    "gift_box_N4hyjz": {
+      "type": "gift-box",
+      "name": "Gift Box",
+      "settings": {
+        "heading": "",
+        "image": "shopify://shop_images/gift-banner-box-img-1.png",
+        "badge": "Small",
+        "title": "The Nawabi Box",
+        "text": "For when little things say the most.",
+        "button_label": "Gift Nawabi Box",
+        "button_link": "",
+        "reverse": false,
+        "show_flourish": false,
+        "border_color": "{{ settings.color_palette.gold }}"
+      }
+    },
+    "co_branded_jQcyie": {
+      "type": "co-branded",
+      "blocks": {
+        "co_branded_item_ChCp6m": {
+          "type": "co-branded-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img5.webp",
+            "brand_name": "aviva.",
+            "partner": "Bloom & Co.",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "co_branded_item_JxUYE4": {
+          "type": "co-branded-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img3.webp",
+            "brand_name": "aviva.",
+            "partner": "Terra Skin",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "co_branded_item_Kbt7Lj": {
+          "type": "co-branded-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img6.webp",
+            "brand_name": "aviva.",
+            "partner": "Wildflower",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "co_branded_item_4YydiE": {
+          "type": "co-branded-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img1.webp",
+            "brand_name": "aviva.",
+            "partner": "Luna Home",
+            "link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "co_branded_item_ChCp6m",
+        "co_branded_item_JxUYE4",
+        "co_branded_item_Kbt7Lj",
+        "co_branded_item_4YydiE"
+      ],
+      "name": "Co-Branded Gift Box",
+      "settings": {
+        "title": "Co-Branded Gift Box"
+      }
+    },
+    "gift_inside_mXMrL6": {
+      "type": "gift-inside",
+      "blocks": {
+        "gift_inside_item_Fj4F49": {
+          "type": "gift-inside-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img1.webp",
+            "title": "Sling Bags",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_inside_item_e8BnN8": {
+          "type": "gift-inside-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img2.webp",
+            "title": "Wallets",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_inside_item_9DrfHx": {
+          "type": "gift-inside-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img5.webp",
+            "title": "Coasters",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_inside_item_wPi6Dr": {
+          "type": "gift-inside-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img6.webp",
+            "title": "Pouches",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_inside_item_ii4FGe": {
+          "type": "gift-inside-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img3.webp",
+            "title": "Diary & Bookmark",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "gift_inside_item_7A7VTK": {
+          "type": "gift-inside-item",
+          "settings": {
+            "image": "shopify://shop_images/product-img5.webp",
+            "title": "Passport Cover",
+            "link": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "gift_inside_item_Fj4F49",
+        "gift_inside_item_e8BnN8",
+        "gift_inside_item_9DrfHx",
+        "gift_inside_item_wPi6Dr",
+        "gift_inside_item_ii4FGe",
+        "gift_inside_item_7A7VTK"
+      ],
+      "name": "Gift Inside",
+      "settings": {
+        "title": "Gift by What's Inside",
         "show_flourish": true
       }
     }
@@ -113,6 +289,11 @@
   "order": [
     "main",
     "gift_banner_section_zVYWPW",
-    "gift_icon_items_TyLfTm"
+    "gift_icon_items_TyLfTm",
+    "gift_box_exkwY3",
+    "gift_box_8C9FGm",
+    "gift_box_N4hyjz",
+    "co_branded_jQcyie",
+    "gift_inside_mXMrL6"
   ]
 }
