@@ -146,7 +146,7 @@
         "show_author": false,
         "show_excerpt": true,
         "link_label": "Read more",
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_label": "View all posts"
       }
     }
