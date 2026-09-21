@@ -42,5 +42,6 @@ svg.svg_icon.item_svg {
 }
 
 .search-page-input{
-    border:1px solid black !important;
+    border:1px solid #ccc !important;
+    border-radius: 5px;
 }
