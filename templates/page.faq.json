@@ -22,10 +22,12 @@
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
@@ -38,7 +40,9 @@
         },
         "page-content": {
           "type": "page-content",
-          "settings": {},
+          "settings": {
+            "text_color": ""
+          },
           "blocks": {}
         }
       },
@@ -46,6 +50,7 @@
         "heading",
         "page-content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -53,9 +58,75 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "faq_9fi7i7": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_NJrcXQ": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Most orders are dispatched within 1-2 business days and delivered within 3-5 business days, depending on your location. You'll receive a tracking link as soon as your gift ships.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_wCBY8C": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Can I customize my gift box?",
+            "answer": "<p>Yes! You can mix and match items within a gift box, and add a personalized note at checkout. Select \"Buy It With\" add-ons on the product page to build a bundle that suits the occasion.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_bwr9qp": {
+          "type": "faq-item",
+          "settings": {
+            "question": "What is your return &amp; exchange policy?",
+            "answer": "<p>Unused items in their original packaging can be returned or exchanged within 30 days of delivery. Personalized or engraved gifts are final sale unless damaged in transit.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_f4P8Br": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Do you offer international shipping?",
+            "answer": "<p>We currently ship across the country with select international destinations available at checkout. Shipping fees and delivery times are calculated based on your address.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_qUkXDh": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>Once your order ships, you'll receive an email and SMS with a tracking link. You can also check your order status anytime from your account dashboard.</p>"
+          },
+          "blocks": {}
+        },
+        "faq_item_h7VHBA": {
+          "type": "faq-item",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept all major credit and debit cards, mobile wallets, and cash on delivery in select areas. All online payments are processed securely at checkout.</p>"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "faq_item_NJrcXQ",
+        "faq_item_wCBY8C",
+        "faq_item_bwr9qp",
+        "faq_item_f4P8Br",
+        "faq_item_qUkXDh",
+        "faq_item_h7VHBA"
+      ],
+      "name": "FAQs",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "faq_9fi7i7"
   ]
 }
