@@ -22,7 +22,7 @@
 <section class="collection-section" data-section-id="{{ section.id }}">
     <div class="container">
         <div class="collection-wrapper">
-            <form method="get" action="{{ form_action }}" id="CollectionFiltersForm">
+            <form method="get" action="{{ form_action }}" id="{% if has_results %}CollectionFiltersForm{% else %}SuggestionFiltersForm{% endif %}">
                 {% if has_results %}
                     <input type="hidden" name="type" value="product">
                     <input type="hidden" name="q" value="{{ search.terms | escape }}">
@@ -43,6 +43,52 @@
         </div>
     </div>
 </section>
+
+{% unless has_results %}
+    <script>
+        (function () {
+            var form = document.getElementById('SuggestionFiltersForm');
+            if (!form) return;
+            var heading = {{ section.settings.suggestions_heading | json }};
+            var base = {{ form_action | json }};
+
+            function load(url) {
+                var current = form.querySelector('.collection-content');
+                if (!current) return;
+                current.classList.add('loading');
+                fetch(url)
+                    .then(function (res) {
+                        if (!res.ok) throw new Error('fetch failed');
+                        return res.text();
+                    })
+                    .then(function (html) {
+                        var next = new DOMParser().parseFromString(html, 'text/html').querySelector('.collection-content');
+                        if (!next) throw new Error('content missing');
+                        var title = next.querySelector('.collection-heading');
+                        if (title) title.textContent = heading;
+                        current.replaceWith(next);
+                    })
+                    .catch(function () {
+                        window.location.href = url;
+                    });
+            }
+
+            form.addEventListener('change', function (e) {
+                if (!e.target.matches('.filter-option-input, .price-range-input, #sort_by')) return;
+                e.stopPropagation();
+                load(base + '?' + new URLSearchParams(new FormData(form)).toString());
+            });
+
+            form.addEventListener('click', function (e) {
+                var link = e.target.closest('.pagination__link[href]');
+                if (!link) return;
+                e.preventDefault();
+                e.stopPropagation();
+                load(link.href);
+            });
+        })();
+    </script>
+{% endunless %}
 
 <style>
     .collection-empty-state {
