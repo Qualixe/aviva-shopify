@@ -1,0 +1,149 @@
+{{ 'single-article.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+	assign share_url = shop.url | append: article.url | url_encode
+	assign share_title = article.title | url_encode
+%}
+<section class="single-article-section section-bg">
+	<div class="container">
+		<article class="single-article">
+			{% if s.show_back_link %}
+				<a href="{{ blog.url }}" class="single-article-back">
+					<svg viewBox="0 0 10 6" width="10" height="6" aria-hidden="true">
+						<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
+							d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"></path>
+					</svg>
+					{{ s.back_label | default: blog.title }}
+				</a>
+			{% endif %}
+
+			<header class="single-article-header">
+				{% if s.show_tags and article.tags.size > 0 %}
+					<div class="single-article-tags">
+						{% for tag in article.tags limit: 3 %}
+							<a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="single-article-tag">{{ tag }}</a>
+						{% endfor %}
+					</div>
+				{% endif %}
+				<h1 class="single-article-title">{{ article.title }}</h1>
+				<div class="single-article-meta">
+					{% if s.show_author and article.author != blank %}
+						<span>{{ article.author }}</span>
+					{% endif %}
+					{% if s.show_date %}
+						<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %d, %Y' }}</time>
+					{% endif %}
+					{% if s.show_reading_time %}
+						{% assign words = article.content | strip_html | split: ' ' | size %}
+						<span>{{ words | divided_by: 200 | plus: 1 }} min read</span>
+					{% endif %}
+				</div>
+			</header>
+
+			{% if s.show_image and article.image %}
+				<div class="single-article-image">
+					{{ article.image | image_url: width: 1600 | image_tag: loading: 'eager', alt: article.image.alt | default: article.title }}
+				</div>
+			{% endif %}
+
+			<div class="single-article-content rte">
+				{{ article.content }}
+			</div>
+
+			{% if s.show_share %}
+				<div class="single-article-share">
+					<span class="single-article-share-label">Share</span>
+					<a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank" rel="noopener" aria-label="Share on Facebook">Facebook</a>
+					<a href="https://twitter.com/intent/tweet?url={{ share_url }}&text={{ share_title }}" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+					<a href="https://www.pinterest.com/pin/create/button/?url={{ share_url }}&description={{ share_title }}" target="_blank" rel="noopener" aria-label="Share on Pinterest">Pinterest</a>
+					<a href="https://wa.me/?text={{ share_title }}%20{{ share_url }}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">WhatsApp</a>
+				</div>
+			{% endif %}
+
+			{% if s.show_navigation and blog.previous_article or s.show_navigation and blog.next_article %}
+				<nav class="single-article-nav" aria-label="Article navigation">
+					{% if blog.previous_article %}
+						<a href="{{ blog.previous_article.url }}" class="single-article-nav-item">
+							<span class="single-article-nav-label">Previous</span>
+							<span class="single-article-nav-title">{{ blog.previous_article.title }}</span>
+						</a>
+					{% endif %}
+					{% if blog.next_article %}
+						<a href="{{ blog.next_article.url }}" class="single-article-nav-item next">
+							<span class="single-article-nav-label">Next</span>
+							<span class="single-article-nav-title">{{ blog.next_article.title }}</span>
+						</a>
+					{% endif %}
+				</nav>
+			{% endif %}
+		</article>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Single Article",
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "show_back_link",
+			"label": "Show back to blog link",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "back_label",
+			"label": "Back link label",
+			"info": "Leave blank to use the blog title"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_tags",
+			"label": "Show tags",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_author",
+			"label": "Show author",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_date",
+			"label": "Show date",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_reading_time",
+			"label": "Show reading time",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_image",
+			"label": "Show featured image",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_share",
+			"label": "Show share links",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_navigation",
+			"label": "Show previous / next articles",
+			"default": true
+		}
+	],
+	"presets": [
+		{
+			"name": "Single Article"
+		}
+	]
+}
+{% endschema %}
