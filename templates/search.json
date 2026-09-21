@@ -61,7 +61,11 @@
     "main": {
       "type": "search-results",
       "settings": {
-        "products_per_page": 24
+        "suggestions_heading": "You may also like",
+        "suggestions_count": 8,
+        "products_per_page": 24,
+        "top_bg": "{{ settings.color_palette.background }}",
+        "border": "{{ settings.color_palette.border }}"
       }
     }
   },
