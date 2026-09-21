@@ -54,6 +54,7 @@ h3.policy-content-item-title {
     gap: 20px;
 }
 
+.policy-content-text ul,
 .policy-content-list {
     padding: 0 0 0 18px;
     list-style-type: disc;
@@ -66,16 +67,19 @@ h3.policy-content-item-title {
     margin: 0 0 0 20px;
 }
 
+.policy-content-text li::marker,
 .policy-content-list li::marker {
     font-size: 14px;
     color: var(--black);
 }
 
+.policy-content-text li a,
 .policy-content-list li a {
     color: var(--paragraph-text-color);
     font-weight: 600;
 }
 
+.policy-content-text li a:hover,
 .policy-content-list li a:hover {
     text-decoration: underline;
 }

@@ -1,25 +1,16 @@
-{{ 'gift-icon-items-section.css' | asset_url | stylesheet_tag }}
-
-{% liquid
-	assign s = section.settings
-%}
 <section class="gift-icon-items-section">
 	<div class="container">
-		{% if s.title != blank %}
-			<h2 class="gift-icon-items-title">{{ s.title }}</h2>
-		{% endif %}
+		<h2 class="gift-icon-items-title">{{ section.settings.heading }}</h2>
 		<div class="gift-icon-items">
 			{% content_for 'blocks' %}
 		</div>
-		{% if s.show_flourish %}
-			<div class="gift-icon-items-flourish">
-				<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-					<path d="M12 2c0 4-1 6-5 7 4 1 5 3 5 7 0-4 1-6 5-7-4-1-5-3-5-7z" fill="var(--gold-color)"></path>
-					<path d="M4 15c0 1.5-.5 2.2-2 2.5 1.5.3 2 1 2 2.5 0-1.5.5-2.2 2-2.5-1.5-.3-2-1-2-2.5z"
-						fill="var(--gold-color)"></path>
-				</svg>
-			</div>
-		{% endif %}
+		<div class="gift-icon-items-flourish">
+			<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+				<path d="M12 2c0 4-1 6-5 7 4 1 5 3 5 7 0-4 1-6 5-7-4-1-5-3-5-7z" fill="var(--gold-color)"></path>
+				<path d="M4 15c0 1.5-.5 2.2-2 2.5 1.5.3 2 1 2 2.5 0-1.5.5-2.2 2-2.5-1.5-.3-2-1-2-2.5z"
+					fill="var(--gold-color)"></path>
+			</svg>
+		</div>
 	</div>
 </section>
 
@@ -29,15 +20,9 @@
 	"settings": [
 		{
 			"type": "text",
-			"id": "title",
-			"label": "Title",
+			"id": "heading",
+			"label": "Heading",
 			"default": "Our Kind of Gifting"
-		},
-		{
-			"type": "checkbox",
-			"id": "show_flourish",
-			"label": "Show flourish icon",
-			"default": true
 		}
 	],
 	"blocks": [
