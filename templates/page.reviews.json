@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "customer-reviews-page",
+      "blocks": {
+        "review_1": {
+          "type": "review-card-item",
+          "settings": {
+            "rating": "5",
+            "heading": "Absolutely love it",
+            "text": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice.",
+            "author": "Riya Sharma",
+            "product": "Office Bag",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review-card-item",
+          "settings": {
+            "rating": "5",
+            "heading": "Premium quality",
+            "text": "Amazing quality and design. Every piece feels premium and the customer service was excellent.",
+            "author": "Ananya Verma",
+            "product": "Handbag",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review-card-item",
+          "settings": {
+            "rating": "4",
+            "heading": "Perfect gift",
+            "text": "I gifted Aviva bags to my whole family. Everyone loves the craftsmanship and the unique prints.",
+            "author": "Meera Kapoor",
+            "product": "Backpack",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "title": "Customer Reviews",
+        "subtitle": "Hear from our happy customers",
+        "show_summary": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

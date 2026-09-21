@@ -1,0 +1,84 @@
+{% liquid
+	assign s = block.settings
+	assign rating = s.rating | plus: 0
+%}
+<div class="review-card" {{ block.shopify_attributes }} id="block_{{ block.id }}">
+	<div class="review-card-stars" role="img" aria-label="{{ rating }} out of 5 stars">
+		{% for i in (1..5) %}
+			<svg class="review-card-star{% if i <= rating %} filled{% endif %}" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.7 5.8 21l1.2-6.8-5-4.9 6.9-1z"></path>
+			</svg>
+		{% endfor %}
+	</div>
+	{% if s.heading != blank %}
+		<h3 class="review-card-heading">{{ s.heading }}</h3>
+	{% endif %}
+	<p class="review-card-text">{{ s.text }}</p>
+	<div class="review-card-footer">
+		<span class="review-card-avatar">{{ s.author | slice: 0 | upcase }}</span>
+		<div class="review-card-meta">
+			<p class="review-card-author">{{ s.author }}</p>
+			{% if s.product != blank %}
+				<p class="review-card-product">{{ s.product }}</p>
+			{% endif %}
+		</div>
+		{% if s.verified %}
+			<span class="review-card-verified">Verified</span>
+		{% endif %}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "Review Card",
+	"settings": [
+		{
+			"type": "select",
+			"id": "rating",
+			"label": "Rating",
+			"options": [
+				{ "value": "5", "label": "5 stars" },
+				{ "value": "4", "label": "4 stars" },
+				{ "value": "3", "label": "3 stars" },
+				{ "value": "2", "label": "2 stars" },
+				{ "value": "1", "label": "1 star" }
+			],
+			"default": "5"
+		},
+		{
+			"type": "text",
+			"id": "heading",
+			"label": "Heading",
+			"default": "Absolutely love it"
+		},
+		{
+			"type": "textarea",
+			"id": "text",
+			"label": "Review text",
+			"default": "Wonderful craft. I have a beautiful collection of Aviva bags and I am very happy with my choice."
+		},
+		{
+			"type": "text",
+			"id": "author",
+			"label": "Author",
+			"default": "Riya Sharma"
+		},
+		{
+			"type": "text",
+			"id": "product",
+			"label": "Product purchased"
+		},
+		{
+			"type": "checkbox",
+			"id": "verified",
+			"label": "Verified buyer",
+			"default": true
+		}
+	],
+	"presets": [
+		{
+			"name": "Review Card"
+		}
+	]
+}
+{% endschema %}

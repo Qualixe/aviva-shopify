@@ -1,0 +1,132 @@
+{{ 'customer-reviews-page.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+	assign total = 0
+	assign count = 0
+	for b in section.blocks
+		assign total = total | plus: b.settings.rating
+		assign count = count | plus: 1
+	endfor
+	if count > 0
+		assign average = total | times: 1.0 | divided_by: count | round: 1
+	endif
+%}
+<section class="reviews-page-section">
+	<div class="container">
+		<div class="reviews-page-header">
+			<h1 class="reviews-page-title">{{ s.title | default: page.title }}</h1>
+			{% if s.subtitle != blank %}
+				<p class="reviews-page-subtitle">{{ s.subtitle }}</p>
+			{% endif %}
+			{% if s.show_summary and count > 0 %}
+				<div class="reviews-page-summary">
+					<span class="reviews-page-average">{{ average }}</span>
+					<span class="reviews-page-summary-text">out of 5 &middot; {{ count }} review{% if count != 1 %}s{% endif %}</span>
+				</div>
+			{% endif %}
+		</div>
+		<div class="reviews-page-grid">
+			{% content_for 'blocks' %}
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Customer Reviews Page",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title",
+			"info": "Leave blank to use the page title",
+			"default": "Customer Reviews"
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"label": "Subtitle",
+			"default": "Hear from our happy customers"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_summary",
+			"label": "Show average rating",
+			"default": true
+		}
+	],
+	"blocks": [
+		{
+			"type": "review-card-item"
+		}
+	],
+	"presets": [
+		{
+			"name": "Customer Reviews Page",
+			"blocks": [
+				{
+					"type": "review-card-item",
+					"settings": {
+						"rating": "5",
+						"heading": "Absolutely love it",
+						"text": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice.",
+						"author": "Riya Sharma",
+						"product": "Office Bag"
+					}
+				},
+				{
+					"type": "review-card-item",
+					"settings": {
+						"rating": "5",
+						"heading": "Premium quality",
+						"text": "Amazing quality and design. Every piece feels premium and the customer service was excellent.",
+						"author": "Ananya Verma",
+						"product": "Handbag"
+					}
+				},
+				{
+					"type": "review-card-item",
+					"settings": {
+						"rating": "4",
+						"heading": "Perfect gift",
+						"text": "I gifted Aviva bags to my whole family. Everyone loves the craftsmanship and the unique prints.",
+						"author": "Meera Kapoor",
+						"product": "Backpack"
+					}
+				},
+				{
+					"type": "review-card-item",
+					"settings": {
+						"rating": "5",
+						"heading": "Great for daily use",
+						"text": "Spacious, sturdy and stylish. It fits my laptop and everything else I carry to work.",
+						"author": "Sara Khan",
+						"product": "Office Bag"
+					}
+				},
+				{
+					"type": "review-card-item",
+					"settings": {
+						"rating": "5",
+						"heading": "Fast delivery",
+						"text": "Arrived quickly and beautifully packed. The print is even better in person.",
+						"author": "Nusrat Jahan",
+						"product": "Tote Bag"
+					}
+				},
+				{
+					"type": "review-card-item",
+					"settings": {
+						"rating": "4",
+						"heading": "Worth every penny",
+						"text": "Great value for the quality. Will definitely order again.",
+						"author": "Tania Rahman",
+						"product": "Handbag"
+					}
+				}
+			]
+		}
+	]
+}
+{% endschema %}
