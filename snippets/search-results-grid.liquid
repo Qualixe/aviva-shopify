@@ -1,0 +1,52 @@
+{%- doc -%}
+  Renders the toolbar (count, sort, filter button), product grid and pagination for the search page.
+  Used for both real search results and the "no results" suggestions.
+
+  @param {object} source - `search` or a collection (needs sort_options / sort_by).
+  @param {string} heading - Heading shown in the toolbar.
+  @param {array} items - Products (or search results) for the current page.
+  @param {object} paginate - The active paginate object.
+  @param {boolean} has_results - True when rendering real search results.
+{%- enddoc -%}
+
+<div class="collection-top">
+    <h2 class="collection-heading">{{ heading }}</h2>
+    <div class="collection-filter-btn">
+        <div class="collection-filter-short">
+            <p class="collection-product-count">{{ paginate.items }} products</p>
+            <div class="filter-select-field">
+                <select name="sort_by" id="sort_by">
+                    {% for option in source.sort_options %}
+                        <option value="{{ option.value }}" {% if option.value == source.sort_by %}selected{% endif %}>{{ option.name }}</option>
+                    {% endfor %}
+                </select>
+                <span class="filter-select-field-icon">
+                    <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                            fill="currentColor">
+                        </path>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <span class="filter-open-btn">
+            <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0.375 1.35419C0.375 1.35419 2.33337 0.375 7.22931 0.375C12.1252 0.375 14.0836 1.35419 14.0836 1.35419L8.69809 7.7189V12.1252L5.76053 13.594V7.7189L0.375 1.35419Z"
+                    stroke="#fff" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Filter
+        </span>
+    </div>
+</div>
+<div class="product-items">
+    {% for item in items %}
+        {% if has_results == false or item.object_type == 'product' %}
+            <div class="product-item">
+                {% render 'product', product: item %}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% render 'pagination-controls', paginate: paginate %}
