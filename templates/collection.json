@@ -6,36 +6,22 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
-    
     "main": {
       "type": "collection-banner",
-      "blocks": {
-       
-      },
       "settings": {
-        "layout_type": "grid",
-        "product_card_size": "medium",
-        "mobile_product_card_size": "small",
-        "product_grid_width": "centered",
-        "full_width_on_mobile": true,
-        "columns_gap_horizontal": 16,
-        "columns_gap_vertical": 24,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 0,
-        "padding-block-end": 32
+        "image": "shopify://shop_images/hero-slider-banner2.webp",
+        "image_mob": "shopify://shop_images/hero-slider-banner2.webp"
       }
     },
     "collection_products": {
       "type": "collection-products",
-      "blocks": {
-
-      },
       "settings": {
-        "products_per_page": 24
+        "products_per_page": 24,
+        "top_bg": "{{ settings.color_palette.section_bg }}",
+        "border": "{{ settings.color_palette.border }}"
       }
     }
   },
