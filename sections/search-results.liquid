@@ -1,6 +1,6 @@
 {% capture clear_url %}{{ routes.search_url }}?type=product&q={{ search.terms | url_encode }}{% endcapture %}
 
-<section class="collection-section section-bg" data-section-id="{{ section.id }}">
+<section class="collection-section" data-section-id="{{ section.id }}">
     <div class="container">
         <div class="collection-wrapper">
             <form method="get" action="{{ routes.search_url }}" id="CollectionFiltersForm">
@@ -54,6 +54,18 @@
                             </div>
                             {% render 'pagination-controls', paginate: paginate %}
                         {% endpaginate %}
+                    {% else %}
+                        {% assign suggestions = settings.empty_state_collection | default: collections.all %}
+                        <div class="collection-top">
+                            <h2 class="collection-heading">{{ section.settings.suggestions_heading }}</h2>
+                        </div>
+                        <div class="product-items">
+                            {% for product in suggestions.products limit: section.settings.suggestions_count %}
+                                <div class="product-item">
+                                    {% render 'product', product: product %}
+                                </div>
+                            {% endfor %}
+                        </div>
                     {% endif %}
                 </div>
             </form>
@@ -84,6 +96,21 @@
 {
     "name": "t:names.search_results",
     "settings": [
+        {
+            "type": "text",
+            "id": "suggestions_heading",
+            "label": "No results heading",
+            "default": "You may also like"
+        },
+        {
+            "type": "range",
+            "id": "suggestions_count",
+            "label": "Suggested products",
+            "min": 4,
+            "max": 24,
+            "step": 4,
+            "default": 8
+        },
         {
             "type": "range",
             "id": "products_per_page",
