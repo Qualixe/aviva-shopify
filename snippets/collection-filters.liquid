@@ -1,15 +1,19 @@
 {%- doc -%}
   Renders the collection filter sidebar (accordion filter groups + price range slider).
 
-  @param {object} collection - The collection whose `collection.filters` should be rendered.
+  @param {object} [collection] - The collection whose filters should be rendered.
+  @param {object} [results] - Any object with `filters` (e.g. `search`); defaults to `collection`.
+  @param {string} [results_url] - URL for the Clear all link; defaults to `collection.url`.
 
   @example
   {% render 'collection-filters', collection: collection %}
 {%- enddoc -%}
 
 {% liquid
+    assign results = results | default: collection
+    assign results_url = results_url | default: collection.url
     assign any_filter_active = false
-    for filter in collection.filters
+    for filter in results.filters
         if filter.active_values.size > 0
             assign any_filter_active = true
         endif
@@ -20,7 +24,7 @@
     <div class="filter-box">
         <h6 class="filter-sidebar-heading h6">Filter
             {% if any_filter_active %}
-                <a href="{{ collection.url }}" class="filter-clear-btn">Clear all</a>
+                <a href="{{ results_url }}" class="filter-clear-btn">Clear all</a>
             {% endif %}
             <span class="filter-close-btn">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +39,7 @@
         </h6>
         <div class="filter-accordion">
             <div class="filter-accordion-items">
-                {% for filter in collection.filters %}
+                {% for filter in results.filters %}
                     {% liquid
                         assign filter_label_downcase = filter.label | downcase
                         assign is_color_filter = false
