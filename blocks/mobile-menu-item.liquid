@@ -1,0 +1,82 @@
+{% assign b = block.settings %}
+
+<div class="mobile-menu-inner" data-mega-menu="{{ b.link | handleize }}" {{ block.shopify_attributes }}>
+    <div class="mobile-menu-tabs">
+        {% for link in b.menu.links %}
+        <a href="#{{ link.title |  handleize }}_{{ forloop.index }}" class="mobile-menu-tab{% if forloop.index == 1 %} active{% endif %}">
+            <span class="mobile-menu-tab-img">
+                {% assign img = link.object.image %}
+                {% if img !=blank %}
+                    {{ img |  image_url: width: 1000 |  image_tag: class: 'mobile_item_img'  }}
+                {% else %}
+                    {{ 'image' |  placeholder_svg_tag: 'svg_icon item_svg' }}
+                {% endif %}
+
+            </span>
+            <span class="mobile-menu-tab-title">{{ link.title }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="mobile-menu-tabs-contents">
+        {% for link in b.menu.links %}
+        <div class="mobile-menu-tabs-content" id="{{ link.title |  handleize }}_{{ forloop.index }}">
+            <div class="mobile-menu-tabs-content-heading">
+                <p class="title">{{ link.title }}</p>
+                <span class="line"></span>
+            </div>
+            {% if link.links.size > 0 %}
+            <div class="mobile-menu-tabs-content-items">
+                <div class="mobile-menu-tabs-content-item"> 
+                    <div class="mobile-menu-tabs-content-item-grids">
+                        {% for childlink in link.links %}
+                        {% assign img = childlink.object.image %}
+
+                        <a href="{{ childlink.url }}" class="mobile-menu-tabs-content-item-grid">
+                            <span class="mobile-menu-tabs-content-item-grid-img">
+                                 {% if img !=blank %}
+                                    {{ img |  image_url: width: 1000 |  image_tag: class: 'mobile_item_img'  }}
+                                {% else %}
+                                    {{ 'image' |  placeholder_svg_tag: 'svg_icon item_svg' }}
+                                {% endif %}
+                            </span>
+                            <span class="mobile-menu-tabs-content-item-grid-title">{{ childlink.title }}</span>
+                        </a>
+                       {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% schema %}
+{
+    "name": "Mobile Menu Item",
+    "class": "mobile-menu-inner",
+    "settings": [
+        {
+            "type": "text",
+            "id": "link",
+            "label": "Link",
+            "info": "write link name, which you want to linked megamenu"
+        },
+
+        {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu",
+            "default" : "main-menu" 
+        }
+    ],
+    
+    "presets": [
+        {
+            "name": "Mobile Menu Item"
+        }
+    ]
+}
+{% endschema %}

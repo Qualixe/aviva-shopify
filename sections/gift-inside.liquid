@@ -1,0 +1,92 @@
+{{ 'gift-by-inside-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+%}
+<section class="gift-by-inside-section">
+    <div class="container">
+        {% if s.title != blank %}
+            <h2 class="gift-by-inside-title">{{ s.title }}</h2>
+        {% endif %}
+        <div class="gift-by-inside-items">
+            {% content_for 'blocks' %}
+        </div>
+        {% if s.show_flourish %}
+            <div class="gift-by-inside-flourish">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 2c0 4-1 6-5 7 4 1 5 3 5 7 0-4 1-6 5-7-4-1-5-3-5-7z" fill="{{ settings.color_palette.gold }}"></path>
+                    <path d="M4 15c0 1.5-.5 2.2-2 2.5 1.5.3 2 1 2 2.5 0-1.5.5-2.2 2-2.5-1.5-.3-2-1-2-2.5z"
+                        fill="{{ settings.color_palette.gold }}"></path>
+                </svg>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Gift Inside",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Gift by What's Inside"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_flourish",
+            "label": "Show flourish icon",
+            "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "type": "gift-inside-item"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gift Inside",
+            "blocks": [
+                {
+                    "type": "gift-inside-item",
+                    "settings": {
+                        "title": "Sling Bags"
+                    }
+                },
+                {
+                    "type": "gift-inside-item",
+                    "settings": {
+                        "title": "Wallets"
+                    }
+                },
+                {
+                    "type": "gift-inside-item",
+                    "settings": {
+                        "title": "Coasters"
+                    }
+                },
+                {
+                    "type": "gift-inside-item",
+                    "settings": {
+                        "title": "Pouches"
+                    }
+                },
+                {
+                    "type": "gift-inside-item",
+                    "settings": {
+                        "title": "Diary & Bookmark"
+                    }
+                },
+                {
+                    "type": "gift-inside-item",
+                    "settings": {
+                        "title": "Passport Cover"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

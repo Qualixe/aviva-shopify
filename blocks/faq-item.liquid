@@ -1,0 +1,46 @@
+{% assign b = block.settings %}
+<div class="product-accordion-item">
+    <div class="item-title-wrapper product-accordion-toggle-btn">
+        <h6 class="item-title">{{ b.question }}</h6>
+        <span class="icon">
+            <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                    fill="currentColor">
+                </path>
+            </svg>
+        </span>
+    </div>
+    <div class="product-accordion-item-content">
+        <div class="product-accordion-item-content-inner">
+            <div class="content">
+                {{ b.answer }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "FAQ Item",
+    "settings": [
+        {
+            "type": "text",
+            "id": "question",
+            "label": "Question",
+            "default": "Question"
+        },
+        {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer",
+            "default": "<p>Answer</p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQ Item"
+        }
+    ]
+}
+{% endschema %}

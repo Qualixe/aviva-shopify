@@ -1,0 +1,48 @@
+{% liquid
+    assign s = block.settings
+%}
+<div class="contact-icon-item" {{ block.shopify_attributes }}>
+    <span class="icon">
+        {% if s.icon != blank %}
+            {{ s.icon | image_url: width: 200 | image_tag: loading: 'lazy', alt: s.title }}
+        {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+        {% endif %}
+    </span>
+    {% if s.title != blank %}
+        <h2 class="contact-icon-item-title">{{ s.title }}</h2>
+    {% endif %}
+    {% if s.text != blank %}
+        <div class="contact-icon-item-text">{{ s.text }}</div>
+    {% endif %}
+</div>
+
+{% schema %}
+{
+    "name": "Contact Icon Item",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Visit store"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p><strong>Physical address:</strong> House-06, Block-A, Road-3, Mirpur-11, Dhaka-1216, Mirpur, Bangladesh</p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Contact Icon Item"
+        }
+    ]
+}
+{% endschema %}

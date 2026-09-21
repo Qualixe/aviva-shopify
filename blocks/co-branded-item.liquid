@@ -1,0 +1,51 @@
+{% assign b = block.settings %}
+<a href="{{ b.link | default: '#' }}" class="co-branded-gift-box-item">
+    <div class="co-branded-gift-box-img">
+        {% if b.image != blank %}
+            {{ b.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: b.partner }}
+        {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag }}
+        {% endif %}
+    </div>
+    <div class="co-branded-gift-box-brand">
+        <span class="co-branded-gift-box-brand-name">{{ b.brand_name }}</span>
+        <span class="x">x</span>
+        <span class="co-branded-gift-box-partner">{{ b.partner }}</span>
+    </div>
+</a>
+
+{% schema %}
+{
+    "name": "Co-Branded Item",
+    "class": "swiper-slide",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "brand_name",
+            "label": "Brand name",
+            "default": "aviva."
+        },
+        {
+            "type": "text",
+            "id": "partner",
+            "label": "Partner name",
+            "default": "Partner"
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Co-Branded Item"
+        }
+    ]
+}
+{% endschema %}

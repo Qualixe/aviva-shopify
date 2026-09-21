@@ -1,0 +1,43 @@
+{% assign b = block.settings %}
+<a href="{{ b.link | default: '#' }}" class="gift-by-budget-item-link">
+    <div class="gift-by-budget-item-inner">
+        {% if b.amount != blank %}
+            <span class="gift-by-budget-label">{{ b.label }}</span>
+            <span class="gift-by-budget-amount">{{ b.amount }}</span>
+        {% else %}
+            <span class="gift-by-budget-label gift-by-budget-explore">{{ b.label }}</span>
+        {% endif %}
+    </div>
+</a>
+
+{% schema %}
+{
+    "name": "Gift Budget Item",
+    "class": "gift-by-budget-item",
+    "settings": [
+        {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "Gifts Under"
+        },
+        {
+            "type": "text",
+            "id": "amount",
+            "label": "Amount",
+            "info": "Leave blank for a plain label item, e.g. \"Explore All\"",
+            "default": "1500"
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gift Budget Item"
+        }
+    ]
+}
+{% endschema %}

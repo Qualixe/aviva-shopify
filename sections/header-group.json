@@ -41,7 +41,11 @@
         "header-search-result": {
           "type": "header-search-result",
           "static": true,
-          "settings": {},
+          "settings": {
+            "popular_tags_title": "most searched",
+            "recommended_collection": "",
+            "recommended_title": "Recommended for you"
+          },
           "blocks": {}
         },
         "header-icons": {
@@ -72,6 +76,27 @@
           },
           "block_order": [
             "mega_menu_wQAXcp"
+          ]
+        },
+        "mobile-menu": {
+          "type": "mobile-menu",
+          "static": true,
+          "settings": {
+            "menu": "main-menu"
+          },
+          "blocks": {
+            "mobile_menu_item_hrf7aJ": {
+              "type": "mobile-menu-item",
+              "name": "Mobile Menu Item",
+              "settings": {
+                "link": "Bages",
+                "menu": "mega-menu"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "mobile_menu_item_hrf7aJ"
           ]
         }
       },

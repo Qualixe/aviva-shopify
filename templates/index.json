@@ -165,7 +165,7 @@
           "type": "section-heading",
           "static": true,
           "settings": {
-            "heading": "The Travel Edit",
+            "heading": "Explore New Collections",
             "button": "",
             "link": "",
             "heading_color": "{{ settings.color_palette.brand_color }}",
@@ -485,51 +485,6 @@
         "title": "Community Reviews"
       }
     },
-    "customer_reviews_hfbLCg": {
-      "type": "customer-reviews",
-      "blocks": {
-        "customer_review_item_LrfaiT": {
-          "type": "customer-review-item",
-          "settings": {
-            "text": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice. Crafted very perfectly for everyday needs.",
-            "author": "Riya Sharma",
-            "text_color": "",
-            "author_color": ""
-          },
-          "blocks": {}
-        },
-        "customer_review_item_a8L8mc": {
-          "type": "customer-review-item",
-          "settings": {
-            "text": "Amazing quality and design. Every piece feels premium and the customer service was excellent throughout my order.",
-            "author": "Ananya Verma",
-            "text_color": "",
-            "author_color": ""
-          },
-          "blocks": {}
-        },
-        "customer_review_item_hAx8Dm": {
-          "type": "customer-review-item",
-          "settings": {
-            "text": "I have gifted Aviva bags to my whole family. Everyone loves the craftsmanship and the unique prints.",
-            "author": "Meera Kapoor",
-            "text_color": "",
-            "author_color": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "customer_review_item_LrfaiT",
-        "customer_review_item_a8L8mc",
-        "customer_review_item_hAx8Dm"
-      ],
-      "name": "Customer Reviews",
-      "settings": {
-        "title": "Customer Reviews",
-        "subtitle": "Hear from Our Happy Customers"
-      }
-    },
     "trust_highlights_CAAEXQ": {
       "type": "trust-highlights",
       "blocks": {
@@ -574,6 +529,51 @@
       ],
       "name": "Trust Highlights",
       "settings": {}
+    },
+    "customer_reviews_hfbLCg": {
+      "type": "customer-reviews",
+      "blocks": {
+        "customer_review_item_LrfaiT": {
+          "type": "customer-review-item",
+          "settings": {
+            "text": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice. Crafted very perfectly for everyday needs.",
+            "author": "Riya Sharma",
+            "text_color": "",
+            "author_color": ""
+          },
+          "blocks": {}
+        },
+        "customer_review_item_a8L8mc": {
+          "type": "customer-review-item",
+          "settings": {
+            "text": "Amazing quality and design. Every piece feels premium and the customer service was excellent throughout my order.",
+            "author": "Ananya Verma",
+            "text_color": "",
+            "author_color": ""
+          },
+          "blocks": {}
+        },
+        "customer_review_item_hAx8Dm": {
+          "type": "customer-review-item",
+          "settings": {
+            "text": "I have gifted Aviva bags to my whole family. Everyone loves the craftsmanship and the unique prints.",
+            "author": "Meera Kapoor",
+            "text_color": "",
+            "author_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "customer_review_item_LrfaiT",
+        "customer_review_item_a8L8mc",
+        "customer_review_item_hAx8Dm"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "title": "Customer Reviews",
+        "subtitle": "Hear from Our Happy Customers"
+      }
     }
   },
   "order": [

@@ -25,6 +25,14 @@
     margin: initial;
 }
 
+.navbar-link:first-child a {
+    padding-left: 0;
+}
+
+svg.svg_icon.item_svg {
+    background: #afd2d7;
+}
+
 @media (max-width:500px) {
     .collection-banner-wrap img,
     .collection-banner-wrap svg

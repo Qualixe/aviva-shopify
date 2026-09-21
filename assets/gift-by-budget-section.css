@@ -21,7 +21,6 @@
 
 .gift-by-budget-item {
     display: block;
-    background: var(--gold-color);
     border-radius: 4px;
 }
 
@@ -48,12 +47,14 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--golden-bg);
+    line-height: 1;
 }
 
 .gift-by-budget-amount {
     font-size: 26px;
     font-weight: 700;
     color: var(--golden-bg);
+    line-height: 1;
 }
 
 .gift-by-budget-explore {
