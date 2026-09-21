@@ -13,17 +13,31 @@
 
 .sitemap-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px 32px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.sitemap-group {
+    background: var(--white);
+    border: 1px solid rgba(17, 79, 87, 0.12);
+    border-top: 3px solid var(--gold-color);
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    box-shadow: 0 4px 16px rgba(17, 79, 87, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sitemap-group:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(17, 79, 87, 0.12);
 }
 
 .sitemap-group-title {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--brand-color);
-    margin: 0 0 16px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--gold-color);
+    margin: 0 0 18px 0;
 }
 
 .sitemap-list,
@@ -33,21 +47,24 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .sitemap-sublist {
-    margin: 10px 0 0 16px;
+    margin: 12px 0 0 16px;
+    padding-left: 12px;
+    border-left: 1px solid var(--gold-color);
 }
 
 .sitemap-list a {
     color: var(--brand-color);
     font-size: 15px;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
 .sitemap-list a:hover {
     color: var(--gold-color);
+    padding-left: 4px;
 }
 
 /* sitemap-section css end */
@@ -76,6 +93,11 @@
 
     .sitemap-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .sitemap-group {
+        padding: 22px 20px 18px;
     }
 
     /* sitemap-section css end */
