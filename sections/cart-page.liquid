@@ -1,0 +1,285 @@
+{{ 'cart-section.css' | asset_url | stylesheet_tag }}
+
+<section class="cart-section" data-cart-page data-section-id="{{ section.id }}">
+	<div class="container">
+		<div class="section-heading-wrapper">
+			<h1 class="section-heading">{{ section.settings.heading }}</h1>
+		</div>
+		<div class="cart-page-content" data-cart-page-content>
+			{% if cart.item_count == 0 %}
+				<div class="cart-empty" style="text-align: center; padding: 40px 0;">
+					<p>{{ section.settings.empty_text }}</p>
+					<a href="{{ routes.all_products_collection_url }}" class="btn primary-btn" style="margin-top: 20px;">
+						{{ section.settings.continue_text }}<span></span>
+					</a>
+				</div>
+			{% else %}
+				<div class="cart-wrapper">
+					<div class="cart-content-wrap">
+						<div class="cart-table">
+							<div class="cart-table-heading">
+								<div class="cart-product-content">
+									<div class="Product">
+										<p class="cart-table-product-title">Product</p>
+									</div>
+								</div>
+								<div class="cart-product-details">
+									<div class="price">
+										<p class="cart-table-price-title">Price</p>
+									</div>
+									<div class="Quantity">
+										<p class="cart-table-quantity-title">Quantity</p>
+									</div>
+									<div class="Subtotal">
+										<p class="cart-table-subtotal-title">Subtotal</p>
+									</div>
+									<div class="cart-remove">
+										<p class="cart-table-cart-remove-title"></p>
+									</div>
+								</div>
+							</div>
+							<div class="cart-product-items">
+								{% for item in cart.items %}
+									{% capture quantity_controls %}
+										<div class="product-quantity">
+											<button class="quantity-decrease" data-action="decrease" aria-label="Decrease quantity"
+												title="Decrease quantity" type="button">
+												<svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M0.75 0.75H10.0833" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+														stroke-linejoin="round"></path>
+												</svg>
+											</button>
+											<input class="quantity-count" value="{{ item.quantity }}" type="number" min="0"
+												name="updates[]" aria-label="Quantity for {{ item.product.title | escape }}">
+											<button class="quantity-increase" data-action="increase" aria-label="Increase quantity"
+												title="Increase quantity" type="button">
+												<svg width="11" height="11" viewBox="0 0 11 11" fill="none"
+													xmlns="http://www.w3.org/2000/svg">
+													<path d="M0.75 5.41667H10.0833M5.41667 0.75V10.0833V0.75Z" stroke="#1A1A1A"
+														stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+												</svg>
+											</button>
+										</div>
+									{% endcapture %}
+									{% capture price_html %}
+										{% if item.original_price != item.final_price %}
+											<s>{{ item.original_price | money }}</s>
+										{% endif %}
+										{{ item.final_price | money }}
+									{% endcapture %}
+									<div class="cart-product-item" data-line-key="{{ item.key }}">
+										<div class="cart-product-content">
+											<a href="{{ item.url }}" class="cart-product-img">
+												{% if item.image %}
+													{{ item.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: item.image.alt | default: item.product.title }}
+												{% else %}
+													{{ 'product-1' | placeholder_svg_tag }}
+												{% endif %}
+											</a>
+											<div class="content">
+												<a href="{{ item.url }}" class="title">{{ item.product.title }}</a>
+												{% unless item.product.has_only_default_variant %}
+													<p class="cart-product-variant">{{ item.variant.title }}</p>
+												{% endunless %}
+												<div class="cart-product-mobile-details">
+													<div class="price">
+														<p class="cart-product-price">{{ price_html }}</p>
+													</div>
+													<div class="Quantity">{{ quantity_controls }}</div>
+												</div>
+											</div>
+										</div>
+										<div class="cart-product-details">
+											<div class="price">
+												<p class="cart-product-price">{{ price_html }}</p>
+											</div>
+											<div class="Quantity">{{ quantity_controls }}</div>
+											<div class="Subtotal">
+												<p class="cart-product-subtotal">{{ item.final_line_price | money }}</p>
+											</div>
+											<div class="cart-remove">
+												<button class="cart-product-remove-btn" data-action="remove" type="button"
+													aria-label="Remove {{ item.product.title | escape }}" title="Remove">
+													<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+														xmlns="http://www.w3.org/2000/svg">
+														<path
+															d="M12 23C18.0748 23 23 18.0748 23 12C23 5.92525 18.0748 1 12 1C5.92525 1 1 5.92525 1 12C1 18.0748 5.92525 23 12 23Z"
+															stroke="#CCCCCC" stroke-miterlimit="10"></path>
+														<path d="M16 8L8 16" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+															stroke-linejoin="round"></path>
+														<path d="M16 16L8 8" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+															stroke-linejoin="round"></path>
+													</svg>
+												</button>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+						<form class="cart-dicount-box" data-discount-form>
+							<p class="cart-dicount-title">Coupon Code</p>
+							<div class="cart-product-discount">
+								<input class="cart-product-discount-field" type="text" name="discount" placeholder="Enter code"
+									aria-label="Coupon code">
+								<button class="btn primary-btn" type="submit" aria-label="Apply Coupon button"
+									title="Apply Coupon button">Apply Coupon<span></span></button>
+							</div>
+						</form>
+					</div>
+					<form class="cart-summary" action="{{ routes.cart_url }}" method="post">
+						<p class="cart-summary-title">Cart Total</p>
+						<div class="cart-summary-items">
+							<div class="cart-summary-item">
+								<p class="title">Subtotal:</p>
+								<p class="price">{{ cart.items_subtotal_price | money }}</p>
+							</div>
+							{% for discount in cart.cart_level_discount_applications %}
+								<div class="cart-summary-item">
+									<p class="title">{{ discount.title }}:</p>
+									<p class="price">-{{ discount.total_allocated_amount | money }}</p>
+								</div>
+							{% endfor %}
+							<div class="cart-summary-item">
+								<p class="title">Shipping:</p>
+								<p class="price">Calculated at checkout</p>
+							</div>
+							<div class="cart-summary-item summary-total">
+								<p class="title">Total:</p>
+								<p class="price">{{ cart.total_price | money_with_currency }}</p>
+							</div>
+						</div>
+						<div class="cart-summary-btn">
+							<button type="submit" name="checkout" class="btn primary-btn" aria-label="Proceed to checkout"
+								title="Proceed to checkout">Proceed to checkout<span></span></button>
+						</div>
+					</form>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<script>
+		(function () {
+			var root = document.currentScript.parentElement;
+			var sectionId = root.dataset.sectionId;
+			var busy = false;
+
+			function updateHeaderBubble(count) {
+				document.querySelectorAll('[ref="cartBubbleCount"]').forEach(function (el) {
+					el.textContent = count < 100 ? String(count) : '';
+					el.classList.toggle('hidden', count === 0);
+					var bubble = el.closest('[ref="cartBubble"]');
+					if (bubble) bubble.classList.toggle('visually-hidden', count === 0);
+				});
+			}
+
+			function refresh() {
+				var url = new URL(window.location.href);
+				url.searchParams.set('section_id', sectionId);
+				return fetch(url.toString())
+					.then(function (res) { return res.text(); })
+					.then(function (html) {
+						var next = new DOMParser().parseFromString(html, 'text/html').querySelector('[data-cart-page-content]');
+						var current = root.querySelector('[data-cart-page-content]');
+						if (next && current) current.innerHTML = next.innerHTML;
+					})
+					.then(function () { return fetch('/cart.js').then(function (r) { return r.json(); }); })
+					.then(function (cart) {
+						updateHeaderBubble(cart.item_count);
+						if (window.refreshCartDrawer) window.refreshCartDrawer();
+					});
+			}
+
+			function change(key, quantity) {
+				if (busy) return;
+				busy = true;
+				root.classList.add('is-loading');
+				fetch('/cart/change.js', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ id: key, quantity: quantity })
+				})
+					.catch(function () {})
+					.then(refresh)
+					.catch(function () {})
+					.then(function () {
+						busy = false;
+						root.classList.remove('is-loading');
+					});
+			}
+
+			root.addEventListener('click', function (e) {
+				var btn = e.target.closest('[data-action]');
+				if (!btn) return;
+				var item = btn.closest('[data-line-key]');
+				if (!item) return;
+				var key = item.dataset.lineKey;
+				if (btn.dataset.action === 'remove') return change(key, 0);
+				var input = btn.closest('.product-quantity').querySelector('.quantity-count');
+				var current = parseInt(input.value, 10) || 0;
+				change(key, Math.max(0, current + (btn.dataset.action === 'increase' ? 1 : -1)));
+			});
+
+			root.addEventListener('change', function (e) {
+				if (!e.target.matches('.quantity-count')) return;
+				var item = e.target.closest('[data-line-key]');
+				if (item) change(item.dataset.lineKey, Math.max(0, parseInt(e.target.value, 10) || 0));
+			});
+
+			root.addEventListener('submit', function (e) {
+				var form = e.target.closest('[data-discount-form]');
+				if (!form) return;
+				e.preventDefault();
+				var code = form.elements.discount.value.trim();
+				if (code) {
+					window.location.href = '/discount/' + encodeURIComponent(code) + '?redirect=' + encodeURIComponent('{{ routes.cart_url }}');
+				}
+			});
+		})();
+	</script>
+</section>
+
+{% stylesheet %}
+	.cart-section.is-loading [data-cart-page-content] {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	.cart-product-variant {
+		margin: 4px 0 0;
+		font-size: 14px;
+		opacity: 0.7;
+	}
+{% endstylesheet %}
+
+{% schema %}
+{
+	"name": "Cart Page",
+	"settings": [
+		{
+			"type": "text",
+			"id": "heading",
+			"label": "Heading",
+			"default": "My Shopping Cart"
+		},
+		{
+			"type": "text",
+			"id": "empty_text",
+			"label": "Empty cart message",
+			"default": "Your cart is empty"
+		},
+		{
+			"type": "text",
+			"id": "continue_text",
+			"label": "Continue shopping button",
+			"default": "Continue shopping"
+		}
+	],
+	"presets": [
+		{
+			"name": "Cart Page"
+		}
+	]
+}
+{% endschema %}

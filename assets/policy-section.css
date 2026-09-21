@@ -20,6 +20,7 @@
 }
 
 .shopify-policy__body .rte :is(h2, h3) {
+    text-align: left;
     text-transform: capitalize;
     margin: 50px 0 10px;
     color: var(--brand-color);
