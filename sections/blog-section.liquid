@@ -1,0 +1,153 @@
+{{ 'blog-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+	assign blog = s.blog
+	if blog == blank
+		assign blog = blogs.first
+	endif
+%}
+<section class="blog-section section-bg">
+	<div class="container">
+		{% if s.title != blank or s.subtitle != blank %}
+			<div class="blog-section-header">
+				{% if s.title != blank %}
+					<h2 class="blog-section-title">{{ s.title }}</h2>
+				{% endif %}
+				{% if s.subtitle != blank %}
+					<p class="blog-section-subtitle">{{ s.subtitle }}</p>
+				{% endif %}
+			</div>
+		{% endif %}
+
+		{% if blog != blank and blog.articles_count > 0 %}
+			<div class="blog-section-grid">
+				{% for article in blog.articles limit: s.post_limit %}
+					<article class="blog-card">
+						<a href="{{ article.url }}" class="blog-card-img">
+							{% if article.image %}
+								{{ article.image | image_url: width: 800 | image_tag: class: 'blog-card-image', loading: 'lazy', alt: article.image.alt | default: article.title }}
+							{% else %}
+								{{ 'image' | placeholder_svg_tag: 'blog-card-image' }}
+							{% endif %}
+						</a>
+						<div class="blog-card-content">
+							<div class="blog-card-meta">
+								{% if s.show_date %}
+									<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
+								{% endif %}
+								{% if s.show_author and article.author != blank %}
+									<span class="blog-card-author">{{ article.author }}</span>
+								{% endif %}
+							</div>
+							<h3 class="blog-card-title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+							{% if s.show_excerpt %}
+								<p class="blog-card-excerpt">
+									{%- if article.excerpt != blank -%}
+										{{ article.excerpt | strip_html | truncatewords: 22 }}
+									{%- else -%}
+										{{ article.content | strip_html | truncatewords: 22 }}
+									{%- endif -%}
+								</p>
+							{% endif %}
+							<a href="{{ article.url }}" class="blog-card-link">{{ s.link_label }}</a>
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		{% else %}
+			<div class="blog-section-grid">
+				{% for i in (1..s.post_limit) %}
+					<article class="blog-card">
+						<div class="blog-card-img">{{ 'image' | placeholder_svg_tag: 'blog-card-image' }}</div>
+						<div class="blog-card-content">
+							<h3 class="blog-card-title">Blog post title</h3>
+							<p class="blog-card-excerpt">Select a blog in the section settings to show your latest posts.</p>
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+		{% if s.show_view_all and blog != blank %}
+			<div class="blog-section-btn">
+				<a href="{{ blog.url }}" class="btn">{{ s.view_all_label }}</a>
+			</div>
+		{% endif %}
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Blog Section",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title",
+			"default": "From Our Blog"
+		},
+		{
+			"type": "text",
+			"id": "subtitle",
+			"label": "Subtitle",
+			"default": "Stories, styling tips and gifting ideas"
+		},
+		{
+			"type": "blog",
+			"id": "blog",
+			"label": "Blog"
+		},
+		{
+			"type": "range",
+			"id": "post_limit",
+			"label": "Number of posts",
+			"min": 3,
+			"max": 12,
+			"step": 3,
+			"default": 3
+		},
+		{
+			"type": "checkbox",
+			"id": "show_date",
+			"label": "Show date",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_author",
+			"label": "Show author",
+			"default": false
+		},
+		{
+			"type": "checkbox",
+			"id": "show_excerpt",
+			"label": "Show excerpt",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "link_label",
+			"label": "Card link label",
+			"default": "Read more"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_view_all",
+			"label": "Show view all button",
+			"default": true
+		},
+		{
+			"type": "text",
+			"id": "view_all_label",
+			"label": "View all button label",
+			"default": "View all posts"
+		}
+	],
+	"presets": [
+		{
+			"name": "Blog Section"
+		}
+	]
+}
+{% endschema %}
