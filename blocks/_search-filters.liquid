@@ -1,0 +1,119 @@
+{%- doc -%}
+  Renders the search results filter sidebar contents (list/boolean checkboxes + price range).
+  Structural block: must be rendered inside the section's #CollectionFilterForm so these
+  inputs submit as real query params.
+{%- enddoc -%}
+
+<span class="filter-window-close-btn"></span>
+<div class="filter-box" {{ block.shopify_attributes }}>
+  <h6 class="filter-sidebar-heading h6">
+    Filter
+    <span class="filter-close-btn">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3 15L15 3"
+          stroke="#232323"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M15 15L3 3"
+          stroke="#232323"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+    </span>
+  </h6>
+  <div class="filter-accordion">
+    <div class="filter-accordion-items">
+      {% for filter in search.filters %}
+        <div class="filter-accordion-item active">
+          <div class="item-title-wrapper accordion-toggle-btn">
+            <h6 class="item-title">{{ filter.label }}</h6>
+            <span class="icon">
+              <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </span>
+          </div>
+          <div class="filter-accordion-item-content">
+            {% if filter.type == 'price_range' %}
+              <div class="filter-price-range-wrap">
+                <div class="price-range-field">
+                  <input
+                    type="text"
+                    inputmode="decimal"
+                    name="{{ filter.min_value.param_name }}"
+                    {% if filter.min_value.value %}
+                      value="{{ filter.min_value.value | money_without_currency }}"
+                    {% endif %}
+                    placeholder="Minimum {{ cart.currency.symbol }}"
+                  >
+                </div>
+                <div class="price-range-field">
+                  <input
+                    type="text"
+                    inputmode="decimal"
+                    name="{{ filter.max_value.param_name }}"
+                    {% if filter.max_value.value %}
+                      value="{{ filter.max_value.value | money_without_currency }}"
+                    {% endif %}
+                    placeholder="Maximum {{ cart.currency.symbol }}"
+                  >
+                </div>
+                <button type="submit" class="btn filter-price-apply-btn">Apply</button>
+              </div>
+            {% else %}
+              <div class="filter-options-wrapper">
+                {% for value in filter.values %}
+                  {% liquid
+                    assign input_id = 'Filter-' | append: value.param_name | append: '-' | append: forloop.index | replace: '.', '-'
+                    assign is_disabled = false
+                    if value.count == 0 and value.active == false
+                      assign is_disabled = true
+                    endif
+                  %}
+                  <div class="filter-options">
+                    <div class="filter-option{% if is_disabled %} filter_disable{% endif %}">
+                      <input
+                        type="checkbox"
+                        id="{{ input_id }}"
+                        name="{{ value.param_name }}"
+                        value="{{ value.value }}"
+                        {% if value.active %}
+                          checked
+                        {% endif %}
+                        {% if is_disabled %}
+                          disabled
+                        {% endif %}
+                        onchange="this.form.submit()"
+                      >
+                      <label for="{{ input_id }}">{{ value.label }}</label>
+                    </div>
+                    <span class="filter-item-number">{{ value.count }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search filters",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,62 @@
+{%- doc -%}
+  Renders the search results toolbar: mobile filter-open button, result count, and sort dropdown.
+  Structural block: the sort <select> must be rendered inside the section's
+  #CollectionFilterForm so it submits alongside any active filters.
+{%- enddoc -%}
+
+<div class="collection-top" {{ block.shopify_attributes }}>
+  <div class="collection-filter-btn">
+    <span class="filter-open-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        id="Layer_2"
+        data-name="Layer 2"
+        viewBox="0 0 19.61 18.75"
+        style="fill: #fff; width: 20px;"
+      >
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g>
+            <path
+              d="M0,2.89c0,.23.18.41.41.41h3.73c.32,1.04,1.28,1.81,2.43,1.81s2.11-.76,2.43-1.81h10.2c.23,0,.41-.18.41-.41v-.68c0-.23-.18-.41-.41-.41h-10.2c-.32-1.04-1.28-1.81-2.43-1.81s-2.11.76-2.43,1.81H.41c-.23,0-.41.18-.41.41v.68ZM6.57,1.5c.58,0,1.06.47,1.06,1.06s-.47,1.06-1.06,1.06-1.06-.47-1.06-1.06.47-1.06,1.06-1.06Z"
+            ></path>
+            <path
+              d="M.41,10.12h9.08c.32,1.04,1.28,1.81,2.43,1.81s2.11-.76,2.43-1.81h4.85c.23,0,.41-.18.41-.41v-.68c0-.23-.18-.41-.41-.41h-4.85c-.32-1.04-1.28-1.81-2.43-1.81s-2.11.76-2.43,1.81H.41c-.23,0-.41.18-.41.41v.68c0,.23.18.41.41.41ZM11.92,8.32c.58,0,1.06.47,1.06,1.06s-.47,1.06-1.06,1.06-1.06-.47-1.06-1.06.47-1.06,1.06-1.06Z"
+            ></path>
+            <path
+              d="M19.61,15.85c0-.23-.18-.41-.41-.41h-10.2c-.32-1.04-1.28-1.81-2.43-1.81s-2.11.76-2.43,1.81H.41c-.23,0-.41.18-.41.41v.68c0,.23.18.41.41.41h3.73c.32,1.04,1.28,1.81,2.43,1.81s2.11-.76,2.43-1.81h10.2c.23,0,.41-.18.41-.41v-.68ZM6.57,17.25c-.58,0-1.06-.47-1.06-1.06s.47-1.06,1.06-1.06,1.06.47,1.06,1.06-.47,1.06-1.06,1.06Z"
+            ></path>
+          </g>
+        </g>
+      </svg>
+      Filter
+    </span>
+    <p class="collection-product-count">{{ search.results_count }} products</p>
+  </div>
+  <div class="filter-select-field">
+    <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+      {% for option in search.sort_options %}
+        <option value="{{ option.value }}" {% if option.value == search.sort_by %}selected{% endif %}>
+          {{ option.name }}
+        </option>
+      {% endfor %}
+    </select>
+    <span class="filter-select-field-icon">
+      <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    </span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search toolbar",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}

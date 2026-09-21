@@ -1,0 +1,73 @@
+{%- doc -%}
+  Renders the paginated search result grid with infinite scroll and the empty state.
+{%- enddoc -%}
+
+<script src="{{ 'ajaxinate.js' | asset_url }}" defer></script>
+
+<div {{ block.shopify_attributes }}>
+  {% paginate search.results by block.settings.products_per_page %}
+    <div class="product-items search-products">
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          <div class="product-item">
+            {% render 'product-card', product: item %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if search.performed and search.results_count == 0 %}
+      <p class="collection-empty-message">
+        No results found for "{{ search.terms | escape }}". Check the spelling or try a different search or filter.
+      </p>
+    {% elsif search.performed == false %}
+      <p class="collection-empty-message">Type something in the search box to find products.</p>
+    {% endif %}
+
+    <div id="infinite-Pagination" class="infinite-Pagination">
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}" class="collection-load-more-btn">Loading More</a>
+      {% endif %}
+    </div>
+  {% endpaginate %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Ajaxinate({
+      container: '.search-products',
+      pagination: '.infinite-Pagination'
+    });
+
+    // base.css scrolls inside .page-wrapper on desktop, so forward its scroll
+    // events to document, which is where Ajaxinate listens.
+    var pageWrapper = document.querySelector('.page-wrapper');
+    if (pageWrapper) {
+      pageWrapper.addEventListener(
+        'scroll',
+        function () {
+          document.dispatchEvent(new Event('scroll'));
+        },
+        { passive: true }
+      );
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Search product grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    }
+  ]
+}
+{% endschema %}
