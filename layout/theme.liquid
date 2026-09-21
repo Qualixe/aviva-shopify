@@ -18,6 +18,9 @@
 
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
+    {%- if request.page_type == 'policy' -%}
+      {{ 'policy-section.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
     {%- render 'card-hover-effect-styles' -%}
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
