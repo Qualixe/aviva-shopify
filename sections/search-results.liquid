@@ -1,256 +1,110 @@
+{% capture clear_url %}{{ routes.search_url }}?type=product&q={{ search.terms | url_encode }}{% endcapture %}
 
+<section class="collection-section section-bg" data-section-id="{{ section.id }}">
+    <div class="container">
+        <div class="collection-wrapper">
+            <form method="get" action="{{ routes.search_url }}" id="CollectionFiltersForm">
+                <input type="hidden" name="type" value="product">
+                <input type="hidden" name="q" value="{{ search.terms | escape }}">
+                {% if search.performed and search.results_count > 0 %}
+                    {% render 'collection-filters', results: search, results_url: clear_url %}
+                {% endif %}
+                <div class="collection-content">
+                    {% if search.performed and search.results_count > 0 %}
+                        {% paginate search.results by section.settings.products_per_page %}
+                            <div class="collection-top">
+                                <h2 class="collection-heading">{{ 'content.search_results' | t }}</h2>
+                                <div class="collection-filter-btn">
+                                    <div class="collection-filter-short">
+                                        <p class="collection-product-count">{{ search.results_count }} products</p>
+                                        <div class="filter-select-field">
+                                            <select name="sort_by" id="sort_by">
+                                                {% for option in search.sort_options %}
+                                                    <option value="{{ option.value }}" {% if option.value == search.sort_by %}selected{% endif %}>{{ option.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <span class="filter-select-field-icon">
+                                                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+                                                        fill="currentColor">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span class="filter-open-btn">
+                                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.375 1.35419C0.375 1.35419 2.33337 0.375 7.22931 0.375C12.1252 0.375 14.0836 1.35419 14.0836 1.35419L8.69809 7.7189V12.1252L5.76053 13.594V7.7189L0.375 1.35419Z"
+                                                stroke="#fff" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        Filter
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-items">
+                                {% for item in search.results %}
+                                    {% if item.object_type == 'product' %}
+                                        <div class="product-item">
+                                            {% render 'product', product: item %}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            {% render 'pagination-controls', paginate: paginate %}
+                        {% endpaginate %}
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
-<script
-  src="{{ 'results-list.js' | asset_url }}"
-  type="module"
-  fetchpriority="low"
-></script>
-
-{% liquid
-  if section.settings.background_color != blank
-    render 'contrast-override', background_color: section.settings.background_color, section_id: section.id
-  endif
-%}
-
-{% render 'collection-wrapper-styles' %}
-
-<div
-  class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
-></div>
-
-<results-list
-  class="section product-grid-container spacing-style{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
-  style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
-  section-id="{{ section.id }}"
-  infinite-scroll="{{ section.settings.enable_infinite_scroll }}"
->
-  {% render 'skip-to-content-link', href: '#ResultsList', text: 'accessibility.skip_to_results_list' %}
-
-  <div
-    class="collection-wrapper grid gap-style"
-  >
-    {% assign products_per_page = 24 %}
-
-    {% if section.settings.enable_infinite_scroll == false %}
-      {% assign products_per_page = section.settings.products_per_page %}
-    {% endif %}
-
-    {% paginate search.results by products_per_page %}
-      {% if search.results_count > 0 %}
-        {% content_for 'block', type: 'filters', id: 'filters', results: search, results_size: search.results_count %}
-        {% assign products = search.results | where: 'object_type', 'product' %}
-      {% else %}
-        {% assign collection = settings.empty_state_collection | default: collections.all %}
-        {% assign default_title = 'content.search_results_resource_products' | t %}
-        {% assign title = settings.empty_state_collection.title | default: default_title %}
-        {% assign products = collection.products %}
-      {% endif %}
-
-      {% capture children %}
-        {% for product in products %}
-          <li
-            id="{{ section.id }}-{{ product.id }}"
-            class="product-grid__item product-grid__item--{{ forloop.index0 }}"
-            data-page="{{ paginate.current_page }}"
-            data-product-id="{{ product.id }}"
-            ref="cards[]"
-          >
-            {% render 'product', product: product %}
-          </li>
-        {% endfor %}
-      {% endcapture %}
-
-      {% render 'product-grid',
-        section: section,
-        children: children,
-        products: products,
-        paginate: paginate,
-        enable_infinite_scroll: section.settings.enable_infinite_scroll,
-        title: title
-      %}
-    {% endpaginate %}
-  </div>
-</results-list>
+<style>
+    .collection-empty-state {
+        grid-column: 1 / -1;
+        width: 100%;
+        text-align: center;
+        padding: 60px 0;
+        color: var(--paragraph-text-color);
+    }
+    .collection-top {
+        background: {{ section.settings.top_bg }};
+        border-color: {{ section.settings.border }};
+    }
+    .collection-content.loading {
+        opacity: 0.5;
+        pointer-events: none;
+        transition: opacity 0.15s ease;
+    }
+</style>
 
 {% schema %}
 {
-  "name": "t:names.search_results",
-  "settings": [
-    {
-      "type": "paragraph",
-      "content": "t:content.edit_empty_state_collection_in_theme_settings"
-    },
-    {
-      "type": "select",
-      "id": "layout_type",
-      "label": "t:settings.type",
-      "options": [
+    "name": "t:names.search_results",
+    "settings": [
         {
-          "value": "grid",
-          "label": "t:options.grid"
+            "type": "range",
+            "id": "products_per_page",
+            "label": "Products Per Page",
+            "min": 8,
+            "max": 48,
+            "step": 4,
+            "default": 24
         },
         {
-          "value": "organic",
-          "label": "t:options.editorial"
+            "type": "color",
+            "id": "top_bg",
+            "label": "Top Background",
+            "default": "{{ settings.color_palette.section_bg }}"
+        },
+        {
+            "type": "color",
+            "id": "border",
+            "label": "Border",
+            "default": "{{ settings.color_palette.border }}"
         }
-      ],
-      "default": "grid"
-    },
-    {
-      "type": "select",
-      "id": "product_card_size",
-      "label": "t:settings.card_size",
-      "options": [
-        {
-          "value": "small",
-          "label": "t:options.small"
-        },
-        {
-          "value": "medium",
-          "label": "t:options.medium"
-        },
-        {
-          "value": "large",
-          "label": "t:options.large"
-        },
-        {
-          "value": "extra-large",
-          "label": "t:options.extra_large"
-        }
-      ],
-      "default": "medium",
-      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
-    },
-    {
-      "type": "select",
-      "id": "mobile_product_card_size",
-      "label": "t:settings.mobile_card_size",
-      "options": [
-        {
-          "value": "small",
-          "label": "t:options.small"
-        },
-        {
-          "value": "large",
-          "label": "t:options.large"
-        }
-      ],
-      "default": "small"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_infinite_scroll",
-      "label": "t:settings.auto_load_products",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "products_per_page",
-      "label": "t:settings.products_per_page",
-      "min": 8,
-      "max": 36,
-      "step": 4,
-      "default": 24,
-      "visible_if": "{{ section.settings.enable_infinite_scroll == false }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.layout"
-    },
-    {
-      "type": "select",
-      "id": "product_grid_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "centered",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "centered"
-    },
-    {
-      "type": "checkbox",
-      "id": "full_width_on_mobile",
-      "label": "t:settings.full_width_on_mobile",
-      "default": true,
-      "visible_if": "{{ section.settings.product_grid_width != 'full-width' }}"
-    },
-    {
-      "type": "range",
-      "id": "columns_gap_horizontal",
-      "label": "t:settings.horizontal_gap",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "columns_gap_vertical",
-      "label": "t:settings.vertical_gap",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "padding-inline-start",
-      "label": "t:settings.left_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding-inline-end",
-      "label": "t:settings.right_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:content.section_layout"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "t:settings.background_color",
-      "placeholder": "t:settings.default"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 8
-    }
-  ],
-  "presets": []
+    ]
 }
 {% endschema %}
