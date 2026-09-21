@@ -62,13 +62,6 @@
     </a>
   </search-page-input-component>
 
-  {% if search.results.size == 0 and search.terms != blank %}
-    <div class="search-results__no-results">
-      <p>
-        {{ 'content.search_results_no_results_check_spelling' | t: terms: search.terms }}
-      </p>
-    </div>
-  {% endif %}
 </form>
 
 {% stylesheet %}

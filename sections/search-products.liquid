@@ -6,11 +6,13 @@
             <form method="get" action="{{ routes.search_url }}" id="CollectionFiltersForm">
                 <input type="hidden" name="type" value="product">
                 <input type="hidden" name="q" value="{{ search.terms | escape }}">
-                {% if search.performed %}
+                {% if search.performed and search.results_count > 0 %}
                     {% render 'collection-filters', results: search, results_url: clear_url %}
                 {% endif %}
                 <div class="collection-content">
-                    {% if search.performed %}
+                    {% if search.performed and search.results_count == 0 %}
+                        <p class="collection-empty-state">{{ 'content.search_results_no_results_check_spelling' | t: terms: search.terms }}</p>
+                    {% elsif search.performed %}
                         {% paginate search.results by section.settings.products_per_page %}
                             <div class="collection-top">
                                 <h2 class="collection-heading">{{ 'content.search_results' | t }}</h2>
@@ -44,9 +46,6 @@
                                 </div>
                             </div>
                             <div class="product-items">
-                                {% if search.results_count == 0 %}
-                                    <p class="collection-empty-state">{{ 'content.search_results_no_results_check_spelling' | t: terms: search.terms }}</p>
-                                {% endif %}
                                 {% for item in search.results %}
                                     {% if item.object_type == 'product' %}
                                         <div class="product-item">
