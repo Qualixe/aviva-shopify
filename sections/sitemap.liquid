@@ -1,0 +1,141 @@
+{{ 'sitemap-section.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+	assign s = section.settings
+	assign heading = s.title | default: page.title
+%}
+<section class="sitemap-section">
+	<div class="container">
+		{% if heading != blank %}
+			<h1 class="sitemap-title">{{ heading }}</h1>
+		{% endif %}
+		<div class="sitemap-grid">
+			{% if s.show_menu and s.menu != blank %}
+				<div class="sitemap-group">
+					<h2 class="sitemap-group-title">{{ s.menu.title }}</h2>
+					<ul class="sitemap-list">
+						{% for link in s.menu.links %}
+							<li>
+								<a href="{{ link.url }}">{{ link.title }}</a>
+								{% if link.links.size > 0 %}
+									<ul class="sitemap-sublist">
+										{% for child in link.links %}
+											<li><a href="{{ child.url }}">{{ child.title }}</a></li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+
+			{% if s.show_collections %}
+				<div class="sitemap-group">
+					<h2 class="sitemap-group-title">Collections</h2>
+					<ul class="sitemap-list">
+						{% for collection in collections limit: s.collections_limit %}
+							<li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+
+			{% if s.show_pages %}
+				<div class="sitemap-group">
+					<h2 class="sitemap-group-title">Pages</h2>
+					<ul class="sitemap-list">
+						{% for p in pages limit: 50 %}
+							<li><a href="{{ p.url }}">{{ p.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+
+			{% if s.show_blogs %}
+				<div class="sitemap-group">
+					<h2 class="sitemap-group-title">Blogs</h2>
+					<ul class="sitemap-list">
+						{% for blog in blogs %}
+							<li><a href="{{ blog.url }}">{{ blog.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+
+			<div class="sitemap-group">
+				<h2 class="sitemap-group-title">Account</h2>
+				<ul class="sitemap-list">
+					<li><a href="{{ routes.search_url }}">{{ 'content.search' | t }}</a></li>
+					<li><a href="{{ routes.cart_url }}">Cart</a></li>
+					{% if shop.customer_accounts_enabled %}
+						{% if customer %}
+							<li><a href="{{ routes.account_url }}">My account</a></li>
+						{% else %}
+							<li><a href="{{ routes.account_login_url }}">Log in</a></li>
+							<li><a href="{{ routes.account_register_url }}">Create account</a></li>
+						{% endif %}
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+	"name": "Sitemap",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title",
+			"info": "Leave blank to use the page title"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_menu",
+			"label": "Show menu links",
+			"default": true
+		},
+		{
+			"type": "link_list",
+			"id": "menu",
+			"label": "Menu",
+			"default": "main-menu"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_collections",
+			"label": "Show collections",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "collections_limit",
+			"label": "Collections to show",
+			"min": 5,
+			"max": 50,
+			"step": 5,
+			"default": 20
+		},
+		{
+			"type": "checkbox",
+			"id": "show_pages",
+			"label": "Show pages",
+			"default": true
+		},
+		{
+			"type": "checkbox",
+			"id": "show_blogs",
+			"label": "Show blogs",
+			"default": true
+		}
+	],
+	"presets": [
+		{
+			"name": "Sitemap"
+		}
+	]
+}
+{% endschema %}

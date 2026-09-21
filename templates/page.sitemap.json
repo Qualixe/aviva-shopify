@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "sitemap",
+      "settings": {
+        "show_menu": true,
+        "menu": "main-menu",
+        "show_collections": true,
+        "collections_limit": 20,
+        "show_pages": true,
+        "show_blogs": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
