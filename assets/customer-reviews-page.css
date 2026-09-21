@@ -51,6 +51,18 @@
     align-items: stretch;
 }
 
+/* app blocks (Judge.me, Loox, Stamped etc.) span the full grid width */
+.reviews-page-grid>*:not(.review-card) {
+    grid-column: 1 / -1;
+    min-width: 0;
+}
+
+.reviews-page-grid .jdgm-widget,
+.reviews-page-grid .jdgm-all-reviews-page,
+.reviews-page-grid [class*="jdgm-"] {
+    font-family: inherit;
+}
+
 .review-card {
     display: flex;
     flex-direction: column;

@@ -5,8 +5,10 @@
 	assign total = 0
 	assign count = 0
 	for b in section.blocks
-		assign total = total | plus: b.settings.rating
-		assign count = count | plus: 1
+		if b.type == 'review-card-item'
+			assign total = total | plus: b.settings.rating
+			assign count = count | plus: 1
+		endif
 	endfor
 	if count > 0
 		assign average = total | times: 1.0 | divided_by: count | round: 1
@@ -59,6 +61,9 @@
 	"blocks": [
 		{
 			"type": "review-card-item"
+		},
+		{
+			"type": "@app"
 		}
 	],
 	"presets": [
