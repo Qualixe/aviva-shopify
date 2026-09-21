@@ -27,7 +27,7 @@
             "read_only": true,
             "alignment": "center",
             "show_alignment": true,
-            "text_color": "{{ settings.color_palette.foreground }}",
+            "text_color": "",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
