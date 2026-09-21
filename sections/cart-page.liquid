@@ -7,9 +7,9 @@
 		</div>
 		<div class="cart-page-content" data-cart-page-content>
 			{% if cart.item_count == 0 %}
-				<div class="cart-empty" style="text-align: center; padding: 40px 0;">
+				<div class="cart-empty">
 					<p>{{ section.settings.empty_text }}</p>
-					<a href="{{ routes.all_products_collection_url }}" class="btn primary-btn" style="margin-top: 20px;">
+					<a href="{{ routes.all_products_collection_url }}" class="btn primary-btn cart-empty-btn">
 						{{ section.settings.continue_text }}<span></span>
 					</a>
 				</div>
@@ -244,6 +244,28 @@
 	.cart-section.is-loading [data-cart-page-content] {
 		opacity: 0.5;
 		pointer-events: none;
+	}
+
+	.cart-empty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+		padding: 40px 0;
+		text-align: center;
+	}
+
+	.cart-empty .cart-empty-btn {
+		width: auto;
+		min-width: 200px;
+		padding: 14px 36px;
+		background: var(--brand-color);
+		color: var(--white);
+	}
+
+	.cart-empty .cart-empty-btn:hover {
+		background: var(--white);
+		color: var(--brand-color);
 	}
 
 	.cart-product-variant {
