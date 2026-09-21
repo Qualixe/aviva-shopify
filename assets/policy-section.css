@@ -1,5 +1,5 @@
 .shopify-policy__container {
-    max-width: 900px;
+    max-width: 900px !important;
     margin: 0 auto;
     padding: 42px 20px;
 }
