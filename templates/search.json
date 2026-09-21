@@ -41,7 +41,7 @@
           "settings": {
             "width": "custom",
             "custom_width": 40,
-            "input_style": "custom",
+            "input_style": "default",
             "input_background_color": "{{ settings.color_palette.background }}",
             "input_text_color": "{{ settings.color_palette.foreground }}",
             "input_border_color": "{{ settings.color_palette.foreground }}",
