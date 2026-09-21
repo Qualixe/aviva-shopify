@@ -16,7 +16,7 @@
           "type": "_heading",
           "static": true,
           "settings": {
-            "type_preset": "h2",
+            "type_preset": "h3",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "line_height": "normal",
@@ -27,7 +27,7 @@
             "read_only": true,
             "alignment": "center",
             "show_alignment": true,
-            "text_color": "{{ settings.color_palette.foreground }}",
+            "text_color": "",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -40,7 +40,7 @@
           "static": true,
           "settings": {
             "width": "custom",
-            "custom_width": 50,
+            "custom_width": 40,
             "input_style": "default",
             "input_background_color": "{{ settings.color_palette.background }}",
             "input_text_color": "{{ settings.color_palette.foreground }}",
@@ -54,7 +54,7 @@
       "settings": {
         "alignment": "center",
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 40,
+        "padding-block-start": 20,
         "padding-block-end": 0
       }
     },
