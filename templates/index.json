@@ -110,6 +110,7 @@
         "collection_pUjVRi": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/product-img2.jpg",
             "heading": "Amaila daypack",
             "collection": "bages"
           },
@@ -118,6 +119,7 @@
         "collection_kBACHQ": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/product-img6.jpg",
             "heading": "weekender duffle",
             "collection": "bages"
           },
@@ -126,6 +128,7 @@
         "collection_FX7xTh": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/product-img1.jpg",
             "heading": "Aarohi rucksack",
             "collection": "bages"
           },
@@ -134,6 +137,7 @@
         "collection_HykxfV": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/product-img3.jpg",
             "heading": "daily tour",
             "collection": "bages"
           },
@@ -142,6 +146,7 @@
         "collection_R7TVtm": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/product-img5.jpg",
             "heading": "long lenth",
             "collection": "bages"
           },
@@ -150,6 +155,7 @@
         "collection_FGmHFE": {
           "type": "collection",
           "settings": {
+            "image": "shopify://shop_images/product-img3.jpg",
             "heading": "Amaila daypack",
             "collection": "bages"
           },
