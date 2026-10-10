@@ -12,8 +12,8 @@
     "main": {
       "type": "collection-banner",
       "settings": {
-        "image": "shopify://shop_images/hero-slider-banner2.webp",
-        "image_mob": "shopify://shop_images/hero-slider-banner2.webp"
+        "image": "shopify://shop_images/hero-slider-banner2.jpg",
+        "image_mob": "shopify://shop_images/hero-slider-banner2.jpg"
       }
     },
     "collection_products": {
