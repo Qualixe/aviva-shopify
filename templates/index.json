@@ -10,13 +10,13 @@
 {
   "sections": {
     "hero_section_Jij8bH": {
-      "type": "hero-section", 
+      "type": "hero-section",
       "blocks": {
         "slide_7pYVff": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/hero-slider-banner3.webp",
-            "image_mob": "shopify://shop_images/hero-slider-banner3-mobile.webp",
+            "image": "shopify://shop_images/hero-slider-banner3.jpg",
+            "image_mob": "shopify://shop_images/hero-slider-banner3-mobile.jpg",
             "title": "Premium Product",
             "link": "shopify://collections/all"
           }
@@ -24,8 +24,8 @@
         "slide_m3Ad7r": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/hero-slider-banner2.webp",
-            "image_mob": "shopify://shop_images/hero-slider-banner2-mobile.webp",
+            "image": "shopify://shop_images/hero-slider-banner2.jpg",
+            "image_mob": "shopify://shop_images/hero-slider-banner2-mobile.jpg",
             "title": "Premium Product",
             "link": "shopify://collections/all"
           }
@@ -33,8 +33,8 @@
         "slide_CYVqA4": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/hero-slider-banner1.webp",
-            "image_mob": "shopify://shop_images/hero-slider-banner1-mobile.webp",
+            "image": "shopify://shop_images/hero-slider-banner1.jpg",
+            "image_mob": "shopify://shop_images/hero-slider-banner1-mobile.jpg",
             "title": "Premium Product",
             "link": "shopify://collections/all"
           }
@@ -56,7 +56,7 @@
         "category_Lhn9Lg": {
           "type": "Category",
           "settings": {
-            "image": "shopify://shop_images/category-img4.avif",
+            "image": "shopify://shop_images/category-img3.png",
             "title": "Sling Bogo",
             "link": "shopify://collections/all"
           }
@@ -64,7 +64,7 @@
         "category_Ym4bPf": {
           "type": "Category",
           "settings": {
-            "image": "shopify://shop_images/category-img2.avif",
+            "image": "shopify://shop_images/product-img1.jpg",
             "title": "Backpack",
             "link": "shopify://collections/all"
           }
@@ -72,7 +72,7 @@
         "category_NB74rh": {
           "type": "Category",
           "settings": {
-            "image": "shopify://shop_images/category-img3.avif",
+            "image": "shopify://shop_images/product-img5.jpg",
             "title": "Office Bag",
             "link": "shopify://collections/all"
           }
@@ -80,7 +80,7 @@
         "category_8g7tEa": {
           "type": "Category",
           "settings": {
-            "image": "shopify://shop_images/category-img4.avif",
+            "image": "shopify://shop_images/product-img1.jpg",
             "title": "Duffle",
             "link": "shopify://collections/all"
           }
@@ -88,7 +88,7 @@
         "category_fcL4XW": {
           "type": "Category",
           "settings": {
-            "image": "shopify://shop_images/category-img1.avif",
+            "image": "shopify://shop_images/product-img3.jpg",
             "title": "Sling Bogo",
             "link": "shopify://collections/all"
           }
@@ -110,7 +110,6 @@
         "collection_pUjVRi": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img1.webp",
             "heading": "Amaila daypack",
             "collection": "bages"
           },
@@ -119,7 +118,6 @@
         "collection_kBACHQ": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img2.webp",
             "heading": "weekender duffle",
             "collection": "bages"
           },
@@ -128,7 +126,6 @@
         "collection_FX7xTh": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img5.webp",
             "heading": "Aarohi rucksack",
             "collection": "bages"
           },
@@ -137,7 +134,6 @@
         "collection_HykxfV": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img3.webp",
             "heading": "daily tour",
             "collection": "bages"
           },
@@ -146,7 +142,6 @@
         "collection_R7TVtm": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img6.webp",
             "heading": "long lenth",
             "collection": "bages"
           },
@@ -155,7 +150,6 @@
         "collection_FGmHFE": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img4.webp",
             "heading": "Amaila daypack",
             "collection": "bages"
           },
@@ -203,7 +197,7 @@
       },
       "name": "Products",
       "settings": {
-        "collection": "bages",
+        "collection": "frontpage",
         "limit": 12
       }
     },
@@ -211,8 +205,6 @@
       "type": "banner",
       "name": "Single Banner",
       "settings": {
-        "image": "shopify://shop_images/single-banner1.webp",
-        "image_mob": "shopify://shop_images/single-banner1.webp",
         "title": "premium bags",
         "link": "shopify://collections/all"
       }
@@ -246,7 +238,6 @@
           "type": "featured-collection-item",
           "name": "Featured Collection Item",
           "settings": {
-            "image": "shopify://shop_images/product-img1.webp",
             "heading": "Gift Shop By Zouk",
             "collection": "bages",
             "button_label": "Explore Now",
@@ -259,7 +250,6 @@
           "type": "featured-collection-item",
           "name": "Featured Collection Item",
           "settings": {
-            "image": "shopify://shop_images/product-img3.webp",
             "heading": "Rhea Kapoor X Zouk",
             "collection": "bages",
             "button_label": "Explore Now",
@@ -272,7 +262,6 @@
           "type": "featured-collection-item",
           "name": "Featured Collection Item",
           "settings": {
-            "image": "shopify://shop_images/product-img5.webp",
             "heading": "Alt Collection",
             "collection": "bages",
             "button_label": "Explore Now",
@@ -299,13 +288,10 @@
           "type": "shop-by-print-block",
           "settings": {
             "reverse": false,
-            "big_image": "shopify://shop_images/shop-by-print-img1.jpg",
             "big_title": "Floral",
             "big_link": "shopify://collections/bages",
-            "a_image": "shopify://shop_images/shop-by-print-img2.webp",
             "a_title": "Geometric",
             "a_link": "shopify://collections/bages",
-            "b_image": "shopify://shop_images/shop-by-print-img3.webp",
             "b_title": "Motifs",
             "b_link": "shopify://collections/bages",
             "heading_color": "{{ settings.color_palette.white_text }}"
@@ -316,13 +302,10 @@
           "type": "shop-by-print-block",
           "settings": {
             "reverse": true,
-            "big_image": "shopify://shop_images/shop-by-print-img6.jpg",
             "big_title": "Waves",
             "big_link": "shopify://collections/bages",
-            "a_image": "shopify://shop_images/shop-by-print-img4.webp",
             "a_title": "Texture",
             "a_link": "shopify://collections/bages",
-            "b_image": "shopify://shop_images/shop-by-print-img5.webp",
             "b_title": "Solid",
             "b_link": "shopify://collections/bages",
             "heading_color": "{{ settings.color_palette.white_text }}"
@@ -345,7 +328,6 @@
         "image_category_item_qQYRi6": {
           "type": "image-category-item",
           "settings": {
-            "image": "shopify://shop_images/product-img3.webp",
             "subtitle": "",
             "title": "official collections",
             "link": "shopify://collections/bages",
@@ -359,7 +341,6 @@
         "image_category_item_RBAtmy": {
           "type": "image-category-item",
           "settings": {
-            "image": "shopify://shop_images/product-img5.webp",
             "subtitle": "flat 20% off",
             "title": "kashmir collections",
             "link": "shopify://collections/bages",
@@ -373,7 +354,6 @@
         "image_category_item_DNXNmg": {
           "type": "image-category-item",
           "settings": {
-            "image": "shopify://shop_images/product-img6.webp",
             "subtitle": "",
             "title": "travel collections",
             "link": "shopify://collections/bages",
@@ -387,7 +367,6 @@
         "image_category_item_Xt9kYP": {
           "type": "image-category-item",
           "settings": {
-            "image": "shopify://shop_images/product-img2.webp",
             "subtitle": "up to 40% off",
             "title": "handbag collections",
             "link": "shopify://products/rhea-kapoor-office-bag-kashmir-blooms",
@@ -475,7 +454,6 @@
         "trust_highlight_item_pATeTA": {
           "type": "trust-highlight-item",
           "settings": {
-            "icon": "shopify://shop_images/trust-highlight-icon1.png",
             "title": "Cruelty Free",
             "text": "We are 100% PeTA approved Vegan brand",
             "heading_color": "",
@@ -486,7 +464,6 @@
         "trust_highlight_item_97xw6p": {
           "type": "trust-highlight-item",
           "settings": {
-            "icon": "shopify://shop_images/trust-highlight-icon2.png",
             "title": "Proudly Indian",
             "text": "All our products are Made in India",
             "heading_color": "",
@@ -497,7 +474,6 @@
         "trust_highlight_item_pwWNBB": {
           "type": "trust-highlight-item",
           "settings": {
-            "icon": "shopify://shop_images/trust-highlight-icon3.png",
             "title": "Handcrafted",
             "text": "All products are designed & manufactured by our artisans",
             "heading_color": "",
