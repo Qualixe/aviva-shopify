@@ -205,6 +205,8 @@
       "type": "banner",
       "name": "Single Banner",
       "settings": {
+        "image": "shopify://shop_images/single-banner1.jpg",
+        "image_mob": "shopify://shop_images/single-banner1.jpg",
         "title": "premium bags",
         "link": "shopify://collections/all"
       }
@@ -288,10 +290,13 @@
           "type": "shop-by-print-block",
           "settings": {
             "reverse": false,
+            "big_image": "shopify://shop_images/shop-by-print-img1.jpg",
             "big_title": "Floral",
             "big_link": "shopify://collections/bages",
+            "a_image": "shopify://shop_images/shop-by-print-img2.jpg",
             "a_title": "Geometric",
             "a_link": "shopify://collections/bages",
+            "b_image": "shopify://shop_images/shop-by-print-img3.jpg",
             "b_title": "Motifs",
             "b_link": "shopify://collections/bages",
             "heading_color": "{{ settings.color_palette.white_text }}"
@@ -302,10 +307,13 @@
           "type": "shop-by-print-block",
           "settings": {
             "reverse": true,
+            "big_image": "shopify://shop_images/shop-by-print-img6.jpg",
             "big_title": "Waves",
             "big_link": "shopify://collections/bages",
+            "a_image": "shopify://shop_images/shop-by-print-img3.jpg",
             "a_title": "Texture",
             "a_link": "shopify://collections/bages",
+            "b_image": "shopify://shop_images/shop-by-print-img4.jpg",
             "b_title": "Solid",
             "b_link": "shopify://collections/bages",
             "heading_color": "{{ settings.color_palette.white_text }}"
@@ -328,6 +336,7 @@
         "image_category_item_qQYRi6": {
           "type": "image-category-item",
           "settings": {
+            "image": "shopify://shop_images/category-img4.png",
             "subtitle": "",
             "title": "official collections",
             "link": "shopify://collections/bages",
@@ -341,6 +350,7 @@
         "image_category_item_RBAtmy": {
           "type": "image-category-item",
           "settings": {
+            "image": "shopify://shop_images/product-img5.jpg",
             "subtitle": "flat 20% off",
             "title": "kashmir collections",
             "link": "shopify://collections/bages",
@@ -354,6 +364,7 @@
         "image_category_item_DNXNmg": {
           "type": "image-category-item",
           "settings": {
+            "image": "shopify://shop_images/category-img1.png",
             "subtitle": "",
             "title": "travel collections",
             "link": "shopify://collections/bages",
@@ -367,6 +378,7 @@
         "image_category_item_Xt9kYP": {
           "type": "image-category-item",
           "settings": {
+            "image": "shopify://shop_images/product-img2.jpg",
             "subtitle": "up to 40% off",
             "title": "handbag collections",
             "link": "shopify://products/rhea-kapoor-office-bag-kashmir-blooms",
@@ -443,6 +455,7 @@
         "community_review_item_3kPG6J",
         "community_review_item_LWi3JB"
       ],
+      "disabled": true,
       "name": "Community Review",
       "settings": {
         "title": "Community Reviews"
@@ -454,6 +467,7 @@
         "trust_highlight_item_pATeTA": {
           "type": "trust-highlight-item",
           "settings": {
+            "icon": "shopify://shop_images/trust-highlight-icon1.png",
             "title": "Cruelty Free",
             "text": "We are 100% PeTA approved Vegan brand",
             "heading_color": "",
@@ -464,6 +478,7 @@
         "trust_highlight_item_97xw6p": {
           "type": "trust-highlight-item",
           "settings": {
+            "icon": "shopify://shop_images/trust-highlight-icon2.png",
             "title": "Proudly Indian",
             "text": "All our products are Made in India",
             "heading_color": "",
@@ -474,6 +489,7 @@
         "trust_highlight_item_pwWNBB": {
           "type": "trust-highlight-item",
           "settings": {
+            "icon": "shopify://shop_images/trust-highlight-icon3.png",
             "title": "Handcrafted",
             "text": "All products are designed & manufactured by our artisans",
             "heading_color": "",
