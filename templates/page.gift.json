@@ -28,7 +28,7 @@
             "case": "none",
             "wrap": "pretty",
             "text_color": "",
-            "background": false, 
+            "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
@@ -63,8 +63,8 @@
       "type": "gift-banner-section",
       "name": "Gift Banner",
       "settings": {
-        "image": "shopify://shop_images/single-banner2.webp",
-        "image_mob": "shopify://shop_images/single-banner2-mobile.webp",
+        "image": "shopify://shop_images/single-banner2.jpg",
+        "image_mob": "shopify://shop_images/single-banner2.jpg",
         "title": "",
         "highlight": "",
         "link": ""
@@ -338,6 +338,7 @@
     },
     "single_video_7tWfgc": {
       "type": "single-video",
+      "disabled": true,
       "name": "Single Video",
       "settings": {
         "autoplay": true,
