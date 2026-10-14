@@ -45,7 +45,8 @@
           "type": "atc",
           "settings": {
             "color_atc": "{{ settings.color_palette.brand_color }}",
-            "color_buy_now": "{{ settings.color_palette.orange_lite }}"
+            "color_buy_now": "{{ settings.color_palette.orange_lite }}",
+            "buy_now": false
           },
           "blocks": {}
         },
