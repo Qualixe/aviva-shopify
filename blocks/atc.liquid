@@ -18,6 +18,7 @@
             </svg>
             <span class="atc-btn-text">{% if variant.available %}Add to Cart{% else %}Sold Out{% endif %}</span>
         </button>
+        {%  if block.settings.buy_now %}
         <button type="submit" class="btn buy-now-btn" data-buy-now {% unless variant.available %}disabled{% endunless %}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -26,6 +27,7 @@
             </svg>
             Buy Now
         </button>
+        {%  endif %}
     </div>
     <p class="atc-error" hidden></p>
 {% endform %}
@@ -83,6 +85,12 @@
             "id": "color_buy_now",
             "label": "Buy Now Color",
             "default" : "{{ settings.color_palette.orange_lite }}"
+        },
+        {
+            "type": "checkbox",
+            "id": "buy_now",
+            "label": "Buy Now",
+            "default" : true
         }
     ],
     "presets": [
