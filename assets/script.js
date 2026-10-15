@@ -991,7 +991,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initCountdowns(document);
 })();
+
+function setBuyNowText(root) {
+    setTimeout(() => {
+      root
+        .querySelectorAll(".cart-drawer-checkout-btn-wrap[data-buy-now-text]")
+        .forEach((wrap) => {
+          const label = wrap.querySelector("#_rsi-buy-now-button > span");
+          if (label) label.textContent = wrap.dataset.buyNowText;
+        });
+    }, 300);
+  }
+
+  setBuyNowText(document);
 // cart-drawer js end---
+
+
 
 // customer-review-slider also change on horizontal mouse/touch swipe
 (function () {
