@@ -997,7 +997,7 @@ function setBuyNowText(root) {
       root
         .querySelectorAll(".cart-drawer-checkout-btn-wrap[data-buy-now-text]")
         .forEach((wrap) => {
-          const label = wrap.querySelector("#_rsi-buy-now-button > span");
+          const label = wrap.querySelector("#rsi_buy_now_button > div > div");
           if (label) label.textContent = wrap.dataset.buyNowText;
         });
     }, 300);
