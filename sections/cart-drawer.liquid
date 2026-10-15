@@ -69,7 +69,7 @@
                 <p class="cart-drawer-total-title">total</p>
                 <p class="cart-drawer-total-price">{{ cart.total_price | money }}</p>
             </div>
-            <div class="cart-drawer-checkout-btn-wrap">
+            <div class="cart-drawer-checkout-btn-wrap"  data-buy-now-text="{{ s.button | escape }}">
                 {% if s.button_link !=blank %}
                     <a href="{{ s.button_link }}" class="btn">{{ s.button }}</a>
                 {% else %}
