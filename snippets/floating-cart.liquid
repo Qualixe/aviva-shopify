@@ -1,0 +1,93 @@
+<button class="product-floating-cart cart-drawer-open" type="button" aria-label="Open cart">
+  
+    <div class="floating-top">
+        <span class="product-floating-cart__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M3 4.5h2l1.4 8.2a1.5 1.5 0 0 0 1.48 1.3h8.8a1.5 1.5 0 0 0 1.48-1.2l1.4-6.3H6.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9.5" cy="18.2" r="1.5" fill="currentColor"/>
+            <circle cx="16.5" cy="18.2" r="1.5" fill="currentColor"/>
+            </svg>
+        </span>
+        <span class="product-floating-cart__count">0 Items</span>
+    </div>
+    
+  <div class="product-floating-cart__meta">
+    <span class="product-floating-cart__price">$0.00</span>
+  </div>
+</button>
+
+<style>
+
+.product-floating-cart {
+    width: 70px;
+    position: fixed;
+    right: 22px;
+    top: 50%;
+    z-index: 2200;
+    transform: translateY(-50%);
+    display: block;
+    align-items: center;
+    justify-content: center;
+    /* padding: 8px 10px; */
+    overflow: hidden;
+    border: 0;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    /* color: #fff; */
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.floating-top {
+    background: var(--brand-color);
+    text-align: center;
+    display: block;
+    padding: 5px;
+}
+
+/* .product-floating-cart:hover {
+    transform: translateY(-2px);
+} */
+
+.product-floating-cart__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.product-floating-cart__icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.product-floating-cart__meta {
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.product-floating-cart__count {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: #fff;
+}
+
+.product-floating-cart__price {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--brand-color);
+    display: block;
+    padding: 5px; 
+}
+</style>
