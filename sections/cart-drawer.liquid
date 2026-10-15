@@ -70,7 +70,11 @@
                 <p class="cart-drawer-total-price">{{ cart.total_price | money }}</p>
             </div>
             <div class="cart-drawer-checkout-btn-wrap">
-                <a href="/checkout" class="btn">secure checkout</a>
+                {% if s.button_link !=blank %}
+                    <a href="{{ s.button_link }}" class="btn">{{ s.button }}</a>
+                {% else %}
+                    <a href="/checkout" class="btn">{{ s.button }}</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -107,6 +111,17 @@
             "max": 59,
             "step": 1,
             "default": 30
+        },
+        {
+            "type": "text",
+            "id": "button",
+            "label": "Button",
+            "default": "secure checkout"
+        },
+        {
+            "type": "text",
+            "id": "button_link",
+            "label": "Button Link"
         },
         {
             "type": "header",
