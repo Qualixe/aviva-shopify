@@ -149,9 +149,15 @@
 								<p class="price">{{ cart.total_price | money_with_currency }}</p>
 							</div>
 						</div>
+						{% assign s = section.settings %}
 						<div class="cart-summary-btn" data-buy-now-text="{{ s.button | escape }}">
+							{% if s.button_link !=blank %}
 							<a href="/rsi-btn-hook" type="submit" name="checkout" class="btn primary-btn" aria-label="Proceed to checkout"
 								title="Proceed to checkout">Proceed to checkout<span></span></a>
+							{% else %}
+								<a href="/checkout" type="submit" name="checkout" class="btn primary-btn" aria-label="Proceed to checkout"
+								title="Proceed to checkout">Proceed to checkout<span></span></a>
+							{% endif %}
 						</div>
 					</form>
 				</div>
