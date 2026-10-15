@@ -1004,6 +1004,19 @@ function setBuyNowText(root) {
   }
 
   setBuyNowText(document);
+
+function setBuyNowText2(root) {
+    setTimeout(() => {
+      root
+        .querySelectorAll(".cart-summary-btn[data-buy-now-text]")
+        .forEach((wrap) => {
+          const label = wrap.querySelector("#rsi_buy_now_button > div > div");
+          if (label) label.textContent = wrap.dataset.buyNowText;
+        });
+    }, 300);
+  }
+
+  setBuyNowText2(document);
 // cart-drawer js end---
 
 
