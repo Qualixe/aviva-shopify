@@ -9,7 +9,7 @@
         assign discount_percent = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price | round
     endif
 %}
-<div class="product-card card_hover">
+<div class="product-card">
     <div class="card-image-wrap">
         {% if on_sale %}
             <span class="card-badge">{{ discount_percent }}% off</span>
