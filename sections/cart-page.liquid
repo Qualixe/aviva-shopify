@@ -149,7 +149,7 @@
 								<p class="price">{{ cart.total_price | money_with_currency }}</p>
 							</div>
 						</div>
-						<div class="cart-summary-btn">
+						<div class="cart-summary-btn" data-buy-now-text="{{ s.button | escape }}">
 							<a href="/rsi-btn-hook" type="submit" name="checkout" class="btn primary-btn" aria-label="Proceed to checkout"
 								title="Proceed to checkout">Proceed to checkout<span></span></a>
 						</div>
@@ -296,7 +296,19 @@
 			"id": "continue_text",
 			"label": "Continue shopping button",
 			"default": "Continue shopping"
-		}
+		},
+		{
+            "type": "text",
+            "id": "button",
+            "label": "Button",
+            "default": "secure checkout"
+        },
+        {
+            "type": "text",
+            "id": "button_link",
+            "label": "Button Link",
+            "default" : "/rsi-btn-hook"
+        }
 	],
 	"presets": [
 		{
