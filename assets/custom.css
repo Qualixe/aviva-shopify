@@ -1,4 +1,18 @@
 
+.copyright {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.copyright p {
+    color: #fff;
+    font-size: 12px;
+}
+
+.copyright a {
+    text-decoration: underline;
+}
+
 .recent_products[hidden] {
     display: none !important;
 }
