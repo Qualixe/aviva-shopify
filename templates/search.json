@@ -14,6 +14,7 @@
       "blocks": {
         "heading": {
           "type": "_heading",
+          "disabled": true,
           "static": true,
           "settings": {
             "type_preset": "h3",
@@ -53,7 +54,7 @@
       },
       "settings": {
         "alignment": "center",
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "{{ settings.color_palette.section_bg }}",
         "padding-block-start": 20,
         "padding-block-end": 0
       }
