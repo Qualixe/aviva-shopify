@@ -1,4 +1,4 @@
-{% liquid
+{% comment %} {% liquid
     assign s = block.settings
     assign full_stars = s.rating | at_most: 5 | at_least: 0 | round
 %}
@@ -15,7 +15,33 @@
         </span>
         <span class="rattings-number">{{ s.review_count }} Reviews</span>
     </a>
+{% endif %} {% endcomment %}
+
+
+{% liquid
+  assign product = closest.product
+  assign has_reviews = false
+  if product.metafields.reviews.rating.value != blank
+    assign has_reviews = true
+  endif
+%}
+{% if has_reviews %}
+  <div class="product-desktop-content" {{ block.shopify_attributes }}>
+    <a href="#product-reviews" class="product-rattings">
+      <span class="icon">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="pdp-star-icon is-filled">
+          <path
+            d="M8 1.333l2.06 4.174 4.607.67-3.333 3.249.786 4.587L8 11.846l-4.12 2.167.787-4.587L1.333 6.177l4.607-.67L8 1.333Z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </span>
+      <span class="rattings-count">{{ product.metafields.reviews.rating.value }}</span>
+      <span class="rattings-number">({{ product.metafields.reviews.rating_count.value | default: 0 }} Reviews)</span>
+    </a>
+  </div>
 {% endif %}
+
 
 {% schema %}
 {

@@ -26,7 +26,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 0 20px 0;
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     z-index: 6;
     /* background: var(--section-bg); */
@@ -460,9 +460,15 @@
     .collection-top {
         flex-direction: column;
         gap: 0;
-        padding: 20px 0 0 0;
+        padding: 10px 0 0 0;
         top: 24px;
     }
+
+    .search-top-section.section {
+        padding: 0;
+        padding-top: 10px;
+    }
+
 
     .collection-filter-btn {
         width: 100%;

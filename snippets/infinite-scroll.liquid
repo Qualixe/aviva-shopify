@@ -1,0 +1,46 @@
+{%- doc -%}
+  Renders the infinite-scroll sentinel for a product grid: holds the next page
+  URL, which "collection filter js" in assets/script.js fetches and appends to
+  the sibling ".product-items" when the sentinel nears the viewport. The
+  "Load more" link is the no-JS fallback. Renders nothing on the last page.
+
+  @param {object} paginate - The active paginate object.
+
+  @example
+  {%- paginate collection.products by 24 -%}
+    {%- render 'infinite-scroll', paginate: paginate -%}
+  {%- endpaginate -%}
+{%- enddoc -%}
+
+{% if paginate.next %}
+    <div class="collection-infinite-scroll" data-next-url="{{ paginate.next.url }}">
+        <a href="{{ paginate.next.url }}" class="btn collection-load-more">Load more</a>
+        <span class="collection-infinite-loader" aria-hidden="true"></span>
+    </div>
+{% endif %}
+
+{% stylesheet %}
+    .collection-infinite-scroll {
+        display: flex;
+        justify-content: center;
+        padding: 40px 0 0;
+    }
+    .collection-infinite-loader {
+        display: none;
+        width: 28px;
+        height: 28px;
+        border: 3px solid var(--border-color2);
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: collection-infinite-spin 0.8s linear infinite;
+    }
+    .collection-infinite-scroll.loading .collection-load-more {
+        display: none;
+    }
+    .collection-infinite-scroll.loading .collection-infinite-loader {
+        display: block;
+    }
+    @keyframes collection-infinite-spin {
+        to { transform: rotate(360deg); }
+    }
+{% endstylesheet %}

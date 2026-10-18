@@ -1,5 +1,6 @@
 {%- doc -%}
-  Renders the toolbar (count, sort, filter button), product grid and pagination for the search page.
+  Renders the toolbar (count, sort, filter button), product grid and pagination for the search page
+  (infinite scroll for real results, numbered pages for suggestions).
   Used for both real search results and the "no results" suggestions.
 
   @param {object} source - `search` or a collection (needs sort_options / sort_by).
@@ -49,4 +50,8 @@
         {% endif %}
     {% endfor %}
 </div>
-{% render 'pagination-controls', paginate: paginate %}
+{% if has_results %}
+    {% render 'infinite-scroll', paginate: paginate %}
+{% else %}
+    {% render 'pagination-controls', paginate: paginate %}
+{% endif %}

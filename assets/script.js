@@ -1299,6 +1299,7 @@ function setBuyNowText2(root) {
       if (!newContent) throw new Error("collection content not found in response");
 
       content.replaceWith(newContent);
+      initInfiniteScroll();
 
       if (pushState) {
         history.pushState({ collectionAjax: true }, "", url);
@@ -1310,6 +1311,63 @@ function setBuyNowText2(root) {
     } catch (err) {
       window.location.href = url;
     }
+  }
+
+  // Infinite scroll: the section prints a ".collection-infinite-scroll"
+  // sentinel holding the next page URL. When it nears the viewport, that
+  // page's ".product-item"s are appended to the grid and the sentinel is
+  // swapped for the fetched page's one (absent on the last page). The
+  // "Load more" link inside it is the no-JS / no-IntersectionObserver fallback.
+  let infiniteObserver;
+
+  async function loadNextCollectionPage(sentinel) {
+    const sectionId = getSectionId();
+    const grid = document.querySelector(".collection-content .product-items");
+    const nextUrl = sentinel?.dataset.nextUrl;
+    if (!sectionId || !grid || !nextUrl || sentinel.classList.contains("loading")) return;
+
+    sentinel.classList.add("loading");
+
+    const fetchUrl = new URL(nextUrl, window.location.origin);
+    fetchUrl.searchParams.set("section_id", sectionId);
+
+    try {
+      const response = await fetch(fetchUrl.toString());
+      if (!response.ok) throw new Error("collection page fetch failed");
+
+      const doc = new DOMParser().parseFromString(await response.text(), "text/html");
+
+      // Filters/sort replaced the grid while this page was loading.
+      if (!grid.isConnected) return;
+
+      grid.append(...doc.querySelectorAll(".product-items > .product-item"));
+
+      const nextSentinel = doc.querySelector(".collection-infinite-scroll");
+      if (nextSentinel) {
+        sentinel.replaceWith(nextSentinel);
+        infiniteObserver?.observe(nextSentinel);
+      } else {
+        sentinel.remove();
+      }
+    } catch (err) {
+      sentinel.classList.remove("loading");
+    }
+  }
+
+  function initInfiniteScroll() {
+    infiniteObserver?.disconnect();
+    const sentinel = document.querySelector(".collection-infinite-scroll");
+    if (!sentinel || !("IntersectionObserver" in window)) return;
+
+    infiniteObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) loadNextCollectionPage(entry.target);
+        });
+      },
+      { rootMargin: "600px 0px" },
+    );
+    infiniteObserver.observe(sentinel);
   }
 
   function submitCollectionFilters(form) {
@@ -1347,6 +1405,13 @@ function setBuyNowText2(root) {
     if (pageLink) {
       e.preventDefault();
       fetchAndRenderCollection(pageLink.href);
+      return;
+    }
+
+    const loadMore = e.target.closest(".collection-load-more");
+    if (loadMore) {
+      e.preventDefault();
+      loadNextCollectionPage(loadMore.closest(".collection-infinite-scroll"));
     }
   });
 
@@ -1368,6 +1433,7 @@ function setBuyNowText2(root) {
   document.addEventListener("DOMContentLoaded", () => {
     const wrapper = document.querySelector(".collection-wrapper");
     if (wrapper) initPriceRangeSliders(wrapper);
+    initInfiniteScroll();
   });
 })();
 // collection filter js end---

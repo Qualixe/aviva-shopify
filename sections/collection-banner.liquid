@@ -1,5 +1,6 @@
 {% assign s = section.settings %}
-{% assign mobile_img = collection.metafields.custom.mobile_image %}
+{% assign collection_img = collection.metafields.custom.banner_image %}
+{% assign mobile_img = collection.metafields.custom.banner_image_mobile %}
 
 <section class="collection-banner-section">
     <div class="collection-banner-wrap">
@@ -8,8 +9,8 @@
                 {{ s.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
                 {{ s.image_mob |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
             {% else %}
-                {% if collection.image !=blank %}
-                    {{ collection.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
+                {% if collection_img !=blank %}
+                    {{ collection_img |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
                 {% elsif collection.featured_image !=blank %}
                     {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
                 {% else %}
@@ -18,6 +19,8 @@
                 
                 {% if mobile_img !=blank %}
                     {{ mobile_img |  image_url: width: 1000 |  image_tag: class: 'collection-banner-mobile'  }}
+                {% elsif collection_img !=blank %}
+                    {{ collection_img |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
                 {% elsif collection.featured_image !=blank %}
                     {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
                 {% else %}
@@ -30,6 +33,7 @@
         </div>
     </div>
 </section>
+
 
 {% schema %}
     {

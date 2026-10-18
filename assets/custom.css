@@ -1,4 +1,6 @@
-
+div#floatingBuyNowButton {
+    display: none !important;
+}
 .copyright {
     padding: 5px 0;
     text-align: center;
