@@ -103,6 +103,7 @@
         "category_8g7tEa",
         "category_fcL4XW"
       ],
+      "disabled": true,
       "name": "Category(Mobile)",
       "settings": {}
     },
@@ -213,8 +214,8 @@
       "type": "banner",
       "name": "Single Banner",
       "settings": {
-        "image": "shopify://shop_images/single-banner1.jpg",
-        "image_mob": "shopify://shop_images/single-banner1.jpg",
+        "image": "shopify://shop_images/aviva_mayra_banner_1400x467_63078743-d2a0-479f-b79c-f1ea3a8a5d36.png",
+        "image_mob": "shopify://shop_images/AVIVA_AURA_Mayra_Handbag_Advertisement.png",
         "title": "premium bags",
         "link": "shopify://collections/all"
       }
