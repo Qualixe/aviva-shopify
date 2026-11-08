@@ -146,8 +146,8 @@
               "static": true,
               "settings": {
                 "label": "Submit",
-                "style_class": "button",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "style_class": "button-custom",
+                "custom_button_background": "{{ settings.color_palette.orange_lite }}",
                 "custom_button_text": "{{ settings.color_palette.background }}",
                 "custom_button_border": "{{ settings.color_palette.background }}",
                 "width": "fit-content",
