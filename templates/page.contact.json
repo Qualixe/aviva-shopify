@@ -85,7 +85,7 @@
           "settings": {
             "icon": "shopify://shop_images/store.png",
             "title": "Visit store",
-            "text": "<p>House-06, Block-A, Road-3, Mirpur-11, Dhaka-1216, Bangladesh</p>"
+            "text": "<p>Gulshan Dhaka</p>"
           },
           "blocks": {}
         },
@@ -94,7 +94,7 @@
           "settings": {
             "icon": "shopify://shop_images/gmail.png",
             "title": "Email us",
-            "text": "<p>Have a quick question? Send us a message on E-Mail: <strong>aviva@gmail.com</strong></p>"
+            "text": "<p>Have a quick question? Send us a message on E-Mail: <strong>aviva.aurabd@gmail.com</strong></p>"
           },
           "blocks": {}
         },
@@ -103,7 +103,7 @@
           "settings": {
             "icon": "shopify://shop_images/smartphone.png",
             "title": "Call Us",
-            "text": "<p>Directly for immediate assistance: <br/><strong>24 hours open.</strong> <strong>call (01521-481618)</strong></p>"
+            "text": "<p>Directly for immediate assistance:&nbsp;<br/></p>"
           },
           "blocks": {}
         }
