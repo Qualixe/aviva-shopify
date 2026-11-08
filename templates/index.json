@@ -15,14 +15,15 @@
         "slide_7pYVff": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/hero-slider-banner3.jpg",
-            "image_mob": "shopify://shop_images/hero-slider-banner3-mobile.jpg",
+            "image": "shopify://shop_images/Aviva_Mayra__Art_You_Can_Carry.png",
+            "image_mob": "shopify://shop_images/Aviva_Mayra_Collection_Editorial_Ad.png",
             "title": "Premium Product",
             "link": "shopify://collections/all"
           }
         },
         "slide_m3Ad7r": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/hero-slider-banner2.jpg",
             "image_mob": "shopify://shop_images/hero-slider-banner2-mobile.jpg",
@@ -32,6 +33,7 @@
         },
         "slide_CYVqA4": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/hero-slider-banner1.jpg",
             "image_mob": "shopify://shop_images/hero-slider-banner1-mobile.jpg",
