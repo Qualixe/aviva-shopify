@@ -81,7 +81,7 @@
         "faq_item_bwr9qp": {
           "type": "faq-item",
           "settings": {
-            "question": "What is your return &amp; exchange policy?",
+            "question": "What is your return & exchange policy?",
             "answer": "<p>Unused items in their original packaging can be returned or exchanged within 30 days of delivery. Personalized or engraved gifts are final sale unless damaged in transit.</p>"
           },
           "blocks": {}
@@ -90,7 +90,7 @@
           "type": "faq-item",
           "settings": {
             "question": "Do you offer international shipping?",
-            "answer": "<p>We currently ship across the country with select international destinations available at checkout. Shipping fees and delivery times are calculated based on your address.</p>"
+            "answer": "<p>We currently do not ship across international destinations.</p>"
           },
           "blocks": {}
         },
