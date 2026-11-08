@@ -79,9 +79,9 @@
         "icon_items_1": {
           "type": "product-icon-items",
           "settings": {
-            "item_1": "free expedited shipping",
-            "item_2": "Easy Returns Within 30 Days",
-            "item_3": "Safe & Secure Payments"
+            "item_1": "Fast Shipping",
+            "item_2": "Easy Returns Within 7 Days",
+            "item_3": "Safe & Secure COD Payments"
           },
           "blocks": {}
         },
