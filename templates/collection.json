@@ -11,7 +11,9 @@
   "sections": {
     "main": {
       "type": "collection-banner",
-      "settings": {}
+      "settings": {
+        "image": "{{ collection.metafields.custom.banner_image_mobile.value }}"
+      }
     },
     "collection_products": {
       "type": "collection-products",
