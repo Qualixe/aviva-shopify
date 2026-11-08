@@ -286,6 +286,7 @@
         "featured_collection_item_EbHcVL",
         "featured_collection_item_wxKAyM"
       ],
+      "disabled": true,
       "name": "Featured Collection",
       "settings": {
         "eyebrow": "Featured Collection"
@@ -333,6 +334,7 @@
         "shop_by_print_block_npR7eq",
         "shop_by_print_block_a7DFWg"
       ],
+      "disabled": true,
       "name": "Shop By Print",
       "settings": {
         "eyebrow": "Shop by Print"
@@ -404,6 +406,7 @@
         "image_category_item_DNXNmg",
         "image_category_item_Xt9kYP"
       ],
+      "disabled": true,
       "name": "Image Category",
       "settings": {}
     },
@@ -477,7 +480,7 @@
           "settings": {
             "icon": "shopify://shop_images/trust-highlight-icon1.png",
             "title": "Cruelty Free",
-            "text": "We are 100% PeTA approved Vegan brand",
+            "text": "We are 100% Cruelty Free  brand",
             "heading_color": "",
             "text_color": ""
           },
@@ -487,8 +490,8 @@
           "type": "trust-highlight-item",
           "settings": {
             "icon": "shopify://shop_images/trust-highlight-icon2.png",
-            "title": "Proudly Indian",
-            "text": "All our products are Made in India",
+            "title": "Proudly Bangladesh",
+            "text": "All our products are Made in Bangladesh",
             "heading_color": "",
             "text_color": ""
           },
@@ -521,7 +524,7 @@
           "type": "customer-review-item",
           "settings": {
             "text": "Wonderful craft. I have a beautiful collection of Aviva bags for myself and I am very happy with my choice. Crafted very perfectly for everyday needs.",
-            "author": "Riya Sharma",
+            "author": "Farzana Islam",
             "text_color": "",
             "author_color": ""
           },
@@ -531,7 +534,7 @@
           "type": "customer-review-item",
           "settings": {
             "text": "Amazing quality and design. Every piece feels premium and the customer service was excellent throughout my order.",
-            "author": "Ananya Verma",
+            "author": "Tanjila Ahmed",
             "text_color": "",
             "author_color": ""
           },
@@ -541,7 +544,7 @@
           "type": "customer-review-item",
           "settings": {
             "text": "I have gifted Aviva bags to my whole family. Everyone loves the craftsmanship and the unique prints.",
-            "author": "Meera Kapoor",
+            "author": "Sanjida Islam",
             "text_color": "",
             "author_color": ""
           },
