@@ -228,7 +228,7 @@
           "static": true,
           "settings": {
             "heading": "Hot New Arrivals",
-            "button": "Shop All Brands",
+            "button": "Shop All Products",
             "link": "shopify://collections/all",
             "heading_color": "{{ settings.color_palette.brand_color }}",
             "btn_color": "{{ settings.color_palette.brand_color }}"
