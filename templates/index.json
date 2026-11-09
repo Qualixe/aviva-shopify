@@ -196,7 +196,7 @@
           "static": true,
           "settings": {
             "heading": "Explore Bestsellers",
-            "button": "Shop All Brand",
+            "button": "Shop All Products",
             "link": "shopify://collections/all",
             "heading_color": "{{ settings.color_palette.brand_color }}",
             "btn_color": "{{ settings.color_palette.brand_color }}"
