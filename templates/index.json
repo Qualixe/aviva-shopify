@@ -113,44 +113,44 @@
         "collection_pUjVRi": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img2.jpg",
-            "heading": "Amaila daypack",
-            "collection": "bages"
+            "image": "shopify://shop_images/Floral_Tapestry_Backpack_Lifestyle_Scene.png",
+            "heading": "Backpacks",
+            "collection": "backpacks"
           },
           "blocks": {}
         },
         "collection_kBACHQ": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img6.jpg",
-            "heading": "weekender duffle",
-            "collection": "bages"
+            "image": "shopify://shop_images/Joyful_Aviva_Brown_Textured_Backpack_Ad.png",
+            "heading": "Daypacks",
+            "collection": "daypacks"
           },
           "blocks": {}
         },
         "collection_FX7xTh": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img1.jpg",
-            "heading": "Aarohi rucksack",
-            "collection": "bages"
+            "image": "shopify://shop_images/Sunlit_Portrait_with_Burgundy_Tote.png",
+            "heading": "Tote Bags",
+            "collection": "tote-bags"
           },
           "blocks": {}
         },
         "collection_HykxfV": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img3.jpg",
-            "heading": "daily tour",
-            "collection": "bages"
+            "image": "shopify://shop_images/Cognac_Leather_Duffle_Beside_Car.png",
+            "heading": "Shoulder Bags",
+            "collection": "shoulder-bags"
           },
           "blocks": {}
         },
         "collection_R7TVtm": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img5.jpg",
-            "heading": "long lenth",
+            "image": "shopify://shop_images/Woven_Geometric_Leather_Wallet_in_Hand.png",
+            "heading": "Wallets",
             "collection": "bages"
           },
           "blocks": {}
@@ -158,9 +158,9 @@
         "collection_FGmHFE": {
           "type": "collection",
           "settings": {
-            "image": "shopify://shop_images/product-img3.jpg",
-            "heading": "Amaila daypack",
-            "collection": "bages"
+            "image": "shopify://shop_images/AVIVA_Gold_Logo_on_Floral_Leather_Bag.png",
+            "heading": "Sling Bags",
+            "collection": "sling-bags"
           },
           "blocks": {}
         },
