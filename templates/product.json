@@ -121,7 +121,7 @@
             "active_color": "#114f57",
             "arrow_color": "#8a8a8a",
             "border_color": "#e5e5e5",
-            "margin_top": 0,
+            "margin_top": 20,
             "margin_bottom": 20
           },
           "blocks": {
