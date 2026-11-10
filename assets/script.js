@@ -2116,19 +2116,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = wrap?.querySelector(".quantity-count");
   if (!wrap || !input) return;
 
-  // Hidden copy inside the product <form> (blocks/atc.liquid) so apps
-  // that read quantity from the form see the chosen amount.
-  function syncFormQuantity() {
-    document
-      .querySelectorAll(".product-add-to-cart-form .product-form-quantity")
-      .forEach((el) => (el.value = input.value));
-  }
-
   function setQuantity(value) {
     const min = Number(input.min) || 1;
     const max = input.max ? Number(input.max) : Infinity;
-    input.value = Math.min(max, Math.max(min, value || min));
-    syncFormQuantity();
+    input.value = Math.min(max, Math.max(min, value));
   }
 
   wrap.querySelector(".quantity-increase")?.addEventListener("click", () => {
@@ -2142,8 +2133,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   input.addEventListener("change", () => setQuantity(Number(input.value)));
-  input.addEventListener("input", syncFormQuantity);
-  syncFormQuantity();
 })();
 // product quantity js end--
 

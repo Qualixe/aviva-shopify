@@ -1,0 +1,118 @@
+{% liquid
+    assign product = closest.product
+    if request.visual_preview_mode and product == blank
+        assign product = collections.all.products.first
+    endif
+    assign s = block.settings
+
+    assign short_text = s.text
+    if short_text == blank and s.use_description_fallback and product.description != blank
+        assign short_text = product.description | strip_html | strip_newlines | truncatewords: s.word_count
+    endif
+%}
+{% if short_text != blank %}
+    <div class="product-short-description product-short-description--{{ block.id }}" {{ block.shopify_attributes }}>
+        {% if s.text != blank %}
+            {{ short_text }}
+        {% else %}
+            <p>{{ short_text }}</p>
+        {% endif %}
+    </div>
+
+    {% style %}
+        .product-short-description--{{ block.id }} {
+            margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
+            font-size: {{ s.font_size }}px;
+            line-height: 1.6;
+            {% if s.text_color != blank and s.text_color.alpha != 0.0 %}color: {{ s.text_color }};{% endif %}
+        }
+
+        .product-short-description p {
+            margin: 0;
+        }
+
+        .product-short-description p + p,
+        .product-short-description ul,
+        .product-short-description ol {
+            margin-top: 8px;
+        }
+
+        .product-short-description ul,
+        .product-short-description ol {
+            padding-left: 20px;
+        }
+    {% endstyle %}
+{% endif %}
+
+{% schema %}
+{
+    "name": "Short Description",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "info": "Connect a product metafield (dynamic source icon) to show different text per product."
+        },
+        {
+            "type": "checkbox",
+            "id": "use_description_fallback",
+            "label": "Use product description when text is empty",
+            "default": true
+        },
+        {
+            "type": "range",
+            "id": "word_count",
+            "label": "Fallback word count",
+            "min": 10,
+            "max": 80,
+            "step": 5,
+            "default": 30
+        },
+        {
+            "type": "header",
+            "content": "Style"
+        },
+        {
+            "type": "range",
+            "id": "font_size",
+            "label": "Font size",
+            "min": 12,
+            "max": 22,
+            "step": 1,
+            "unit": "px",
+            "default": 15
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+        },
+        {
+            "type": "range",
+            "id": "margin_top",
+            "label": "Top spacing",
+            "min": 0,
+            "max": 40,
+            "step": 2,
+            "unit": "px",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "margin_bottom",
+            "label": "Bottom spacing",
+            "min": 0,
+            "max": 40,
+            "step": 2,
+            "unit": "px",
+            "default": 16
+        }
+    ],
+    "presets": [
+        {
+            "name": "Short Description"
+        }
+    ]
+}
+{% endschema %}
