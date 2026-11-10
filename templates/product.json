@@ -130,7 +130,7 @@
               "settings": {
                 "title": "Description",
                 "open": false,
-                "content": "<p>Add product details here.</p><p>{{ closest.product.description }}</p>"
+                "content": "{{ closest.product.description }}"
               },
               "blocks": {}
             },
