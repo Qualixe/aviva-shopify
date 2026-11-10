@@ -878,42 +878,93 @@ document.addEventListener("DOMContentLoaded", () => {
     return document.querySelector(".cart-drawer")?.dataset.sectionId || "";
   }
 
+  // Parts of the drawer that depend on the cart contents. Everything else
+  // (checkout button injected by the COD/checkout app, upsell slider) is
+  // left untouched so apps and sliders keep working after cart changes.
+  const CART_DRAWER_PARTS = [
+    ".cart-drawer-title",
+    ".cart-drawer-progress",
+    ".cart-drawer-items",
+    ".cart-drawer-total-price",
+  ];
+
+  function setDrawerOpen(open) {
+    document.querySelector(".cart-drawer")?.classList.toggle("active", open);
+    document
+      .querySelector(".cart-drawer-inner")
+      ?.classList.toggle("active", open);
+  }
+
+  // Apply freshly rendered section HTML to the live drawer, part by part.
+  function renderCartDrawer(html, { open = false } = {}) {
+    const drawer = document.querySelector(".cart-drawer");
+    if (!drawer || !html) return;
+
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const newDrawer = doc.querySelector(".cart-drawer");
+    if (!newDrawer) return;
+
+    CART_DRAWER_PARTS.forEach((selector) => {
+      const current = drawer.querySelector(selector);
+      const next = newDrawer.querySelector(selector);
+      if (!current || !next) return;
+
+      // Keep the running countdown instead of restarting it.
+      const oldCountdown = current.querySelector(".cart-drawer-progress-countdown");
+      const newCountdown = next.querySelector(".cart-drawer-progress-countdown");
+      if (oldCountdown && newCountdown) newCountdown.replaceWith(oldCountdown);
+
+      current.replaceWith(next);
+    });
+
+    drawer.classList.toggle("blank", newDrawer.classList.contains("blank"));
+    if (open) setDrawerOpen(true);
+
+    initCountdowns(drawer);
+  }
+
+  // Fallback when the cart request didn't return section HTML.
   function refreshCartDrawer({ open = false } = {}) {
-    const inner = document.querySelector(".cart-drawer-inner");
     const sectionId = getCartDrawerSectionId();
-    if (!inner || !sectionId) return Promise.resolve();
+    if (!sectionId) return Promise.resolve();
 
     const url = new URL(window.location.href);
     url.searchParams.set("section_id", sectionId);
 
     return fetch(url.toString())
       .then((res) => res.text())
-      .then((html) => {
-        const newInner = new DOMParser()
-          .parseFromString(html, "text/html")
-          .querySelector(".cart-drawer-inner");
-        if (!newInner) return;
-
-        const wasActive = inner.classList.contains("active");
-        const newOuterBlank = newInner
-          .closest(".cart-drawer")
-          ?.classList.contains("blank");
-
-        inner.innerHTML = newInner.innerHTML;
-        inner.classList.toggle("active", wasActive || open);
-        document
-          .querySelector(".cart-drawer")
-          ?.classList.toggle("active", wasActive || open);
-        document
-          .querySelector(".cart-drawer")
-          ?.classList.toggle("blank", !!newOuterBlank);
-
-        initCountdowns(inner);
-        window.initThemeSwipers?.(inner);
-      })
+      .then((html) => renderCartDrawer(html, { open }))
       .catch(() => {});
   }
 
+  // POST to a Cart API endpoint and render the drawer from the same
+  // response (Section Rendering API), so no second request is needed.
+  function cartRequest(endpoint, body, { open = false } = {}) {
+    const sectionId = getCartDrawerSectionId();
+    if (sectionId) body = { ...body, sections: sectionId };
+
+    return fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.description || data.message || "Cart update failed");
+        }
+        return data;
+      })
+      .then((data) => {
+        const html = data.sections?.[sectionId];
+        if (html) renderCartDrawer(html, { open });
+        else return refreshCartDrawer({ open }).then(() => data);
+        return data;
+      });
+  }
+
+  window.renderCartDrawer = renderCartDrawer;
+  window.cartRequest = cartRequest;
   window.refreshCartDrawer = refreshCartDrawer;
 
   document.addEventListener("click", (e) => {
@@ -945,13 +996,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const delta = qtyBtn.dataset.action === "decrease" ? -1 : 1;
       const newQuantity = Math.max(0, Number(input.value) + delta);
 
-      fetch("/cart/change.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: key, quantity: newQuantity }),
-      })
-        .then(() => refreshCartDrawer())
-        .catch(() => {});
+      cartRequest("/cart/change.js", { id: key, quantity: newQuantity }).catch(
+        () => {}
+      );
       return;
     }
 
@@ -960,13 +1007,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const key = removeBtn.closest(".cart-drawer-item")?.dataset.lineKey;
       if (!key) return;
 
-      fetch("/cart/change.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: key, quantity: 0 }),
-      })
-        .then(() => refreshCartDrawer())
-        .catch(() => {});
+      cartRequest("/cart/change.js", { id: key, quantity: 0 }).catch(() => {});
       return;
     }
 
@@ -976,12 +1017,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!variantId) return;
 
       upsellAddBtn.disabled = true;
-      fetch("/cart/add.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] }),
-      })
-        .then(() => refreshCartDrawer({ open: true }))
+      cartRequest(
+        "/cart/add.js",
+        { items: [{ id: variantId, quantity: 1 }] },
+        { open: true }
+      )
         .catch(() => {})
         .finally(() => {
           upsellAddBtn.disabled = false;
@@ -2076,10 +2116,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = wrap?.querySelector(".quantity-count");
   if (!wrap || !input) return;
 
+  // Hidden copy inside the product <form> (blocks/atc.liquid) so apps
+  // that read quantity from the form see the chosen amount.
+  function syncFormQuantity() {
+    document
+      .querySelectorAll(".product-add-to-cart-form .product-form-quantity")
+      .forEach((el) => (el.value = input.value));
+  }
+
   function setQuantity(value) {
     const min = Number(input.min) || 1;
     const max = input.max ? Number(input.max) : Infinity;
-    input.value = Math.min(max, Math.max(min, value));
+    input.value = Math.min(max, Math.max(min, value || min));
+    syncFormQuantity();
   }
 
   wrap.querySelector(".quantity-increase")?.addEventListener("click", () => {
@@ -2093,6 +2142,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   input.addEventListener("change", () => setQuantity(Number(input.value)));
+  input.addEventListener("input", syncFormQuantity);
+  syncFormQuantity();
 })();
 // product quantity js end--
 
@@ -2153,18 +2204,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const wasDisabled = submitButtons.map((btn) => btn.disabled);
     submitButtons.forEach((btn) => (btn.disabled = true));
 
-    fetch("/cart/add.js", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items }),
-    })
-      .then(async (res) => {
-        const data = await res.json();
-        if (!res.ok) {
-          throw new Error(data.description || data.message || "Could not add to cart");
-        }
-        return data;
-      })
+    // Buy now skips the drawer, so don't ask for its HTML.
+    const addRequest = isBuyNow
+      ? fetch("/cart/add.js", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items }),
+        }).then(async (res) => {
+          const data = await res.json();
+          if (!res.ok) {
+            throw new Error(data.description || data.message || "Could not add to cart");
+          }
+          return data;
+        })
+      : window.cartRequest("/cart/add.js", { items }, { open: true });
+
+    addRequest
       .then(() => {
         buyWithChecked.forEach((checkbox) => (checkbox.checked = false));
 
@@ -2174,7 +2229,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         updateCartCount();
-        window.refreshCartDrawer?.({ open: true });
       })
       .catch((err) => showError(err.message))
       .finally(() => {

@@ -8,6 +8,8 @@
 %}
 {% form 'product', product, id: form_id, class: 'product-add-to-cart-form' %}
     <input type="hidden" name="id" value="{{ variant.id }}" class="product-form-variant-id">
+    {%- comment -%} Mirrors the visible quantity box (product-qty block), which sits outside this form, so apps that read the product form (e.g. COD checkout) get a quantity. {%- endcomment -%}
+    <input type="hidden" name="quantity" value="{{ variant.quantity_rule.min | default: 1 }}" class="product-form-quantity">
     <div class="product-btn-wrap" {{ block.shopify_attributes }}>
         <button type="submit" class="btn atc-btn" {% unless variant.available %}disabled{% endunless %}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"

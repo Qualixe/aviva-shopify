@@ -1181,6 +1181,20 @@ ul.drpodown-nav2 li:hover a {
         display: none;
     }
 
+    /* Tablet + mobile: [menu/search] [logo] [icons] on one row */
+    .navbar-left {
+        grid-column: span 1;
+    }
+
+    .navbar-center {
+        padding-left: 0;
+    }
+
+    .navbar-logo.mobile_header_logo {
+        display: flex;
+        justify-self: center;
+    }
+
     /* header css end */
 }
 
@@ -1217,18 +1231,6 @@ ul.drpodown-nav2 li:hover a {
     .cart-count {
         top: 0;
         right: 0px;
-    }
-
-    .navbar-center {
-        padding-left: 0;
-    }
-
-    .navbar-left {
-         grid-column: span 1;
-    }
-
-    .navbar-logo.mobile_header_logo {
-        display: flex;
     }
 
     /* header css end */
