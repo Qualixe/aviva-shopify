@@ -15,8 +15,8 @@
     --ca-margin-bottom: {{ s.margin_bottom }}px;
     --ca-title-color: {{ s.title_color | default: '#211913' }};
     --ca-active-color: {{ s.active_color | default: '#114F57' }};
-    --ca-arrow-color: {{ s.arrow_color | default: '#8A8A8A' }};
-    --ca-border: {{ s.border_color | default: '#E5E5E5' }};
+    --ca-arrow-color: {{ s.arrow_color | default: '#6C6C6C' }};
+    --ca-border: {{ s.border_color | default: '#E8E3E1' }};
   "
   {{ block.shopify_attributes }}
 >
@@ -39,8 +39,23 @@
     font-weight: 600;
   }
 
+  /* Same look as the product Description Accordion */
+  .custom-accordion__items {
+    padding: 0 16px;
+    border: 1px solid var(--ca-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 7%);
+    background: #ffffff;
+  }
+
   .custom-accordion-item {
+    padding-right: 5px;
     border-bottom: 1px solid var(--ca-border);
+  }
+
+  .custom-accordion-item:last-child {
+    border-bottom: 0;
   }
 
   .custom-accordion-item__summary {
@@ -86,8 +101,8 @@
   }
 
   .custom-accordion-item__arrow svg {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
   }
 
   .custom-accordion-item[open] .custom-accordion-item__arrow {
@@ -263,13 +278,13 @@
       "type": "color",
       "id": "arrow_color",
       "label": "Arrow",
-      "default": "#8A8A8A"
+      "default": "#6C6C6C"
     },
     {
       "type": "color",
       "id": "border_color",
       "label": "Border",
-      "default": "#E5E5E5"
+      "default": "#E8E3E1"
     },
     {
       "type": "header",
