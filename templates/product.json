@@ -87,11 +87,65 @@
         },
         "description_accordion_1": {
           "type": "product-description-accordion",
+          "disabled": true,
           "settings": {
             "specification": "",
             "return_and_refund": ""
           },
           "blocks": {}
+        },
+        "custom_accordion_AKNtKQ": {
+          "type": "custom-accordion",
+          "name": "Accordion",
+          "settings": {
+            "heading": "",
+            "single_open": true,
+            "open_first": false,
+            "title_size": 14,
+            "content_size": 14,
+            "title_color": "#211913",
+            "active_color": "#114F57",
+            "arrow_color": "#8A8A8A",
+            "border_color": "#E5E5E5",
+            "margin_top": 0,
+            "margin_bottom": 20
+          },
+          "blocks": {
+            "custom_accordion_item_CGVEAR": {
+              "type": "_custom-accordion-item",
+              "settings": {
+                "title": "Description",
+                "open": false,
+                "content": "<p>Add product details here.</p>{{ closest.product.description }}"
+              },
+              "blocks": {}
+            },
+            "custom_accordion_item_Brgc87": {
+              "type": "_custom-accordion-item",
+              "disabled": true,
+              "settings": {
+                "title": "Shipping",
+                "open": false,
+                "content": "<p>Add shipping details here.</p>"
+              },
+              "blocks": {}
+            },
+            "custom_accordion_item_nYqkjg": {
+              "type": "_custom-accordion-item",
+              "disabled": true,
+              "settings": {
+                "title": "Return and Refund",
+                "open": false,
+                "content": "<p>Add return policy here.</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "custom_accordion_item_CGVEAR",
+            "custom_accordion_item_Brgc87",
+            "custom_accordion_item_nYqkjg"
+          ]
         },
         "product-media-gallery": {
           "type": "product-media-gallery",
@@ -111,7 +165,8 @@
         "contact_buttons_1",
         "trust_badges_1",
         "icon_items_1",
-        "description_accordion_1"
+        "description_accordion_1",
+        "custom_accordion_AKNtKQ"
       ],
       "settings": {
         "size_chart_title": "size chart:",
