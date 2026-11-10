@@ -1,31 +1,6 @@
-{%- liquid
-  assign s = block.settings
-  assign product = closest.product
-  if request.visual_preview_mode and product == blank
-    assign product = collections.all.products.first
-  endif
-
-  # Content depends on the chosen source.
-  capture main_content
-    case s.source
-      when 'text'
-        echo s.content
-      when 'product_description'
-        echo product.description
-      when 'page'
-        echo s.page.content
-      when 'liquid'
-        echo s.custom_liquid
-    endcase
-  endcapture
-
-  # Hide the item on the live store when it has no content.
-  assign has_content = false
-  if main_content != blank
-    assign has_content = true
-  endif
--%}
-{%- if has_content or request.design_mode -%}
+{%- assign s = block.settings -%}
+{%- comment -%} Hidden on the live store when there is no text; always shown in the editor. {%- endcomment -%}
+{%- if s.content != blank or request.design_mode -%}
   <details class="custom-accordion-item"{% if s.open %} open{% endif %} {{ block.shopify_attributes }}>
     <summary class="custom-accordion-item__summary">
       {%- if s.icon_image != blank -%}
@@ -39,7 +14,7 @@
       </span>
     </summary>
     <div class="custom-accordion-item__content">
-      {{ main_content }}
+      {{ s.content }}
     </div>
   </details>
 {%- endif -%}
@@ -67,35 +42,10 @@
       "default": false
     },
     {
-      "type": "select",
-      "id": "source",
-      "label": "Content",
-      "options": [
-        { "value": "text", "label": "Rich text" },
-        { "value": "product_description", "label": "Product description" },
-        { "value": "page", "label": "Page content" },
-        { "value": "liquid", "label": "Custom Liquid / HTML" }
-      ],
-      "default": "text"
-    },
-    {
       "type": "richtext",
       "id": "content",
-      "label": "Rich text",
-      "info": "Connect a product metafield (dynamic source icon) for per-product content.",
-      "visible_if": "{{ block.settings.source == 'text' }}"
-    },
-    {
-      "type": "page",
-      "id": "page",
-      "label": "Page",
-      "visible_if": "{{ block.settings.source == 'page' }}"
-    },
-    {
-      "type": "liquid",
-      "id": "custom_liquid",
-      "label": "Custom Liquid / HTML",
-      "visible_if": "{{ block.settings.source == 'liquid' }}"
+      "label": "Content",
+      "default": "<p>Add your content here.</p>"
     }
   ],
   "presets": [

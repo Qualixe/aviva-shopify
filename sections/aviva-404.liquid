@@ -1,0 +1,707 @@
+{%- liquid
+  assign s = section.settings
+  assign products_collection = s.collection | default: collections.all
+-%}
+<section class="aviva-404" id="aviva-404-{{ section.id }}">
+  <span class="aviva-404__blob aviva-404__blob--one" aria-hidden="true"></span>
+  <span class="aviva-404__blob aviva-404__blob--two" aria-hidden="true"></span>
+
+  <div class="container">
+    <div class="aviva-404__hero">
+      <div class="aviva-404__code" aria-hidden="true">
+        <span class="aviva-404__digit">4</span>
+        <span class="aviva-404__bag">
+          <svg viewBox="0 0 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 38V30a20 20 0 0 1 40 0v8" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            <rect x="12" y="36" width="96" height="88" rx="16" fill="currentColor"/>
+            <rect x="12" y="36" width="96" height="18" rx="9" fill="#ffffff" fill-opacity=".14"/>
+            <circle cx="44" cy="76" r="5.5" fill="#ffffff"/>
+            <circle cx="76" cy="76" r="5.5" fill="#ffffff"/>
+            <path d="M46 102c8-8 20-8 28 0" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+            <path class="aviva-404__tear" d="M40 86c0 3-2 5-4 5s-4-2-4-5 4-8 4-8 4 5 4 8Z" fill="#9fd3da"/>
+          </svg>
+        </span>
+        <span class="aviva-404__digit">4</span>
+      </div>
+      <span class="aviva-404__shadow" aria-hidden="true"></span>
+
+      {%- if s.badge != blank -%}
+        <p class="aviva-404__badge">{{ s.badge }}</p>
+      {%- endif -%}
+      <h1 class="aviva-404__title">{{ s.heading }}</h1>
+      {%- if s.text != blank -%}
+        <div class="aviva-404__text">{{ s.text }}</div>
+      {%- endif -%}
+
+      {%- if s.show_search -%}
+        <form action="{{ routes.search_url }}" method="get" role="search" class="aviva-404__search">
+          <input type="hidden" name="options[prefix]" value="last">
+          <label for="aviva-404-search-{{ section.id }}" class="visually-hidden">{{ s.search_placeholder }}</label>
+          <svg class="aviva-404__search-icon" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <path d="M9.8 16a6.2 6.2 0 1 0 0-12.4 6.2 6.2 0 0 0 0 12.4ZM18.7 18.7l-3.6-3.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <input
+            id="aviva-404-search-{{ section.id }}"
+            class="aviva-404__search-input"
+            type="search"
+            name="q"
+            placeholder="{{ s.search_placeholder }}"
+            autocomplete="off"
+          >
+          <button type="submit" class="aviva-404__search-btn">Search</button>
+        </form>
+      {%- endif -%}
+
+      <div class="aviva-404__actions">
+        <a href="{{ routes.root_url }}" class="aviva-404__btn aviva-404__btn--primary">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M3 9.5 10 3l7 6.5V17a1 1 0 0 1-1 1h-4v-5H8v5H4a1 1 0 0 1-1-1V9.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          {{ s.primary_label }}
+        </a>
+        {%- if s.secondary_label != blank -%}
+          <a href="{{ s.secondary_link | default: routes.all_products_collection_url }}" class="aviva-404__btn aviva-404__btn--secondary">
+            {{ s.secondary_label }}
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if s.links_menu != blank and s.links_menu.links.size > 0 -%}
+        <div class="aviva-404__links">
+          {%- if s.links_title != blank -%}
+            <p class="aviva-404__links-title">{{ s.links_title }}</p>
+          {%- endif -%}
+          <ul class="aviva-404__chips">
+            {%- for link in s.links_menu.links -%}
+              <li><a href="{{ link.url }}" class="aviva-404__chip">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if s.show_products and products_collection.products.size > 0 -%}
+      <div class="aviva-404__products">
+        <div class="aviva-404__products-head">
+          <h2 class="aviva-404__products-title">{{ s.products_title }}</h2>
+          <a href="{{ products_collection.url }}" class="aviva-404__products-link">View all</a>
+        </div>
+        <ul class="aviva-404__grid">
+          {%- for product in products_collection.products limit: s.products_count -%}
+            <li class="aviva-404__card">
+              <a href="{{ product.url }}" class="aviva-404__card-media">
+                {%- if product.featured_image -%}
+                  {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '200,300,400,600', sizes: '(min-width: 990px) 25vw, 50vw', alt: product.featured_image.alt | default: product.title }}
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'aviva-404__placeholder' }}
+                {%- endif -%}
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="aviva-404__card-badge">Sale</span>
+                {%- endif -%}
+              </a>
+              <div class="aviva-404__card-info">
+                <a href="{{ product.url }}" class="aviva-404__card-title">{{ product.title }}</a>
+                <p class="aviva-404__card-price">
+                  <span>{{ product.price | money }}</span>
+                  {%- if product.compare_at_price > product.price -%}
+                    <s>{{ product.compare_at_price | money }}</s>
+                  {%- endif -%}
+                </p>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .aviva-404 {
+    --a404-brand: var(--brand-color, #114f57);
+    --a404-brand-dark: var(--brand-color-dark, #0d3a40);
+    --a404-soft: var(--item-bg, #d2dedf);
+    --a404-soft-2: var(--item-bg3, #f7fcfc);
+    --a404-gold: var(--golden-bg, #f5eecb);
+    --a404-accent: var(--rating-star-color, #f57e20);
+    --a404-text: #211913;
+    --a404-muted: var(--muted, #6c6c6c);
+    --a404-border: var(--border-color2, #e8e3e1);
+
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0 80px;
+    background: linear-gradient(180deg, var(--a404-soft-2) 0%, #ffffff 70%);
+    color: var(--a404-text);
+  }
+
+  .aviva-404__blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+  }
+
+  .aviva-404__blob--one {
+    width: 340px;
+    height: 340px;
+    top: -120px;
+    left: -110px;
+    background: radial-gradient(circle, var(--a404-soft) 0%, transparent 70%);
+  }
+
+  .aviva-404__blob--two {
+    width: 300px;
+    height: 300px;
+    top: 120px;
+    right: -100px;
+    background: radial-gradient(circle, var(--a404-gold) 0%, transparent 70%);
+  }
+
+  .aviva-404 .container {
+    position: relative;
+  }
+
+  .aviva-404__hero {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 4 [bag] 4 */
+  .aviva-404__code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    line-height: 1;
+  }
+
+  .aviva-404__digit {
+    font-size: clamp(96px, 18vw, 170px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    background: linear-gradient(160deg, var(--a404-brand) 20%, var(--a404-brand-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .aviva-404__bag {
+    width: clamp(84px, 15vw, 140px);
+    color: var(--a404-brand);
+    animation: aviva-404-float 3.2s ease-in-out infinite;
+  }
+
+  .aviva-404__bag svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 12px 18px rgb(17 79 87 / 25%));
+  }
+
+  .aviva-404__tear {
+    animation: aviva-404-tear 3.2s ease-in infinite;
+  }
+
+  .aviva-404__shadow {
+    width: clamp(70px, 12vw, 110px);
+    height: 12px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: rgb(17 79 87 / 14%);
+    animation: aviva-404-shadow 3.2s ease-in-out infinite;
+  }
+
+  @keyframes aviva-404-float {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-14px) rotate(3deg); }
+  }
+
+  @keyframes aviva-404-shadow {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(0.75); opacity: 0.6; }
+  }
+
+  @keyframes aviva-404-tear {
+    0%, 40% { opacity: 0; transform: translateY(0); }
+    55% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(14px); }
+  }
+
+  .aviva-404__badge {
+    margin: 26px 0 0;
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: var(--a404-gold);
+    color: var(--a404-brand-dark);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .aviva-404__title {
+    margin: 14px 0 0;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--a404-text);
+  }
+
+  .aviva-404__text {
+    margin-top: 12px;
+    color: var(--a404-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .aviva-404__text p {
+    margin: 0;
+  }
+
+  /* search */
+  .aviva-404__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 520px;
+    margin-top: 28px;
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid var(--a404-border);
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgb(17 79 87 / 8%);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .aviva-404__search:focus-within {
+    border-color: var(--a404-brand);
+    box-shadow: 0 10px 30px rgb(17 79 87 / 16%);
+  }
+
+  .aviva-404__search-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 14px;
+    flex: none;
+    color: var(--a404-muted);
+  }
+
+  .aviva-404__search-input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 12px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 15px;
+    color: var(--a404-text);
+  }
+
+  .aviva-404__search-btn {
+    flex: none;
+    height: 44px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 50px;
+    background: var(--a404-brand);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .aviva-404__search-btn:hover {
+    background: var(--a404-brand-dark);
+  }
+
+  /* buttons */
+  .aviva-404__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .aviva-404__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border: 1px solid var(--a404-brand);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .aviva-404__btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  .aviva-404__btn--primary {
+    background: var(--a404-brand);
+    color: #ffffff;
+  }
+
+  .aviva-404__btn--primary:hover {
+    background: var(--a404-brand-dark);
+    border-color: var(--a404-brand-dark);
+    color: #ffffff;
+  }
+
+  .aviva-404__btn--secondary {
+    background: transparent;
+    color: var(--a404-brand);
+  }
+
+  .aviva-404__btn--secondary:hover {
+    background: var(--a404-soft);
+    color: var(--a404-brand-dark);
+  }
+
+  .aviva-404__btn--secondary:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* quick links */
+  .aviva-404__links {
+    margin-top: 30px;
+  }
+
+  .aviva-404__links-title {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--a404-muted);
+  }
+
+  .aviva-404__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .aviva-404__chip {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid var(--a404-border);
+    border-radius: 50px;
+    background: #ffffff;
+    color: var(--a404-text);
+    font-size: 13px;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+  }
+
+  .aviva-404__chip:hover {
+    border-color: var(--a404-brand);
+    background: var(--a404-brand);
+    color: #ffffff;
+  }
+
+  /* products */
+  .aviva-404__products {
+    margin-top: 70px;
+  }
+
+  .aviva-404__products-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .aviva-404__products-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--a404-brand);
+  }
+
+  .aviva-404__products-link {
+    color: var(--a404-brand);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .aviva-404__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .aviva-404__card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .aviva-404__card-media {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--item-bg2, #f6f6f6);
+  }
+
+  .aviva-404__card-media img,
+  .aviva-404__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .aviva-404__card:hover .aviva-404__card-media img {
+    transform: scale(1.05);
+  }
+
+  .aviva-404__card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: var(--a404-accent);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .aviva-404__card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--a404-text);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  .aviva-404__card-title:hover {
+    color: var(--a404-brand);
+  }
+
+  .aviva-404__card-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    margin: 4px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--a404-brand);
+  }
+
+  .aviva-404__card-price s {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--a404-muted);
+  }
+
+  @media (max-width: 992px) {
+    .aviva-404__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .aviva-404__grid > :nth-child(n + 4) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .aviva-404 {
+      padding: 44px 0 56px;
+    }
+
+    .aviva-404__code {
+      gap: 8px;
+    }
+
+    .aviva-404__search-btn {
+      padding: 0 18px;
+    }
+
+    .aviva-404__actions {
+      width: 100%;
+    }
+
+    .aviva-404__btn {
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+
+    .aviva-404__products {
+      margin-top: 50px;
+    }
+
+    .aviva-404__products-title {
+      font-size: 20px;
+    }
+
+    .aviva-404__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .aviva-404__grid > :nth-child(n + 4) {
+      display: flex;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aviva-404__bag,
+    .aviva-404__shadow,
+    .aviva-404__tear {
+      animation: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "404 Page",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "Oops! Page not found"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "This bag is empty… and so is this page"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>The link may be broken or the page may have moved. Let's get you back to something you'll love.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search bags, backpacks, gifts…"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Home button label",
+      "default": "Back to home"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Second button label",
+      "default": "Shop all products"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Second button link"
+    },
+    {
+      "type": "header",
+      "content": "Quick links"
+    },
+    {
+      "type": "text",
+      "id": "links_title",
+      "label": "Title",
+      "default": "Or explore popular categories"
+    },
+    {
+      "type": "link_list",
+      "id": "links_menu",
+      "label": "Menu",
+      "info": "Shown as small pill buttons. Leave empty to hide."
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_products",
+      "label": "Show products",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "products_title",
+      "label": "Title",
+      "default": "You may like these"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Defaults to all products."
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "label": "Number of products",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "404 Page"
+    }
+  ]
+}
+{% endschema %}
