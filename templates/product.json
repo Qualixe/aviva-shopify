@@ -129,7 +129,7 @@
               "type": "_custom-accordion-item",
               "settings": {
                 "title": "Description",
-                "open": false,
+                "open": true,
                 "content": "{{ closest.product.description }}"
               },
               "blocks": {}
