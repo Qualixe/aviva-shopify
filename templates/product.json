@@ -36,7 +36,7 @@
           "name": "Short Description",
           "settings": {
             "text": "{{ closest.product.metafields.custom.short_description | metafield_tag }}",
-            "use_description_fallback": true,
+            "use_description_fallback": false,
             "word_count": 15,
             "font_size": 15,
             "text_color": "#232323",
