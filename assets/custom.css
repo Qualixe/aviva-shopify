@@ -62,13 +62,3 @@ svg.svg_icon.item_svg {
     border-radius: 5px;
 }
 
-@media screen and (max-width: 767px) {
-
-        .product-floating-cart{
-            width:50px;
-            right:16px;
-            top:70%;
-            padding:0;
-            border-radius:5px;
-        }
-}
