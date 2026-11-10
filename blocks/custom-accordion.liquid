@@ -6,7 +6,7 @@
   endif
 -%}
 <div
-  class="custom-accordion custom-accordion--{{ s.style }} custom-accordion--icon-{{ s.icon }}{% if s.open_first %} custom-accordion--open-first{% endif %}"
+  class="custom-accordion{% if s.open_first %} custom-accordion--open-first{% endif %}"
   data-accordion-name="{{ group_name }}"
   style="
     --ca-title-size: {{ s.title_size }}px;
@@ -15,7 +15,6 @@
     --ca-margin-bottom: {{ s.margin_bottom }}px;
     {% if s.title_color != blank and s.title_color.alpha != 0.0 %}--ca-title-color: {{ s.title_color }};{% endif %}
     {% if s.active_color != blank and s.active_color.alpha != 0.0 %}--ca-active-color: {{ s.active_color }};{% endif %}
-    {% if s.background != blank and s.background.alpha != 0.0 %}--ca-background: {{ s.background }};{% endif %}
   "
   {{ block.shopify_attributes }}
 >
@@ -32,46 +31,17 @@
     --ca-title-color: var(--heading-color, currentColor);
     --ca-active-color: var(--brand-color, currentColor);
     --ca-border: var(--border-color2, rgb(0 0 0 / 12%));
-    --ca-background: transparent;
     margin: var(--ca-margin-top) 0 var(--ca-margin-bottom);
   }
 
   .custom-accordion__heading {
-    margin: 0 0 12px;
+    margin: 0 0 8px;
     font-size: calc(var(--ca-title-size) + 4px);
     font-weight: 600;
   }
 
-  .custom-accordion--boxed .custom-accordion__items {
-    padding: 0 16px;
-    border: 1px solid var(--ca-border);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px rgb(0 0 0 / 7%);
-    background: var(--ca-background);
-  }
-
-  .custom-accordion--separated .custom-accordion__items {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .custom-accordion--separated .custom-accordion-item {
-    padding: 0 16px;
-    border: 1px solid var(--ca-border);
-    border-radius: 8px;
-    background: var(--ca-background);
-  }
-
-  .custom-accordion--boxed .custom-accordion-item + .custom-accordion-item,
-  .custom-accordion--lines .custom-accordion-item + .custom-accordion-item {
-    border-top: 1px solid var(--ca-border);
-  }
-
-  .custom-accordion--lines .custom-accordion__items {
-    border-block: 1px solid var(--ca-border);
-    background: var(--ca-background);
+  .custom-accordion-item {
+    border-bottom: 1px solid var(--ca-border);
   }
 
   .custom-accordion-item__summary {
@@ -109,52 +79,21 @@
     color: var(--ca-active-color);
   }
 
-  /* Open/close indicator: caret or plus */
-  .custom-accordion-item__toggle {
-    position: relative;
-    width: 12px;
-    height: 12px;
+  .custom-accordion-item__arrow {
+    display: flex;
     flex: none;
     color: var(--muted, #8a8a8a);
     transition: transform 0.3s ease, color 0.3s ease;
   }
 
-  .custom-accordion-item[open] .custom-accordion-item__toggle {
-    color: var(--ca-active-color);
+  .custom-accordion-item__arrow svg {
+    width: 12px;
+    height: 12px;
   }
 
-  .custom-accordion--icon-caret .custom-accordion-item__toggle::before {
-    content: "";
-    position: absolute;
-    inset: 1px 2px 4px;
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
-    transform: rotate(45deg);
-  }
-
-  .custom-accordion--icon-caret .custom-accordion-item[open] .custom-accordion-item__toggle {
+  .custom-accordion-item[open] .custom-accordion-item__arrow {
     transform: rotate(180deg);
-  }
-
-  .custom-accordion--icon-plus .custom-accordion-item__toggle::before,
-  .custom-accordion--icon-plus .custom-accordion-item__toggle::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1.5px;
-    background: currentColor;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease;
-  }
-
-  .custom-accordion--icon-plus .custom-accordion-item__toggle::after {
-    transform: translateY(-50%) rotate(90deg);
-  }
-
-  .custom-accordion--icon-plus .custom-accordion-item[open] .custom-accordion-item__toggle::after {
-    transform: translateY(-50%) rotate(0deg);
+    color: var(--ca-active-color);
   }
 
   .custom-accordion-item__content {
@@ -270,27 +209,6 @@
       "label": "Heading"
     },
     {
-      "type": "select",
-      "id": "style",
-      "label": "Style",
-      "options": [
-        { "value": "boxed", "label": "Boxed" },
-        { "value": "separated", "label": "Separate boxes" },
-        { "value": "lines", "label": "Lines only" }
-      ],
-      "default": "boxed"
-    },
-    {
-      "type": "select",
-      "id": "icon",
-      "label": "Open/close icon",
-      "options": [
-        { "value": "caret", "label": "Arrow" },
-        { "value": "plus", "label": "Plus / minus" }
-      ],
-      "default": "caret"
-    },
-    {
       "type": "checkbox",
       "id": "single_open",
       "label": "Only one item open at a time",
@@ -339,11 +257,6 @@
       "type": "color",
       "id": "active_color",
       "label": "Open item title"
-    },
-    {
-      "type": "color",
-      "id": "background",
-      "label": "Background"
     },
     {
       "type": "header",

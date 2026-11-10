@@ -31,20 +31,6 @@
           "settings": {},
           "blocks": {}
         },
-        "product_short_description_xYUNCG": {
-          "type": "product-short-description",
-          "name": "Short Description",
-          "settings": {
-            "text": "{{ closest.product.metafields.custom.short_description | metafield_tag }}",
-            "use_description_fallback": false,
-            "word_count": 10,
-            "font_size": 15,
-            "text_color": "#3B3232",
-            "margin_top": 0,
-            "margin_bottom": 16
-          },
-          "blocks": {}
-        },
         "variant_picker_1": {
           "type": "product-variant-options",
           "settings": {},
@@ -118,7 +104,6 @@
         "product_title",
         "product_rating_1",
         "product_price_1",
-        "product_short_description_xYUNCG",
         "variant_picker_1",
         "product_qty_1",
         "buy_buttons_1",

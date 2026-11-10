@@ -5,7 +5,7 @@
     assign product = collections.all.products.first
   endif
 
-  # Main content depends on the chosen source; nested blocks always render below it.
+  # Content depends on the chosen source.
   capture main_content
     case s.source
       when 'text'
@@ -19,9 +19,9 @@
     endcase
   endcapture
 
-  # "Only nested blocks" items always render; others hide when their content is empty.
+  # Hide the item on the live store when it has no content.
   assign has_content = false
-  if main_content != blank or s.source == 'none'
+  if main_content != blank
     assign has_content = true
   endif
 -%}
@@ -32,11 +32,14 @@
         {{ s.icon_image | image_url: width: 60 | image_tag: class: 'custom-accordion-item__icon-image', alt: '', loading: 'lazy' }}
       {%- endif -%}
       <span class="custom-accordion-item__title">{{ s.title | default: 'Accordion item' }}</span>
-      <span class="custom-accordion-item__toggle" aria-hidden="true"></span>
+      <span class="custom-accordion-item__arrow" aria-hidden="true">
+        <svg viewBox="0 0 10 6" focusable="false">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"/>
+        </svg>
+      </span>
     </summary>
     <div class="custom-accordion-item__content">
       {{ main_content }}
-      {% content_for 'blocks' %}
     </div>
   </details>
 {%- endif -%}
@@ -45,7 +48,6 @@
 {
   "name": "Accordion Item",
   "tag": null,
-  "blocks": [{ "type": "@theme" }],
   "settings": [
     {
       "type": "text",
@@ -72,11 +74,9 @@
         { "value": "text", "label": "Rich text" },
         { "value": "product_description", "label": "Product description" },
         { "value": "page", "label": "Page content" },
-        { "value": "liquid", "label": "Custom Liquid / HTML" },
-        { "value": "none", "label": "Only nested blocks" }
+        { "value": "liquid", "label": "Custom Liquid / HTML" }
       ],
-      "default": "text",
-      "info": "You can also add any theme block inside this item; it shows under the content."
+      "default": "text"
     },
     {
       "type": "richtext",
