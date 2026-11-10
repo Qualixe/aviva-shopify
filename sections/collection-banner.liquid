@@ -14,7 +14,7 @@
                 {% elsif collection.featured_image !=blank %}
                     {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
                 {% else %}
-                    {{ s.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
+                    
                 {% endif %}
                 
                 {% if mobile_img !=blank %}
