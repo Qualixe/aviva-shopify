@@ -46,7 +46,6 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 12px rgb(0 0 0 / 7%);
-    background: #ffffff;
   }
 
   .custom-accordion-item {
@@ -114,13 +113,39 @@
     padding: 0 16px 16px 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     font-size: var(--ca-content-size);
     line-height: 1.6;
   }
 
   .custom-accordion-item__content p {
     margin: 0;
+  }
+
+  /* Text pasted into product descriptions (e.g. from Alibaba) often carries
+     its own inline font sizes and fonts; ignore them so every product's text
+     uses the block's content size. */
+  .custom-accordion-item__content :is(p, span, li, div, td, th, a, strong, b, em, i, u, font, small, big) {
+    font-size: inherit !important;
+    font-family: inherit !important;
+    line-height: inherit !important;
+  }
+
+  /* Keep headings inside the text the same size as the Description Accordion */
+  .custom-accordion-item__content h1,
+  .custom-accordion-item__content h2,
+  .custom-accordion-item__content h3 {
+    margin: 0;
+    font-size: 22px !important;
+    line-height: 1.3;
+  }
+
+  .custom-accordion-item__content h4,
+  .custom-accordion-item__content h5,
+  .custom-accordion-item__content h6 {
+    margin: 0;
+    font-size: 16px !important;
+    line-height: 1.4;
   }
 
   .custom-accordion-item__content ul,
