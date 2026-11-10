@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {}
     },
     "collection_products": {
