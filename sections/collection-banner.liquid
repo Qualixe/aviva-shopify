@@ -24,7 +24,10 @@
                 {% elsif collection.featured_image !=blank %}
                     {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
                 {% else %}
-                  
+                    {% unless s.image_mob == blank %}
+                      {{ s.image_mob |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
+                    {% endunless %}
+                    
                 {% endif %}
             {% endif %}
         </div>
