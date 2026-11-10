@@ -1,0 +1,107 @@
+{%- liquid
+  assign s = block.settings
+  assign product = closest.product
+  if request.visual_preview_mode and product == blank
+    assign product = collections.all.products.first
+  endif
+
+  # Main content depends on the chosen source; nested blocks always render below it.
+  capture main_content
+    case s.source
+      when 'text'
+        echo s.content
+      when 'product_description'
+        echo product.description
+      when 'page'
+        echo s.page.content
+      when 'liquid'
+        echo s.custom_liquid
+    endcase
+  endcapture
+
+  # "Only nested blocks" items always render; others hide when their content is empty.
+  assign has_content = false
+  if main_content != blank or s.source == 'none'
+    assign has_content = true
+  endif
+-%}
+{%- if has_content or request.design_mode -%}
+  <details class="custom-accordion-item"{% if s.open %} open{% endif %} {{ block.shopify_attributes }}>
+    <summary class="custom-accordion-item__summary">
+      {%- if s.icon_image != blank -%}
+        {{ s.icon_image | image_url: width: 60 | image_tag: class: 'custom-accordion-item__icon-image', alt: '', loading: 'lazy' }}
+      {%- endif -%}
+      <span class="custom-accordion-item__title">{{ s.title | default: 'Accordion item' }}</span>
+      <span class="custom-accordion-item__toggle" aria-hidden="true"></span>
+    </summary>
+    <div class="custom-accordion-item__content">
+      {{ main_content }}
+      {% content_for 'blocks' %}
+    </div>
+  </details>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Accordion Item",
+  "tag": null,
+  "blocks": [{ "type": "@theme" }],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Accordion item"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Icon (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "open",
+      "label": "Open by default",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Content",
+      "options": [
+        { "value": "text", "label": "Rich text" },
+        { "value": "product_description", "label": "Product description" },
+        { "value": "page", "label": "Page content" },
+        { "value": "liquid", "label": "Custom Liquid / HTML" },
+        { "value": "none", "label": "Only nested blocks" }
+      ],
+      "default": "text",
+      "info": "You can also add any theme block inside this item; it shows under the content."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Rich text",
+      "info": "Connect a product metafield (dynamic source icon) for per-product content.",
+      "visible_if": "{{ block.settings.source == 'text' }}"
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "Page",
+      "visible_if": "{{ block.settings.source == 'page' }}"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom Liquid / HTML",
+      "visible_if": "{{ block.settings.source == 'liquid' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordion Item"
+    }
+  ]
+}
+{% endschema %}

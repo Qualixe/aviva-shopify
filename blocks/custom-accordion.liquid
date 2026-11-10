@@ -1,0 +1,394 @@
+{%- liquid
+  assign s = block.settings
+  assign group_name = ''
+  if s.single_open
+    assign group_name = 'custom-accordion-' | append: block.id
+  endif
+-%}
+<div
+  class="custom-accordion custom-accordion--{{ s.style }} custom-accordion--icon-{{ s.icon }}{% if s.open_first %} custom-accordion--open-first{% endif %}"
+  data-accordion-name="{{ group_name }}"
+  style="
+    --ca-title-size: {{ s.title_size }}px;
+    --ca-content-size: {{ s.content_size }}px;
+    --ca-margin-top: {{ s.margin_top }}px;
+    --ca-margin-bottom: {{ s.margin_bottom }}px;
+    {% if s.title_color != blank and s.title_color.alpha != 0.0 %}--ca-title-color: {{ s.title_color }};{% endif %}
+    {% if s.active_color != blank and s.active_color.alpha != 0.0 %}--ca-active-color: {{ s.active_color }};{% endif %}
+    {% if s.background != blank and s.background.alpha != 0.0 %}--ca-background: {{ s.background }};{% endif %}
+  "
+  {{ block.shopify_attributes }}
+>
+  {%- if s.heading != blank -%}
+    <h2 class="custom-accordion__heading">{{ s.heading }}</h2>
+  {%- endif -%}
+  <div class="custom-accordion__items">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .custom-accordion {
+    --ca-title-color: var(--heading-color, currentColor);
+    --ca-active-color: var(--brand-color, currentColor);
+    --ca-border: var(--border-color2, rgb(0 0 0 / 12%));
+    --ca-background: transparent;
+    margin: var(--ca-margin-top) 0 var(--ca-margin-bottom);
+  }
+
+  .custom-accordion__heading {
+    margin: 0 0 12px;
+    font-size: calc(var(--ca-title-size) + 4px);
+    font-weight: 600;
+  }
+
+  .custom-accordion--boxed .custom-accordion__items {
+    padding: 0 16px;
+    border: 1px solid var(--ca-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgb(0 0 0 / 7%);
+    background: var(--ca-background);
+  }
+
+  .custom-accordion--separated .custom-accordion__items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .custom-accordion--separated .custom-accordion-item {
+    padding: 0 16px;
+    border: 1px solid var(--ca-border);
+    border-radius: 8px;
+    background: var(--ca-background);
+  }
+
+  .custom-accordion--boxed .custom-accordion-item + .custom-accordion-item,
+  .custom-accordion--lines .custom-accordion-item + .custom-accordion-item {
+    border-top: 1px solid var(--ca-border);
+  }
+
+  .custom-accordion--lines .custom-accordion__items {
+    border-block: 1px solid var(--ca-border);
+    background: var(--ca-background);
+  }
+
+  .custom-accordion-item__summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 0;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .custom-accordion-item__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .custom-accordion-item__icon-image {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex: none;
+  }
+
+  .custom-accordion-item__title {
+    flex: 1;
+    margin: 0;
+    font-size: var(--ca-title-size);
+    font-weight: 500;
+    color: var(--ca-title-color);
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+  }
+
+  .custom-accordion-item[open] .custom-accordion-item__title {
+    color: var(--ca-active-color);
+  }
+
+  /* Open/close indicator: caret or plus */
+  .custom-accordion-item__toggle {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    flex: none;
+    color: var(--muted, #8a8a8a);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .custom-accordion-item[open] .custom-accordion-item__toggle {
+    color: var(--ca-active-color);
+  }
+
+  .custom-accordion--icon-caret .custom-accordion-item__toggle::before {
+    content: "";
+    position: absolute;
+    inset: 1px 2px 4px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .custom-accordion--icon-caret .custom-accordion-item[open] .custom-accordion-item__toggle {
+    transform: rotate(180deg);
+  }
+
+  .custom-accordion--icon-plus .custom-accordion-item__toggle::before,
+  .custom-accordion--icon-plus .custom-accordion-item__toggle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: currentColor;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+  }
+
+  .custom-accordion--icon-plus .custom-accordion-item__toggle::after {
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  .custom-accordion--icon-plus .custom-accordion-item[open] .custom-accordion-item__toggle::after {
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  .custom-accordion-item__content {
+    padding: 0 16px 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: var(--ca-content-size);
+    line-height: 1.6;
+  }
+
+  .custom-accordion-item__content p {
+    margin: 0;
+  }
+
+  .custom-accordion-item__content ul,
+  .custom-accordion-item__content ol {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .custom-accordion-item__content ul li {
+    list-style-type: disc;
+  }
+
+  .custom-accordion-item__content ol li {
+    list-style-type: decimal;
+  }
+
+  .custom-accordion-item__content li + li {
+    margin-top: 8px;
+  }
+
+  .custom-accordion-item__content img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .custom-accordion-item__content table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .custom-accordion-item__content th,
+  .custom-accordion-item__content td {
+    padding: 8px;
+    border: 1px solid var(--ca-border);
+    text-align: left;
+  }
+
+  /* Smooth open/close in browsers that support it */
+  @supports (interpolate-size: allow-keywords) {
+    .custom-accordion {
+      interpolate-size: allow-keywords;
+    }
+
+    .custom-accordion-item::details-content {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease, content-visibility 0.3s allow-discrete;
+    }
+
+    .custom-accordion-item[open]::details-content {
+      height: auto;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  // Copy the group name onto each <details> so the browser keeps only one
+  // open at a time (native exclusive accordion), and open the first item
+  // when that option is on.
+  function initCustomAccordions(root) {
+    root.querySelectorAll('.custom-accordion').forEach(function (accordion) {
+      var name = accordion.dataset.accordionName;
+      var items = accordion.querySelectorAll(':scope > .custom-accordion__items > .custom-accordion-item');
+
+      items.forEach(function (item) {
+        if (name) item.setAttribute('name', name);
+        else item.removeAttribute('name');
+      });
+
+      if (
+        accordion.classList.contains('custom-accordion--open-first') &&
+        items[0] &&
+        !accordion.dataset.firstOpened
+      ) {
+        items[0].open = true;
+        accordion.dataset.firstOpened = 'true';
+      }
+    });
+  }
+
+  initCustomAccordions(document);
+  document.addEventListener('shopify:section:load', function (event) {
+    initCustomAccordions(event.target);
+  });
+  document.addEventListener('shopify:block:select', function (event) {
+    var item = event.target.closest && event.target.closest('.custom-accordion-item');
+    if (item) item.open = true;
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Accordion",
+  "tag": null,
+  "blocks": [{ "type": "_custom-accordion-item" }],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "boxed", "label": "Boxed" },
+        { "value": "separated", "label": "Separate boxes" },
+        { "value": "lines", "label": "Lines only" }
+      ],
+      "default": "boxed"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Open/close icon",
+      "options": [
+        { "value": "caret", "label": "Arrow" },
+        { "value": "plus", "label": "Plus / minus" }
+      ],
+      "default": "caret"
+    },
+    {
+      "type": "checkbox",
+      "id": "single_open",
+      "label": "Only one item open at a time",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first item on page load",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "content_size",
+      "label": "Content size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "active_color",
+      "label": "Open item title"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordion",
+      "blocks": {
+        "item_1": {
+          "type": "_custom-accordion-item",
+          "settings": { "title": "Description", "source": "product_description" }
+        },
+        "item_2": {
+          "type": "_custom-accordion-item",
+          "settings": { "title": "Shipping", "content": "<p>Add shipping details here.</p>" }
+        },
+        "item_3": {
+          "type": "_custom-accordion-item",
+          "settings": { "title": "Return and Refund", "content": "<p>Add return policy here.</p>" }
+        }
+      },
+      "block_order": ["item_1", "item_2", "item_3"]
+    }
+  ]
+}
+{% endschema %}
