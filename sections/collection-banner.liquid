@@ -13,10 +13,9 @@
                     {{ collection_img |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
                 {% elsif collection.featured_image !=blank %}
                     {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
-                {% else %}
-                   {% unless s.image == blank %}
+                {% elsif  s.image != blank %}
+                 
                       {{ s.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
-                    {% endunless %}
                 {% endif %}
                 
                 {% if mobile_img !=blank %}
@@ -25,10 +24,8 @@
                     {{ collection_img |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
                 {% elsif collection.featured_image !=blank %}
                     {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
-                {% else %}
-                    {% unless s.image_mob == blank %}
+                {% elsif s.image_mob != blank %}
                       {{ s.image_mob |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
-                    {% endunless %}
                     
                 {% endif %}
             {% endif %}
