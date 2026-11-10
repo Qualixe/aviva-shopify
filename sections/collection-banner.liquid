@@ -1,34 +1,34 @@
-{% assign s = section.settings %}
-{% assign collection_img = collection.metafields.custom.banner_image_desktop %}
-{% assign mobile_img = collection.metafields.custom.banner_image_mobile %}
+{%- liquid
+    assign s = section.settings
+
+    # "All products" uses the section images; other collections use their own
+    # banner metafields, then the collection image, then the section images.
+    if collection.handle == 'all'
+        assign desktop_img = s.image
+        assign mobile_img = s.image_mob
+    else
+        assign desktop_img = collection.metafields.custom.banner_image_desktop.value | default: collection.featured_image | default: s.image
+        assign mobile_img = collection.metafields.custom.banner_image_mobile.value | default: collection.metafields.custom.banner_image_desktop.value | default: collection.featured_image | default: s.image_mob
+    endif
+
+    # Each size falls back to the other so the banner is never empty on one device.
+    if desktop_img == blank
+        assign desktop_img = mobile_img
+    endif
+    if mobile_img == blank
+        assign mobile_img = desktop_img
+    endif
+-%}
 
 <section class="collection-banner-section">
     <div class="collection-banner-wrap">
         <div class="img">
-            {% if collection.handle contains 'all' %}
-                {{ s.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
-                {{ s.image_mob |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
-            {% else %}
-                {% if collection_img !=blank %}
-                    {{ collection_img |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
-                {% elsif collection.featured_image !=blank %}
-                    {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
-                {% elsif  s.image != blank %}
-                 
-                      {{ s.image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-desktop'  }}
-                {% endif %}
-                
-                {% if mobile_img !=blank %}
-                    {{ mobile_img |  image_url: width: 1000 |  image_tag: class: 'collection-banner-mobile'  }}
-                {% elsif collection_img !=blank %}
-                    {{ collection_img |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
-                {% elsif collection.featured_image !=blank %}
-                    {{ collection.featured_image |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
-                {% elsif s.image_mob != blank %}
-                      {{ s.image_mob |  image_url: width: 3000 |  image_tag: class: 'collection-banner-mobile'  }}
-                    
-                {% endif %}
-            {% endif %}
+            {%- if desktop_img != blank -%}
+                {{ desktop_img | image_url: width: 3000 | image_tag: class: 'collection-banner-desktop', alt: collection.title }}
+            {%- endif -%}
+            {%- if mobile_img != blank -%}
+                {{ mobile_img | image_url: width: 1000 | image_tag: class: 'collection-banner-mobile', alt: collection.title }}
+            {%- endif -%}
         </div>
         <div class="content">
             <h1 class="title">{{ collection.title }}</h1>
