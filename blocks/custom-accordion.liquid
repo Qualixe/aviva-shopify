@@ -13,8 +13,10 @@
     --ca-content-size: {{ s.content_size }}px;
     --ca-margin-top: {{ s.margin_top }}px;
     --ca-margin-bottom: {{ s.margin_bottom }}px;
-    {% if s.title_color != blank and s.title_color.alpha != 0.0 %}--ca-title-color: {{ s.title_color }};{% endif %}
-    {% if s.active_color != blank and s.active_color.alpha != 0.0 %}--ca-active-color: {{ s.active_color }};{% endif %}
+    --ca-title-color: {{ s.title_color | default: '#211913' }};
+    --ca-active-color: {{ s.active_color | default: '#114F57' }};
+    --ca-arrow-color: {{ s.arrow_color | default: '#8A8A8A' }};
+    --ca-border: {{ s.border_color | default: '#E5E5E5' }};
   "
   {{ block.shopify_attributes }}
 >
@@ -28,9 +30,6 @@
 
 {% stylesheet %}
   .custom-accordion {
-    --ca-title-color: var(--heading-color, currentColor);
-    --ca-active-color: var(--brand-color, currentColor);
-    --ca-border: var(--border-color2, rgb(0 0 0 / 12%));
     margin: var(--ca-margin-top) 0 var(--ca-margin-bottom);
   }
 
@@ -82,13 +81,13 @@
   .custom-accordion-item__arrow {
     display: flex;
     flex: none;
-    color: var(--muted, #8a8a8a);
+    color: var(--ca-arrow-color);
     transition: transform 0.3s ease, color 0.3s ease;
   }
 
   .custom-accordion-item__arrow svg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
 
   .custom-accordion-item[open] .custom-accordion-item__arrow {
@@ -251,12 +250,26 @@
     {
       "type": "color",
       "id": "title_color",
-      "label": "Title"
+      "label": "Title",
+      "default": "#211913"
     },
     {
       "type": "color",
       "id": "active_color",
-      "label": "Open item title"
+      "label": "Open item title and arrow",
+      "default": "#114F57"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow",
+      "default": "#8A8A8A"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#E5E5E5"
     },
     {
       "type": "header",
