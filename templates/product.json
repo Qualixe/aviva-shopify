@@ -74,8 +74,8 @@
         "contact_buttons_1": {
           "type": "product-contact-buttons",
           "settings": {
-            "whatsapp_number": 8801711223344,
-            "phone_number": "01711223344",
+            "whatsapp_number": 8801700000000,
+            "phone_number": "01700000000",
             "whatsapp": "{{ settings.color_palette.green }}",
             "call_now": "{{ settings.color_palette.orange }}"
           },
