@@ -109,6 +109,11 @@
         "type": "shopify://apps/releasit-cod-form/blocks/app-embed/72faf214-4174-4fec-886b-0d0e8d3af9a2",
         "disabled": false,
         "settings": {}
+      },
+      "10789262277404757585": {
+        "type": "shopify://apps/whatsapp-chat-button/blocks/app-embed/019eabc4-a084-73e0-b634-2ba6515982fd",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_palette": {
