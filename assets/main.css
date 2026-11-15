@@ -29,6 +29,10 @@
     src: url('Inter_18pt-Bold.woff') format('woff');
     font-weight: 700;
 }
+@font-face {
+    font-family: 'HindSiliguri';
+    src: url('HindSiliguri-Regular.woff') format('woff');
+}
 
 /* colors */
 :root {
