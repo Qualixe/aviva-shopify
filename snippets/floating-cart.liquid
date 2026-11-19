@@ -8,11 +8,11 @@
             <circle cx="16.5" cy="18.2" r="1.5" fill="currentColor"/>
             </svg>
         </span>
-        <span class="product-floating-cart__count">0 Items</span>
+        <span class="product-floating-cart__count">{{  cart.item_count }} Items</span>
     </div>
     
   <div class="product-floating-cart__meta">
-    <span class="product-floating-cart__price">$0.00</span>
+    <span class="product-floating-cart__price">{{  cart.total_price | money }}</span>
   </div>
 </button>
 
