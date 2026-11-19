@@ -5,6 +5,9 @@ div#floatingBuyNowButton {
 .cart-drawer-checkout-btn-wrap > a {
     display: none;
 }
+.cod-sticky-btn-wrapper.cod-sticky-btn-wrapper--center {
+    display: none;
+}
 
 .product-add-to-cart-form .cod-buy-btn,
 .cart-drawer-checkout-btn-wrap .cod-buy-btn  {
