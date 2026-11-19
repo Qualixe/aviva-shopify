@@ -12,7 +12,7 @@
     </div>
     
   <div class="product-floating-cart__meta">
-    <span class="product-floating-cart__price">{{  cart.total_price | money }}</span>
+    <span class="product-floating-cart__price">{{  cart.total_price | money_without_trailing_zeros }}</span>
   </div>
 </button>
 
