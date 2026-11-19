@@ -52,7 +52,7 @@
         "countdown_hours": 1,
         "countdown_minutes": 30,
         "button": "secure checkout",
-        "button_link": "/rsi-btn-hook",
+        "button_link": "",
         "upsell_collection": "",
         "upsell_title": "66% of shoppers added these too...",
         "empty_cart_link": ""
