@@ -47,6 +47,7 @@
         "cart_milestone_2",
         "cart_milestone_3"
       ],
+      "disabled": true,
       "settings": {
         "offer_label": "Limited Time Offer",
         "countdown_hours": 1,

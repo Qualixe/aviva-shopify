@@ -100,6 +100,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "background": "{{ settings.color_palette.background }}",
         "text": "{{ settings.color_palette.nav }}"
