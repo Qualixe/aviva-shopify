@@ -39,9 +39,9 @@
           "type": "shopify://apps/neo-cod-form-upsell/blocks/cod-landing-block/6d1c1f47-a7b1-4fee-af01-4ada7fb162d2",
           "settings": {
             "products": [
-              "mayra-shoulder-bag-black",
               "mayra-shoulder-bag-brown",
-              "mayra-shoulder-bag-chocolate"
+              "mayra-shoulder-bag-chocolate",
+              "mayra-shoulder-bag-black"
             ],
             "heading": "Select products and quantity",
             "layout": "variants",
