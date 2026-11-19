@@ -114,6 +114,11 @@
         "type": "shopify://apps/whatsapp-chat-button/blocks/app-embed/019eabc4-a084-73e0-b634-2ba6515982fd",
         "disabled": false,
         "settings": {}
+      },
+      "13015552501482376882": {
+        "type": "shopify://apps/neo-cod-form-upsell/blocks/app-block/6d1c1f47-a7b1-4fee-af01-4ada7fb162d2",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_palette": {
