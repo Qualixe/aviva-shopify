@@ -1,6 +1,16 @@
 div#floatingBuyNowButton {
     display: none !important;
 }
+
+.cart-drawer-checkout-btn-wrap > a {
+    display: none;
+}
+
+.product-add-to-cart-form .cod-buy-btn {
+    padding:11px 0 !important
+    
+}
+
 .copyright {
     padding: 5px 0;
     text-align: center;
